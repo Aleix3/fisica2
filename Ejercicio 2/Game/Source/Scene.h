@@ -35,8 +35,11 @@ public:
 private:
 	SDL_Texture* img;
 	SDL_Texture* background_png;
+	SDL_Texture* sprite_png;
 
 	SDL_Rect plataforma;
+	SDL_Rect plataforma2;
+
 };
 
 #endif // __SCENE_H__
