@@ -12,6 +12,7 @@
 Scene::Scene() : Module()
 {
 	name.Create("scene");
+	plataform_rect = { 100, 70, 495, 143 };
 }
 
 // Destructor
@@ -31,7 +32,7 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	img = app->tex->Load("Assets/Textures/test.png");
-	background_png = app->tex->Load("Assets/Textures/background.png");
+	/*background_png = app->tex->Load("Assets/Textures/background.png");*/
 	/*img = app->tex->Load("Assets/Textures/planta.jpg");*/
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	return true;
@@ -76,7 +77,7 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	bool ret = true;
-	app->render->DrawTexture(background_png, 0, 0, NULL);
+	//app->render->DrawTexture(background_png, 0, 0, NULL);
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
