@@ -11,6 +11,7 @@
 
 Scene::Scene() : Module()
 {
+	plataforma = { 100, 70, 495, 125 };
 	name.Create("scene");
 }
 
@@ -30,7 +31,10 @@ bool Scene::Awake()
 // Called before the first frame
 bool Scene::Start()
 {
-	img = app->tex->Load("Assets/Textures/test.png");
+	
+	background_png = app->tex->Load("Assets/Textures/background.png");
+	/*img = app->tex->Load("Assets/Textures/test.png");*/
+
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	return true;
 }
@@ -46,17 +50,17 @@ bool Scene::Update(float dt)
 {
 	//L02 TODO 3: Make the camera movement independent of framerate
 
-	if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		app->render->camera.y -= 1;
+	//if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	//	app->render->camera.y -= 1;
 
-	if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		app->render->camera.y += 1;
+	//if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	//	app->render->camera.y += 1;
 
-	if(app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		app->render->camera.x -= 1;
+	//if(app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	//	app->render->camera.x -= 1;
 
-	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		app->render->camera.x += 1;
+	//if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	//	app->render->camera.x += 1;
 
 	//Get the size of the window
 	uint windowW, windowH;
@@ -76,10 +80,12 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	bool ret = true;
-
+	
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
-
+	app->render->DrawTexture(background_png, 150, 100, NULL);
+	app->render->DrawRectangle(plataforma, 150, 100, 45, 64);
+	
 	return ret;
 }
 
@@ -87,6 +93,6 @@ bool Scene::PostUpdate()
 bool Scene::CleanUp()
 {
 	LOG("Freeing scene");
-
+	
 	return true;
 }
