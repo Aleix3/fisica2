@@ -14,6 +14,7 @@ class Textures;
 class Audio;
 class Scene;
 
+
 class App
 {
 public:
@@ -74,6 +75,7 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
+
 
 private:
 

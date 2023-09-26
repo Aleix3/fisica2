@@ -14,12 +14,6 @@ Render::Render() : Module()
 	background.g = 0;
 	background.b = 0;
 	background.a = 0;
-
-	name.Create("renderer2");
-	background.r = 0;
-	background.g = 0;
-	background.b = 0;
-	background.a = 0;
 }
 
 // Destructor
