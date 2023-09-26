@@ -83,7 +83,7 @@ bool Scene::PostUpdate()
 	
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
-	app->render->DrawTexture(background_png, 150, 100, NULL);
+	app->render->DrawTexture(background_png, 0, 0, NULL);
 	app->render->DrawRectangle(plataforma, 150, 100, 45, 64);
 	
 	return ret;
