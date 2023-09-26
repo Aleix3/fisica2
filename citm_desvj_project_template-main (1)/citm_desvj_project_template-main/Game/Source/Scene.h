@@ -34,7 +34,6 @@ public:
 
 private:
 	SDL_Texture* img;
-	SDL_Texture* background_jpg = nullptr;
 };
 
 #endif // __SCENE_H__
