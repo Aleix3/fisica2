@@ -18,8 +18,10 @@ public:
 	Update_Status PostUpdate() override;
 	bool CleanUp();
 
-	SDL_Texture* textura_fondo2 = nullptr;
-	SDL_Texture* textura_oscuridad = nullptr;
+	void OnCollision(Collider* c1, Collider* c2) override;
+
+	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_link = nullptr;
 	SDL_Rect rectFondo;
 	Collider* botcoll = nullptr;
 	Collider* topcoll = nullptr;
@@ -33,8 +35,8 @@ public:
 private:
 	Animation _deathAnim;
 
-	int weigthNivell = 1920;
-	int heightNivell = 2688;
+	int weigthNivell = 1000;
+	int heightNivell = 465;
 };
 
 #endif

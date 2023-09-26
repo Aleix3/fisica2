@@ -28,27 +28,27 @@ ModulePlayer::~ModulePlayer() {
 
 bool ModulePlayer::Start()
 {
-	texturePlayer = App->textures->Load(FI_Player_moveset.c_str());
-	collider = App->collisions->AddCollider({ position.x, position.y, 64, 128 }, Collider::Type::PLAYER, this);
+	texturePlayer = App->textures->Load(FI_Player_car.c_str());
+	collider = App->collisions->AddCollider({ position.x, position.y, 96, 64 }, Collider::Type::PLAYER, this);
 
 	_currentAnimation = &_eastAnim;
 
 	alive = true;
-	position.x = 300;
-	position.y = 300;
+	position.x = 100;
+	position.y = 400;
 
 #pragma region MOVES
 
 	// EAST
 	for (int i = 0; i < _numFrames; i++)
-		_eastAnim.PushBack({ 128 * i, 128 * 1, 128, 128 });
+		_eastAnim.PushBack({ 96 * i, 64 * 1, 96, 64 });
 	_eastAnim.loop = true;
 	_eastAnim.speed = 0.2f;
 
 
 	// WEAST
 	for (int i = 0; i < _numFrames; i++)
-		_weastAnim.PushBack({ 128 * i, 128 * 0, 128, 128 });
+		_weastAnim.PushBack({ 96 * i, 64 * 3, 96, 64 });
 	_weastAnim.loop = true;
 	_weastAnim.speed = 0.2f;
 
@@ -65,25 +65,14 @@ Update_Status ModulePlayer::Update() {
 
 	PlaceHolderMove();
 
-	/*if (_ecoAnimPlayer.currentFrame == 0.0f) {
-		LOG("AnimReset");
-	}*/
+	collider->SetPos(position.x, position.y);
 
-	//GetInputDirection();
-	//ApplyMovement();
-
-	collider->SetPos(position.x + 32, position.y);
-
-	
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModulePlayer::PostUpdate() {
 	_currentAnimation->Update();
 	App->render->Blit(texturePlayer, position.x, position.y, &_currentAnimation->GetCurrentFrame());
-
-	
-
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -97,51 +86,27 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2) {
 			&& c1->rect.y + c1->rect.h > c2->rect.y) {
 
 			position = positionAnterior;
-			//LOG("Hay superposici�n");
+			//LOG("Hay superposicion");
 		}
 	}
 
+	//if (c2->type == Collider::TR_NIVELL_T1) {
+	//	LOG("TRIGGER NIVELL TUTORIAL ACTIVAT!");	
+	//	App->fade->FadeToBlack((Module*)App->scene_01_tutorial, (Module*)App->scena, 60);
+	//}
 
-
-
-	if (c2->type == Collider::TR_NIVELL_T1) {
-		LOG("TRIGGER NIVELL TUTORIAL ACTIVAT!");
-		// TODO: Disable scene tutorial, ascensor, and enable scene level 1
-		// TODO: En la escena fer un enable de los apartados anteriores
-		// TODO: fer tres ascensors
-
-		App->fade->FadeToBlack((Module*)App->scene_01_tutorial, (Module*)App->scena, 60);
-	}
-
-	if (c2->type == Collider::TR_NIVELL_12) {
-		LOG("TRIGGER NIVELL 1 ACTIVAT!");
-		//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
-		App->fade->FadeToBlack((Module*)App->scena, (Module*)App->scene_03_nivel2, 60);
-	}
-
-	if (c2->type == Collider::TR_NIVELL_23) {
-		LOG("TRIGGER NIVELL 2 ACTIVAT!");
-		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
-		App->fade->FadeToBlack((Module*)App->scene_03_nivel2, (Module*)App->scene_00_Portada, 60);
-	}
-
-	if (c2->type == Collider::TR_NIVELL_3F) {
-		LOG("TRIGGER NIVELL 3 ACTIVAT!");
-		//App->fade->FadeToBlack(this, (Module*)App->sceneTests, 60);
-	}
-
-	if (c2->type == Collider::ENEMY)
-	{
-		//App->fade->FadeToBlack((Module*)App->scene_02_nivel1, (Module*)App->scene_01_tutorial, 60);
-	}
-
+	//if (c2->type == Collider::TR_NIVELL_12) {
+	//	LOG("TRIGGER NIVELL 1 ACTIVAT!");
+	//	//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
+	//	App->fade->FadeToBlack((Module*)App->scena, (Module*)App->scene_03_nivel2, 60);
+	//}
 }
 
 void ModulePlayer::PlaceHolderMove()
 {
 	const PlayerInput& controller = App->input->controlP1;
 
-	
+
 	if (controller.moveRight == Key_State::KEY_REPEAT) {
 		// EAST
 		_currentAnimation = &_eastAnim;
@@ -174,21 +139,21 @@ void ModulePlayer::ApplyMovement()
 {
 
 	switch (_actualDirection)
-	{	
+	{
 	case Directions::EAST: {
 		_currentAnimation = &_eastAnim;
 		position.x += speed;
 		break;
-	}	
+	}
 	case Directions::WEST: {
 		_currentAnimation = &_weastAnim;
 		position.x -= speed;
 		break;
-	}	
+	}
 	case Directions::NONE: {
 		// Per defecte IDLE		
-		if (_currentAnimation == &_eastAnim) _currentAnimation = &_eastAnim;	
-		else if (_currentAnimation == &_weastAnim) _currentAnimation = &_weastAnim;		
+		if (_currentAnimation == &_eastAnim) _currentAnimation = &_eastAnim;
+		else if (_currentAnimation == &_weastAnim) _currentAnimation = &_weastAnim;
 	}
 	default:
 		break;

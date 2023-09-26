@@ -19,8 +19,8 @@ Scena::~Scena() {
 bool Scena::Start()
 {
 
-	textura_fondo2 = App->textures->Load(FI_Mapa_Level1.c_str());
-	textura_oscuridad = App->textures->Load(FI_Mapa_Overlay.c_str());
+	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
+	textura_link = App->textures->Load(FI_Player_linkJump.c_str());
 
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
@@ -33,18 +33,16 @@ bool Scena::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	App->oscuridad->Enable();
 	App->player->Enable();
 	App->collisions->Enable();
 
 	// TODO: Poner en la posicion inical / puerta del nivel
-	App->player->position.x = 64;
-	App->player->position.y = 64;
-	App->player->collider->SetPos(400, 500);
+	App->player->position.x = 100;
+	App->player->position.y = 300;
 
 
 	//App->collisions->AddCollider({ 0, 0, 1920, 192}, Collider::Type::WALL);
-	App->collisions->AddCollider({ 128 , 1344, 128 , 256 }, Collider::Type::TR_NIVELL_12);
+	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK);
 
 	return true;
 }
@@ -73,7 +71,7 @@ Update_Status Scena::Update() {
 }
 
 Update_Status Scena::PostUpdate() {
-	App->render->Blit(textura_fondo2, 0, 0, &rectFondo);
+	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -83,4 +81,21 @@ bool Scena::CleanUp() {
 	App->collisions->Disable();
 	App->player->lives = 3;
 	return true;
+}
+
+void Scena::OnCollision(Collider* c1, Collider* c2) {
+	LOG("COLISIONS SCENA");
+
+	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER)
+	{
+		LOG("TRIGGER ACTIVAT");
+	}
+
+
+	//if (c2->type == Collider::TR_NIVELL_12) {
+	//	LOG("TRIGGER NIVELL 1 ACTIVAT!");
+	//	//App->fade->FadeToBlack(this, (Module*)App->scene_03_nivel2, 60);
+	//	App->fade->FadeToBlack((Module*)App->scena, (Module*)App->scene_03_nivel2, 60);
+	//}
+
 }

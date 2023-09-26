@@ -13,16 +13,14 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
+	/*matrix[Collider::Type::PLAYER][Collider::Type::TR_T1_SALT_LINK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::TR_T2] = true;*/
 
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
-
+	matrix[Collider::Type::TR_T1_SALT_LINK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::TR_T2][Collider::Type::PLAYER] = true;
 }
 
 
@@ -108,15 +106,9 @@ void ModuleCollisions::DebugDraw() {
 
 		case Collider::Type::WALL: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;// blue
 		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
-		case Collider::Type::ENEMY: App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;// red
-
-		case Collider::Type::TR_NIVELL_T1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-		case Collider::Type::TR_NIVELL_12: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-		case Collider::Type::TR_NIVELL_23: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-		case Collider::Type::TR_NIVELL_3F: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-
-		case Collider::Type::ECO: App->render->DrawQuad(colliders[i]->rect, 128, 0, 128, alpha); break; // purple
-
+		
+		case Collider::Type::TR_T1_SALT_LINK: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_T2: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		}
 	}
 }

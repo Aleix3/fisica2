@@ -22,9 +22,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	void PlaceHolderMove();
-
 	void GetInputDirection();
-
 	void ApplyMovement();
 
 	int lives = 3;
@@ -42,7 +40,6 @@ private:
 	int _numFrames = 6; // Frames que tiene cada fila
 	int _start_time;
 	Directions _actualDirection;
-
 	Animation* _currentAnimation = nullptr;
 
 	Animation _eastAnim;

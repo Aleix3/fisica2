@@ -1,2 +1,41 @@
-﻿  Scena.cpp
+﻿  Application.cpp
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Application\Application.cpp(45,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Globals.cpp
+  Main.cpp
+  ModuleOscuridad.cpp
+  Scena.cpp
+  DirectionHelper.cpp
+  Particle.cpp
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Entities\Particle.cpp(32,19): warning C4018: '>=': signed/unsigned mismatch
+  ModuleAudio.cpp
+  ModuleCollisions.cpp
+  ModuleFadeToBlack.cpp
+  ModuleFonts.cpp
+  ModuleHUD.cpp
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleHUD.cpp(173,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleHUD.cpp(177,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ModuleInput.cpp
+  ModuleParticles.cpp
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(122,31): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(133,30): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(142,32): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(150,36): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(159,33): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(167,33): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(175,33): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(183,33): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(191,33): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Modules\Core\ModuleParticles.cpp(199,33): warning C4305: '=': truncation from 'double' to 'float'
+  ModuleRender.cpp
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+  ModulePlayer.cpp
+  Module.cpp
+  Collider.cpp
+  Generating Code...
+C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\Echo Jammer\Utils\DirectionHelper.cpp(74): warning C4715: 'DirectionHelper::GetOpposite': not all control paths return a value
+  Compiling...
+  Path.cpp
+  PatrolPath.cpp
+  Generating Code...
   Echo Jammer.vcxproj -> C:\Users\ferranlx\Desktop\GameJam-CITM-2023\Echo Jammer\x64\Debug\Echo Jammer.exe

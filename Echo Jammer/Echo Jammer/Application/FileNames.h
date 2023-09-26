@@ -11,26 +11,17 @@
 
 #pragma region IMAGES -> FI
 
-// Proves
-const std::string FI_Fondo_Test = "_Assets/Imagenes/FondoTest.png";
-
 // Player
 const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
-const std::string FI_Player_Eco = "_Assets/Imagenes/UI/Echodefinitivo3.png";
-const std::string FI_Enemy_Eco = "_Assets/Imagenes/UI/BackEchoDefinitivo.png";
 
-// Escenes
-const std::string FI_Animacio_Portada = "_Assets/Imagenes/UI/intro_spritesheet.png";
-const std::string FI_Animacio_Start = "_Assets/Imagenes/UI/espacio_sprite.png";
+// Plataforma
+const std::string FI_Player_car = "_Assets/Exercici2/car.png";
+const std::string FI_Player_linkJump = "_Assets/Exercici2/linkJump.png";
 
 // Mapes
-const std::string FI_Mapa_Level1 = "_Assets/Imagenes/mapas/level_01.png";
-const std::string FI_Mapa_Level2 = "_Assets/Imagenes/mapas/level_02.png";
-const std::string FI_Mapa_Tutorial = "_Assets/Imagenes/mapas/tutorial_level.png";
+const std::string FI_Mapa_Scena = "_Assets/Exercici2/background.png";
 const std::string FI_Mapa_Overlay = "_Assets/Imagenes/UI/oscuridad.png";
 
-// Enemy textures
-const std::string FI_Enemy_Basic = "_Assets/Imagenes/enemies/enemy_01_spritesheet.png";
 
 #pragma endregion
 
