@@ -41,8 +41,7 @@ bool Scena_Exercisi3::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
-	// Enable modules
-	App->player->Enable();
+	// Enable modules	
 	App->collisions->Enable();
 
 	// Initial position player
@@ -50,7 +49,7 @@ bool Scena_Exercisi3::Start()
 	App->player->position.y = 300;
 
 	// Load coliders
-	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
+	App->collisions->AddCollider({ 800 , 350, 50 , 50 }, Collider::Type::TR_T1_SALT_LINK, this);
 
 	return true;
 }

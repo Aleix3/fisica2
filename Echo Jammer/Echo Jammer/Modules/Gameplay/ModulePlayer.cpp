@@ -15,8 +15,6 @@
 #include "../../Modules/Core/ModuleFonts.h"
 #include "../../Utils/DirectionHelper.h"
 
-#include "../Levels/Scena.h"
-
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled) {
 

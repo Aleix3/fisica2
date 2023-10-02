@@ -19,9 +19,9 @@ const std::string FI_Plataform = "_Assets/Sprites/sprite.png";
 const std::string FI_Mapa_Scena = "_Assets/Exercici2/background.png";
 
 // Exercisi3
-const std::string FI_canon = "_Assets/Exercici3/Canon.png";
-const std::string FI_Background = "_Assets/Exercici3/Fondo3.png";
-const std::string FI_boom = "_Assets/Exercici3/boom.png";
+const std::string FI_canon = "_Assets/Exercisi3/Canon.png";
+const std::string FI_Background = "_Assets/Exercisi3/Fondo3.png";
+const std::string FI_boom = "_Assets/Exercisi3/boom.png";
 
 #pragma endregion
 
