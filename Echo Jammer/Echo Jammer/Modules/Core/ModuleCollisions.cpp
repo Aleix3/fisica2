@@ -19,8 +19,11 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	/*matrix[Collider::Type::PLAYER][Collider::Type::TR_T1_SALT_LINK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::TR_T2] = true;*/
 
+	// EXERCISI 2
 	matrix[Collider::Type::TR_T1_SALT_LINK][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::TR_T2][Collider::Type::PLAYER] = true;
+	
+	// EXERCISI 3
+	matrix[Collider::Type::TR_OBJECTIU_1][Collider::Type::PLAYER] = true;
 }
 
 
@@ -108,7 +111,8 @@ void ModuleCollisions::DebugDraw() {
 		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
 		
 		case Collider::Type::TR_T1_SALT_LINK: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-		case Collider::Type::TR_T2: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_OBJECTIU_1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
+		case Collider::Type::TR_OBJECTIU_2: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		}
 	}
 }

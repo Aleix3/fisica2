@@ -20,26 +20,43 @@ public:
 
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	SDL_Texture* textura_fondo = nullptr;
-	SDL_Texture* textura_link = nullptr;
-	SDL_Rect rectFondo;
-	Collider* botcoll = nullptr;
-	Collider* topcoll = nullptr;
-	Collider* leftcoll = nullptr;
-	Collider* raightcoll = nullptr;
-
 	bool stopGame = false;
-	int start_time;
-	int velocitatNivell = 0;
 
 private:
-	Animation _deathAnim;
-	Animation _jumpAnimation;
+	int _start_time;
 
-	int weigthNivell = 1000;
-	int heightNivell = 465;
+	SDL_Texture* _textura_fondo = nullptr;
+	SDL_Texture* _textura_canon = nullptr;
+	SDL_Texture* _textura_boom = nullptr;
+	SDL_Rect _rectFondo;
+	SDL_Rect _rectCanon;
+	SDL_Rect _rectBall;
 
-	bool saltActivat = false;
+	Animation _shootAnimation;
+
+	int _weigthNivell = 1000;
+	int _heightNivell = 465;
+
+	bool _start = false;
+	bool _shooting = false;
+	bool _endShoot = true;
+
+	// Formules
+	float _gravetat = 9.81; //m/s^2
+	float _alturaInicial = 30; // m
+	float _angle = 71 * M_PI / 180; // Angle en radians
+	float _temps = 0;
+
+	float _velocitatInicial = 9.00; // m/s
+	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+	float _velocitat_X = _velocitatInicial_X;
+	float _velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+
+	float _position_X;
+	float _position_Y;
+
 };
 
 #endif

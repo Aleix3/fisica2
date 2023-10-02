@@ -155,7 +155,6 @@
     <ClInclude Include="Application\FileNames.h" />
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
-    <ClInclude Include="Modules\Core\ModuleOscuridad.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
@@ -183,7 +182,6 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
-    <ClCompile Include="Modules\Core\ModuleOscuridad.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi2.cpp" />
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />

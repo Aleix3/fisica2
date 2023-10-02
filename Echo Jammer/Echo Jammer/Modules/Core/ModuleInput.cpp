@@ -303,6 +303,7 @@ void PlayerInput::StoreInput(const Key_State keyboard[MAX_KEYS], const GamePad& 
 			dash = (dash == KEY_REPEAT || dash == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 
+	
 	if (keyboard[KeyboardSetup::Sprint] != Key_State::KEY_IDLE)
 		sprint = keyboard[KeyboardSetup::Sprint];
 	else {

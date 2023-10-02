@@ -46,7 +46,7 @@ enum KeyboardSetup {
 	MoveLeft = SDL_Scancode::SDL_SCANCODE_A,
 	MoveRight = SDL_Scancode::SDL_SCANCODE_D,
 	Sprint = SDL_Scancode::SDL_SCANCODE_LSHIFT,
-	Dash = SDL_Scancode::SDL_SCANCODE_SPACE,
+	Dash = SDL_Scancode::SDL_SCANCODE_SPACE,	
 	Pause = SDL_Scancode::SDL_SCANCODE_I
 
 };

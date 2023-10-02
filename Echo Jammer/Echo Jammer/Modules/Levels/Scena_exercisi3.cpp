@@ -6,11 +6,12 @@
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleOscuridad.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
+#include "../Core/ModuleInput.h"
+#include <SDL_timer.h>
 
 Scena_Exercisi3::Scena_Exercisi3(bool startEnabled) : Module(startEnabled) {
-
+	// https://www.fisicalab.com/apartado/movimiento-parabolico
 }
 
 Scena_Exercisi3::~Scena_Exercisi3() {
@@ -18,32 +19,37 @@ Scena_Exercisi3::~Scena_Exercisi3() {
 
 bool Scena_Exercisi3::Start()
 {
+	// Load textures
+	_textura_fondo = App->textures->Load(FI_Background.c_str());
+	_textura_canon = App->textures->Load(FI_canon.c_str());
+	_textura_boom = App->textures->Load(FI_boom.c_str());
 
-	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
-	textura_link = App->textures->Load(FI_Player_linkJump.c_str());
+	// Load animations
+	for (int i = 0; i < 6; i++)
+		_shootAnimation.PushBack({ 48 * i, 0, 48, 48 });
+	_shootAnimation.loop = true;
+	_shootAnimation.speed = 0.2f;
 
-	for (int i = 0; i < 9; i++)
-		_jumpAnimation.PushBack({ 32 * i, 0, 32, 32 });
-	_jumpAnimation.loop = true;
-	_jumpAnimation.speed = 0.2f;
-
+	// Load aduio
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
-	rectFondo.x = 0;
-	rectFondo.y = 0;
-	rectFondo.w = weigthNivell;
-	rectFondo.h = heightNivell;
+	// Set position / sizes
+	_rectFondo = { 0, 0, _weigthNivell, _heightNivell };
+	_rectCanon = { 220, 210, 48, 48 };
 
-	// POSITION INITIAL CAMERA
+	// Initial position camera
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
+	// Enable modules
 	App->player->Enable();
 	App->collisions->Enable();
 
+	// Initial position player
 	App->player->position.x = 100;
 	App->player->position.y = 300;
 
+	// Load coliders
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 
 	return true;
@@ -51,39 +57,34 @@ bool Scena_Exercisi3::Start()
 
 Update_Status Scena_Exercisi3::Update() {
 
-	if (App->player->position.x <= 10)
-		App->player->position.x = 10;
-	if (App->player->position.x >= weigthNivell - 10 - 128)
-		App->player->position.x = weigthNivell - 10 - 128;
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+		_start = true;
+		_start_time = SDL_GetTicks();
+		LOG("SHOOT!");
+	}
 
-	if (App->player->position.y <= 10)
-		App->player->position.y = 10;
-	if (App->player->position.y >= heightNivell - 128 - 10)
-		App->player->position.y = heightNivell - 128 - 10;
-
-
-	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920)
-		App->render->camera.x = App->player->position.x;
-	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540)
-		App->render->camera.y = App->player->position.y - 540;
+	if (_start) {
+		_temps = SDL_GetTicks() - _start_time;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _velocitatInicial_Y - _gravetat * _temps;
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status Scena_Exercisi3::PostUpdate() {
-	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+	App->render->Blit(_textura_fondo, 0, 0, &_rectFondo);
 
-	if (saltActivat)
+	if (_shooting)
 	{
-		_jumpAnimation.Update();
-		App->render->Blit(textura_link, 600, 200, &_jumpAnimation.GetCurrentFrame());
+		_shootAnimation.Update();
+		App->render->Blit(_textura_canon, 0, 0, &_shootAnimation.GetCurrentFrame());
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 bool Scena_Exercisi3::CleanUp() {
-	App->oscuridad->Disable();
 	App->player->Disable();
 	App->collisions->Disable();
 	App->player->lives = 3;
@@ -92,9 +93,9 @@ bool Scena_Exercisi3::CleanUp() {
 
 void Scena_Exercisi3::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
+	if (c1->type == Collider::TR_OBJECTIU_1 && c2->type == Collider::PLAYER && !_shooting)
 	{
-		LOG("TRIGGER ACTIVAT");
-		saltActivat = true;
+		LOG("OBJECTIU ABATUT!");
+		_shooting = true;
 	}
 }
