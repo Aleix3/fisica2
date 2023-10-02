@@ -1,3 +1,5 @@
+*.bin
+
 # Prerequisites
 *.d
 
@@ -25,8 +27,38 @@
 *.la
 *.a
 
-
 # Executables
 *.exe
 *.out
 *.app
+
+#extres
+*.vsidx
+*.lock
+*.suo
+*.db
+*.db-shm
+*.db-wal
+*.opendb
+*.ipch
+*.user
+*.tlog
+*.log
+*.recipe
+*.ilk
+*.idb
+*.txt
+*.pdb
+*.ap
+*.aps
+*.rc
+/Jovani adventures 1 - La batidora/Jovani adventures 1 - La batidora/resource.h
+*.res
+*.hpp
+*.filters
+*.vcxproj
+/.vs
+/Echo Jammer/Echo Jammer/x64/Debug
+*.pdb
+*.ilk
+*.log
