@@ -34,9 +34,12 @@ public:
 
 private:
 	Animation _deathAnim;
+	Animation _jumpAnimation;
 
 	int weigthNivell = 1000;
 	int heightNivell = 465;
+
+	bool saltActivat = false;
 };
 
 #endif
