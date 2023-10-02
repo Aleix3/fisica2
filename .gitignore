@@ -62,3 +62,6 @@
 *.vcxproj
 /.vs
 /Echo Jammer/Echo Jammer/x64/Debug
+*.ilk
+*.log
+*.tlog
