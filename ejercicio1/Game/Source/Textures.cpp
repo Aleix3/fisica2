@@ -11,7 +11,6 @@
 Textures::Textures() : Module()
 {
 	name.Create("textures");
-	
 }
 
 // Destructor
@@ -32,7 +31,6 @@ bool Textures::Awake()
 	{
 		LOG("Could not initialize Image lib. IMG_Init: %s", IMG_GetError());
 		ret = false;
-
 	}
 
 	return ret;

@@ -34,9 +34,10 @@ public:
 
 private:
 	SDL_Texture* img;
-	/*SDL_Texture* background_png;*/
+	
+	SDL_Texture* img2;
 
-	SDL_Rect plataform_rect;
+	SDL_Texture* img3;
 };
 
 #endif // __SCENE_H__

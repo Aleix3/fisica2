@@ -12,12 +12,20 @@
 Scene::Scene() : Module()
 {
 	name.Create("scene");
-	plataform_rect = { 100, 70, 495, 143 };
 }
 
 // Destructor
 Scene::~Scene()
 {}
+
+int boxX = 200;
+int boxY = 320;
+
+int plX = 1000;
+int plY = 500;
+
+int plX2 = 1000;
+int plY2 = 500;
 
 // Called before render is available
 bool Scene::Awake()
@@ -31,9 +39,12 @@ bool Scene::Awake()
 // Called before the first frame
 bool Scene::Start()
 {
-	img = app->tex->Load("Assets/Textures/test.png");
-	/*background_png = app->tex->Load("Assets/Textures/background.png");*/
-	/*img = app->tex->Load("Assets/Textures/planta.jpg");*/
+	img = app->tex->Load("Assets/Textures/caja.png");
+
+	img2 = app->tex->Load("Assets/Textures/planta.png");
+
+	img3 = app->tex->Load("Assets/Textures/planta2.png");
+
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	return true;
 }
@@ -46,30 +57,65 @@ bool Scene::PreUpdate()
 
 // Called each loop iteration
 bool Scene::Update(float dt)
+
 {
-	/*if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		app->render->camera.y -= 1;
+	
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	{
+		boxX -= 4; // Move left
+	}
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		boxX += 4; // Move right
+	}
 
-	if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		app->render->camera.y += 1;*/
-
-	if(app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		app->render->camera.x -= 6;
-
-	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		app->render->camera.x += 6;
+	
 
 	//Get the size of the window
 	uint windowW, windowH;
 	app->win->GetWindowSize(windowW, windowH);
 
+
+
 	//Get the size of the texture
 	uint texW, texH;
 	app->tex->GetSize(img, texW, texH);
+	app->tex->GetSize(img2, texW, texH);
+
+	
+
+
+	if (boxX > (plX - 300) && boxX < plX + 100)
+	{
+		/*plY = 2000;*/
+		plY2 = 550;
+		app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 80);
+		app->render->DrawTexture(img, boxX, boxY);
+	}
+	else if (boxX > (plX + 100))
+	{
+		/*plY = 2000;*/
+		plY2 = 500;
+		app->render->DrawTexture(img3, plX2, plY2);
+		app->render->DrawTexture(img, boxX, boxY);
+	}
+
+
 
 	// Renders the image in the center of the screen
-	app->render->DrawTexture(img, windowW /2 - texW / 2, windowH /2 - texH / 2);
+	/*app->render->DrawTexture(img, windowW /1 - texW / 1, windowH /1 - texH / 1);*/
+	else
+	{
+		
 
+		// Renders the image with scaled dimensions
+		app->render->DrawTexture(img, boxX, boxY);
+		app->render->DrawTexture(img2, plX, plY );
+	}
+	
+	
+
+	
 	return true;
 }
 
@@ -77,7 +123,7 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	bool ret = true;
-	//app->render->DrawTexture(background_png, 0, 0, NULL);
+
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 

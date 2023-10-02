@@ -37,7 +37,7 @@ bool Window::Awake()
 		bool fullscreen = false;
 		bool borderless = false;
 		bool resizable = false;
-		bool fullscreen_window = false;
+		bool fullscreen_window = true;
 
 		width = 1280;
 		height = 720;
