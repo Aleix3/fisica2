@@ -48,7 +48,7 @@ bool Scena::Start()
 	App->collisions->Enable();
 
 	App->player->position.x = 100;
-	App->player->position.y = 300;
+	App->player->position.y = 180;
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 	
@@ -85,10 +85,6 @@ Update_Status Scena::PostUpdate() {
 	App->render->Blit(textura_plataform, 150, 220);
 	App->render->Blit(textura_plataform, 580, 220);
 
-	/*SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(sprite_png, 49, 80, &rect);*/
-	/*AnimPlat.Update();
-	App->render->Blit(textura_link, 600, 200, AnimPLat.GetCurrentFrame());*/
 	if (saltActivat)
 	{
 		_jumpAnimation.Update();
