@@ -1,5 +1,8 @@
 *.bin
-
+*.pdb
+*.ilk
+*.log
+*.db
 # Prerequisites
 *.d
 
@@ -59,7 +62,3 @@
 *.vcxproj
 /.vs
 /Echo Jammer/Echo Jammer/x64/Debug
-*.pdb
-*.ilk
-*.log
-*.db
