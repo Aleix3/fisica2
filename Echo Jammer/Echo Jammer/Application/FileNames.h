@@ -17,6 +17,7 @@ const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spriteshe
 // Plataforma
 const std::string FI_Player_car = "_Assets/Exercici2/car.png";
 const std::string FI_Player_linkJump = "_Assets/Exercici2/linkJump.png";
+const std::string FI_Plataform = "_Assets/Sprites/sprite.png";
 
 // Mapes
 const std::string FI_Mapa_Scena = "_Assets/Exercici2/background.png";

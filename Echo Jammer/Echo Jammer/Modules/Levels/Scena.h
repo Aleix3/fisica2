@@ -21,6 +21,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_plataform = nullptr;
 	SDL_Texture* textura_link = nullptr;
 	SDL_Rect rectFondo;
 	Collider* botcoll = nullptr;
@@ -35,6 +36,10 @@ public:
 private:
 	Animation _deathAnim;
 	Animation _jumpAnimation;
+
+	Animation* currentAnimation = nullptr;
+	Animation AnimPlat;
+	SDL_Texture* sprite_png = nullptr;
 
 	int weigthNivell = 1000;
 	int heightNivell = 465;

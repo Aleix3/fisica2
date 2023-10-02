@@ -10,7 +10,7 @@
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 
 Scena::Scena(bool startEnabled) : Module(startEnabled) {
-
+	
 }
 
 Scena::~Scena() {
@@ -21,6 +21,12 @@ bool Scena::Start()
 
 	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
 	textura_link = App->textures->Load(FI_Player_linkJump.c_str());
+	textura_plataform = App->textures->Load(FI_Plataform.c_str());
+
+
+	AnimPlat.PushBack({ 950, 806, 250, 75 });
+	AnimPlat.loop = true;
+	AnimPlat.speed = 0.3f;
 
 	for (int i = 0; i < 9; i++)
 		_jumpAnimation.PushBack({ 32 * i, 0, 32, 32 });
@@ -50,7 +56,7 @@ bool Scena::Start()
 }
 
 Update_Status Scena::Update() {
-
+	
 	if (!App->player->alive) {
 		App->fade->FadeToBlack((Module*)this, (Module*)App->scene_01_tutorial, 60);
 	}
@@ -76,7 +82,13 @@ Update_Status Scena::Update() {
 
 Update_Status Scena::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
-	
+	App->render->Blit(textura_plataform, 150, 220);
+	App->render->Blit(textura_plataform, 580, 220);
+
+	/*SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	App->render->Blit(sprite_png, 49, 80, &rect);*/
+	/*AnimPlat.Update();
+	App->render->Blit(textura_link, 600, 200, AnimPLat.GetCurrentFrame());*/
 	if (saltActivat)
 	{
 		_jumpAnimation.Update();
