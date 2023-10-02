@@ -1,4 +1,4 @@
-#include "Scena_Exercisi3.h"
+#include "Scena.h"
 
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
@@ -9,14 +9,14 @@
 #include "../../Modules/Core/ModuleOscuridad.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
 
-Scena_Exercisi3::Scena_Exercisi3(bool startEnabled) : Module(startEnabled) {
+Scena::Scena(bool startEnabled) : Module(startEnabled) {
 
 }
 
-Scena_Exercisi3::~Scena_Exercisi3() {
+Scena::~Scena() {
 }
 
-bool Scena_Exercisi3::Start()
+bool Scena::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
@@ -45,11 +45,15 @@ bool Scena_Exercisi3::Start()
 	App->player->position.y = 300;
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
-
+	
 	return true;
 }
 
-Update_Status Scena_Exercisi3::Update() {
+Update_Status Scena::Update() {
+
+	if (!App->player->alive) {
+		App->fade->FadeToBlack((Module*)this, (Module*)App->scene_01_tutorial, 60);
+	}
 
 	if (App->player->position.x <= 10)
 		App->player->position.x = 10;
@@ -62,27 +66,27 @@ Update_Status Scena_Exercisi3::Update() {
 		App->player->position.y = heightNivell - 128 - 10;
 
 
-	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920)
+	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) 
 		App->render->camera.x = App->player->position.x;
-	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540)
+	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) 
 		App->render->camera.y = App->player->position.y - 540;
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Scena_Exercisi3::PostUpdate() {
+Update_Status Scena::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
-
+	
 	if (saltActivat)
 	{
 		_jumpAnimation.Update();
 		App->render->Blit(textura_link, 600, 200, &_jumpAnimation.GetCurrentFrame());
 	}
-
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool Scena_Exercisi3::CleanUp() {
+bool Scena::CleanUp() {
 	App->oscuridad->Disable();
 	App->player->Disable();
 	App->collisions->Disable();
@@ -90,8 +94,8 @@ bool Scena_Exercisi3::CleanUp() {
 	return true;
 }
 
-void Scena_Exercisi3::OnCollision(Collider* c1, Collider* c2) {
-
+void Scena::OnCollision(Collider* c1, Collider* c2) {
+	
 	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
 	{
 		LOG("TRIGGER ACTIVAT");

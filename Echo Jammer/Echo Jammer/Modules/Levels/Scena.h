@@ -1,5 +1,5 @@
-#ifndef __SCENE_EXERCISI3_H__
-#define __SCENE_EXERCISI3_H__
+#ifndef __SCENE_02_NIVEL1_H__
+#define __SCENE_02_NIVEL1_H__
 
 #include "../Module.h"
 #include "../../Utils/Animation.h"
@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class Scena_Exercisi3 : public Module {
+class Scena : public Module {
 
 public:
-	Scena_Exercisi3(bool startEnabled);
-	~Scena_Exercisi3();
+	Scena(bool startEnabled);
+	~Scena();
 
 	bool Start() override;
 	Update_Status Update() override;
