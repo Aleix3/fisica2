@@ -21,6 +21,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	SDL_Texture* textura_fondo = nullptr;
+	SDL_Texture* textura_plataform = nullptr;
 	SDL_Texture* textura_link = nullptr;
 	SDL_Rect rectFondo;
 	
