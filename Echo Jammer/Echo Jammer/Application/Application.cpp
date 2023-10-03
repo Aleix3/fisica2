@@ -11,6 +11,7 @@
 #include "../Modules/Core/ModuleCollisions.h"
 #include "../Modules/Core/ModuleFadeToBlack.h"
 #include "../Modules/Core/ModuleFonts.h"
+#include "../Modules/Core/ModulePhysics.h"
 #include "../Modules/Core/ModuleRender.h"
 #include "../Modules/Core/ModuleHUD.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
@@ -35,6 +36,7 @@ Application::Application() {
 	modules.push_back(scena_Exercisi3 = new Scena_Exercisi3(true));
 
 	modules.push_back(player = new ModulePlayer(false));
+	/*modules.push_back(player = new ModulePhysics(true));*/
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(fade = new ModuleFadeToBlack(true));
 	modules.push_back(fonts = new ModuleFonts(true));

@@ -17,6 +17,7 @@ class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
+class ModulePhysics;
 class ModuleHUD;
 
 class Scena_Exercisi2;
@@ -54,6 +55,7 @@ public:
 	ModulePlayer* player = nullptr;
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
+	ModulePhysics* physics = nullptr;
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;

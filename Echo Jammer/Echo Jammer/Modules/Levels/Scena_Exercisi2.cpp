@@ -19,6 +19,7 @@ bool Scena_Exercisi2::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
+	textura_plataform = App->textures->Load(FI_Plataform.c_str());
 	textura_link = App->textures->Load(FI_Player_linkJump.c_str());
 
 	for (int i = 0; i < 9; i++)
@@ -41,9 +42,11 @@ bool Scena_Exercisi2::Start()
 	App->collisions->Enable();
 
 	App->player->position.x = 100;
-	App->player->position.y = 300;
+	App->player->position.y = 180;
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
+	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::TR_T1_FLOOR, this);
+	App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::TR_T1_PLATAFORM, this);
 	
 	return true;
 }
@@ -71,6 +74,8 @@ Update_Status Scena_Exercisi2::Update() {
 
 Update_Status Scena_Exercisi2::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+	App->render->Blit(textura_plataform, 150, 220);
+	App->render->Blit(textura_plataform, 550, 220);
 	
 	if (saltActivat)
 	{

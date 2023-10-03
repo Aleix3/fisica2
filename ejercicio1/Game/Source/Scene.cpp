@@ -27,6 +27,8 @@ int plY = 500;
 int plX2 = 1000;
 int plY2 = 500;
 
+int direcction;
+
 // Called before render is available
 bool Scene::Awake()
 {
@@ -85,12 +87,34 @@ bool Scene::Update(float dt)
 	
 
 
-	if (boxX > (plX - 300) && boxX < plX + 100)
+	if (boxX > (plX - 300) && boxX < plX + 120)
 	{
 		/*plY = 2000;*/
 		plY2 = 550;
+<<<<<<< HEAD
+
+		if (direcction < boxX)
+		{
+			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 60);
+			app->render->DrawTexture(img, boxX, boxY);
+		}
+
+		else if (direcction > boxX)
+		{
+			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, -60);
+			app->render->DrawTexture(img, boxX, boxY);
+		}
+
+		else if (direcction = boxX)
+		{
+			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL );
+			app->render->DrawTexture(img, boxX, boxY);
+		}
+		
+=======
 		app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 80);
 		app->render->DrawTexture(img, boxX, boxY);
+>>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
 	}
 	else if (boxX > (plX + 100))
 	{
@@ -109,12 +133,19 @@ bool Scene::Update(float dt)
 		
 
 		// Renders the image with scaled dimensions
-		app->render->DrawTexture(img, boxX, boxY);
+		
 		app->render->DrawTexture(img2, plX, plY );
+		app->render->DrawTexture(img, boxX, boxY);
 	}
 	
+<<<<<<< HEAD
+	direcction = boxX;
+
+	app->render->DrawTexture(img4, 0, 620);
+=======
 	
 
+>>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
 	
 	return true;
 }
