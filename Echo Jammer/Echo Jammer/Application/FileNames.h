@@ -22,6 +22,7 @@ const std::string FI_Mapa_Scena = "_Assets/Exercici2/background.png";
 const std::string FI_canon = "_Assets/Exercisi3/Canon.png";
 const std::string FI_Background = "_Assets/Exercisi3/Fondo3.png";
 const std::string FI_boom = "_Assets/Exercisi3/boom.png";
+const std::string FI_aspid = "_Assets/Exercisi3/aspid.png";
 
 #pragma endregion
 

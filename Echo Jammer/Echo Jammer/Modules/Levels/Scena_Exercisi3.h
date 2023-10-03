@@ -28,11 +28,15 @@ private:
 	SDL_Texture* _textura_fondo = nullptr;
 	SDL_Texture* _textura_canon = nullptr;
 	SDL_Texture* _textura_boom = nullptr;
+	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Rect _rectFondo;
 	SDL_Rect _rectCanon;
 	SDL_Rect _rectBall;
+	SDL_Rect _rectAspid;
 
 	Animation _shootAnimation;
+	Animation _aspidAnimation;
+	Animation _explodeAnimation;
 
 	int _weigthNivell = 1000;
 	int _heightNivell = 465;
@@ -40,16 +44,18 @@ private:
 	bool _start = false;
 	bool _shooting = false;
 	bool _endShoot = true;
-	bool _volant = false;
+	bool _boom = false;
 
 	// Formules
-	float _gravetat = 9.81; //m/s^2
+	//float _gravetat = 9.81; //m/s^2
+	float _gravetat = 550.00; //m/s^2
 	float _alturaInicial = 256; // m
+	float _alturaInicialDeslpaçamentX = 200; // m
 	float _angle = 30 * M_PI / 180; // Angle en radians
 	float _temps = 0;
-
-	//float _velocitatInicial = 45.00; // m/s
-	float _velocitatInicial = 70.00; // m/s
+		
+	//float _velocitatInicial = 70.00; // m/s
+	float _velocitatInicial = 500.00; // m/s
 	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
 	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
 
