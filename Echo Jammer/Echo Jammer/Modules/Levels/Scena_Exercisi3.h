@@ -22,7 +22,7 @@ public:
 
 	bool stopGame = false;
 
-private:
+public:
 	int _start_time;
 
 	SDL_Texture* _textura_fondo = nullptr;
