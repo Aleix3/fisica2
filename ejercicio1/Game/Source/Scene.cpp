@@ -25,7 +25,7 @@ int plX = 1000;
 int plY = 500;
 
 int plX2 = 1000;
-int plY2 = 520;
+int plY2 = 500;
 
 int direcction;
 
@@ -46,8 +46,6 @@ bool Scene::Start()
 	img2 = app->tex->Load("Assets/Textures/planta.png");
 
 	img3 = app->tex->Load("Assets/Textures/planta2.png");
-
-	img4 = app->tex->Load("Assets/Textures/suelo.png");
 
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	return true;
@@ -85,7 +83,7 @@ bool Scene::Update(float dt)
 	uint texW, texH;
 	app->tex->GetSize(img, texW, texH);
 	app->tex->GetSize(img2, texW, texH);
-	app->tex->GetSize(img4, texW, texH);
+
 	
 
 
@@ -93,6 +91,7 @@ bool Scene::Update(float dt)
 	{
 		/*plY = 2000;*/
 		plY2 = 550;
+<<<<<<< HEAD
 
 		if (direcction < boxX)
 		{
@@ -112,6 +111,10 @@ bool Scene::Update(float dt)
 			app->render->DrawTexture(img, boxX, boxY);
 		}
 		
+=======
+		app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 80);
+		app->render->DrawTexture(img, boxX, boxY);
+>>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
 	}
 	else if (boxX > (plX + 100))
 	{
@@ -135,9 +138,14 @@ bool Scene::Update(float dt)
 		app->render->DrawTexture(img, boxX, boxY);
 	}
 	
+<<<<<<< HEAD
 	direcction = boxX;
 
 	app->render->DrawTexture(img4, 0, 620);
+=======
+	
+
+>>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
 	
 	return true;
 }

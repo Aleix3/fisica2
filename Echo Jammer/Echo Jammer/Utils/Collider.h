@@ -16,7 +16,7 @@ struct Collider {
 
 		// TRIGGERS EXERCISI2
 		TR_T1_SALT_LINK, // Salt link 
-		
+		TR_T1_FLOOR, //plat coll
 		// TRIGGERS EXERCISI3
 		TR_OBJECTIU_1,
 		TR_OBJECTIU_2,

@@ -44,6 +44,7 @@ bool Scena_Exercisi2::Start()
 	App->player->position.y = 300;
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
+	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::TR_T1_FLOOR, this);
 	
 	return true;
 }
