@@ -40,22 +40,24 @@ private:
 	bool _start = false;
 	bool _shooting = false;
 	bool _endShoot = true;
+	bool _volant = false;
 
 	// Formules
 	float _gravetat = 9.81; //m/s^2
-	float _alturaInicial = 30; // m
-	float _angle = 71 * M_PI / 180; // Angle en radians
+	float _alturaInicial = 256; // m
+	float _angle = 30 * M_PI / 180; // Angle en radians
 	float _temps = 0;
 
-	float _velocitatInicial = 9.00; // m/s
+	//float _velocitatInicial = 45.00; // m/s
+	float _velocitatInicial = 70.00; // m/s
 	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
 	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
 
 	float _velocitat_X = _velocitatInicial_X;
 	float _velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 
-	float _position_X;
-	float _position_Y;
+	float _position_X = _velocitat_X * _temps;
+	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
 
 };
 

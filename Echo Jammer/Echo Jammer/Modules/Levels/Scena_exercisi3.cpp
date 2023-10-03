@@ -36,6 +36,7 @@ bool Scena_Exercisi3::Start()
 	// Set position / sizes
 	_rectFondo = { 0, 0, _weigthNivell, _heightNivell };
 	_rectCanon = { 220, 210, 48, 48 };
+	_rectBall = { 288, 0, 48, 48 };
 
 	// Initial position camera
 	App->render->camera.x = 0;
@@ -56,16 +57,22 @@ bool Scena_Exercisi3::Start()
 
 Update_Status Scena_Exercisi3::Update() {
 
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN) {
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start) {
 		_start = true;
 		_start_time = SDL_GetTicks();
 		LOG("SHOOT!");
 	}
 
 	if (_start) {
-		_temps = SDL_GetTicks() - _start_time;
+		_temps = ((float)SDL_GetTicks() - (float)_start_time) / 1000;
 		_position_X = _velocitat_X * _temps;
-		_position_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		LOG("TEMPS: %f, X:%f, Y:%f, Yscreen: %f", _temps, _position_X, _position_Y, (SCREEN_HEIGHT - _position_Y));
+
+		if ((SCREEN_HEIGHT - _position_Y) >= 380)
+		{
+			_start = false;
+		}
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -74,10 +81,13 @@ Update_Status Scena_Exercisi3::Update() {
 Update_Status Scena_Exercisi3::PostUpdate() {
 	App->render->Blit(_textura_fondo, 0, 0, &_rectFondo);
 
-	if (_shooting)
-	{
+	if (_shooting) {
 		_shootAnimation.Update();
 		App->render->Blit(_textura_canon, 0, 0, &_shootAnimation.GetCurrentFrame());
+	}
+
+	if (_start) {
+		App->render->Blit(_textura_canon, _position_X+200, (SCREEN_HEIGHT - _position_Y), &_rectBall);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
