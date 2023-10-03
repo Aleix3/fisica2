@@ -19,6 +19,7 @@ bool Scena_Exercisi2::Start()
 {
 
 	textura_fondo = App->textures->Load(FI_Mapa_Scena.c_str());
+	textura_plataform = App->textures->Load(FI_Plataform.c_str());
 	textura_link = App->textures->Load(FI_Player_linkJump.c_str());
 
 	for (int i = 0; i < 9; i++)
@@ -72,6 +73,8 @@ Update_Status Scena_Exercisi2::Update() {
 
 Update_Status Scena_Exercisi2::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+	App->render->Blit(textura_plataform, 150, 220);
+	App->render->Blit(textura_plataform, 550, 220);
 	
 	if (saltActivat)
 	{
