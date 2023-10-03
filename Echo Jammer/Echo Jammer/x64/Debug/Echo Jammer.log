@@ -1,5 +1,5 @@
 ﻿  Application.cpp
 C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi3.h(45,18): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi3.h(47,15): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Application\Application.cpp(45,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Application\Application.cpp(47,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Echo Jammer.vcxproj -> C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\x64\Debug\Echo Jammer.exe
