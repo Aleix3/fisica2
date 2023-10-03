@@ -97,7 +97,26 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	
 	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
 	{
+		shouldResetPlayerPosition = true;
 		LOG("TRIGGER ACTIVAT");
 		saltActivat = true;
 	}
+
+	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER )
+	{
+		shouldResetPlayerPosition = true;
+		LOG("TRIGGER ACTIVAT");
+		saltActivat = true;
+	}
+	if (shouldResetPlayerPosition == true)
+	{
+		// Reset the player's position
+		App->player->position.x = 100;
+		App->player->position.y = 180;
+
+		// Reset the flag to prevent continuous resetting
+		shouldResetPlayerPosition = false;
+	}
+
+
 }
