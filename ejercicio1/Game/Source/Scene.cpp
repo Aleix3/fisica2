@@ -47,6 +47,8 @@ bool Scene::Start()
 
 	img3 = app->tex->Load("Assets/Textures/planta2.png");
 
+	img4 = app->tex->Load("Assets/Textures/suelo.png");
+
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	return true;
 }
@@ -89,9 +91,9 @@ bool Scene::Update(float dt)
 
 	if (boxX > (plX - 300) && boxX < plX + 120)
 	{
-		/*plY = 2000;*/
+		plY = 2000;
 		plY2 = 550;
-<<<<<<< HEAD
+
 
 		if (direcction < boxX)
 		{
@@ -107,18 +109,17 @@ bool Scene::Update(float dt)
 
 		else if (direcction = boxX)
 		{
-			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL );
+			app->render->DrawTexture(img3, plX2, plY2 );
 			app->render->DrawTexture(img, boxX, boxY);
 		}
 		
-=======
-		app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 80);
-		app->render->DrawTexture(img, boxX, boxY);
->>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
+
+		
+
 	}
-	else if (boxX > (plX + 100))
+	else if (boxX > (plX + 100) || boxX < plX + 120)
 	{
-		/*plY = 2000;*/
+		plY = 2000;
 		plY2 = 500;
 		app->render->DrawTexture(img3, plX2, plY2);
 		app->render->DrawTexture(img, boxX, boxY);
@@ -128,24 +129,27 @@ bool Scene::Update(float dt)
 
 	// Renders the image in the center of the screen
 	/*app->render->DrawTexture(img, windowW /1 - texW / 1, windowH /1 - texH / 1);*/
-	else
-	{
+	
 		
 
 		// Renders the image with scaled dimensions
-		
-		app->render->DrawTexture(img2, plX, plY );
+	else
+	{
+		app->render->DrawTexture(img2, plX, plY);
+
 		app->render->DrawTexture(img, boxX, boxY);
 	}
+		
 	
-<<<<<<< HEAD
+	
+
 	direcction = boxX;
 
 	app->render->DrawTexture(img4, 0, 620);
-=======
+
 	
 
->>>>>>> 2978bb9b127556f9ad8c607dee77fbe030950823
+
 	
 	return true;
 }

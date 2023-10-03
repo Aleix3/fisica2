@@ -38,6 +38,8 @@ private:
 	SDL_Texture* img2;
 
 	SDL_Texture* img3;
+
+	SDL_Texture* img4;
 };
 
 #endif // __SCENE_H__
