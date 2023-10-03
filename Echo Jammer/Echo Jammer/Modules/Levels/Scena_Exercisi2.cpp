@@ -46,6 +46,7 @@ bool Scena_Exercisi2::Start()
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::TR_T1_FLOOR, this);
+	App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::TR_T1_PLATAFORM, this);
 	
 	return true;
 }
