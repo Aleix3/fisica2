@@ -11,6 +11,9 @@
 
 #pragma region IMAGES -> FI
 
+// FONTS
+const std::string FI_HUD_font1 = "_Assets/rtype_font.png";
+
 // Exercisi2
 const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
 const std::string FI_Player_car = "_Assets/Exercici2/car.png";
