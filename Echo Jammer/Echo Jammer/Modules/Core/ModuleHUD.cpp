@@ -16,83 +16,26 @@ ModuleHUD::~ModuleHUD() {
 }
 
 bool ModuleHUD::Start() {
-	// Inicializa las variables de puntuación
-	score = 0;
-	highScore = 0;
+	// Inicializa las variables de puntuación	
 	sizeVector = LoadVector();
 
-	tamanyIconaVida.x = 0;
-	tamanyIconaVida.y = 0;
-	tamanyIconaVida.w = 56;
-	tamanyIconaVida.h = 50;
-
-	tamanyIconaBombes.x = 60;
-	tamanyIconaBombes.y = 0;
-	tamanyIconaBombes.w = 60;
-	tamanyIconaBombes.h = 50;
 
 	LOG("Loading HUD textures");
 	bool ret = true;
-	/*textureFont = App->textures->Load(FI_HUD_font1.c_str());
-	textureIcons = App->textures->Load(FI_Iconos.c_str());*/
+	textureFont = App->textures->Load(FI_HUD_font1.c_str());
 
 	return ret;
 }
 
 
 Update_Status ModuleHUD::Update()
-{
-	posIconVides.x = 30 + App->render->camera.x;
-	posIconVides.y = 70 + App->render->camera.y;
-	posContadorVides.x = 90 + App->render->camera.x;
-	posContadorVides.y = 80 + App->render->camera.y;
-
-	posIconBombes.x = 140 + App->render->camera.x;
-	posIconBombes.y = 70 + App->render->camera.y;
-	posContadorBombes.x = 200 + App->render->camera.x;
-	posContadorBombes.y = 80 + App->render->camera.y;
-
-	posPlayer1.x = 30 + App->render->camera.x;
-	posPlayer1.y = 0 + App->render->camera.y;
-	posScore1.x = 110 + App->render->camera.x;
-	posScore1.y = 30 + App->render->camera.y;
-
-	posPlayer2.x = 570 + App->render->camera.x;
-	posPlayer2.y = 0 + App->render->camera.y;
-	posScore2.x = 650 + App->render->camera.x;
-	posScore2.y = 30 + App->render->camera.y;
-
-	posHlScrore.x = 300 + App->render->camera.x;
-	posHlScrore.y = 0 + App->render->camera.y;
-	posScoreHl.x = 320 + App->render->camera.x;
-	posScoreHl.y = 30 + App->render->camera.y;
+{	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status ModuleHUD::PostUpdate() {
-	//// ICONES
-	//App->render->Blit(textureIcons, posIconVides.x-20, posIconVides.y, &tamanyIconaVida);
-	//PaintSentence("x", {posContadorVides.x - 20, posContadorVides.y});
-	//PaintSentence(std::to_string(App->player->lives), { posContadorVides.x, posContadorVides.y });
-
-	//App->render->Blit(textureIcons, posIconBombes.x-20, posIconBombes.y, &tamanyIconaBombes);
-	//PaintSentence("x", {posContadorBombes.x - 20, posContadorBombes.y});
-	//PaintSentence(std::to_string(App->player->bombs), { posContadorBombes.x, posContadorBombes.y });
-
-	//// TEXTOS
-	//PaintSentence(player1, { posPlayer1.x, posPlayer1.y });
-	//PaintSentence(std::to_string(App->player->score), { posScore1.x, posScore1.y });
-
-	//PaintSentence(player2, { posPlayer2.x, posPlayer2.y });
-	//PaintSentence("0", {posScore2.x, posScore2.y});
-
-	//PaintSentence(hlScore, { posHlScrore.x, posHlScrore.y });
-	//PaintSentence(std::to_string(655000), { posScoreHl.x, posScoreHl.y });
-
-	////PaintSentence("LOADING...", { 150,550 });
-
-
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 

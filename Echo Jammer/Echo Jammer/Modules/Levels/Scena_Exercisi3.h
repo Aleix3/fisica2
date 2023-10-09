@@ -34,6 +34,7 @@ public:
 	SDL_Rect _rectBall;
 	SDL_Rect _rectAspid;
 	SDL_Rect _rectIdleCanon;
+	SDL_Rect _rectGround1;
 
 	Animation _shootAnimation;
 	Animation _aspidAnimation;
