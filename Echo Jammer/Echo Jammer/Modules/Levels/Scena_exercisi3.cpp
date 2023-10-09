@@ -71,6 +71,14 @@ bool Scena_Exercisi3::Start()
 }
 
 Update_Status Scena_Exercisi3::Update() {
+	
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && !_start) {
+		_velocitatInicial_X++;
+		_velocitatInicial_Y++;
+	}
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && !_start) {
+		_velocitatInicial_X--;
+		_velocitatInicial_Y--;
 
 	/*if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start) {
 		_boom = false;
@@ -190,13 +198,13 @@ Update_Status Scena_Exercisi3::PostUpdate() {
 
 	if (_shooting) {
 		_shootAnimation.Update();
-		App->render->Blit(_textura_canon, _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _alturaInicial), &_shootAnimation.GetCurrentFrame());
+		App->render->Blit(_textura_canon, _alturaInicialDeslpaï¿½amentX, (SCREEN_HEIGHT - _alturaInicial), &_shootAnimation.GetCurrentFrame());
 	}
 	else
-		App->render->Blit(_textura_canon, _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _alturaInicial), &_rectIdleCanon);
+		App->render->Blit(_textura_canon, _alturaInicialDeslpaï¿½amentX, (SCREEN_HEIGHT - _alturaInicial), &_rectIdleCanon);
 
 	if (_start)
-		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
+		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpaï¿½amentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
 
 
 	if (!_boom) {

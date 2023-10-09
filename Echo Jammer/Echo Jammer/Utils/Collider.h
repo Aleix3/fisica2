@@ -14,13 +14,15 @@ struct Collider {
 		WALL,
 		PLAYER,
 
-		// TRIGGERS EXERCISI2
+		// EXERCISI2
 		TR_T1_SALT_LINK, // Salt link 
 		TR_T1_PLATAFORM, //plat coll
 		TR_T1_FLOOR,//floor coll
-		// TRIGGERS EXERCISI3
-		TR_OBJECTIU_1,
-		TR_OBJECTIU_2,
+
+		// EXERCISI3
+		TR_OBJECTIVE_1,
+		GROUND,
+		BALL,
 		MAX
 	};
 
