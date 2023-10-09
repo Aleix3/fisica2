@@ -51,6 +51,7 @@ bool Scena_Exercisi3::Start()
 	_rectCanon = { 220, 210, 48, 48 };
 	_rectBall = { 288, 0, 48, 48 };
 	_rectAspid = { 800, 350, 58, 57 };
+	_rectIdleCanon = { 48*4, 0, 48, 48 };
 
 	// Initial position camera
 	App->render->camera.x = 0;
@@ -104,20 +105,20 @@ Update_Status Scena_Exercisi3::PostUpdate() {
 		_shootAnimation.Update();
 		App->render->Blit(_textura_canon, _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _alturaInicial), &_shootAnimation.GetCurrentFrame());
 	}
+	else
+		App->render->Blit(_textura_canon, _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _alturaInicial), &_rectIdleCanon);
 
-	if (_start) {
+	if (_start)
 		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpaçamentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
-	}
 
-	if (!_boom)
-	{
+
+	if (!_boom) {
 		_aspidAnimation.Update();
 		App->render->Blit(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
 	}
-	if (_boom)
-	{
+	if (_boom) {
 		_explodeAnimation.Update();
-		App->render->Blit(_textura_boom, _rectAspid.x-150, _rectAspid.y-150, &_explodeAnimation.GetCurrentFrame());
+		App->render->Blit(_textura_boom, _rectAspid.x - 150, _rectAspid.y - 150, &_explodeAnimation.GetCurrentFrame());
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
