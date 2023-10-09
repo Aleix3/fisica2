@@ -27,7 +27,7 @@ int plY = 500;
 int plX2 = 1000;
 int plY2 = 500;
 
-int direcction;
+int direcction = boxX;
 
 // Called before render is available
 bool Scene::Awake()
@@ -87,7 +87,7 @@ bool Scene::Update(float dt)
 	app->tex->GetSize(img2, texW, texH);
 
 	
-
+	int sentido = 0;
 
 	if (boxX > (plX - 300) && boxX < plX + 120)
 	{
@@ -95,24 +95,34 @@ bool Scene::Update(float dt)
 		plY2 = 550;
 
 
-		if (direcction < boxX)
+		if (direcction < boxX || (direcction == boxX && sentido == 0))
 		{
+			sentido = -1;
 			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 60);
 			app->render->DrawTexture(img, boxX, boxY);
 		}
 
-		else if (direcction > boxX)
+		else if (direcction > boxX || (direcction == boxX && sentido == 0))
 		{
+			sentido = 1;
 			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, -60);
 			app->render->DrawTexture(img, boxX, boxY);
 		}
 
-		else if (direcction = boxX)
-		{
-			app->render->DrawTexture(img3, plX2, plY2 );
-			app->render->DrawTexture(img, boxX, boxY);
-		}
 		
+		if (sentido == 1)
+		{
+			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 60);
+			app->render->DrawTexture(img, boxX, boxY);
+			sentido = 0;
+		}
+
+		else if (sentido == -1)
+		{
+			app->render->DrawTexture(img3, plX2, plY2, NULL, NULL, 60);
+			app->render->DrawTexture(img, boxX, boxY);
+			sentido = 0;
+		}
 
 		
 
@@ -143,7 +153,7 @@ bool Scene::Update(float dt)
 	
 	
 
-	direcction = boxX;
+	
 
 	app->render->DrawTexture(img4, 0, 620);
 
