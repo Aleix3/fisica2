@@ -25,7 +25,8 @@ public:
 	SDL_Texture* textura_link = nullptr;
 	SDL_Rect rectFondo;
 
-	bool shouldResetPlayerPosition = false;
+	bool ResetPlayerPosition = false;
+	bool ResetPlatform = false;
 	bool stopGame = false;
 	int start_time;
 	int velocitatNivell = 0;

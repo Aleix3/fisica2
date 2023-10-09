@@ -39,15 +39,17 @@ bool Scena_Exercisi2::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
-	App->collisions->Enable();
 
-	App->player->position.x = 100;
+	App->player->position.x = 160;
 	App->player->position.y = 180;
 
+	App->collisions->Enable();
+
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
-	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::TR_T1_FLOOR, this);
-	App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::TR_T1_PLATAFORM, this);
-	
+	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::FLOOR, this);
+	//App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM, this);
 	return true;
 }
 
@@ -97,26 +99,35 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	
 	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
 	{
-		shouldResetPlayerPosition = true;
+		ResetPlayerPosition = true;
 		LOG("TRIGGER ACTIVAT");
 		saltActivat = true;
 	}
 
 	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER )
 	{
-		shouldResetPlayerPosition = true;
+		ResetPlayerPosition = true;
 		LOG("TRIGGER ACTIVAT");
 		saltActivat = true;
+		if (ResetPlayerPosition == true)
+		{
+			App->player->position.x = 160;
+			App->player->position.y = 180;
+			ResetPlayerPosition = false;
+		}
 	}
-	if (shouldResetPlayerPosition == true)
+
+	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER)
 	{
-		// Reset the player's position
-		App->player->position.x = 100;
-		App->player->position.y = 180;
-
-		// Reset the flag to prevent continuous resetting
-		shouldResetPlayerPosition = false;
+		ResetPlatform = true;
+		LOG("PLATFORM ACTIVAT");
+		if (ResetPlatform == true)
+		{
+			App->player->position.x = 330;
+			App->player->position.y = 300;
+			ResetPlatform= false;
+		}
 	}
-
+	
 
 }
