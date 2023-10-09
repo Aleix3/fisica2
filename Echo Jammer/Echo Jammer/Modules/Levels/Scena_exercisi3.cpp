@@ -98,7 +98,7 @@ Update_Status Scena_Exercisi3::Update() {
 
 Update_Status Scena_Exercisi3::PostUpdate() {
 	App->render->Blit(_textura_fondo, 0, 0, &_rectFondo);
-	App->render->Blit(_textura_canon, 48, (SCREEN_HEIGHT - _position_Y), &_rectBall);
+	/*App->render->Blit(_textura_canon, 48, (SCREEN_HEIGHT - _position_Y), &_rectBall);*/
 
 
 	if (_shooting) {
