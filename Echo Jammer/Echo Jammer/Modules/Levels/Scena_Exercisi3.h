@@ -52,7 +52,8 @@ public:
 	float _gravetat = 550.00; //m/s^2
 	float _alturaInicial = 256; // m
 	float _alturaInicialDeslpaçamentX = 200; // m
-	float _angle = 30 * M_PI / 180; // Angle en radians
+	float graus = 30;
+	float _angle = graus * M_PI / 180; // Angle en radians
 	float _temps = 0;
 		
 	//float _velocitatInicial = 70.00; // m/s

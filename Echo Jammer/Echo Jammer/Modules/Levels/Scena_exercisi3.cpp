@@ -72,7 +72,94 @@ bool Scena_Exercisi3::Start()
 
 Update_Status Scena_Exercisi3::Update() {
 
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start) {
+	/*if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start) {
+		_boom = false;
+		_start = true;
+		_shooting = true;
+		_shootAnimation.Reset();
+		_start_time = SDL_GetTicks();
+		LOG("SHOOT!");
+	}*/
+
+	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && !_start)
+	{
+		graus += 0.5;
+		 _angle = graus * M_PI / 180; // Angle en radians
+		_temps = 0;
+
+		
+		
+		 _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		 _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		 LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && !_start)
+	{
+		graus -= 0.5;
+		_angle = graus * M_PI / 180; // Angle en radians
+		_temps = 0;
+
+
+		
+		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && !_start)
+	{
+		
+
+		_velocitatInicial += 10;
+
+		_angle = graus * M_PI / 180; // Angle en radians
+
+
+
+		 // m/s
+		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && !_start)
+	{
+
+
+		_velocitatInicial -= 10;
+
+		_angle = graus * M_PI / 180; // Angle en radians
+		
+
+
+		// m/s
+		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
+	}
+	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start)
+	{
 		_boom = false;
 		_start = true;
 		_shooting = true;

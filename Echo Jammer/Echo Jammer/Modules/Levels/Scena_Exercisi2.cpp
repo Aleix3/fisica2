@@ -42,7 +42,7 @@ bool Scena_Exercisi2::Start()
 	App->collisions->Enable();
 
 	App->player->position.x = 100;
-	App->player->position.y = 180;
+	App->player->position.y = 300;
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::TR_T1_FLOOR, this);
@@ -53,21 +53,21 @@ bool Scena_Exercisi2::Start()
 
 Update_Status Scena_Exercisi2::Update() {
 
-	if (App->player->position.x <= 10)
+	/*if (App->player->position.x <= 10)
 		App->player->position.x = 10;
 	if (App->player->position.x >= weigthNivell - 10 - 128)
-		App->player->position.x = weigthNivell - 10 - 128;
+		App->player->position.x = weigthNivell - 10 - 128;*/
 
-	if (App->player->position.y <= 10)
+	/*if (App->player->position.y <= 10)
 		App->player->position.y = 10;
 	if (App->player->position.y >= heightNivell - 128 - 10)
-		App->player->position.y = heightNivell - 128 - 10;
+		App->player->position.y = heightNivell - 128 - 10;*/
 
 
-	if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) 
+	/*if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) 
 		App->render->camera.x = App->player->position.x;
 	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) 
-		App->render->camera.y = App->player->position.y - 540;
+		App->render->camera.y = App->player->position.y - 540;*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -112,10 +112,10 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	{
 		// Reset the player's position
 		App->player->position.x = 100;
-		App->player->position.y = 180;
+		App->player->position.y = 300;
 
 		// Reset the flag to prevent continuous resetting
-		shouldResetPlayerPosition = false;
+		shouldResetPlayerPosition = true;
 	}
 
 
