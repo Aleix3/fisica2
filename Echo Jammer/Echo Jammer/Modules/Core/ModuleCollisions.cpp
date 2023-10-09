@@ -13,8 +13,8 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	
 	// EXERCISI 2
 	matrix[Collider::Type::TR_T1_SALT_LINK][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::TR_T1_FLOOR][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::TR_T1_PLATAFORM][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::FLOOR][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::PLATAFORM][Collider::Type::PLAYER] = true;
 	
 	// EXERCISI 3
 	matrix[Collider::Type::TR_OBJECTIVE_1][Collider::Type::BALL] = true;
@@ -103,13 +103,13 @@ void ModuleCollisions::DebugDraw() {
 
 		case Collider::Type::WALL: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;// blue
 		case Collider::Type::GROUND: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break;// blue
-		case Collider::Type::TR_T1_FLOOR: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // bluex
+		case Collider::Type::FLOOR: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // bluex
 
 		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
 		case Collider::Type::BALL: App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;// red
 		
 		case Collider::Type::TR_T1_SALT_LINK: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
-		case Collider::Type::TR_T1_PLATAFORM: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
+		case Collider::Type::PLATAFORM: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
 		case Collider::Type::TR_OBJECTIVE_1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		}
 	}

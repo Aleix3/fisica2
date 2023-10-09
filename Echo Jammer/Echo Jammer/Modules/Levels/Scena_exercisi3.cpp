@@ -7,6 +7,7 @@
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
 #include "../../Modules/Core/ModuleFadeToBlack.h"
+#include "../../Modules/Core/ModuleHUD.h"
 #include "../Core/ModuleInput.h"
 #include <SDL_timer.h>
 
@@ -51,7 +52,7 @@ bool Scena_Exercisi3::Start()
 	_rectCanon = { 220, 210, 48, 48 };
 	_rectBall = { 288, 0, 48, 48 };
 	_rectAspid = { 800, 350, 58, 57 };
-	_rectIdleCanon = { 48*4, 0, 48, 48 };
+	_rectIdleCanon = { 48 * 4, 0, 48, 48 };
 
 	// Initial position camera
 	App->render->camera.x = 0;
@@ -66,55 +67,34 @@ bool Scena_Exercisi3::Start()
 
 	// Load coliders
 	App->collisions->AddCollider(_rectAspid, Collider::Type::TR_T1_SALT_LINK, this);
+	_rectGround1 = { 0, 400, 1000, 70 };
+	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
 
 	return true;
 }
 
 Update_Status Scena_Exercisi3::Update() {
-	
+
 	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && !_start) {
-		_velocitatInicial_X++;
-		_velocitatInicial_Y++;
+		_graus += 0.5;
+		_angle = _graus * M_PI / 180; // Angle en radians
+		_temps = 0;
+
+		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		App->hud->PaintSentence("Graus: " + std::to_string(_graus) + " Velocitat inicial: " + std::to_string(_velocitatInicial), { 100,100 });
+
 	}
 	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && !_start) {
-		_velocitatInicial_X--;
-		_velocitatInicial_Y--;
-
-	/*if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start) {
-		_boom = false;
-		_start = true;
-		_shooting = true;
-		_shootAnimation.Reset();
-		_start_time = SDL_GetTicks();
-		LOG("SHOOT!");
-	}*/
-
-	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && !_start)
-	{
-		graus += 0.5;
-		 _angle = graus * M_PI / 180; // Angle en radians
+		_graus -= 0.5;
+		_angle = _graus * M_PI / 180; // Angle en radians
 		_temps = 0;
 
-		
-		
-		 _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
-		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
-
-		_velocitat_X = _velocitatInicial_X;
-		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-		_position_X = _velocitat_X * _temps;
-		 _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
-		 LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_DOWN] == Key_State::KEY_REPEAT && !_start)
-	{
-		graus -= 0.5;
-		_angle = graus * M_PI / 180; // Angle en radians
-		_temps = 0;
-
-
-		
 		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
 		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
 
@@ -122,39 +102,11 @@ Update_Status Scena_Exercisi3::Update() {
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 		_position_X = _velocitat_X * _temps;
 		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
-		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
-
+		App->hud->PaintSentence("Graus: " + std::to_string(_graus) + " Velocitat inicial: " + std::to_string(_velocitatInicial), { 100,100 });
 	}
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && !_start)
-	{
-		
-
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == Key_State::KEY_REPEAT && !_start) {
 		_velocitatInicial += 10;
-
-		_angle = graus * M_PI / 180; // Angle en radians
-
-
-
-		 // m/s
-		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
-		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
-
-		_velocitat_X = _velocitatInicial_X;
-		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-		_position_X = _velocitat_X * _temps;
-		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
-		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
-
-	}
-	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && !_start)
-	{
-
-
-		_velocitatInicial -= 10;
-
-		_angle = graus * M_PI / 180; // Angle en radians
-		
-
+		_angle = _graus * M_PI / 180; // Angle en radians
 
 		// m/s
 		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
@@ -164,10 +116,28 @@ Update_Status Scena_Exercisi3::Update() {
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 		_position_X = _velocitat_X * _temps;
 		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
-		LOG("Velocitat:%f angle: %f", _velocitatInicial, graus);
+		App->hud->PaintSentence("Graus: " + std::to_string(_graus) + " Velocitat inicial: " + std::to_string(_velocitatInicial), { 100,100 });
 	}
-	if (App->input->keys[SDL_SCANCODE_F3] == Key_State::KEY_DOWN && !_start)
-	{
+	if (App->input->keys[SDL_SCANCODE_LEFT] == Key_State::KEY_REPEAT && !_start) {
+		_velocitatInicial -= 10;
+		_angle = _graus * M_PI / 180; // Angle en radians
+
+		// m/s
+		_velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+		_velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+		_velocitat_X = _velocitatInicial_X;
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+		_position_X = _velocitat_X * _temps;
+		_position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+		App->hud->PaintSentence("Graus: " + std::to_string(_graus) + " Velocitat inicial: " + std::to_string(_velocitatInicial), { 100,100 });
+	}
+
+	if (App->input->keys[SDL_SCANCODE_R] == Key_State::KEY_DOWN && !_start) {
+		// TODO: RESET		
+	}
+
+	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && !_start) {
 		_boom = false;
 		_start = true;
 		_shooting = true;
@@ -193,28 +163,33 @@ Update_Status Scena_Exercisi3::Update() {
 
 Update_Status Scena_Exercisi3::PostUpdate() {
 	App->render->Blit(_textura_fondo, 0, 0, &_rectFondo);
-	/*App->render->Blit(_textura_canon, 48, (SCREEN_HEIGHT - _position_Y), &_rectBall);*/
 
-
+	// Init/end shoot animation 
 	if (_shooting) {
 		_shootAnimation.Update();
-		App->render->Blit(_textura_canon, _alturaInicialDeslpa�amentX, (SCREEN_HEIGHT - _alturaInicial), &_shootAnimation.GetCurrentFrame());
+		App->render->Blit(_textura_canon, _alturaInicialDeslpassamentX, (SCREEN_HEIGHT - _alturaInicial), &_shootAnimation.GetCurrentFrame());
 	}
 	else
-		App->render->Blit(_textura_canon, _alturaInicialDeslpa�amentX, (SCREEN_HEIGHT - _alturaInicial), &_rectIdleCanon);
+		App->render->Blit(_textura_canon, _alturaInicialDeslpassamentX, (SCREEN_HEIGHT - _alturaInicial), &_rectIdleCanon);
 
+	// Init/end ball moves
 	if (_start)
-		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpa�amentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
+		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpassamentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
 
-
-	if (!_boom) {
-		_aspidAnimation.Update();
-		App->render->Blit(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
-	}
+	// Init/end explode animation
 	if (_boom) {
 		_explodeAnimation.Update();
 		App->render->Blit(_textura_boom, _rectAspid.x - 150, _rectAspid.y - 150, &_explodeAnimation.GetCurrentFrame());
 	}
+	else {
+		_aspidAnimation.Update();
+		App->render->Blit(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
+	}
+
+	App->hud->PaintSentence("S-disparar", { 10, 0 });
+	App->hud->PaintSentence("Fletxes-angles/potencia", { 10, 30 });
+	App->hud->PaintSentence("Graus<" + std::to_string(_graus), { 10, 60 });
+	App->hud->PaintSentence("V.I<" + std::to_string(_velocitatInicial), { 10, 90 });
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -228,7 +203,7 @@ bool Scena_Exercisi3::CleanUp() {
 
 void Scena_Exercisi3::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->type == Collider::TR_OBJECTIU_1 && c2->type == Collider::PLAYER && !_shooting) {
+	if (c1->type == Collider::TR_OBJECTIVE_1 && c2->type == Collider::PLAYER && !_shooting) {
 		LOG("OBJECTIU ABATUT!");
 		_shooting = true;
 	}
