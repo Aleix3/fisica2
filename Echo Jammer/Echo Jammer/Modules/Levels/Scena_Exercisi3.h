@@ -22,18 +22,15 @@ public:
 
 	bool stopGame = false;
 
-private:
+public:
 	int _start_time;
-	int _posicioAspidAleatoriX;
 
 	SDL_Texture* _textura_fondo = nullptr;
 	SDL_Texture* _textura_canon = nullptr;
 	SDL_Texture* _textura_boom = nullptr;
 	SDL_Texture* _textura_aspid = nullptr;
-
 	SDL_Rect _rectFondo;
 	SDL_Rect _rectCanon;
-	SDL_Rect _rectBallSprite;
 	SDL_Rect _rectBall;
 	SDL_Rect _rectAspid;
 	SDL_Rect _rectIdleCanon;
@@ -43,27 +40,25 @@ private:
 	Animation _aspidAnimation;
 	Animation _explodeAnimation;
 
-	Collider* _colliderBall = nullptr;
-	Collider* _colliderAspid = nullptr;
-
 	int _weigthNivell = 1000;
 	int _heightNivell = 465;
 
-	// Maquina estats
-	bool _start = false; // Inici disparo
-	bool _shooting = false; // Animacio disparo
-	bool _boom = false; // Animacio exlposio
+	bool _start = false;
+	bool _shooting = false;
+	bool _endShoot = true;
+	bool _boom = false;
 
 	// Formules
-	int _gravetat = 550; //m/s^2
+	//float _gravetat = 9.81; //m/s^2
+	float _gravetat = 550.00; //m/s^2
 	float _alturaInicial = 256; // m
-	int _graus = 30;
+	float _graus = 30;
 	float _alturaInicialDeslpassamentX = 200; // m
 	float _angle = _graus * M_PI / 180; // Angle en radians
 	float _temps = 0;
 
 	//float _velocitatInicial = 70.00; // m/s
-	int _velocitatInicial = 500; // m/s
+	float _velocitatInicial = 500.00; // m/s
 	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
 	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
 
