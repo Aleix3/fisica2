@@ -209,6 +209,7 @@
     <Image Include="_Assets\Imagenes\FondoTest.png" />
     <Image Include="_Assets\Imagenes\main_character\spritesheet_character.png" />
     <Image Include="_Assets\Imagenes\SpriteSheet.png" />
+    <Image Include="_Assets\rtype_font.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

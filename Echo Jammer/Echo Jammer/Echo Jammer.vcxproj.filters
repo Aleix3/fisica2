@@ -186,5 +186,8 @@
     <Image Include="_Assets\Imagenes\FondoTest.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="_Assets\rtype_font.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
