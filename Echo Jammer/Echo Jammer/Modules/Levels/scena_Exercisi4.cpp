@@ -1,4 +1,4 @@
-#include "Scena_Exercisi3.h"
+#include "scena_Exercisi4.h"
 
 #include "../../Application/Application.h"
 #include "../../Modules/Core/ModuleTextures.h"
@@ -11,20 +11,18 @@
 #include "../Core/ModuleInput.h"
 #include <SDL_timer.h>
 
-Scena_Exercisi3::Scena_Exercisi3(bool startEnabled) : Module(startEnabled) {
+Scena_Exercisi4::Scena_Exercisi4(bool startEnabled) : Module(startEnabled) {
 	// https://www.fisicalab.com/apartado/movimiento-parabolico
 }
 
-Scena_Exercisi3::~Scena_Exercisi3() {
+Scena_Exercisi4::~Scena_Exercisi4() {
 }
 
-bool Scena_Exercisi3::Start()
+bool Scena_Exercisi4::Start()
 {
 	// Load textures
 	_textura_fondo = App->textures->Load(FI_Background.c_str());
 	_textura_canon = App->textures->Load(FI_canon.c_str());
-	_textura_boom = App->textures->Load(FI_boom.c_str());
-	_textura_aspid = App->textures->Load(FI_aspid.c_str());
 
 	// Load animations
 	for (int i = 0; i < 6; i++)
@@ -32,26 +30,18 @@ bool Scena_Exercisi3::Start()
 	_shootAnimation.loop = false;
 	_shootAnimation.speed = 0.2f;
 
-	for (int i = 0; i < 4; i++)
-		_aspidAnimation.PushBack({ 58 * i + 2, 0, 58, 57 });
-	_aspidAnimation.loop = true;
-	_aspidAnimation.speed = 0.2f;
-
-	for (int i = 0; i < 4; i++)
-		for (int k = 0; k < 6; k++)
-			_explodeAnimation.PushBack({ 333 * k, 313 * i, 333, 313 });
-	_explodeAnimation.loop = true;
-	_explodeAnimation.speed = 0.2f;
-
-
 	// Load aduio
 	App->audio->PlayMusic(FA_Music_Ambient.c_str(), 1.0f);
 
 	// Set position / sizes
 	_rectFondo = { 0, 0, _weigthNivell, _heightNivell };
+	_rectRectangle = { 750, 352, 48, 48 };
+	_rectRectangle_1 = { 750, 352, 2, 48 };
+	_rectRectangle_2 = { 798, 352, 2, 48 };
+	_rectRectangle_3 = { 750, 352, 48, 2 };
+	_rectRectangle_4 = { 75, 400, 48, 2 };
 	_rectCanon = { 220, 210, 48, 48 };
 	_rectBall = { 288, 0, 48, 48 };
-	_rectAspid = { 800, 350, 58, 57 };
 	_rectIdleCanon = { 48 * 4, 0, 48, 48 };
 
 	// Initial position camera
@@ -66,14 +56,19 @@ bool Scena_Exercisi3::Start()
 	App->player->position.y = 300;
 
 	// Load coliders
-	App->collisions->AddCollider(_rectAspid, Collider::Type::TR_T1_SALT_LINK, this);
+	App->collisions->AddCollider(_rectRectangle_1, Collider::Type::RECTANGLE_1,this);
+	App->collisions->AddCollider(_rectRectangle_2, Collider::Type::RECTANGLE_2, this);
+	App->collisions->AddCollider(_rectRectangle_3, Collider::Type::RECTANGLE_3, this);
+	App->collisions->AddCollider(_rectRectangle_4, Collider::Type::RECTANGLE_4, this);
+	App->collisions->AddCollider(_rectRectangle, Collider::Type::RECTANGLE, this);
+	
 	_rectGround1 = { 0, 400, 1000, 70 };
 	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
 
 	return true;
 }
 
-Update_Status Scena_Exercisi3::Update() {
+Update_Status Scena_Exercisi4::Update() {
 
 	if (App->input->keys[SDL_SCANCODE_UP] == Key_State::KEY_REPEAT && !_start) {
 		_graus += 0.5;
@@ -138,16 +133,11 @@ Update_Status Scena_Exercisi3::Update() {
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == Key_State::KEY_DOWN && !_start) {
-		_boom = false;
 		_start = true;
 		_shooting = true;
 		_shootAnimation.Reset();
 		_start_time = SDL_GetTicks();
 		LOG("SHOOT!");
-	}
-
-	if (App->input->keys[SDL_SCANCODE_F] == Key_State::KEY_DOWN && !_start) {
-		
 	}
 
 	if (_start) {
@@ -158,14 +148,12 @@ Update_Status Scena_Exercisi3::Update() {
 
 		if ((SCREEN_HEIGHT - _position_Y) >= 380) {
 			_start = false;
-			_boom = true;
 		}
 	}
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status Scena_Exercisi3::PostUpdate() {
+Update_Status Scena_Exercisi4::PostUpdate() {
 	App->render->Blit(_textura_fondo, 0, 0, &_rectFondo);
 
 	// Init/end shoot animation 
@@ -180,16 +168,6 @@ Update_Status Scena_Exercisi3::PostUpdate() {
 	if (_start)
 		App->render->Blit(_textura_canon, _position_X + _alturaInicialDeslpassamentX, (SCREEN_HEIGHT - _position_Y), &_rectBall);
 
-	// Init/end explode animation
-	if (_boom) {
-		_explodeAnimation.Update();
-		App->render->Blit(_textura_boom, _rectAspid.x - 150, _rectAspid.y - 150, &_explodeAnimation.GetCurrentFrame());
-	}
-	else {
-		_aspidAnimation.Update();
-		App->render->Blit(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
-	}
-
 	App->hud->PaintSentence("S-disparar", { 10, 0 });
 	App->hud->PaintSentence("Fletxes-angles/potencia", { 10, 30 });
 	App->hud->PaintSentence("Graus<" + std::to_string(_graus), { 10, 60 });
@@ -198,16 +176,16 @@ Update_Status Scena_Exercisi3::PostUpdate() {
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-bool Scena_Exercisi3::CleanUp() {
+bool Scena_Exercisi4::CleanUp() {
 	App->player->Disable();
 	App->collisions->Disable();
 	App->player->lives = 3;
 	return true;
 }
 
-void Scena_Exercisi3::OnCollision(Collider* c1, Collider* c2) {
+void Scena_Exercisi4::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->type == Collider::TR_OBJECTIVE_1 && c2->type == Collider::PLAYER && !_shooting) {
+	if (c1->type == Collider::RECTANGLE && c2->type == Collider::BALL && !_shooting) {
 		LOG("OBJECTIU ABATUT!");
 		_shooting = true;
 	}

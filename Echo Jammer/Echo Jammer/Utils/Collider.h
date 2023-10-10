@@ -23,7 +23,15 @@ struct Collider {
 		TR_OBJECTIVE_1,
 		GROUND,
 		BALL,
-		MAX
+		
+
+		// EXERCICI4
+		RECTANGLE,
+		RECTANGLE_1,
+		RECTANGLE_2,
+		RECTANGLE_3,
+		RECTANGLE_4,
+		MAX,
 	};
 
 	//Methods
