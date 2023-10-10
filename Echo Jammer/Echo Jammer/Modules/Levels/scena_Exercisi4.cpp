@@ -55,12 +55,12 @@ bool Scena_Exercisi4::Start()
 	App->player->position.x = 100;
 	App->player->position.y = 300;
 
-	// Load colliders
-	App->collisions->AddCollider(_rectRectangle, Collider::Type::RECTANGLE, this);
+	// Load coliders
 	App->collisions->AddCollider(_rectRectangle_1, Collider::Type::RECTANGLE_1,this);
 	App->collisions->AddCollider(_rectRectangle_2, Collider::Type::RECTANGLE_2, this);
 	App->collisions->AddCollider(_rectRectangle_3, Collider::Type::RECTANGLE_3, this);
 	App->collisions->AddCollider(_rectRectangle_4, Collider::Type::RECTANGLE_4, this);
+	App->collisions->AddCollider(_rectRectangle, Collider::Type::RECTANGLE, this);
 	
 	_rectGround1 = { 0, 400, 1000, 70 };
 	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
