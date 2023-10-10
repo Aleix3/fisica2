@@ -18,8 +18,7 @@ Scena_Exercisi3::Scena_Exercisi3(bool startEnabled) : Module(startEnabled) {
 Scena_Exercisi3::~Scena_Exercisi3() {
 }
 
-bool Scena_Exercisi3::Start()
-{
+bool Scena_Exercisi3::Start() {
 	// Load textures
 	_textura_fondo = App->textures->Load(FI_Background.c_str());
 	_textura_canon = App->textures->Load(FI_canon.c_str());
