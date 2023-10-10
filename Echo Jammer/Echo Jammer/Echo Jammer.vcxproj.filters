@@ -101,9 +101,6 @@
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Levels\scena_Exercisi4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utils\Collider.cpp">
@@ -173,9 +170,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Levels\scena_Exercisi4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

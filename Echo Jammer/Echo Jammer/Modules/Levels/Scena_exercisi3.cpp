@@ -146,10 +146,6 @@ Update_Status Scena_Exercisi3::Update() {
 		LOG("SHOOT!");
 	}
 
-	if (App->input->keys[SDL_SCANCODE_F] == Key_State::KEY_DOWN && !_start) {
-		
-	}
-
 	if (_start) {
 		_temps = ((float)SDL_GetTicks() - (float)_start_time) / 1000;
 		_position_X = _velocitat_X * _temps;
