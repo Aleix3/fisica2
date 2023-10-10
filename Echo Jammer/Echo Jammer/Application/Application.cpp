@@ -16,9 +16,9 @@
 #include "../Modules/Core/ModuleHUD.h"
 #include "../Modules/Gameplay/ModulePlayer.h"
 
+#include "../Modules/Levels/Scena_Exercisi1.h"
 #include "../Modules/Levels/Scena_Exercisi2.h"
 #include "../Modules/Levels/Scena_Exercisi3.h"
-
 
 int _start_time = SDL_GetTicks();
 int last_frame_time = _start_time;
@@ -32,7 +32,7 @@ Application::Application() {
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
 
-	//modules.push_back(scena_Exercisi1 = new Scena_Exercisi1(false));
+	modules.push_back(scena_Exercisi1 = new Scena_Exercisi1(false));
 	modules.push_back(scena_Exercisi2 = new Scena_Exercisi2(false));
 	modules.push_back(scena_Exercisi3 = new Scena_Exercisi3(true));
 

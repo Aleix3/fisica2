@@ -20,6 +20,7 @@ class ModuleRender;
 class ModulePhysics;
 class ModuleHUD;
 
+class Scena_Exercisi1;
 class Scena_Exercisi2;
 class Scena_Exercisi3;
 
@@ -62,6 +63,7 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleHUD* hud = nullptr;
 	
+	Scena_Exercisi1* scena_Exercisi1 = nullptr;
 	Scena_Exercisi2* scena_Exercisi2 = nullptr;
 	Scena_Exercisi3* scena_Exercisi3 = nullptr;
 
