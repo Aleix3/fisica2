@@ -93,7 +93,7 @@ Update_Status Application::Update() {
 	frame_counter++;
 	if (SDL_GetTicks() - _start_time > 1000) {
 		fps = frame_counter * 1000 / (SDL_GetTicks() - _start_time);
-		std::cout << "FPS: " << fps << std::endl;
+		//std::cout << "FPS: " << fps << std::endl;
 		_start_time = SDL_GetTicks();
 		frame_counter = 0;
 	}
