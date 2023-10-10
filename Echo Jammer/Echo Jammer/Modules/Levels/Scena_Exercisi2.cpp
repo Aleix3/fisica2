@@ -6,7 +6,6 @@
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleFadeToBlack.h"
 
 Scena_Exercisi2::Scena_Exercisi2(bool startEnabled) : Module(startEnabled) {
 

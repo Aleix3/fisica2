@@ -14,6 +14,12 @@
 // FONTS
 const std::string FI_HUD_font1 = "_Assets/rtype_font.png";
 
+// Exercisi1
+const std::string FI_Player_caja = "_Assets/Exercici2/caja.png";
+const std::string FI_Player_planta = "_Assets/Exercici2/planta.png";
+const std::string FI_Player_planta2 = "_Assets/Exercici2/planta2.png";
+const std::string FI_Player_suelo = "_Assets/Exercici2/suelo.png";
+
 // Exercisi2
 const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
 const std::string FI_Player_car = "_Assets/Exercici2/car.png";

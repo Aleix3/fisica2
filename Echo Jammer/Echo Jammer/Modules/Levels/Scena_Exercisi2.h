@@ -18,6 +18,7 @@ public:
 	Update_Status PostUpdate() override;
 	bool CleanUp();
 
+private:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	SDL_Texture* textura_fondo = nullptr;
@@ -25,19 +26,17 @@ public:
 	SDL_Texture* textura_link = nullptr;
 	SDL_Rect rectFondo;
 
-	bool ResetPlayerPosition = false;
-	bool ResetPlatform = false;
-	bool stopGame = false;
-	int start_time;
-	int velocitatNivell = 0;
-
-private:
 	Animation _jumpAnimation;
 
 	int weigthNivell = 1000;
 	int heightNivell = 465;
+	int start_time;
+	int velocitatNivell = 0;
 
 	bool saltActivat = false;
+	bool stopGame = false;
+	bool ResetPlayerPosition = false;
+	bool ResetPlatform = false;
 };
 
 #endif
