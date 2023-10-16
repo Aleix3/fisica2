@@ -15,17 +15,17 @@
 const std::string FI_HUD_font1 = "_Assets/rtype_font.png";
 
 // Exercisi1
-const std::string FI_Player_caja = "_Assets/Exercici2/caja.png";
-const std::string FI_Player_planta = "_Assets/Exercici2/planta.png";
-const std::string FI_Player_planta2 = "_Assets/Exercici2/planta2.png";
-const std::string FI_Player_suelo = "_Assets/Exercici2/suelo.png";
+const std::string FI_Player_caja = "_Assets/Exercisi1/caja.png";
+const std::string FI_Player_planta = "_Assets/Exercisi1/planta.png";
+const std::string FI_Player_planta2 = "_Assets/Exercisi1/planta2.png";
+const std::string FI_Player_suelo = "_Assets/Exercisi1/suelo.png";
 
 // Exercisi2
 const std::string FI_Player_moveset = "_Assets/Imagenes/main_character/spritesheet_character.png";
-const std::string FI_Player_car = "_Assets/Exercici2/car.png";
-const std::string FI_Player_linkJump = "_Assets/Exercici2/linkJump.png";
-const std::string FI_Plataform = "_Assets/Sprites/sprite.png";
-const std::string FI_Mapa_Scena = "_Assets/Exercici2/background.png";
+const std::string FI_Player_car = "_Assets/Exercisi2/car.png";
+const std::string FI_Player_linkJump = "_Assets/Exercisi2/linkJump.png";
+const std::string FI_Plataform = "_Assets/Exercisi2/sprite.png";
+const std::string FI_Mapa_Scena = "_Assets/Exercisi2/background.png";
 
 // Exercisi3
 const std::string FI_canon = "_Assets/Exercisi3/Canon.png";
