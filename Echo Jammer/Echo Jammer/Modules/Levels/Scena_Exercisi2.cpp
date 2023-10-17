@@ -6,6 +6,7 @@
 #include "../../Modules/Core/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 #include "../../Modules/Core/ModuleAudio.h"
+#include "../../Modules/Core/ModuleInput.h"
 
 Scena_Exercisi2::Scena_Exercisi2(bool startEnabled) : Module(startEnabled) {
 
@@ -69,6 +70,30 @@ Update_Status Scena_Exercisi2::Update() {
 		App->render->camera.x = App->player->position.x;
 	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) 
 		App->render->camera.y = App->player->position.y - 540;*/
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_REPEAT && !isJumping)
+		{
+			isJumping = true;
+			JumpForce = 10 * JumpSpeed;
+		}
+		
+	if (isJumping) {
+		App->player->position.y -= JumpSpeed; // Move the player upward
+		JumpForce -= JumpSpeed;
+
+		// If the jump is complete or the player hits the ceiling, stop jumping
+		if (JumpForce <= 0 || App->player->position.y <= 10) {
+			isJumping = false;
+		}
+	}
+	else {
+		// Apply gravity when not jumping
+		App->player->position.y += Gravity;
+
+		// Check for collisions with the ground
+		if (App->player->position.y >= heightNivell - 128 - 10) {
+			App->player->position.y = heightNivell - 128 - 10;
+		}
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
