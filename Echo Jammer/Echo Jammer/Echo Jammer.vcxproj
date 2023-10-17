@@ -156,7 +156,7 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Modules\Core\ModulePhysics.h" />
-    <ClInclude Include="Modules\Levels\Scena_Exercici5.h" />
+    <ClInclude Include="Modules\Levels\Scena_Exercisi5.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h" />
@@ -186,7 +186,7 @@
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Core\ModulePhysics.cpp" />
-    <ClCompile Include="Modules\Levels\Scena_Exercici5.cpp" />
+    <ClCompile Include="Modules\Levels\Scena_Exercisi5.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi2.cpp" />
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi1.cpp" />
