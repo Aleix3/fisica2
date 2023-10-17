@@ -23,6 +23,7 @@ class ModuleHUD;
 class Scena_Exercisi1;
 class Scena_Exercisi2;
 class Scena_Exercisi3;
+class Scena_Exercisi5;
 
 class Application {
 
@@ -66,6 +67,7 @@ public:
 	Scena_Exercisi1* scena_Exercisi1 = nullptr;
 	Scena_Exercisi2* scena_Exercisi2 = nullptr;
 	Scena_Exercisi3* scena_Exercisi3 = nullptr;
+	Scena_Exercisi5* scena_Exercisi5 = nullptr;
 
 private:
 	int sizeVector = 0;
