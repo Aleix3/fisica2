@@ -47,9 +47,10 @@ bool Scena_Exercisi2::Start()
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::FLOOR, this);
-	App->collisions->AddCollider({ 150 , 240, 240 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 150 , 240, 240 , 20 }, Collider::Type::PLATAFORM, this);
 	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
 	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM1, this);
+	//App->collisions->AddCollider({ 150 , 150, 220 , 30 }, Collider::Type::GRAV, this);
 	return true;
 }
 
@@ -76,14 +77,12 @@ Update_Status Scena_Exercisi2::Update() {
 			JumpForce = 10 * JumpSpeed;
 			
 		}
-		if (gravityEnabled==true) {
-			Gravity = 1;
-		}
-		else {
-			Gravity = 0;
-		}
 
 		if (isJumping) {
+			if (gravityEnabled == true) {
+				Gravity = 3;
+			}
+
 			App->player->position.y -= JumpSpeed;
 			JumpForce -= JumpSpeed;
 			if (JumpForce <= 0 || App->player->position.y <= 10) {
@@ -92,9 +91,7 @@ Update_Status Scena_Exercisi2::Update() {
 		}
 		else {
 			App->player->position.y += Gravity;
-			if (App->player->position.y >= heightNivell - 128 - 10) {
-				App->player->position.y = heightNivell - 128 - 10;
-			}
+			
 		}
 
 		return Update_Status::UPDATE_CONTINUE;
@@ -146,7 +143,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	if (c1->type == Collider::PLATAFORM2 && c2->type == Collider::PLAYER)
 	{
 		ResetPlatform = true;
-		LOG("PLATFORM2 ACTIVAT");
+		LOG("FALLING");
 		if (ResetPlatform == true)
 		{
 			App->player->position.x = 50;
@@ -157,20 +154,25 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
 	{
 		ResetPlatform = true;
-		LOG("PLATFORM1 ACTIVAT");
-		if (ResetPlatform == true)
+		LOG("FALLING");
+		Gravity = 3;
+	/*	if (ResetPlatform == true)
 		{
 			App->player->position.x = 350;
 			App->player->position.y = 300;
 			ResetPlatform = false;
-		}
+		}*/
 	}
 	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER) {
-		gravityEnabled = false;
-		LOG("BUM ACTIVAT");
+		Gravity = 0;
+		LOG("TOUCHING PLATAFORM");
 	}
-	if (c1->type == Collider::PLATAFORM != c2->type == Collider::PLAYER) {
-		LOG("PM ACTIVAT");
+	if (c1->type == Collider::FLOOR && c2->type == Collider::PLAYER) {
+		Gravity = 0;
+		LOG("TOUCHING FLOOR");
 	}
-	
+	//if (c1->type == Collider::GRAV && c2->type == Collider::PLAYER) {
+	//	gravityEnabled = true;
+	//	LOG("BUM ACTIVAT");
+	//}
 }
