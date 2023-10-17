@@ -33,10 +33,10 @@ Application::Application() {
 	modules.push_back(textures = new ModuleTextures(true));
 	modules.push_back(audio = new ModuleAudio(true));
 
-	modules.push_back(scena_Exercisi1 = new Scena_Exercisi1(true));
+	modules.push_back(scena_Exercisi1 = new Scena_Exercisi1(false));
 	modules.push_back(scena_Exercisi2 = new Scena_Exercisi2(false));
 	modules.push_back(scena_Exercisi3 = new Scena_Exercisi3(false));
-	modules.push_back(scena_Exercisi5 = new Scena_Exercisi5(false));
+	modules.push_back(scena_Exercisi5 = new Scena_Exercisi5(true));
 
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));

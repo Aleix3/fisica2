@@ -38,6 +38,10 @@ private:
 	SDL_Rect _rectAspid;
 	SDL_Rect _rectIdleCanon;
 	SDL_Rect _rectGround1;
+	SDL_Rect _rectRectangle_1;
+	SDL_Rect _rectRectangle_2;
+	SDL_Rect _rectRectangle_3;
+	SDL_Rect _rectRectangle_4;
 
 	Animation _shootAnimation;
 	Animation _aspidAnimation;
@@ -45,6 +49,10 @@ private:
 
 	Collider* _colliderBall = nullptr;
 	Collider* _colliderAspid = nullptr;
+	Collider* _colliderRectangle_1 = nullptr;
+	Collider* _colliderRectangle_2 = nullptr;
+	Collider* _colliderRectangle_3 = nullptr;
+	Collider* _colliderRectangle_4 = nullptr;
 
 	int _weigthNivell = 1000;
 	int _heightNivell = 465;
