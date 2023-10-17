@@ -47,8 +47,8 @@ bool Scena_Exercisi2::Start()
 
 	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::FLOOR, this);
-	//App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::PLATAFORM, this);
-	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 150 , 240, 240 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
 	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM1, this);
 	return true;
 }
@@ -74,8 +74,9 @@ Update_Status Scena_Exercisi2::Update() {
 		{
 			isJumping = true;
 			JumpForce = 10 * JumpSpeed;
+			
 		}
-		
+
 	if (isJumping) {
 		App->player->position.y -= JumpSpeed; // Move the player upward
 		JumpForce -= JumpSpeed;
@@ -94,7 +95,6 @@ Update_Status Scena_Exercisi2::Update() {
 			App->player->position.y = heightNivell - 128 - 10;
 		}
 	}
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -141,10 +141,10 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 		}
 	}
 
-	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER)
+	if (c1->type == Collider::PLATAFORM2 && c2->type == Collider::PLAYER)
 	{
 		ResetPlatform = true;
-		LOG("PLATFORM ACTIVAT");
+		LOG("PLATFORM2 ACTIVAT");
 		if (ResetPlatform == true)
 		{
 			App->player->position.x = 50;
@@ -155,7 +155,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
 	{
 		ResetPlatform = true;
-		LOG("PLATFORM ACTIVAT");
+		LOG("PLATFORM1 ACTIVAT");
 		if (ResetPlatform == true)
 		{
 			App->player->position.x = 350;
@@ -163,6 +163,10 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 			ResetPlatform = false;
 		}
 	}
-	
+	if (c1->type == Collider::PLATAFORM != c2->type == Collider::PLAYER)
+	{
+		
+		Gravity = 0;
+	}
 
 }

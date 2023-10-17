@@ -17,7 +17,8 @@ struct Collider {
 		// EXERCISI2
 		TR_T1_SALT_LINK, // Salt link 
 		PLATAFORM,
-		PLATAFORM1,// plat coll
+		PLATAFORM1,
+		PLATAFORM2,// plat coll
 		FLOOR,//floor coll
 
 		// EXERCISI3
