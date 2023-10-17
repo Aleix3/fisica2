@@ -1,2 +1,39 @@
-﻿  ModuleCollisions.cpp
+﻿  Scena_Exercisi5.cpp
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(70,31): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(75,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(76,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(82,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(96,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(99,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(100,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(105,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(110,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(113,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(114,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(119,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(124,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(126,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(127,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(132,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(137,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(139,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(140,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(145,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(154,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(156,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(157,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(162,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(167,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(169,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(170,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(175,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(213,65): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(215,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(216,41): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(230,82): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(230,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(233,82): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(233,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(237,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.cpp(237,49): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Echo Jammer.vcxproj -> C:\Users\eduardgt1\Documents\GitHub\fisica2\Echo Jammer\x64\Debug\Echo Jammer.exe

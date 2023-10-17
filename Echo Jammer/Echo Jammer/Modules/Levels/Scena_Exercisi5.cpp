@@ -29,7 +29,6 @@ bool Scena_Exercisi5::Start()
 	_textura_fondo = App->textures->Load(FI_Background.c_str());
 	_textura_canon = App->textures->Load(FI_canon.c_str());
 	_textura_boom = App->textures->Load(FI_boom.c_str());
-	_textura_aspid = App->textures->Load(FI_aspid.c_str());
 
 	// Load animations
 	for (int i = 0; i < 6; i++)
@@ -57,7 +56,6 @@ bool Scena_Exercisi5::Start()
 	_rectCanon = { 220, 210, 48, 48 };
 	_rectBallSprite = { 288, 0, 48, 48 };
 	_rectBall = { 220, 210, 48, 48 };
-	_rectAspid = { _posicioAspidAleatoriX, 350, 58, 57 };
 	_rectRectangle_1 = { _posicioAspidAleatoriX, 350, 2, 57 };
 	_rectRectangle_2 = { _posicioAspidAleatoriX, 350, 58, 2 };
 	_rectRectangle_3 = { _posicioAspidAleatoriX + 57, 350 , 2, 57 };
@@ -80,10 +78,10 @@ bool Scena_Exercisi5::Start()
 	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
 	_colliderAspid = App->collisions->AddCollider(_rectAspid, Collider::Type::TR_OBJECTIVE_1, this);
 	_colliderBall = App->collisions->AddCollider(_rectBall, Collider::Type::BALL, this);
-	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_1, Collider::Type::RECTANGLE_1, this);
-	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_2, Collider::Type::RECTANGLE_2, this);
-	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_3, Collider::Type::RECTANGLE_3, this);
-	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_4, Collider::Type::RECTANGLE_4, this);
+	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_1, Collider::Type::GROUND, this);
+	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_2, Collider::Type::GROUND, this);
+	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_3, Collider::Type::GROUND, this);
+	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_4, Collider::Type::GROUND, this);
 	
 
 	return true;
