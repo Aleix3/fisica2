@@ -48,7 +48,7 @@ bool Scena_Exercisi2::Start()
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::FLOOR, this);
 	//App->collisions->AddCollider({ 150 , 225, 240 , 50 }, Collider::Type::PLATAFORM, this);
 	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM, this);
-	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM1, this);
 	return true;
 }
 
@@ -122,9 +122,20 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 		LOG("PLATFORM ACTIVAT");
 		if (ResetPlatform == true)
 		{
-			App->player->position.x = 330;
+			App->player->position.x = 50;
 			App->player->position.y = 300;
 			ResetPlatform= false;
+		}
+	}
+	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
+	{
+		ResetPlatform = true;
+		LOG("PLATFORM ACTIVAT");
+		if (ResetPlatform == true)
+		{
+			App->player->position.x = 350;
+			App->player->position.y = 300;
+			ResetPlatform = false;
 		}
 	}
 	
