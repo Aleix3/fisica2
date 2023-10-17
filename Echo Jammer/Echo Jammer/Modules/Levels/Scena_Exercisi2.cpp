@@ -76,26 +76,28 @@ Update_Status Scena_Exercisi2::Update() {
 			JumpForce = 10 * JumpSpeed;
 			
 		}
-
-	if (isJumping) {
-		App->player->position.y -= JumpSpeed; // Move the player upward
-		JumpForce -= JumpSpeed;
-
-		// If the jump is complete or the player hits the ceiling, stop jumping
-		if (JumpForce <= 0 || App->player->position.y <= 10) {
-			isJumping = false;
+		if (gravityEnabled==true) {
+			Gravity = 1;
 		}
-	}
-	else {
-		// Apply gravity when not jumping
-		App->player->position.y += Gravity;
-
-		// Check for collisions with the ground
-		if (App->player->position.y >= heightNivell - 128 - 10) {
-			App->player->position.y = heightNivell - 128 - 10;
+		else {
+			Gravity = 0;
 		}
-	}
-	return Update_Status::UPDATE_CONTINUE;
+
+		if (isJumping) {
+			App->player->position.y -= JumpSpeed;
+			JumpForce -= JumpSpeed;
+			if (JumpForce <= 0 || App->player->position.y <= 10) {
+				isJumping = false;
+			}
+		}
+		else {
+			App->player->position.y += Gravity;
+			if (App->player->position.y >= heightNivell - 128 - 10) {
+				App->player->position.y = heightNivell - 128 - 10;
+			}
+		}
+
+		return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status Scena_Exercisi2::PostUpdate() {
@@ -163,10 +165,12 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 			ResetPlatform = false;
 		}
 	}
-	if (c1->type == Collider::PLATAFORM != c2->type == Collider::PLAYER)
-	{
-		
-		Gravity = 0;
+	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER) {
+		gravityEnabled = false;
+		LOG("BUM ACTIVAT");
 	}
-
+	if (c1->type == Collider::PLATAFORM != c2->type == Collider::PLAYER) {
+		LOG("PM ACTIVAT");
+	}
+	
 }
