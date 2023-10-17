@@ -29,7 +29,6 @@ private:
 	SDL_Texture* _textura_fondo = nullptr;
 	SDL_Texture* _textura_canon = nullptr;
 	SDL_Texture* _textura_boom = nullptr;
-	SDL_Texture* _textura_aspid = nullptr;
 
 	SDL_Rect _rectFondo;
 	SDL_Rect _rectCanon;

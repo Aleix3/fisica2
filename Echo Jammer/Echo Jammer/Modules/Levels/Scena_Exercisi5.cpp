@@ -78,10 +78,10 @@ bool Scena_Exercisi5::Start()
 	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
 	_colliderAspid = App->collisions->AddCollider(_rectAspid, Collider::Type::TR_OBJECTIVE_1, this);
 	_colliderBall = App->collisions->AddCollider(_rectBall, Collider::Type::BALL, this);
-	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_1, Collider::Type::GROUND, this);
-	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_2, Collider::Type::GROUND, this);
-	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_3, Collider::Type::GROUND, this);
-	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_4, Collider::Type::GROUND, this);
+	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_1, Collider::Type::RECTANGLE_1, this);
+	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_2, Collider::Type::RECTANGLE_2, this);
+	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_3, Collider::Type::RECTANGLE_3, this);
+	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_4, Collider::Type::RECTANGLE_4, this);
 	
 
 	return true;
@@ -241,10 +241,6 @@ Update_Status Scena_Exercisi5::PostUpdate() {
 		_explodeAnimation.Update();
 		App->render->Blit(_textura_boom, _rectAspid.x - 150, _rectAspid.y - 150, &_explodeAnimation.GetCurrentFrame());
 	}
-	else {
-		_aspidAnimation.Update();
-		App->render->Blit(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
-	}
 
 	App->hud->PaintSentence("S-disparar", { 10, 0 });
 	App->hud->PaintSentence("R-reset", { 10, 30 });
@@ -273,6 +269,34 @@ void Scena_Exercisi5::OnCollision(Collider* c1, Collider* c2) {
 	}
 	if (c1->type == Collider::BALL && c2->type == Collider::GROUND) {
 		LOG("TERRA!");
+		_shooting = false;
+		_boom = false;
+		_start = false;
+		_colliderBall->rect = _rectBall;
+	}
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_1) { // Esquerra
+		LOG("Esquerra!");
+		_shooting = false;
+		_boom = false;
+		_start = false;
+		_colliderBall->rect = _rectBall;
+	}
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_2) { // Arriba
+		LOG("Arriba!");
+		_shooting = false;
+		_boom = false;
+		_start = false;
+		_colliderBall->rect = _rectBall;
+	}
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_3) { // Dreta
+		LOG("Dreta!");
+		_shooting = false;
+		_boom = false;
+		_start = false;
+		_colliderBall->rect = _rectBall;
+	}
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_4) { // Abajo
+		LOG("Abajo!");
 		_shooting = false;
 		_boom = false;
 		_start = false;
