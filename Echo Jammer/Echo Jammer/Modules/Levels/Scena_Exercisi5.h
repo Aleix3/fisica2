@@ -43,8 +43,6 @@ private:
 	SDL_Rect _rectRectangle_4;
 
 	Animation _shootAnimation;
-	Animation _aspidAnimation;
-	Animation _explodeAnimation;
 
 	Collider* _colliderBall = nullptr;
 	Collider* _colliderAspid = nullptr;
@@ -57,9 +55,8 @@ private:
 	int _heightNivell = 465;
 
 	// Maquina estats
-	bool _start = false; // Inici disparo
-	bool _shooting = false; // Animacio disparo
-	bool _boom = false; // Animacio exlposio
+	bool _start = true; // Inici disparo
+	bool _shooting = true; // Animacio disparo
 
 	// Formules
 	int _gravetat = 550; //m/s^2
