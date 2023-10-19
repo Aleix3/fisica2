@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-#include "../Utils/Collider.h"
+#include "../Collisions/Collider.h"
 
 Particle::Particle() {
 	position.SetToZero();

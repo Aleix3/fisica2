@@ -1,9 +1,9 @@
 #ifndef __SCENE_EXERCISI5_H__
 #define __SCENE_EXERCISI5_H__
 
-#include "../Module.h"
-#include "../../Utils/Animation.h"
 #include "../../Application/FileNames.h"
+#include "../Module.h"
+#include "../Core/Render/Animation.h"
 
 struct SDL_Texture;
 

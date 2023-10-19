@@ -1,8 +1,8 @@
 #ifndef __PARTICLE_H__
 #define __PARTICLE_H__
 
-#include "../Utils/Animation.h"
-#include "../Utils/p2Point.h"
+#include "../../../Utils/p2Point.h"
+#include "../Render/Animation.h"
 
 struct Collider;
 

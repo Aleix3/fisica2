@@ -4,14 +4,14 @@
 
 #include "../Modules/Module.h"
 
-#include "../Modules/Core/ModuleWindow.h"
-#include "../Modules/Core/ModuleInput.h"
-#include "../Modules/Core/ModuleTextures.h"
-#include "../Modules/Core/ModuleAudio.h"
-#include "../Modules/Core/ModuleParticles.h"
-#include "../Modules/Core/ModuleCollisions.h"
-#include "../Modules/Core/ModulePhysics.h"
-#include "../Modules/Core/ModuleRender.h"
+#include "../Modules/Core/Render/ModuleWindow.h"
+#include "../Modules/Core/Render/ModuleTextures.h"
+#include "../Modules/Core/Render/ModuleRender.h"
+#include "../Modules/Core/Inputs/ModuleInput.h"
+#include "../Modules/Core/Audio/ModuleAudio.h"
+#include "../Modules/Core/Entities/ModuleParticles.h"
+#include "../Modules/Core/Collisions/ModuleCollisions.h"
+#include "../Modules/Core/Physics/ModulePhysics.h"
 
 #include "../Modules/Foreground/ModuleFadeToBlack.h"
 #include "../Modules/Foreground/ModuleHUD.h"

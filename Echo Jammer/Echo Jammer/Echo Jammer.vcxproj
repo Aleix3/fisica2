@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -157,7 +157,7 @@
     <ClInclude Include="Application\FileNames.h" />
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
-    <ClInclude Include="Modules\Core\ModulePhysics.h" />
+    <ClInclude Include="Modules\Core\Physics\ModulePhysics.h" />
     <ClInclude Include="Modules\Foreground\ModuleFadeToBlack.h" />
     <ClInclude Include="Modules\Foreground\ModuleHUD.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi5.h" />
@@ -166,18 +166,18 @@
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
-    <ClInclude Include="Modules\Entities\Particle.h" />
-    <ClInclude Include="Modules\Core\ModuleAudio.h" />
-    <ClInclude Include="Modules\Core\ModuleCollisions.h" />
-    <ClInclude Include="Modules\Core\ModuleInput.h" />
-    <ClInclude Include="Modules\Core\ModuleParticles.h" />
-    <ClInclude Include="Modules\Core\ModuleRender.h" />
-    <ClInclude Include="Modules\Core\ModuleTextures.h" />
-    <ClInclude Include="Modules\Core\ModuleWindow.h" />
+    <ClInclude Include="Modules\Core\Entities\Particle.h" />
+    <ClInclude Include="Modules\Core\Audio\ModuleAudio.h" />
+    <ClInclude Include="Modules\Core\Collisions\ModuleCollisions.h" />
+    <ClInclude Include="Modules\Core\Inputs\ModuleInput.h" />
+    <ClInclude Include="Modules\Core\Entities\ModuleParticles.h" />
+    <ClInclude Include="Modules\Core\Render\ModuleRender.h" />
+    <ClInclude Include="Modules\Core\Render\ModuleTextures.h" />
+    <ClInclude Include="Modules\Core\Render\ModuleWindow.h" />
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h" />
     <ClInclude Include="Modules\Module.h" />
-    <ClInclude Include="Utils\Animation.h" />
-    <ClInclude Include="Utils\Collider.h" />
+    <ClInclude Include="Modules\Core\Render\Animation.h" />
+    <ClInclude Include="Modules\Core\Collisions\Collider.h" />
     <ClInclude Include="Utils\p2Point.h" />
     <ClInclude Include="Utils\Path.h" />
     <ClInclude Include="Utils\PatrolPath.h" />
@@ -186,7 +186,7 @@
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
-    <ClCompile Include="Modules\Core\ModulePhysics.cpp" />
+    <ClCompile Include="Modules\Core\Physics\ModulePhysics.cpp" />
     <ClCompile Include="Modules\Foreground\ModuleFadeToBlack.cpp" />
     <ClCompile Include="Modules\Foreground\ModuleHUD.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi5.cpp" />
@@ -194,17 +194,17 @@
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi1.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
-    <ClCompile Include="Modules\Entities\Particle.cpp" />
-    <ClCompile Include="Modules\Core\ModuleAudio.cpp" />
-    <ClCompile Include="Modules\Core\ModuleCollisions.cpp" />
-    <ClCompile Include="Modules\Core\ModuleInput.cpp" />
-    <ClCompile Include="Modules\Core\ModuleParticles.cpp" />
-    <ClCompile Include="Modules\Core\ModuleRender.cpp" />
-    <ClCompile Include="Modules\Core\ModuleTextures.cpp" />
-    <ClCompile Include="Modules\Core\ModuleWindow.cpp" />
+    <ClCompile Include="Modules\Core\Entities\Particle.cpp" />
+    <ClCompile Include="Modules\Core\Audio\ModuleAudio.cpp" />
+    <ClCompile Include="Modules\Core\Collisions\ModuleCollisions.cpp" />
+    <ClCompile Include="Modules\Core\Inputs\ModuleInput.cpp" />
+    <ClCompile Include="Modules\Core\Entities\ModuleParticles.cpp" />
+    <ClCompile Include="Modules\Core\Render\ModuleRender.cpp" />
+    <ClCompile Include="Modules\Core\Render\ModuleTextures.cpp" />
+    <ClCompile Include="Modules\Core\Render\ModuleWindow.cpp" />
     <ClCompile Include="Modules\Gameplay\ModulePlayer.cpp" />
     <ClCompile Include="Modules\Module.cpp" />
-    <ClCompile Include="Utils\Collider.cpp" />
+    <ClCompile Include="Modules\Core\Collisions\Collider.cpp" />
     <ClCompile Include="Utils\Path.cpp" />
     <ClCompile Include="Utils\PatrolPath.cpp" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 #ifndef __MODULE_AUDIO_H__
 #define __MODULE_AUDIO_H__
 
-#include "../../Modules/Module.h"
+#include "../../Module.h"
 
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
 #define MAX_FX 200

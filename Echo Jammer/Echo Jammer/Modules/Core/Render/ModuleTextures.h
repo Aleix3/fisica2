@@ -1,7 +1,7 @@
 #ifndef __MODULE_TEXTURES_H__
 #define __MODULE_TEXTURES_H__
 
-#include "../../Modules/Module.h"
+#include "../../Module.h"
 
 #define MAX_TEXTURES 100
 

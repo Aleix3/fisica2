@@ -1,11 +1,10 @@
 #ifndef __MODULE_PLAYER_H__
 #define __MODULE_PLAYER_H__
 
-#include "../../Modules/Module.h"
-#include "../../Utils/Animation.h"
+#include "../Module.h"
+#include "../Core/Render/Animation.h"
 #include "../../Utils/p2Point.h"
 #include "../../Utils/Directions.h"
-
 
 struct SDL_Texture;
 struct Collider;

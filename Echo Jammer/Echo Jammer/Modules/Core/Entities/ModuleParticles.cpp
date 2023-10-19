@@ -1,11 +1,11 @@
 #include "ModuleParticles.h"
 
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "ModuleCollisions.h"
+#include "../Render/ModuleTextures.h"
+#include "../Render/ModuleRender.h"
+#include "../Collisions/ModuleCollisions.h"
 
-#include "../../Application/Application.h"
-#include "../../Application/FileNames.h"
+#include "../../../Application/Application.h"
+#include "../../../Application/FileNames.h"
 
 #include <SDL_timer.h>
 

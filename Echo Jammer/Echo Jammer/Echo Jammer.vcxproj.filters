@@ -18,15 +18,17 @@
     <None Include="SDL2_mixer.dll" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
+    <None Include="_Assets\Exercisi1\music_spy.ogg" />
+    <None Include="_Assets\Musica_FX\Ambient.ogg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utils\Path.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\Animation.h">
+    <ClInclude Include="Modules\Core\Render\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\Collider.h">
+    <ClInclude Include="Modules\Core\Collisions\Collider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils\p2Point.h">
@@ -38,13 +40,13 @@
     <ClInclude Include="Modules\Gameplay\ModulePlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleWindow.h">
+    <ClInclude Include="Modules\Core\Render\ModuleWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleAudio.h">
+    <ClInclude Include="Modules\Core\Audio\ModuleAudio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleCollisions.h">
+    <ClInclude Include="Modules\Core\Collisions\ModuleCollisions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Foreground\ModuleFadeToBlack.h">
@@ -53,19 +55,16 @@
     <ClInclude Include="Modules\Foreground\ModuleHUD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleInput.h">
+    <ClInclude Include="Modules\Core\Inputs\ModuleInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleParticles.h">
+    <ClInclude Include="Modules\Core\Entities\ModuleParticles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleRender.h">
+    <ClInclude Include="Modules\Core\Render\ModuleRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleTextures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\Particle.h">
+    <ClInclude Include="Modules\Core\Render\ModuleTextures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Application\MemLeaks.h">
@@ -89,7 +88,7 @@
     <ClInclude Include="Utils\PatrolPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModulePhysics.h">
+    <ClInclude Include="Modules\Core\Physics\ModulePhysics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h">
@@ -101,9 +100,15 @@
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\Scena_Exercisi5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Core\Entities\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Utils\Collider.cpp">
+    <ClCompile Include="Modules\Core\Collisions\Collider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\Path.cpp">
@@ -115,10 +120,10 @@
     <ClCompile Include="Modules\Module.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleAudio.cpp">
+    <ClCompile Include="Modules\Core\Audio\ModuleAudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleCollisions.cpp">
+    <ClCompile Include="Modules\Core\Collisions\ModuleCollisions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Foreground\ModuleFadeToBlack.cpp">
@@ -127,22 +132,19 @@
     <ClCompile Include="Modules\Foreground\ModuleHUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleInput.cpp">
+    <ClCompile Include="Modules\Core\Inputs\ModuleInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleParticles.cpp">
+    <ClCompile Include="Modules\Core\Entities\ModuleParticles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleRender.cpp">
+    <ClCompile Include="Modules\Core\Render\ModuleRender.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleTextures.cpp">
+    <ClCompile Include="Modules\Core\Render\ModuleTextures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entities\Particle.cpp">
+    <ClCompile Include="Modules\Core\Render\ModuleWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Application\Application.cpp">
@@ -160,7 +162,7 @@
     <ClCompile Include="Utils\PatrolPath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModulePhysics.cpp">
+    <ClCompile Include="Modules\Core\Physics\ModulePhysics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\Scena_Exercisi2.cpp">
@@ -170,6 +172,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Levels\Scena_Exercisi1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Levels\Scena_Exercisi5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Core\Entities\Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -186,5 +194,127 @@
     <Image Include="_Assets\Imagenes\FondoTest.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="_Assets\Exercisi1\caja.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi1\planta.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi1\planta2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi1\suelo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\box.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\car.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\ground.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\link.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\linkJump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\sprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\spritesheet_enemy_basic.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi2\test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi3\aspid.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi3\boom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi3\Canon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Exercisi3\Fondo3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\enemies\enemigo_estatico_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\enemies\enemy_01_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\mapas\level_01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\mapas\level_01_overlay.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\mapas\level_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\mapas\tutorial_level.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\mapas\tutorial_overlay.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\BackEchoDefinitivo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\EchoDefinitiu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\Echodefinitivo2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\Echodefinitivo3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\Eco.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\espacio_sprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\habilidad_icono.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\habilidad_icono_02.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\intro_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\numeros_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\oscuridad.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\Imagenes\UI\play_spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\rtype_font.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="_Assets\Exercisi1\hello_man.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="_Assets\Musica_FX\ability_sound.mp3" />
+    <Media Include="_Assets\Musica_FX\ability_sound_2.mp3" />
+    <Media Include="_Assets\Musica_FX\button_sound.mp3" />
   </ItemGroup>
 </Project>

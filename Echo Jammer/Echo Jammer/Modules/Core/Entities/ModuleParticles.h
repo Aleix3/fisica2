@@ -1,12 +1,11 @@
 #ifndef __MODULE_PARTICLES_H__
 #define __MODULE_PARTICLES_H__
 
-#include "../../Modules/Module.h"
-
-#include "../../Application/Globals.h"
-#include "../../Entities/Particle.h"
-#include "../../Application/Application.h"
-#include "../../Utils/Collider.h"
+#include "../../../Application/Globals.h"
+#include "../../../Application/Application.h"
+#include "../../Module.h"
+#include "../Collisions/Collider.h"
+#include "Particle.h"
 
 #define MAX_ACTIVE_PARTICLES 500
 

@@ -1,9 +1,8 @@
 #ifndef __MODULE_INPUT_H__
 #define __MODULE_INPUT_H__
 
-#include "../../Modules/Module.h"
-#include "../../Application/Globals.h"
-
+#include "../../../Application/Globals.h"
+#include "../../Module.h"
 #include <SDL_scancode.h>
 
 #define MAX_KEYS 256
@@ -46,7 +45,7 @@ enum KeyboardSetup {
 	MoveLeft = SDL_Scancode::SDL_SCANCODE_A,
 	MoveRight = SDL_Scancode::SDL_SCANCODE_D,
 	Sprint = SDL_Scancode::SDL_SCANCODE_LSHIFT,
-	Dash = SDL_Scancode::SDL_SCANCODE_SPACE,	
+	Dash = SDL_Scancode::SDL_SCANCODE_SPACE,
 	Pause = SDL_Scancode::SDL_SCANCODE_I
 
 };

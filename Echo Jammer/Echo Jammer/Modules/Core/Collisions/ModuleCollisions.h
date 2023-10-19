@@ -3,8 +3,9 @@
 
 #define MAX_COLLIDERS 10000
 
-#include "../../Modules/Module.h"
-#include "../../Utils/Collider.h"
+#include "../../../Modules/Module.h"
+#include "Collider.h"
+
 #include <functional>
 
 class ModuleCollisions : public Module {

@@ -1,7 +1,7 @@
 #include "ModuleWindow.h"
 
-#include "../../Application/Application.h"
-#include "../../Application/Globals.h"
+#include "../../../Application/Application.h"
+#include "../../../Application/Globals.h"
 
 #include <SDL.h>
 

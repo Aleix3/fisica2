@@ -2,12 +2,6 @@
 #include "MemLeaks.h"
 #include "Globals.h"
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <iostream>
-
-#include "../Modules/Core/ModuleRender.h"
-
 enum class Main_States {
 	MAIN_CREATION,
 	MAIN_START,

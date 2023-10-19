@@ -1,8 +1,9 @@
-#include "../../Application/Globals.h"
-#include "../../Application/Application.h"
+#include "../../../Application/Globals.h"
+#include "../../../Application/Application.h"
 #include "ModuleInput.h"
 
 #include <SDL.h>
+
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)

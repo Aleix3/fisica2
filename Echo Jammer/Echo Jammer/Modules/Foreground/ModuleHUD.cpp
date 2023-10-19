@@ -1,10 +1,10 @@
 #include "ModuleHUD.h"
-#include <cctype>
+
 #include "../../Application/Application.h"
 #include "../../Application/FileNames.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleInput.h"
-#include "../../Modules/Core/ModuleRender.h"
+#include "../../Modules/Core/Render/ModuleTextures.h"
+#include "../../Modules/Core/Render/ModuleRender.h"
+#include "../../Modules/Core/Inputs/ModuleInput.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
 
 ModuleHUD::ModuleHUD(bool startEnabled) : Module(startEnabled) {

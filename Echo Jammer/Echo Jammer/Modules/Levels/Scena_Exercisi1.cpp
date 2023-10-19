@@ -1,12 +1,12 @@
 #include "Scena_Exercisi1.h"
 
 #include "../../Application/Application.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleRender.h"
-#include "../../Modules/Core/ModuleCollisions.h"
+#include "../../Modules/Core/Render/ModuleTextures.h"
+#include "../../Modules/Core/Render/ModuleRender.h"
+#include "../../Modules/Core/Collisions/ModuleCollisions.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
-#include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleInput.h"
+#include "../../Modules/Core/Audio/ModuleAudio.h"
+#include "../../Modules/Core/Inputs/ModuleInput.h"
 
 Scena_Exercisi1::Scena_Exercisi1(bool startEnabled) : Module(startEnabled) {
 

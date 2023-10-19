@@ -2,17 +2,18 @@
 
 #include "../../Application/Application.h"
 
-#include "../Core/ModuleTextures.h"
-#include "../Core/ModuleRender.h"
-#include "../Core/ModuleCollisions.h"
-#include "../Core/ModuleAudio.h"
-#include "../Core/ModuleInput.h"
+#include "../Core/Render/ModuleTextures.h"
+#include "../Core/Render/ModuleRender.h"
+#include "../Core/Collisions/ModuleCollisions.h"
+#include "../Core/Audio/ModuleAudio.h"
+#include "../Core/Inputs/ModuleInput.h"
 #include "../Foreground/ModuleFadeToBlack.h"
 #include "../Foreground/ModuleHUD.h"
 #include "../Gameplay/ModulePlayer.h"
 
 #include <SDL_timer.h>
 #include <ctime>
+
 
 Scena_Exercisi5::Scena_Exercisi5(bool startEnabled) : Module(startEnabled) {
 	// https://www.fisicalab.com/apartado/movimiento-parabolico

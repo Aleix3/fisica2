@@ -1,7 +1,7 @@
 #ifndef __MODULE_RENDER_H__
 #define __MODULE_RENDER_H__
 
-#include "../../Modules/Module.h"
+#include "../../Module.h"
 #include <SDL_rect.h>
 
 struct SDL_Texture;

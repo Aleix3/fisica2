@@ -1,9 +1,9 @@
 #include "ModuleRender.h"
 
-#include "../../Application/Application.h"
-#include "../../Modules/Core/ModuleWindow.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleInput.h"
+#include "../../../Application/Application.h"
+#include "../Inputs/ModuleInput.h"
+#include "ModuleWindow.h"
+#include "ModuleTextures.h"
 
 #include <SDL_render.h>
 

@@ -1,12 +1,12 @@
 #include "Scena_Exercisi2.h"
 
 #include "../../Application/Application.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleRender.h"
-#include "../../Modules/Core/ModuleCollisions.h"
+#include "../../Modules/Core/Render/ModuleTextures.h"
+#include "../../Modules/Core/Render/ModuleRender.h"
+#include "../../Modules/Core/Collisions/ModuleCollisions.h"
+#include "../../Modules/Core/Audio/ModuleAudio.h"
+#include "../../Modules/Core/Inputs/ModuleInput.h"
 #include "../../Modules/Gameplay/ModulePlayer.h"
-#include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleInput.h"
 
 Scena_Exercisi2::Scena_Exercisi2(bool startEnabled) : Module(startEnabled) {
 
@@ -61,53 +61,53 @@ Update_Status Scena_Exercisi2::Update() {
 	if (App->player->position.x >= weigthNivell - 10 - 128)
 		App->player->position.x = weigthNivell - 10 - 128;*/
 
-	/*if (App->player->position.y <= 10)
-		App->player->position.y = 10;
-	if (App->player->position.y >= heightNivell - 128 - 10)
-		App->player->position.y = heightNivell - 128 - 10;*/
+		/*if (App->player->position.y <= 10)
+			App->player->position.y = 10;
+		if (App->player->position.y >= heightNivell - 128 - 10)
+			App->player->position.y = heightNivell - 128 - 10;*/
 
 
-	/*if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920) 
-		App->render->camera.x = App->player->position.x;
-	if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540) 
-		App->render->camera.y = App->player->position.y - 540;*/
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_REPEAT && !isJumping)
-		{
-			isJumping = true;
-			JumpForce = 10 * JumpSpeed;
-			
+			/*if (App->player->position.x > 0 && App->player->position.x < weigthNivell - 1920)
+				App->render->camera.x = App->player->position.x;
+			if (App->player->position.y > 540 && App->player->position.y < heightNivell - 1080 + 540)
+				App->render->camera.y = App->player->position.y - 540;*/
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_REPEAT && !isJumping)
+	{
+		isJumping = true;
+		JumpForce = 10 * JumpSpeed;
+
+	}
+
+	if (isJumping) {
+		if (gravityEnabled == true) {
+			Gravity = 3;
 		}
 
-		if (isJumping) {
-			if (gravityEnabled == true) {
-				Gravity = 3;
-			}
-
-			App->player->position.y -= JumpSpeed;
-			JumpForce -= JumpSpeed;
-			if (JumpForce <= 0 || App->player->position.y <= 10) {
-				isJumping = false;
-			}
+		App->player->position.y -= JumpSpeed;
+		JumpForce -= JumpSpeed;
+		if (JumpForce <= 0 || App->player->position.y <= 10) {
+			isJumping = false;
 		}
-		else {
-			App->player->position.y += Gravity;
-			
-		}
+	}
+	else {
+		App->player->position.y += Gravity;
 
-		return Update_Status::UPDATE_CONTINUE;
+	}
+
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status Scena_Exercisi2::PostUpdate() {
 	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
 	App->render->Blit(textura_plataform, 150, 220);
 	App->render->Blit(textura_plataform, 550, 220);
-	
+
 	if (saltActivat)
 	{
 		_jumpAnimation.Update();
 		App->render->Blit(textura_link, 600, 200, &_jumpAnimation.GetCurrentFrame());
 	}
-	
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
@@ -119,7 +119,7 @@ bool Scena_Exercisi2::CleanUp() {
 }
 
 void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
-	
+
 	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
 	{
 		ResetPlayerPosition = true;
@@ -127,7 +127,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 		saltActivat = true;
 	}
 
-	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER )
+	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER)
 	{
 		ResetPlayerPosition = true;
 		LOG("TRIGGER ACTIVAT");
@@ -148,7 +148,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 		{
 			App->player->position.x = 50;
 			App->player->position.y = 300;
-			ResetPlatform= false;
+			ResetPlatform = false;
 		}
 	}
 	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
@@ -156,12 +156,12 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 		ResetPlatform = true;
 		LOG("FALLING");
 		Gravity = 3;
-	/*	if (ResetPlatform == true)
-		{
-			App->player->position.x = 350;
-			App->player->position.y = 300;
-			ResetPlatform = false;
-		}*/
+		/*	if (ResetPlatform == true)
+			{
+				App->player->position.x = 350;
+				App->player->position.y = 300;
+				ResetPlatform = false;
+			}*/
 	}
 	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER) {
 		Gravity = 0;
