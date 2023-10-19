@@ -149,6 +149,8 @@
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="SDL2_mixer.dll" />
+    <None Include="_Assets\Exercisi1\music_spy.ogg" />
+    <None Include="_Assets\Musica_FX\Ambient.ogg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application\Application.h" />
@@ -164,7 +166,7 @@
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
-    <ClInclude Include="Entities\Particle.h" />
+    <ClInclude Include="Modules\Entities\Particle.h" />
     <ClInclude Include="Modules\Core\ModuleAudio.h" />
     <ClInclude Include="Modules\Core\ModuleCollisions.h" />
     <ClInclude Include="Modules\Core\ModuleInput.h" />
@@ -192,7 +194,7 @@
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi1.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
-    <ClCompile Include="Entities\Particle.cpp" />
+    <ClCompile Include="Modules\Entities\Particle.cpp" />
     <ClCompile Include="Modules\Core\ModuleAudio.cpp" />
     <ClCompile Include="Modules\Core\ModuleCollisions.cpp" />
     <ClCompile Include="Modules\Core\ModuleInput.cpp" />
@@ -207,10 +209,54 @@
     <ClCompile Include="Utils\PatrolPath.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="_Assets\Exercisi1\caja.png" />
+    <Image Include="_Assets\Exercisi1\planta.png" />
+    <Image Include="_Assets\Exercisi1\planta2.png" />
+    <Image Include="_Assets\Exercisi1\suelo.png" />
+    <Image Include="_Assets\Exercisi2\background.png" />
+    <Image Include="_Assets\Exercisi2\box.png" />
+    <Image Include="_Assets\Exercisi2\car.png" />
+    <Image Include="_Assets\Exercisi2\grass.png" />
+    <Image Include="_Assets\Exercisi2\ground.png" />
+    <Image Include="_Assets\Exercisi2\link.png" />
+    <Image Include="_Assets\Exercisi2\linkJump.png" />
+    <Image Include="_Assets\Exercisi2\sprite.png" />
+    <Image Include="_Assets\Exercisi2\spritesheet_enemy_basic.png" />
+    <Image Include="_Assets\Exercisi2\test.png" />
+    <Image Include="_Assets\Exercisi3\aspid.png" />
+    <Image Include="_Assets\Exercisi3\boom.png" />
+    <Image Include="_Assets\Exercisi3\Canon.png" />
+    <Image Include="_Assets\Exercisi3\Fondo3.png" />
+    <Image Include="_Assets\Imagenes\enemies\enemigo_estatico_spritesheet.png" />
+    <Image Include="_Assets\Imagenes\enemies\enemy_01_spritesheet.png" />
     <Image Include="_Assets\Imagenes\enemy_01.png" />
     <Image Include="_Assets\Imagenes\FondoTest.png" />
     <Image Include="_Assets\Imagenes\main_character\spritesheet_character.png" />
+    <Image Include="_Assets\Imagenes\mapas\level_01.png" />
+    <Image Include="_Assets\Imagenes\mapas\level_01_overlay.png" />
+    <Image Include="_Assets\Imagenes\mapas\level_02.png" />
+    <Image Include="_Assets\Imagenes\mapas\tutorial_level.png" />
+    <Image Include="_Assets\Imagenes\mapas\tutorial_overlay.png" />
     <Image Include="_Assets\Imagenes\SpriteSheet.png" />
+    <Image Include="_Assets\Imagenes\UI\BackEchoDefinitivo.png" />
+    <Image Include="_Assets\Imagenes\UI\EchoDefinitiu.png" />
+    <Image Include="_Assets\Imagenes\UI\Echodefinitivo2.png" />
+    <Image Include="_Assets\Imagenes\UI\Echodefinitivo3.png" />
+    <Image Include="_Assets\Imagenes\UI\Eco.png" />
+    <Image Include="_Assets\Imagenes\UI\espacio_sprite.png" />
+    <Image Include="_Assets\Imagenes\UI\habilidad_icono.png" />
+    <Image Include="_Assets\Imagenes\UI\habilidad_icono_02.png" />
+    <Image Include="_Assets\Imagenes\UI\intro_spritesheet.png" />
+    <Image Include="_Assets\Imagenes\UI\numeros_spritesheet.png" />
+    <Image Include="_Assets\Imagenes\UI\oscuridad.png" />
+    <Image Include="_Assets\Imagenes\UI\play_spritesheet.png" />
+    <Image Include="_Assets\rtype_font.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="_Assets\Exercisi1\hello_man.wav" />
+    <Media Include="_Assets\Musica_FX\ability_sound.mp3" />
+    <Media Include="_Assets\Musica_FX\ability_sound_2.mp3" />
+    <Media Include="_Assets\Musica_FX\button_sound.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
