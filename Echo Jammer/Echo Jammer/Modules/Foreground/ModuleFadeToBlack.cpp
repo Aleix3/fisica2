@@ -1,7 +1,7 @@
 #include "ModuleFadeToBlack.h"
 
 #include "../../Application/Application.h"
-#include "ModuleRender.h"
+#include "../Core/ModuleRender.h"
 
 #include <SDL_render.h>
 

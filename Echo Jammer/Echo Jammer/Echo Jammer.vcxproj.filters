@@ -47,13 +47,10 @@
     <ClInclude Include="Modules\Core\ModuleCollisions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleFadeToBlack.h">
+    <ClInclude Include="Modules\Foreground\ModuleFadeToBlack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleFonts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Modules\Core\ModuleHUD.h">
+    <ClInclude Include="Modules\Foreground\ModuleHUD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Modules\Core\ModuleInput.h">
@@ -124,13 +121,10 @@
     <ClCompile Include="Modules\Core\ModuleCollisions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleFadeToBlack.cpp">
+    <ClCompile Include="Modules\Foreground\ModuleFadeToBlack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleFonts.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Modules\Core\ModuleHUD.cpp">
+    <ClCompile Include="Modules\Foreground\ModuleHUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Core\ModuleInput.cpp">

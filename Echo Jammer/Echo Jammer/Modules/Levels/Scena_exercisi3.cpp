@@ -1,14 +1,14 @@
 #include "Scena_Exercisi3.h"
 
 #include "../../Application/Application.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleRender.h"
-#include "../../Modules/Core/ModuleCollisions.h"
-#include "../../Modules/Gameplay/ModulePlayer.h"
-#include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleFadeToBlack.h"
-#include "../../Modules/Core/ModuleHUD.h"
+#include "../Core/ModuleTextures.h"
+#include "../Core/ModuleRender.h"
+#include "../Core/ModuleCollisions.h"
+#include "../Core/ModuleAudio.h"
 #include "../Core/ModuleInput.h"
+#include "../Foreground/ModuleHUD.h"
+#include "../Gameplay/ModulePlayer.h"
+
 #include <SDL_timer.h>
 #include <ctime>
 

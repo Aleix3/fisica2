@@ -5,14 +5,13 @@
 
 #include "../../Application/Application.h"
 #include "../../Application/FileNames.h"
-#include "../../Modules/Core/ModuleTextures.h"
-#include "../../Modules/Core/ModuleInput.h"
-#include "../../Modules/Core/ModuleRender.h"
-#include "../../Modules/Core/ModuleParticles.h"
-#include "../../Modules/Core/ModuleAudio.h"
-#include "../../Modules/Core/ModuleCollisions.h"
-#include "../../Modules/Core/ModuleFadeToBlack.h"
-#include "../../Modules/Core/ModuleFonts.h"
+#include "../Core/ModuleTextures.h"
+#include "../Core/ModuleInput.h"
+#include "../Core/ModuleRender.h"
+#include "../Core/ModuleParticles.h"
+#include "../Core/ModuleAudio.h"
+#include "../Core/ModuleCollisions.h"
+#include "../Foreground/ModuleFadeToBlack.h"
 #include "../../Utils/DirectionHelper.h"
 
 

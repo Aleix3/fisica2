@@ -1,9 +1,2 @@
-﻿  Application.cpp
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi3.h(62,31): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi3.h(74,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(66,31): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Modules\Levels\Scena_Exercisi5.h(78,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\Echo Jammer\Application\Application.cpp(49,29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Scena_Exercisi2.cpp
-  Generating Code...
-  Echo Jammer.vcxproj -> C:\Users\junhaocy\Documents\GitHub\fisica2\Echo Jammer\x64\Debug\Echo Jammer.exe
+﻿  Path.cpp
+  Echo Jammer.vcxproj -> C:\Users\ferranlx\Desktop\fisica2\Echo Jammer\x64\Debug\Echo Jammer.exe

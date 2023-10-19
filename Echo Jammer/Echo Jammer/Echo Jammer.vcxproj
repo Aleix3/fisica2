@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\SDLs\SDL\include;..\SDLs\SDL_image\include;..\SDLs\SDL_mixer\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\SDLs\SDL\lib\x64;..\SDLs\SDL_image\lib\x64;..\SDLs\SDL_mixer\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>_External\SDLs\SDL\include;_External\SDLs\SDL_image\include;_External\SDLs\SDL_mixer\include;$(IncludePath)</IncludePath>
+    <LibraryPath>_External\SDLs\SDL\lib\x64;_External\SDLs\SDL_image\lib\x64;_External\SDLs\SDL_mixer\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -156,6 +156,8 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Modules\Core\ModulePhysics.h" />
+    <ClInclude Include="Modules\Foreground\ModuleFadeToBlack.h" />
+    <ClInclude Include="Modules\Foreground\ModuleHUD.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi5.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h" />
@@ -165,9 +167,6 @@
     <ClInclude Include="Entities\Particle.h" />
     <ClInclude Include="Modules\Core\ModuleAudio.h" />
     <ClInclude Include="Modules\Core\ModuleCollisions.h" />
-    <ClInclude Include="Modules\Core\ModuleFadeToBlack.h" />
-    <ClInclude Include="Modules\Core\ModuleFonts.h" />
-    <ClInclude Include="Modules\Core\ModuleHUD.h" />
     <ClInclude Include="Modules\Core\ModuleInput.h" />
     <ClInclude Include="Modules\Core\ModuleParticles.h" />
     <ClInclude Include="Modules\Core\ModuleRender.h" />
@@ -186,6 +185,8 @@
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Core\ModulePhysics.cpp" />
+    <ClCompile Include="Modules\Foreground\ModuleFadeToBlack.cpp" />
+    <ClCompile Include="Modules\Foreground\ModuleHUD.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi5.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi2.cpp" />
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
@@ -194,9 +195,6 @@
     <ClCompile Include="Entities\Particle.cpp" />
     <ClCompile Include="Modules\Core\ModuleAudio.cpp" />
     <ClCompile Include="Modules\Core\ModuleCollisions.cpp" />
-    <ClCompile Include="Modules\Core\ModuleFadeToBlack.cpp" />
-    <ClCompile Include="Modules\Core\ModuleFonts.cpp" />
-    <ClCompile Include="Modules\Core\ModuleHUD.cpp" />
     <ClCompile Include="Modules\Core\ModuleInput.cpp" />
     <ClCompile Include="Modules\Core\ModuleParticles.cpp" />
     <ClCompile Include="Modules\Core\ModuleRender.cpp" />

@@ -3,17 +3,19 @@
 #include <SDL.h>
 
 #include "../Modules/Module.h"
+
 #include "../Modules/Core/ModuleWindow.h"
 #include "../Modules/Core/ModuleInput.h"
 #include "../Modules/Core/ModuleTextures.h"
 #include "../Modules/Core/ModuleAudio.h"
 #include "../Modules/Core/ModuleParticles.h"
 #include "../Modules/Core/ModuleCollisions.h"
-#include "../Modules/Core/ModuleFadeToBlack.h"
-#include "../Modules/Core/ModuleFonts.h"
 #include "../Modules/Core/ModulePhysics.h"
 #include "../Modules/Core/ModuleRender.h"
-#include "../Modules/Core/ModuleHUD.h"
+
+#include "../Modules/Foreground/ModuleFadeToBlack.h"
+#include "../Modules/Foreground/ModuleHUD.h"
+
 #include "../Modules/Gameplay/ModulePlayer.h"
 
 #include "../Modules/Levels/Scena_Exercisi1.h"
@@ -41,7 +43,6 @@ Application::Application() {
 	modules.push_back(player = new ModulePlayer(false));
 	modules.push_back(particles = new ModuleParticles(true));
 	modules.push_back(fade = new ModuleFadeToBlack(true));
-	modules.push_back(fonts = new ModuleFonts(true));
 	modules.push_back(collisions = new ModuleCollisions(false));
 	modules.push_back(hud = new ModuleHUD(true));
 	modules.push_back(render = new ModuleRender(true));
