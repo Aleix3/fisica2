@@ -1,16 +1,16 @@
 #include "ModuleCollisions.h"
 
-#include "../../Application/Application.h"
+#include "../../../Application/Application.h"
 
-#include "ModuleRender.h"
-#include "ModuleInput.h"
+#include "../Render/ModuleRender.h"
+#include "../Inputs/ModuleInput.h"
 #include <SDL_scancode.h>
 
 ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
-	
+
 	// EXERCISI 2
 	matrix[Collider::Type::TR_T1_SALT_LINK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FLOOR][Collider::Type::PLAYER] = true;
@@ -18,7 +18,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	matrix[Collider::Type::GRAV][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLATAFORM1][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLATAFORM2][Collider::Type::PLAYER] = true;
-	
+
 	// EXERCISI 3
 	matrix[Collider::Type::TR_OBJECTIVE_1][Collider::Type::BALL] = true;
 
@@ -117,7 +117,7 @@ void ModuleCollisions::DebugDraw() {
 
 		case Collider::Type::PLAYER: App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha); break;// green
 		case Collider::Type::BALL: App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha); break;// red
-		
+
 		case Collider::Type::TR_T1_SALT_LINK: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		case Collider::Type::PLATAFORM: App->render->DrawQuad(colliders[i]->rect, 255, 50, 55, alpha); break; // reddish
 		case Collider::Type::PLATAFORM1: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow

@@ -1,6 +1,6 @@
 #include "Path.h"
 
-#include "Animation.h"
+#include "../Modules/Core/Render/Animation.h"
 
 void Path::PushBack(fPoint speed, uint frames, Animation* animation) {
 	steps[totalSteps].animation = animation;
