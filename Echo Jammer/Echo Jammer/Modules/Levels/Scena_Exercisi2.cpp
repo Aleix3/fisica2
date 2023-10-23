@@ -50,10 +50,10 @@ bool Scena_Exercisi2::Start()
 	App->collisions->AddCollider({ 150 , 240, 240 , 20 }, Collider::Type::PLATAFORM, this);
 	App->collisions->AddCollider({ 550 , 240, 240 , 20 }, Collider::Type::PLATAFORM1, this);
 	App->collisions->AddCollider({ 150 , 260, 240 , 10 }, Collider::Type::PLATAFORM2, this);
-	App->collisions->AddCollider({ 500 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
-	App->collisions->AddCollider({ 810 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
-	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
-	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 470 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 840 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 80 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 450 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
 	//App->collisions->AddCollider({ 150 , 150, 220 , 30 }, Collider::Type::GRAV, this);
 	return true;
 }
@@ -78,13 +78,13 @@ Update_Status Scena_Exercisi2::Update() {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_REPEAT && !isJumping)
 	{
 		isJumping = true;
-		JumpForce = 10 * JumpSpeed;
+		JumpForce = 16 * JumpSpeed;
 
 	}
 	
 	if (isJumping) {
 		if (gravityOn == true) {
-			Gravity = 3;
+			Gravity = 4;
 		}
 
 		App->player->position.y -= JumpSpeed;
@@ -102,7 +102,7 @@ Update_Status Scena_Exercisi2::Update() {
 }
 
 Update_Status Scena_Exercisi2::PostUpdate() {
-	App->render->Blit(textura_fondo, 0, 0, &rectFondo);
+	App->render->Blit(textura_fondo, 0, 0);
 	App->render->Blit(textura_plataform, 150, 220);
 	App->render->Blit(textura_plataform, 550, 220);
 
@@ -148,7 +148,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	{
 		ResetPlatform = true;
 		LOG("FALLING");
-		Gravity = 3;
+		Gravity = 4;
 	}
 	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER) {
 		Gravity = 0;

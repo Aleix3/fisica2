@@ -36,7 +36,7 @@ private:
 
 	bool isJumping = false; 
 	int JumpForce = 0;    
-	int JumpSpeed = 5;      
+	int JumpSpeed = 8;      
 	int Gravity = 1;
 	bool gravityOn = true;  
 
