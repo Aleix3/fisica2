@@ -158,12 +158,14 @@
     <ClInclude Include="Application\Globals.h" />
     <ClInclude Include="Application\MemLeaks.h" />
     <ClInclude Include="Modules\Core\Physics\ModulePhysics.h" />
+    <ClInclude Include="Modules\Core\Timers\Timer.h" />
     <ClInclude Include="Modules\Foreground\ModuleFadeToBlack.h" />
     <ClInclude Include="Modules\Foreground\ModuleHUD.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi5.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h" />
+    <ClInclude Include="Utils\Defs.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
     <ClInclude Include="Modules\Core\Entities\Particle.h" />
@@ -178,15 +180,19 @@
     <ClInclude Include="Modules\Module.h" />
     <ClInclude Include="Modules\Core\Render\Animation.h" />
     <ClInclude Include="Modules\Core\Collisions\Collider.h" />
+    <ClInclude Include="Utils\List.h" />
     <ClInclude Include="Utils\p2Point.h" />
     <ClInclude Include="Utils\Path.h" />
     <ClInclude Include="Utils\PatrolPath.h" />
+    <ClInclude Include="Modules\Core\Timers\PerfTimer.h" />
+    <ClInclude Include="Utils\SString.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application\Application.cpp" />
     <ClCompile Include="Application\Globals.cpp" />
     <ClCompile Include="Application\Main.cpp" />
     <ClCompile Include="Modules\Core\Physics\ModulePhysics.cpp" />
+    <ClCompile Include="Modules\Core\Timers\Timer.cpp" />
     <ClCompile Include="Modules\Foreground\ModuleFadeToBlack.cpp" />
     <ClCompile Include="Modules\Foreground\ModuleHUD.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi5.cpp" />
@@ -207,6 +213,7 @@
     <ClCompile Include="Modules\Core\Collisions\Collider.cpp" />
     <ClCompile Include="Utils\Path.cpp" />
     <ClCompile Include="Utils\PatrolPath.cpp" />
+    <ClCompile Include="Modules\Core\Timers\PerfTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="_Assets\Exercisi1\caja.png" />

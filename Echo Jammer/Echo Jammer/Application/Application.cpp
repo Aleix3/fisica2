@@ -23,13 +23,15 @@
 #include "../Modules/Levels/Scena_Exercisi3.h"
 #include "../Modules/Levels/Scena_Exercisi5.h"
 
-int _start_time = SDL_GetTicks();
-int last_frame_time = _start_time;
-int frame_counter = 0;
-int elapsed_time = 0;
-int fps = 0;
 
 Application::Application() {
+	Timer timer = Timer();
+	startupTime = Timer();
+	frameTime = PerfTimer();
+	lastSecFrameTime = PerfTimer();
+
+	frames = 0;
+
 	modules.push_back(window = new ModuleWindow(true));
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
@@ -48,6 +50,8 @@ Application::Application() {
 	modules.push_back(render = new ModuleRender(true));
 
 	sizeVector = modules.size();
+
+	LOG("Timer App Constructor: %f", timer.ReadMSec());
 }
 
 Application::~Application() {
@@ -57,8 +61,20 @@ Application::~Application() {
 	}
 }
 
+bool Application::LoadConfig()
+{
+	return false;
+}
+
 bool Application::Init() {
+	Timer timer = Timer();
+
+	//bool ret = LoadConfig();
+
 	bool ret = true;
+
+	title.Create("Fisica 2 ...");
+	window->SetTitle(title.GetString());
 
 	// All modules (active and disabled) will be initialized
 	for (int i = 0; i < sizeVector && ret; ++i)
@@ -68,7 +84,14 @@ bool Application::Init() {
 	for (int i = 0; i < sizeVector && ret; ++i)
 		ret = modules[i]->startEnabled ? modules[i]->Enable() : true;
 
+	LOG("Timer App Awake(): %f", timer.ReadMSec());
+
 	return ret;
+}
+
+bool Application::PreUpdate()
+{
+	return false;
 }
 
 Update_Status Application::Update() {
@@ -102,6 +125,11 @@ Update_Status Application::Update() {
 	last_frame_time = SDL_GetTicks();
 
 	return ret;
+}
+
+bool Application::PostUpdate()
+{
+	return false;
 }
 
 bool Application::CleanUp() {
