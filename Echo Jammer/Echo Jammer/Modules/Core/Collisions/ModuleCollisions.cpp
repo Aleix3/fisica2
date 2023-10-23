@@ -120,7 +120,7 @@ void ModuleCollisions::DebugDraw() {
 
 		case Collider::Type::TR_T1_SALT_LINK: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 		case Collider::Type::PLATAFORM: App->render->DrawQuad(colliders[i]->rect, 255, 50, 55, alpha); break; // reddish
-		case Collider::Type::PLATAFORM1: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
+		case Collider::Type::PLATAFORM1: App->render->DrawQuad(colliders[i]->rect, 255, 50, 55, alpha); break; // yellow
 		case Collider::Type::PLATAFORM2: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
 		case Collider::Type::GRAV: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
 		case Collider::Type::TR_OBJECTIVE_1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow

@@ -34,12 +34,11 @@ private:
 	int velocitatNivell = 0;
 	int InitialVel = 0;
 
-	bool isJumping = false; // Track if the player is jumping
-	int JumpForce = 0;      // Track the force applied during the jump
-	int JumpSpeed = 5;      // The speed at which the player jumps
+	bool isJumping = false; 
+	int JumpForce = 0;    
+	int JumpSpeed = 5;      
 	int Gravity = 1;
-	bool gravityEnabled = true;  // Control gravity globally by default
-	bool platformGravityEnabled = true; // Control gravity for the platform collider
+	bool gravityOn = true;  
 
 	bool saltActivat = false;
 	bool stopGame = false;

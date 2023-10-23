@@ -45,11 +45,15 @@ bool Scena_Exercisi2::Start()
 
 	App->collisions->Enable();
 
-	App->collisions->AddCollider({ 600 , 200, 20 , 220 }, Collider::Type::TR_T1_SALT_LINK, this);
+	App->collisions->AddCollider({ 550 , 260, 240 , 150 }, Collider::Type::TR_T1_SALT_LINK, this);
 	App->collisions->AddCollider({ 0 , 355, 1000 , 100 }, Collider::Type::FLOOR, this);
 	App->collisions->AddCollider({ 150 , 240, 240 , 20 }, Collider::Type::PLATAFORM, this);
+	App->collisions->AddCollider({ 550 , 240, 240 , 20 }, Collider::Type::PLATAFORM1, this);
+	App->collisions->AddCollider({ 150 , 260, 240 , 10 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 500 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
+	App->collisions->AddCollider({ 810 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
 	App->collisions->AddCollider({ 100 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
-	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM1, this);
+	App->collisions->AddCollider({ 410 , 225, 20 , 50 }, Collider::Type::PLATAFORM2, this);
 	//App->collisions->AddCollider({ 150 , 150, 220 , 30 }, Collider::Type::GRAV, this);
 	return true;
 }
@@ -77,9 +81,9 @@ Update_Status Scena_Exercisi2::Update() {
 		JumpForce = 10 * JumpSpeed;
 
 	}
-
+	
 	if (isJumping) {
-		if (gravityEnabled == true) {
+		if (gravityOn == true) {
 			Gravity = 3;
 		}
 
@@ -119,11 +123,11 @@ bool Scena_Exercisi2::CleanUp() {
 }
 
 void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
-
-	if (c1->type == Collider::TR_T1_SALT_LINK && c2->type == Collider::PLAYER && !saltActivat)
+	
+	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
 	{
-		ResetPlayerPosition = true;
-		LOG("TRIGGER ACTIVAT");
+		Gravity = 0;
+		LOG("ADVANCED TO THE NEXT LEVEL");
 		saltActivat = true;
 	}
 
@@ -144,24 +148,7 @@ void Scena_Exercisi2::OnCollision(Collider* c1, Collider* c2) {
 	{
 		ResetPlatform = true;
 		LOG("FALLING");
-		if (ResetPlatform == true)
-		{
-			App->player->position.x = 50;
-			App->player->position.y = 300;
-			ResetPlatform = false;
-		}
-	}
-	if (c1->type == Collider::PLATAFORM1 && c2->type == Collider::PLAYER)
-	{
-		ResetPlatform = true;
-		LOG("FALLING");
 		Gravity = 3;
-		/*	if (ResetPlatform == true)
-			{
-				App->player->position.x = 350;
-				App->player->position.y = 300;
-				ResetPlatform = false;
-			}*/
 	}
 	if (c1->type == Collider::PLATAFORM && c2->type == Collider::PLAYER) {
 		Gravity = 0;
