@@ -1,6 +1,17 @@
 #include "Scena_Pinball.h"
 
-Scena_Pinball::Scena_Pinball(bool startEnabled)
+#include "../../Application/Application.h"
+
+#include "../Core/Render/ModuleTextures.h"
+#include "../Core/Render/ModuleRender.h"
+#include "../Core/Collisions/ModuleCollisions.h"
+#include "../Core/Audio/ModuleAudio.h"
+#include "../Core/Inputs/ModuleInput.h"
+#include "../Foreground/ModuleFadeToBlack.h"
+#include "../Foreground/ModuleHUD.h"
+#include "../Gameplay/ModulePlayer.h"
+
+Scena_Pinball::Scena_Pinball(bool startEnabled)	: Module(startEnabled)
 {
 }
 
