@@ -23,13 +23,15 @@
 #include "../Modules/Levels/Scena_Exercisi3.h"
 #include "../Modules/Levels/Scena_Exercisi5.h"
 
-int _start_time = SDL_GetTicks();
-int last_frame_time = _start_time;
-int frame_counter = 0;
-int elapsed_time = 0;
-int fps = 0;
 
 Application::Application() {
+	Timer timer = Timer();
+	startupTime = Timer();
+	frameTime = PerfTimer();
+	lastSecFrameTime = PerfTimer();
+
+	frames = 0;
+
 	modules.push_back(window = new ModuleWindow(true));
 	modules.push_back(input = new ModuleInput(true));
 	modules.push_back(textures = new ModuleTextures(true));
@@ -48,6 +50,8 @@ Application::Application() {
 	modules.push_back(render = new ModuleRender(true));
 
 	sizeVector = modules.size();
+
+	LOG("Timer App Constructor: %f", timer.ReadMSec());
 }
 
 Application::~Application() {
@@ -57,8 +61,20 @@ Application::~Application() {
 	}
 }
 
+bool Application::LoadConfig()
+{
+	return false;
+}
+
 bool Application::Init() {
+	Timer timer = Timer();
+
+	//bool ret = LoadConfig();
+
 	bool ret = true;
+
+	title.Create("Fisica 2 ...");
+	window->SetTitle(title.GetString());
 
 	// All modules (active and disabled) will be initialized
 	for (int i = 0; i < sizeVector && ret; ++i)
@@ -68,11 +84,15 @@ bool Application::Init() {
 	for (int i = 0; i < sizeVector && ret; ++i)
 		ret = modules[i]->startEnabled ? modules[i]->Enable() : true;
 
+	LOG("Timer App Awake(): %f", timer.ReadMSec());
+
 	return ret;
 }
 
 Update_Status Application::Update() {
 	Update_Status ret = Update_Status::UPDATE_CONTINUE;
+
+	frameTime.Start(); // PrepareUpdate
 
 	for (int i = 0; i < sizeVector && ret == Update_Status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : Update_Status::UPDATE_CONTINUE;
@@ -85,24 +105,44 @@ Update_Status Application::Update() {
 
 
 
-	// Control the FPS
-	elapsed_time = SDL_GetTicks() - last_frame_time;
-	if (elapsed_time < 1000 / 60) {
-		SDL_Delay(1000 / 60 - elapsed_time);
+	double currentDt = frameTime.ReadMs();
+	if (maxFrameDuration > 0 && currentDt < maxFrameDuration) {
+		uint32 delay = (uint32)(maxFrameDuration - currentDt);
+
+		PerfTimer delayTimer = PerfTimer();
+		SDL_Delay(delay);
 	}
 
-	frame_counter++;
-	if (SDL_GetTicks() - _start_time > 1000) {
-		fps = frame_counter * 1000 / (SDL_GetTicks() - _start_time);
-		std::cout << "FPS: " << fps << std::endl;
-		_start_time = SDL_GetTicks();
-		frame_counter = 0;
+	// Amount of frames since startup
+	frameCount++;
+
+	// Amount of time since game start (use a low resolution timer)
+	secondsSinceStartup = startupTime.ReadSec();
+
+	// Amount of ms took the last update (dt)
+	dt = (float)frameTime.ReadMs();
+
+	// Amount of frames during the last second
+	lastSecFrameCount++;
+
+	// Average FPS for the whole game life
+	if (lastSecFrameTime.ReadMs() > 1000) {
+		lastSecFrameTime.Start();
+		averageFps = (averageFps + lastSecFrameCount) / 2;
+		framesPerSecond = lastSecFrameCount;
+		lastSecFrameCount = 0;
 	}
 
-	last_frame_time = SDL_GetTicks();
+	// Shows the time measurements in the window title
+	static char title[256];
+	sprintf_s(title, 256, "Av.FPS: %.2f Last sec frames: %i Last dt: %.3f Time since startup: %I32u Frame Count: %I64u ",
+		averageFps, framesPerSecond, dt, secondsSinceStartup, frameCount);
+
+	window->SetTitle(title);
 
 	return ret;
 }
+
 
 bool Application::CleanUp() {
 	bool ret = true;

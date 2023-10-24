@@ -3,6 +3,13 @@
 
 #include "Globals.h"
 #include <vector>
+#include "../Utils/SString.h"
+#include "../Utils/List.h"
+#include "../Modules/Core/Timers/PerfTimer.h"
+#include "../Modules/Core/Timers/Timer.h"
+
+//#include "EntityManager.h"
+//#include "PugiXml/src/pugixml.hpp"
 
 class Module;
 
@@ -28,11 +35,12 @@ class Scena_Exercisi5;
 class Application {
 
 public:
-	//Constructor. Creates all necessary modules for the application
-	Application();
 
-	//Destructor. Removes all module objects
+	Application();
 	~Application();
+
+	// Load config file
+	bool LoadConfig();
 
 	//Initializes all modules
 	bool Init();
@@ -45,8 +53,6 @@ public:
 
 
 public:
-	// An array to store all modules
-	//Module* modules[NUM_MODULES];
 	std::vector<Module*> modules;
 
 	// All the modules stored individually
@@ -63,7 +69,7 @@ public:
 	ModuleFonts* fonts = nullptr;
 	ModuleRender* render = nullptr;
 	ModuleHUD* hud = nullptr;
-	
+
 	Scena_Exercisi1* scena_Exercisi1 = nullptr;
 	Scena_Exercisi2* scena_Exercisi2 = nullptr;
 	Scena_Exercisi3* scena_Exercisi3 = nullptr;
@@ -71,6 +77,28 @@ public:
 
 private:
 	int sizeVector = 0;
+
+	int argc;
+	char** args;
+	SString title;
+	SString organization;
+
+//	List<Module*> modules;
+
+	uint frames;
+	float dt;
+
+	Timer startupTime;
+	PerfTimer frameTime;
+	PerfTimer lastSecFrameTime;
+
+	uint64 frameCount = 0;
+	uint32 framesPerSecond = 0;
+	uint32 lastSecFrameCount = 0;
+
+	float averageFps = 0.0f;
+	uint32 secondsSinceStartup = 0;
+	uint32 maxFrameDuration = 16;
 };
 
 // Global var made extern for Application ---

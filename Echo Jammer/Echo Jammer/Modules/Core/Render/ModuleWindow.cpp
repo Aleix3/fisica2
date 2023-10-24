@@ -56,6 +56,11 @@ bool ModuleWindow::CleanUp() {
 	return true;
 }
 
+void ModuleWindow::SetTitle(const char* new_title)
+{
+	SDL_SetWindowTitle(window, new_title);
+}
+
 
 
 
