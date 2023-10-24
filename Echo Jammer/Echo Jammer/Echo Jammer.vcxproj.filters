@@ -121,6 +121,12 @@
     <ClInclude Include="Modules\Core\Timers\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Modules\Levels\Scena_Pinball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules\Core\Physics\TirParabolic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Modules\Core\Collisions\Collider.cpp">
@@ -199,6 +205,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Modules\Core\Timers\Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Levels\Scena_Pinball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules\Core\Physics\TirParabolic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

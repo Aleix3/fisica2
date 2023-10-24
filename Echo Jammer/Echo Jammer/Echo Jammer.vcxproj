@@ -165,6 +165,8 @@
     <ClInclude Include="Modules\Levels\Scena_Exercisi2.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi3.h" />
     <ClInclude Include="Modules\Levels\Scena_Exercisi1.h" />
+    <ClInclude Include="Modules\Levels\Scena_Pinball.h" />
+    <ClInclude Include="Modules\Core\Physics\TirParabolic.h" />
     <ClInclude Include="Utils\Defs.h" />
     <ClInclude Include="Utils\DirectionHelper.h" />
     <ClInclude Include="Utils\Directions.h" />
@@ -199,6 +201,8 @@
     <ClCompile Include="Modules\Levels\Scena_Exercisi2.cpp" />
     <ClCompile Include="Modules\Levels\Scena_exercisi3.cpp" />
     <ClCompile Include="Modules\Levels\Scena_Exercisi1.cpp" />
+    <ClCompile Include="Modules\Levels\Scena_Pinball.cpp" />
+    <ClCompile Include="Modules\Core\Physics\TirParabolic.cpp" />
     <ClCompile Include="Utils\DirectionHelper.cpp" />
     <ClCompile Include="Modules\Core\Entities\Particle.cpp" />
     <ClCompile Include="Modules\Core\Audio\ModuleAudio.cpp" />

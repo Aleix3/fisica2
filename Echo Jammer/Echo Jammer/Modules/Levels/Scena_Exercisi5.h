@@ -37,10 +37,10 @@ private:
 	SDL_Rect _rectAspid;
 	SDL_Rect _rectIdleCanon;
 	SDL_Rect _rectGround1;
-	SDL_Rect _rectRectangle_1;
-	SDL_Rect _rectRectangle_2;
-	SDL_Rect _rectRectangle_3;
-	SDL_Rect _rectRectangle_4;
+	SDL_Rect _rectRectangle_top;
+	SDL_Rect _rectRectangle_left;
+	SDL_Rect _rectRectangle_right;
+	SDL_Rect _rectRectangle_bot;
 
 	Animation _shootAnimation;
 

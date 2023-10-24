@@ -23,10 +23,10 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled) {
 	matrix[Collider::Type::TR_OBJECTIVE_1][Collider::Type::BALL] = true;
 
 	// EXERCISI 5
-	matrix[Collider::Type::RECTANGLE_1][Collider::Type::BALL] = true;
-	matrix[Collider::Type::RECTANGLE_2][Collider::Type::BALL] = true;
-	matrix[Collider::Type::RECTANGLE_3][Collider::Type::BALL] = true;
-	matrix[Collider::Type::RECTANGLE_4][Collider::Type::BALL] = true;
+	matrix[Collider::Type::RECTANGLE_TOP][Collider::Type::BALL] = true;
+	matrix[Collider::Type::RECTANGLE_LEFT][Collider::Type::BALL] = true;
+	matrix[Collider::Type::RECTANGLE_RIGHT][Collider::Type::BALL] = true;
+	matrix[Collider::Type::RECTANGLE_BOT][Collider::Type::BALL] = true;
 
 }
 
@@ -125,10 +125,10 @@ void ModuleCollisions::DebugDraw() {
 		case Collider::Type::GRAV: App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha); break; // yellow
 		case Collider::Type::TR_OBJECTIVE_1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break; // yellow
 
-		case Collider::Type::RECTANGLE_1: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
-		case Collider::Type::RECTANGLE_2: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
-		case Collider::Type::RECTANGLE_3: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
-		case Collider::Type::RECTANGLE_4: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
+		case Collider::Type::RECTANGLE_TOP: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
+		case Collider::Type::RECTANGLE_LEFT: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
+		case Collider::Type::RECTANGLE_RIGHT: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
+		case Collider::Type::RECTANGLE_BOT: App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha); break;
 		}
 	}
 }

@@ -46,11 +46,13 @@ bool Scena_Exercisi5::Start()
 	_rectFondo = { 0, 0, _weigthNivell, _heightNivell };
 	_rectCanon = { 220, 210, 48, 48 };
 	_rectBallSprite = { 288, 0, 48, 48 };
-	_rectBall = { 220, 210, 48, 48 };
-	_rectRectangle_1 = { _posicioAspidAleatoriX, 350, 2, 57 };
-	_rectRectangle_2 = { _posicioAspidAleatoriX, 350, 58, 2 };
-	_rectRectangle_3 = { _posicioAspidAleatoriX + 57, 350 , 2, 57 };
-	_rectRectangle_4 = { _posicioAspidAleatoriX, 350 + 57, 58, 2 };
+	_rectBall = { 220, 210, 15, 15 };
+
+	_rectRectangle_top = { 500, 200, 60, 20 };
+	_rectRectangle_left = { 500, 200 + 20, 20, 60 };
+	_rectRectangle_right = { 500 + 40, 200 + 20 , 20, 60 };
+	_rectRectangle_bot = { 500, 200 + 80, 60, 20 };
+
 	_rectIdleCanon = { 48 * 4, 0, 48, 48 };
 	_rectGround1 = { 0, 400, 1000, 70 };
 
@@ -69,11 +71,12 @@ bool Scena_Exercisi5::Start()
 	App->collisions->AddCollider(_rectGround1, Collider::Type::GROUND, this);
 	_colliderAspid = App->collisions->AddCollider(_rectAspid, Collider::Type::TR_OBJECTIVE_1, this);
 	_colliderBall = App->collisions->AddCollider(_rectBall, Collider::Type::BALL, this);
-	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_1, Collider::Type::RECTANGLE_1, this);
-	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_2, Collider::Type::RECTANGLE_2, this);
-	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_3, Collider::Type::RECTANGLE_3, this);
-	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_4, Collider::Type::RECTANGLE_4, this);
-	
+
+	_colliderRectangle_1 = App->collisions->AddCollider(_rectRectangle_top, Collider::Type::RECTANGLE_TOP, this);
+	_colliderRectangle_2 = App->collisions->AddCollider(_rectRectangle_left, Collider::Type::RECTANGLE_LEFT, this);
+	_colliderRectangle_3 = App->collisions->AddCollider(_rectRectangle_right, Collider::Type::RECTANGLE_RIGHT, this);
+	_colliderRectangle_4 = App->collisions->AddCollider(_rectRectangle_bot, Collider::Type::RECTANGLE_BOT, this);
+
 
 	return true;
 }
@@ -258,26 +261,26 @@ void Scena_Exercisi5::OnCollision(Collider* c1, Collider* c2) {
 		_start = false;
 		_colliderBall->rect = _rectBall;
 	}
-	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_1) { // Esquerra
-		LOG("Esquerra!");
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_TOP) { // Esquerra
+		LOG("TOP!");
 		_shooting = false;
 		_start = false;
 		_colliderBall->rect = _rectBall;
 	}
-	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_2) { // Arriba
-		LOG("Arriba!");
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_LEFT) { // Arriba
+		LOG("LEFT!");
 		_shooting = false;
 		_start = false;
 		_colliderBall->rect = _rectBall;
 	}
-	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_3) { // Dreta
-		LOG("Dreta!");
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_RIGHT) { // Dreta
+		LOG("RIGHT!");
 		_shooting = false;
 		_start = false;
 		_colliderBall->rect = _rectBall;
 	}
-	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_4) { // Abajo
-		LOG("Abajo!");
+	if (c1->type == Collider::BALL && c2->type == Collider::RECTANGLE_BOT) { // Abajo
+		LOG("BOT!");
 		_shooting = false;
 		_start = false;
 		_colliderBall->rect = _rectBall;
