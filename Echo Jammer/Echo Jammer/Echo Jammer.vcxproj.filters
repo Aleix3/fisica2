@@ -341,6 +341,30 @@
     <Image Include="_Assets\rtype_font.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Desktop Icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Font.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Help Images.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Maelstrom Prototype.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Pinball Table Components.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Space Cadet 3D Pinball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Startup Screen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="_Assets\3D Pinball Space Cadet\Table Icons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="_Assets\Exercisi1\hello_man.wav">

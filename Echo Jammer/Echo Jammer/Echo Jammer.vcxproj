@@ -220,6 +220,14 @@
     <ClCompile Include="Modules\Core\Timers\PerfTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="_Assets\3D Pinball Space Cadet\Desktop Icon.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Font.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Help Images.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Maelstrom Prototype.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Pinball Table Components.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Space Cadet 3D Pinball.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Startup Screen.png" />
+    <Image Include="_Assets\3D Pinball Space Cadet\Table Icons.png" />
     <Image Include="_Assets\Exercisi1\caja.png" />
     <Image Include="_Assets\Exercisi1\planta.png" />
     <Image Include="_Assets\Exercisi1\planta2.png" />
