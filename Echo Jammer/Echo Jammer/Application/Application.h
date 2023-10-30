@@ -31,6 +31,7 @@ class Scena_Exercisi1;
 class Scena_Exercisi2;
 class Scena_Exercisi3;
 class Scena_Exercisi5;
+class Scena_Pinball;
 
 class Application {
 
@@ -74,6 +75,7 @@ public:
 	Scena_Exercisi2* scena_Exercisi2 = nullptr;
 	Scena_Exercisi3* scena_Exercisi3 = nullptr;
 	Scena_Exercisi5* scena_Exercisi5 = nullptr;
+	Scena_Pinball* scena_Pinball = nullptr;
 
 private:
 	int sizeVector = 0;
