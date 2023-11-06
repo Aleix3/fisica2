@@ -66,7 +66,7 @@ private:
 	float _angle = _graus * M_PI / 180; // Angle en radians
 	float _temps = 0;
 
-	int _velocitatInicial = 10; // m/s
+	int _velocitatInicial = 5; // m/s
 	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
 	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
 
