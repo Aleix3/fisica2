@@ -64,8 +64,8 @@ bool Scene::Start()
 	
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
-	app->tex->GetSize(_textura_aspid, texW, texH);
-	pbody = app->physics->CreateCircle(position.x, position.y, texW / 2, bodyType::DYNAMIC);
+	
+	pbody = app->physics->CreateCircle(position.x, position.y, 29, bodyType::DYNAMIC);
 
 
 	for (int i = 0; i < 4; i++)
@@ -109,12 +109,13 @@ bool Scene::Update(float dt)
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
+		_velocitatInicial_Y = 5;
 	}
 
 	b2Transform pbodyPos = pbody->body->GetTransform();
 
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - texW/2;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - texW/2;
+	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 29;
+	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 29;
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
