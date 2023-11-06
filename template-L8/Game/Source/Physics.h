@@ -83,4 +83,11 @@ private:
 
 	// Box2D World
 	b2World* world;
+
+
+
+
+
+	SDL_Texture* _texturaGeneral = nullptr;
+	SDL_Rect _rectEscenari;
 };

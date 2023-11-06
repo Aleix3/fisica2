@@ -108,7 +108,7 @@ bool Scene::PostUpdate() {
 
 	_aspidAnimation.Update();
 	app->render->DrawTexture(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
-	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	return ret;
 }

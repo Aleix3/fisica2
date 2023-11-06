@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Window.h"
 #include "Box2D/Box2D/Box2D.h"
+#include "Textures.h"
 
 // Tell the compiler to reference the compiled Box2D libraries
 #ifdef _DEBUG
@@ -33,6 +34,12 @@ Physics::~Physics()
 
 bool Physics::Start()
 {
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_rectEscenari = { 0, 0, 570, 470 };
+
+
+
+
 	LOG("Creating Physics 2D environment");
 
 	// Create a new World
@@ -222,6 +229,8 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 bool Physics::PostUpdate()
 {
 	bool ret = true;
+
+	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	// Activate or deactivate debug mode
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
