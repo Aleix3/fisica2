@@ -41,6 +41,7 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
+	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
 	PhysBody* c1 = app->physics->CreateRectangle(320, 411, 256, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
@@ -108,6 +109,7 @@ bool Scene::Update(float dt)
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
+		_velocitatInicial_Y = 2;
 	}
 
 	b2Transform pbodyPos = pbody->body->GetTransform();
@@ -130,7 +132,7 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	_aspidAnimation.Update();
-	app->render->DrawTexture(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
+	app->render->DrawTexture(_textura_aspid, position.x, position.y, &_aspidAnimation.GetCurrentFrame());
 	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	return ret;
