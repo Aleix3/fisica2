@@ -11,18 +11,15 @@
 #include "Defs.h"
 #include "Log.h"
 
-Scene::Scene() : Module()
-{
+Scene::Scene() : Module() {
 	name.Create("scene");
 }
 
 // Destructor
-Scene::~Scene()
-{}
+Scene::~Scene() {}
 
 // Called before render is available
-bool Scene::Awake(pugi::xml_node config)
-{
+bool Scene::Awake(pugi::xml_node config) {
 	LOG("Loading Scene");
 	bool ret = true;
 
@@ -30,10 +27,9 @@ bool Scene::Awake(pugi::xml_node config)
 }
 
 // Called before the first frame
-bool Scene::Start()
-{
+bool Scene::Start() {
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	
+
 	PhysBody* c1 = app->physics->CreateRectangle(100, 550, 256, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	//Music is commented so that you can add your own music
@@ -50,7 +46,7 @@ bool Scene::Start()
 
 	position.x = 100;
 	position.y = 100;
-	
+
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
 	app->tex->GetSize(_textura_aspid, texW, texH);
@@ -63,42 +59,38 @@ bool Scene::Start()
 }
 
 // Called each loop iteration
-bool Scene::PreUpdate()
-{
+bool Scene::PreUpdate() {
 	return true;
 }
 
 // Called each loop iteration
-bool Scene::Update(float dt)
-{
+bool Scene::Update(float dt) {
 	b2Vec2 velocity = pbody->body->GetLinearVelocity();
 
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-	{
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
 		_graus = 0;
 		_angle = _graus * M_PI / 180; // Angle en radians
 		_temps = 0;
 
-		_velocitatInicial_Y += 0.2 ;
+		_velocitatInicial_Y += 0.2;
 
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 
-		
+
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
-	{
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
 	}
 
 	b2Transform pbodyPos = pbody->body->GetTransform();
 
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - texW/2;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - texW/2;
+	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - texW / 2;
+	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - texW / 2;
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
@@ -107,8 +99,7 @@ bool Scene::Update(float dt)
 }
 
 // Called each loop iteration
-bool Scene::PostUpdate()
-{
+bool Scene::PostUpdate() {
 	bool ret = true;
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
@@ -122,8 +113,7 @@ bool Scene::PostUpdate()
 }
 
 // Called before quitting
-bool Scene::CleanUp()
-{
+bool Scene::CleanUp() {
 	LOG("Freeing scene");
 
 	return true;
