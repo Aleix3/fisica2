@@ -49,8 +49,8 @@ bool Scene::Start() {
 
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
-	app->tex->GetSize(_textura_aspid, texW, texH);
-	pbody = app->physics->CreateCircle(position.x, position.y, texW / 2, bodyType::DYNAMIC);
+	
+	pbody = app->physics->CreateCircle(position.x, position.y, 29, bodyType::DYNAMIC);
 
 
 	_rectEscenari = { 0, 0, 570, 470 };
@@ -85,6 +85,7 @@ bool Scene::Update(float dt) {
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP) {
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
+		_velocitatInicial_Y = 5;
 	}
 
 	b2Transform pbodyPos = pbody->body->GetTransform();
