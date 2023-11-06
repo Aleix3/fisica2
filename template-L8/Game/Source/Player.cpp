@@ -28,20 +28,20 @@ bool Player::Awake() {
 
 bool Player::Start() {
 
-	texture = app->tex->Load(config.attribute("texturePath").as_string());
+	//texture = app->tex->Load(config.attribute("texturePath").as_string());
 
-	// L07 DONE 5: Add physics to the player - initialize physics body
-	app->tex->GetSize(texture, texW, texH);
-	pbody = app->physics->CreateCircle(position.x, position.y, texW / 2, bodyType::DYNAMIC);
+	//// L07 DONE 5: Add physics to the player - initialize physics body
+	//app->tex->GetSize(texture, texW, texH);
+	///*pbody = app->physics->CreateCircle(position.x, position.y, texW / 2, bodyType::DYNAMIC);*/
 
-	// L07 DONE 6: Assign player class (using "this") to the listener of the pbody. This makes the Physics module to call the OnCollision method
-	pbody->listener = this;
+	//// L07 DONE 6: Assign player class (using "this") to the listener of the pbody. This makes the Physics module to call the OnCollision method
+	//pbody->listener = this;
 
-	// L07 DONE 7: Assign collider type
-	pbody->ctype = ColliderType::PLAYER;
+	//// L07 DONE 7: Assign collider type
+	//pbody->ctype = ColliderType::PLAYER;
 
-	//initialize audio effect
-	pickCoinFxId = app->audio->LoadFx(config.attribute("coinfxpath").as_string());
+	////initialize audio effect
+	//pickCoinFxId = app->audio->LoadFx(config.attribute("coinfxpath").as_string());
 
 
 	return true;
@@ -53,7 +53,7 @@ bool Player::Update(float dt)
 
 	//L03: DONE 4: render the player texture and modify the position of the player using WSAD keys and render the texture
 	
-	b2Vec2 velocity = b2Vec2(0, -GRAVITY_Y);
+	/*b2Vec2 velocity = b2Vec2(0, -GRAVITY_Y);
 
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
 		velocity.x = -0.2*dt;
@@ -68,7 +68,7 @@ bool Player::Update(float dt)
 	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - texH / 2;
 	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - texH / 2;
 
-	app->render->DrawTexture(texture,position.x,position.y);
+	app->render->DrawTexture(texture,position.x,position.y);*/
 
 	return true;
 }
