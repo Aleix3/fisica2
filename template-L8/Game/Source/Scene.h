@@ -52,7 +52,12 @@ private:
 	Animation _aspidAnimation;
 	SDL_Rect _rectAspid;
 
-public:
+	SDL_Texture* _texturaGeneral = nullptr;
+	SDL_Rect _rectEscenari;
+	SDL_Rect _rectMarcadors;
+	SDL_Rect _rectPilota;
+	SDL_Rect _rectPalaRight;
+	SDL_Rect _rectPalaLeft;
 
 	int _gravetat = 550; //m/s^2
 	float _alturaInicial = 256; // m
@@ -70,6 +75,7 @@ public:
 
 	float _position_X = _velocitat_X * _temps;
 	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+
 };
 
 #endif // __SCENE_H__

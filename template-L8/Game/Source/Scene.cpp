@@ -26,27 +26,16 @@ bool Scene::Awake(pugi::xml_node config)
 	LOG("Loading Scene");
 	bool ret = true;
 
-	// TODO: Change player -> ball with physics
-	//Instantiate the player using the entity manager
-	//Get player paremeters
-	
-	//Assigns the XML node to a member in player
-	
-
-	
-
 	return ret;
 }
 
 // Called before the first frame
 bool Scene::Start()
 {
-	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
 	
 	PhysBody* c1 = app->physics->CreateRectangle(100, 550, 256, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
-
-	_textura_aspid = app->tex->Load("Assets/Textures/aspid.png");
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 
@@ -68,12 +57,7 @@ bool Scene::Start()
 	pbody = app->physics->CreateCircle(position.x, position.y, 29, bodyType::DYNAMIC);
 
 
-	for (int i = 0; i < 4; i++)
-		_aspidAnimation.PushBack({ 58 * i + 2, 0, 58, 57 });
-	_aspidAnimation.loop = true;
-	_aspidAnimation.speed = 0.2f;
-
-	
+	_rectEscenari = { 0, 0, 570, 470 };
 
 	return true;
 }
@@ -132,7 +116,8 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	_aspidAnimation.Update();
-	app->render->DrawTexture(_textura_aspid, position.x, position.y, &_aspidAnimation.GetCurrentFrame());
+	app->render->DrawTexture(_textura_aspid, _rectAspid.x, _rectAspid.y, &_aspidAnimation.GetCurrentFrame());
+	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	return ret;
 }
