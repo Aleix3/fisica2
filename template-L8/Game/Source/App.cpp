@@ -5,7 +5,6 @@
 #include "Textures.h"
 #include "Audio.h"
 #include "Scene.h"
-#include "Map.h"
 #include "Physics.h"
 
 #include "Defs.h"
@@ -35,7 +34,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	//L07 DONE 2: Add Physics module
 	physics = new Physics();
 	scene = new Scene();
-	map = new Map();
 	entityManager = new EntityManager();
 
 
@@ -48,7 +46,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	//L07 DONE 2: Add Physics module
 	AddModule(physics);
 	AddModule(scene);
-	AddModule(map);
 	AddModule(entityManager);
 
 	// Render last to swap buffer
