@@ -212,7 +212,7 @@ bool Map::Load(SString mapFileName)
         // L07 DONE 3: Create colliders      
         // L07 DONE 7: Assign collider type
         // Later you can create a function here to load and create the colliders from the map
-        PhysBody* c1 = app->physics->CreateRectangle(224 + 128, 544 + 32, 256, 64, STATIC);
+        PhysBody* c1 = app->physics->CreateRectangle(100, 150, 256, 64, STATIC);
         c1->ctype = ColliderType::PLATFORM;
 
         PhysBody* c2 = app->physics->CreateRectangle(352 + 64, 384 + 32, 128, 64, STATIC);

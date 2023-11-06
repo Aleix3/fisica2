@@ -34,6 +34,12 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	PhysBody* pbody;
+
+	iPoint position;
+
+	float jumpSpeed = 5.0f;
+
 private:
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
@@ -45,6 +51,25 @@ private:
 	SDL_Texture* _textura_aspid = nullptr;
 	Animation _aspidAnimation;
 	SDL_Rect _rectAspid;
+
+public:
+
+	int _gravetat = 550; //m/s^2
+	float _alturaInicial = 256; // m
+	int _graus = 30;
+	float _alturaInicialDeslpassamentX = 200; // m
+	float _angle = _graus * M_PI / 180; // Angle en radians
+	float _temps = 0;
+
+	int _velocitatInicial = 10; // m/s
+	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
+	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
+
+	float _velocitat_X = _velocitatInicial_X;
+	float _velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+
+	float _position_X = _velocitat_X * _temps;
+	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
 };
 
 #endif // __SCENE_H__
