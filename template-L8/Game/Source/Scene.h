@@ -45,6 +45,13 @@ private:
 	SDL_Texture* _textura_aspid = nullptr;
 	Animation _aspidAnimation;
 	SDL_Rect _rectAspid;
+
+	SDL_Texture* _texturaGeneral = nullptr;
+	SDL_Rect _rectEscenari;
+	SDL_Rect _rectMarcadors;
+	SDL_Rect _rectPilota;
+	SDL_Rect _rectPalaRight;
+	SDL_Rect _rectPalaLeft;
 };
 
 #endif // __SCENE_H__
