@@ -295,7 +295,7 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && suelo == true)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT )
 	{
 		_graus = 0;
 		_angle = _graus * M_PI / 180; // Angle en radians
@@ -306,7 +306,7 @@ bool Scene::Update(float dt)
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && suelo == true)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP )
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
