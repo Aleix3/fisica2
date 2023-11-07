@@ -11,62 +11,74 @@
 #include "Defs.h"
 #include "Log.h"
 
-int escenariGeneral[110] = {
-	679, 766,
-	605, 203,
-	594, 165,
-	584, 145,
-	568, 130,
-	550, 111,
-	525, 91,
-	497, 69,
-	470, 59,
-	429, 48,
-	392, 43,
-	348, 40,
-	322, 40,
-	295, 47,
-	268, 54,
-	250, 41,
-	231, 35,
-	207, 35,
-	187, 35,
-	163, 44,
-	159, 59,
-	155, 78,
-	159, 96,
-	176, 106,
-	187, 111,
-	169, 133,
-	155, 146,
-	147, 167,
-	138, 191,
-	133, 217,
-	134, 245,
-	140, 263,
-	130, 282,
-	116, 294,
-	105, 303,
-	102, 329,
-	98, 349,
-	75, 483,
-	91, 498,
-	110, 507,
-	110, 519,
-	91, 541,
-	81, 559,
-	44, 763,
-	91, 770,
-	101, 703,
-	218, 796,
-	216, 845,
-	522, 850,
-	525, 794,
-	586, 745,
-	592, 760,
+// Pivot -558, -1021
+
+
+int escenariGeneral[128] = {
+	455, 91,
+	488, 103,
+	512, 127,
+	537, 155,
+	556, 186,
+	560, 241,
+	517, 352,
+	523, 415,
+	562, 437,
+	593, 435,
+	598, 498,
+	608, 577,
+	614, 618,
+	625, 691,
+	631, 768,
 	606, 770,
-	626, 767,
-	636, 757
+	577, 749,
+	525, 800,
+	519, 846,
+	214, 847,
+	215, 796,
+	103, 707,
+	96, 758,
+	83, 770,
+	53, 765,
+	85, 553,
+	115, 520,
+	81, 490,
+	103, 307,
+	133, 273,
+	132, 197,
+	177, 112,
+	155, 90,
+	159, 59,
+	182, 39,
+	219, 33,
+	249, 41,
+	265, 54,
+	312, 46,
+	368, 39,
+	422, 44,
+	467, 55,
+	511, 77,
+	567, 126,
+	601, 192,
+	617, 274,
+	631, 378,
+	645, 474,
+	662, 573,
+	678, 679,
+	686, 724,
+	692, 767,
+	691, 824,
+	650, 825,
+	645, 768,
+	635, 685,
+	625, 603,
+	610, 488,
+	596, 389,
+	579, 288,
+	569, 198,
+	545, 143,
+	509, 109,
+	450, 77
 };
 int sizeEscenariGeneral = sizeof(escenariGeneral) / sizeof(escenariGeneral[0]);
 
@@ -240,7 +252,7 @@ bool Scene::Start()
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
-	_textura_ball = app->tex->Load("Assets/Textures/Desktop_icon.png");
+	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
 
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
@@ -254,12 +266,12 @@ bool Scene::Start()
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
-	position.x = 600; position.y = 730;
+	position.x = 650; position.y = 730;
 	
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
 	
-	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
+	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
 	Create_Bumper(210, 95, 0, 0, 15, true);
 	Create_Bumper(333, 205, 17, 0, 17, true);
@@ -267,7 +279,7 @@ bool Scene::Start()
 	Create_Bumper(370, 250, 17, 0, 17, true);
 
 
-		_ballAnimation.PushBack({ 50, 10, 30, 30 });
+		_ballAnimation.PushBack({ 37, 6, 25, 26 });
 	_ballAnimation.loop = false;
 
 	_rectEscenari = { 0, 0, 1040, 855 };
@@ -295,7 +307,7 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT )
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 	{
 		_graus = 0;
 		_angle = _graus * M_PI / 180; // Angle en radians
@@ -306,7 +318,7 @@ bool Scene::Update(float dt)
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP )
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
