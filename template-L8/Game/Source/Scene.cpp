@@ -102,7 +102,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(650, 810, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
@@ -119,7 +119,7 @@ bool Scene::Start()
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
-	position.x = 600; position.y = 730;
+	position.x = 670; position.y = 750;
 	
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
@@ -154,7 +154,7 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && suelo == true)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 	{
 		_graus = 0;
 		_angle = _graus * M_PI / 180; // Angle en radians
@@ -165,7 +165,7 @@ bool Scene::Update(float dt)
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && suelo == true)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
