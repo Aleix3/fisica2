@@ -11,7 +11,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-int SpaceCadet3DPinball[110] = {
+int escenariGeneral[110] = {
 	679, 766,
 	605, 203,
 	594, 165,
@@ -68,6 +68,20 @@ int SpaceCadet3DPinball[110] = {
 	626, 767,
 	636, 757
 };
+
+int outLaneRight[6] = {
+	122, 558,
+	111, 638,
+	264, 756
+};
+
+int outLaneLeft[6] = {
+	576, 573,
+	586, 671,
+	477, 754
+};
+
+
 
 
 Scene::Scene() : Module()
@@ -126,7 +140,7 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
-	Create_Bumper(30, 20, 20);
+	//Create_Bumper(30, 20, 20);
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
@@ -135,7 +149,9 @@ bool Scene::Start()
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
-	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 110 ,bodyType::STATIC);
+	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, 110 ,bodyType::STATIC);
+	PhysBody* pb_outLaneRight = app->physics->CreateChain(0, 0, outLaneRight, 6 ,bodyType::STATIC);
+	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, 6 ,bodyType::STATIC);
 
 	return true;
 }
