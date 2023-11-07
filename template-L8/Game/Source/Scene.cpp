@@ -11,7 +11,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-int SpaceCadet3DPinball[110] = {
+int escenariGeneral[110] = {
 	679, 766,
 	605, 203,
 	594, 165,
@@ -68,6 +68,141 @@ int SpaceCadet3DPinball[110] = {
 	626, 767,
 	636, 757
 };
+int sizeEscenariGeneral = sizeof(escenariGeneral) / sizeof(escenariGeneral[0]);
+
+int outLaneRight[10] = {
+	119, 564,
+	111, 638,
+	264, 757,
+	108, 639,
+	118, 564
+};
+int sizeOutLaneRight = sizeof(outLaneRight) / sizeof(outLaneRight[0]);
+
+int outLaneLeft[12] = {
+	576, 573,
+	586, 671,
+	477, 754,
+	478, 753,
+	585, 671,
+	575, 573
+};
+int sizeOutLaneLeft = sizeof(outLaneLeft) / sizeof(outLaneLeft[0]);
+
+int obstacleSuperiorDelTunel[62] = {
+	321, 367,
+	311, 348,
+	300, 332,
+	283, 314,
+	273, 301,
+	272, 288,
+	266, 275,
+	253, 270,
+	236, 264,
+	214, 258,
+	196, 250,
+	186, 237,
+	180, 221,
+	179, 205,
+	179, 189,
+	180, 180,
+	172, 180,
+	167, 191,
+	165, 204,
+	165, 218,
+	167, 236,
+	171, 252,
+	172, 259,
+	196, 261,
+	204, 262,
+	215, 265,
+	230, 267,
+	242, 272,
+	252, 277,
+	259, 281,
+	264, 290
+};
+int sizeObstacleSuperiorDelTunel = sizeof(obstacleSuperiorDelTunel) / sizeof(obstacleSuperiorDelTunel[0]);
+
+int tunnelFoc[152] = {
+	468, 268,
+	479, 247,
+	488, 229,
+	493, 211,
+	493, 198,
+	486, 169,
+	480, 160,
+	468, 149,
+	452, 128,
+	441, 115,
+	426, 115,
+	418, 94,
+	443, 78,
+	452, 77,
+	463, 83,
+	476, 87,
+	488, 94,
+	494, 101,
+	508, 109,
+	516, 117,
+	527, 127,
+	538, 134,
+	544, 152,
+	549, 160,
+	554, 170,
+	561, 183,
+	564, 198,
+	565, 216,
+	559, 249,
+	556, 260,
+	552, 279,
+	544, 293,
+	538, 304,
+	531, 318,
+	524, 334,
+	518, 347,
+	515, 334,
+	523, 323,
+	528, 305,
+	535, 293,
+	540, 279,
+	544, 262,
+	549, 241,
+	549, 231,
+	549, 214,
+	547, 198,
+	540, 183,
+	534, 174,
+	525, 158,
+	518, 148,
+	508, 140,
+	501, 134,
+	494, 128,
+	483, 123,
+	475, 118,
+	464, 111,
+	460, 108,
+	453, 109,
+	455, 119,
+	474, 128,
+	480, 136,
+	491, 147,
+	499, 154,
+	506, 162,
+	513, 170,
+	517, 178,
+	519, 197,
+	520, 213,
+	519, 221,
+	516, 230,
+	510, 241,
+	505, 252,
+	497, 265,
+	487, 279,
+	481, 275,
+	474, 267
+};
+int sizeTunnelFoc = sizeof(tunnelFoc) / sizeof(tunnelFoc[0]);
 
 Scene::Scene() : Module()
 {
@@ -137,7 +272,11 @@ bool Scene::Start()
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
-	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 110 ,bodyType::STATIC);
+	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, sizeEscenariGeneral, bodyType::STATIC);
+	PhysBody* pb_outLaneRight = app->physics->CreateChain(0, 0, outLaneRight, sizeOutLaneRight, bodyType::STATIC);
+	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, sizeOutLaneLeft, bodyType::STATIC);
+	PhysBody* pb_obstacleSuperiorDelTunel = app->physics->CreateChain(0, 0, obstacleSuperiorDelTunel, sizeObstacleSuperiorDelTunel, bodyType::STATIC);
+	PhysBody* pb_tunnelFoc = app->physics->CreateChain(0, 0, tunnelFoc, sizeTunnelFoc, bodyType::STATIC);
 
 	return true;
 }
