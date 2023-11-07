@@ -35,7 +35,7 @@ Physics::~Physics()
 bool Physics::Start()
 {
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	_rectEscenari = { 0, 0, 1040, 855 };
+	_rectEscenari = { 0, 0, 1280, 868 };
 
 
 
