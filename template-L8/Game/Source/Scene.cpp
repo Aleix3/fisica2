@@ -97,10 +97,10 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(320, 411, 256, 64, bodyType::STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_aspid = app->tex->Load("Assets/Textures/aspid2.png");
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
@@ -114,7 +114,7 @@ bool Scene::Start()
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
-	position.x = 325; position.y = 410;
+	position.x = 600; position.y = 730;
 	
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
@@ -127,7 +127,7 @@ bool Scene::Start()
 	_aspidAnimation.loop = true;
 	_aspidAnimation.speed = 0.2f;
 
-	_rectEscenari = { 0, 0, 570, 470 };
+	_rectEscenari = { 0, 0, 1040, 855 };
 
 	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 100 ,bodyType::STATIC);
 
