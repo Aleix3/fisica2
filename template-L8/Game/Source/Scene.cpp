@@ -11,6 +11,60 @@
 #include "Defs.h"
 #include "Log.h"
 
+int SpaceCadet3DPinball[102] = {
+	341, 379,
+	301, 109,
+	296, 87,
+	287, 70,
+	273, 56,
+	259, 43,
+	240, 32,
+	225, 26,
+	202, 21,
+	181, 17,
+	162, 17,
+	146, 23,
+	133, 25,
+	119, 17,
+	104, 15,
+	86, 16,
+	77, 25,
+	76, 33,
+	76, 43,
+	87, 49,
+	90, 56,
+	83, 60,
+	76, 73,
+	69, 85,
+	67, 99,
+	65, 116,
+	67, 127,
+	62, 136,
+	54, 145,
+	52, 158,
+	48, 175,
+	47, 194,
+	41, 226,
+	43, 245,
+	51, 253,
+	42, 270,
+	36, 285,
+	32, 306,
+	28, 331,
+	25, 353,
+	22, 370,
+	28, 378,
+	43, 378,
+	48, 348,
+	105, 394,
+	107, 417,
+	258, 422,
+	259, 396,
+	289, 369,
+	311, 386,
+	640, -50
+};
+
 Scene::Scene() : Module()
 {
 	name.Create("scene");
@@ -43,7 +97,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
@@ -75,6 +129,8 @@ bool Scene::Start()
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
+	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 100 ,bodyType::STATIC);
+
 	return true;
 }
 
@@ -100,9 +156,7 @@ bool Scene::Update(float dt)
 
 		_velocitatInicial_Y += 0.2;
 
-		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-
-		
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && suelo == true)
