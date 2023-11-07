@@ -126,7 +126,11 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
-	Create_Bumper(210, 95, 17);
+	Create_Bumper(210, 95, 0, 0, 15, true);
+	Create_Bumper(333, 205, 17, 0, 17, true);
+	Create_Bumper(410, 190, 17, 0, 17, true);
+	Create_Bumper(370, 250, 17, 0, 17, true);
+
 
 	/*for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
@@ -213,7 +217,14 @@ bool Scene::CleanUp()
 	return true;
 }
 
-void Scene::Create_Bumper(int x, int y, int radious)
+void Scene::Create_Bumper(int x, int y, int W, int H, int radious, bool circle)
 {
-	app->physics->CreateCircle(x, y, radious, STATIC);
+	if (circle == true)
+	{
+		app->physics->CreateCircle(x, y, radious, STATIC);
+	}
+	else
+	{
+		app->physics->CreateRectangle(x, y, W, H, STATIC);
+	}
 }

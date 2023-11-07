@@ -36,7 +36,7 @@ public:
 
 	void OnCollision2(PhysBody* physA, PhysBody* physB);
 
-	void Create_Bumper(int x, int y, int radious);
+	void Create_Bumper(int x, int y, int W, int H, int radious, bool circle);
 
 	PhysBody* pbody;
 
