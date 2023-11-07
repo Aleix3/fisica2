@@ -403,5 +403,15 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& no
 		fixture = fixture->GetNext();
 	}
 
+	
+
 	return ret;
+}
+void Physics::DestroyBody(PhysBody* body)
+{
+	if (body && body->body)
+	{
+		world->DestroyBody(body->body);
+		delete body; // Asegúrate de liberar la memoria del objeto PhysBody
+	}
 }

@@ -248,8 +248,8 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
-	c1->ctype = ColliderType::PLATFORM;
+	/*PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
+	c1->ctype = ColliderType::PLATFORM;*/
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
@@ -325,11 +325,24 @@ bool Scene::Update(float dt)
 		_velocitatInicial_Y = 2;
 		suelo = false;
 	}
-
 	b2Transform pbodyPos = pbody->body->GetTransform();
 
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 15;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 15;
+	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 10;
+	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 10;
+
+	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		position.x = 650;
+		position.y = 750;
+		app->physics->DestroyBody(pbody);
+		pbody = app->physics->CreateCircle(position.x, position.y, 11, bodyType::DYNAMIC);
+		/*pbody->listener = this;*/
+		pbody->ctype = ColliderType::PLAYER;
+		
+	}
+	
+
+	
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);

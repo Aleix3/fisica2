@@ -75,6 +75,7 @@ public:
 	
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
+	void DestroyBody(PhysBody* body);
 
 private:
 
