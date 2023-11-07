@@ -43,7 +43,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(620, 731, 256, 64, STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
