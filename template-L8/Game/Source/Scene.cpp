@@ -11,59 +11,64 @@
 #include "Defs.h"
 #include "Log.h"
 
-int SpaceCadet3DPinball[102] = {
-	341, 379,
-	301, 109,
-	296, 87,
-	287, 70,
-	273, 56,
-	259, 43,
-	240, 32,
-	225, 26,
-	202, 21,
-	181, 17,
-	162, 17,
-	146, 23,
-	133, 25,
-	119, 17,
-	104, 15,
-	86, 16,
-	77, 25,
-	76, 33,
-	76, 43,
-	87, 49,
-	90, 56,
-	83, 60,
-	76, 73,
-	69, 85,
-	67, 99,
-	65, 116,
-	67, 127,
-	62, 136,
-	54, 145,
-	52, 158,
-	48, 175,
-	47, 194,
-	41, 226,
-	43, 245,
-	51, 253,
-	42, 270,
-	36, 285,
-	32, 306,
-	28, 331,
-	25, 353,
-	22, 370,
-	28, 378,
-	43, 378,
-	48, 348,
-	105, 394,
-	107, 417,
-	258, 422,
-	259, 396,
-	289, 369,
-	311, 386,
-	640, -50
+int SpaceCadet3DPinball[110] = {
+	679, 766,
+	605, 203,
+	594, 165,
+	584, 145,
+	568, 130,
+	550, 111,
+	525, 91,
+	497, 69,
+	470, 59,
+	429, 48,
+	392, 43,
+	348, 40,
+	322, 40,
+	295, 47,
+	268, 54,
+	250, 41,
+	231, 35,
+	207, 35,
+	187, 35,
+	163, 44,
+	159, 59,
+	155, 78,
+	159, 96,
+	176, 106,
+	187, 111,
+	169, 133,
+	155, 146,
+	147, 167,
+	138, 191,
+	133, 217,
+	134, 245,
+	140, 263,
+	130, 282,
+	116, 294,
+	105, 303,
+	102, 329,
+	98, 349,
+	75, 483,
+	91, 498,
+	110, 507,
+	110, 519,
+	91, 541,
+	81, 559,
+	44, 763,
+	91, 770,
+	101, 703,
+	218, 796,
+	216, 845,
+	522, 850,
+	525, 794,
+	586, 745,
+	592, 760,
+	606, 770,
+	626, 767,
+	636, 757
 };
+
 
 Scene::Scene() : Module()
 {
@@ -97,7 +102,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
@@ -121,6 +126,7 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
+	Create_Bumper(30, 20, 20);
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
@@ -129,7 +135,7 @@ bool Scene::Start()
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
-	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 100 ,bodyType::STATIC);
+	PhysBody* estructuraEscenari = app->physics->CreateChain(0, 0, SpaceCadet3DPinball, 110 ,bodyType::STATIC);
 
 	return true;
 }
@@ -147,7 +153,7 @@ bool Scene::Update(float dt)
 
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
-	OnCollision2(pbody, c1);
+
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && suelo == true)
 	{
 		_graus = 0;
@@ -174,7 +180,6 @@ bool Scene::Update(float dt)
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
-	
 
 	return true;
 }
@@ -202,20 +207,7 @@ bool Scene::CleanUp()
 	return true;
 }
 
-void Scene::OnCollision2(PhysBody* physA, PhysBody* physB) {
-	switch (physB->ctype)
-	{
-	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
-		suelo = true;
-		break;
-	case ColliderType::ITEM:
-		LOG("Collision ITEM");
-		break;
-	case ColliderType::UNKNOWN:
-		LOG("Collision UNKNOWN");
-		break;
-	default:
-		break;
-	}
+void Scene::Create_Bumper(int x, int y, int radious)
+{
+	app->physics->CreateCircle(x, y, radious, STATIC);
 }
