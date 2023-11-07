@@ -126,7 +126,7 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
-	Create_Bumper(30, 20, 20);
+	Create_Bumper(210, 95, 17);
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
