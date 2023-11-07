@@ -84,6 +84,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	{
 	case ColliderType::PLATFORM:
 		LOG("Collision PLATFORM");
+		app->scene->suelo = true;
 		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
