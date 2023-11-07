@@ -34,9 +34,13 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void OnCollision2(PhysBody* physA, PhysBody* physB);
+
 	void Create_Bumper(int x, int y, int radious);
 
 	PhysBody* pbody;
+
+	PhysBody* c1;
 
 	iPoint position;
 
