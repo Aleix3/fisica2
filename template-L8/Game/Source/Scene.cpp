@@ -126,6 +126,7 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
+	Create_Bumper(30, 20, 20);
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
@@ -153,7 +154,7 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && suelo == true)
 	{
 		_graus = 0;
 		_angle = _graus * M_PI / 180; // Angle en radians
@@ -164,11 +165,12 @@ bool Scene::Update(float dt)
 		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP && suelo == true)
 	{
 		velocity.y = -_velocitat_Y;
 		pbody->body->SetLinearVelocity(velocity);
 		_velocitatInicial_Y = 2;
+		suelo = false;
 	}
 
 	b2Transform pbodyPos = pbody->body->GetTransform();
@@ -203,4 +205,9 @@ bool Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void Scene::Create_Bumper(int x, int y, int radious)
+{
+	app->physics->CreateCircle(x, y, radious, STATIC);
 }

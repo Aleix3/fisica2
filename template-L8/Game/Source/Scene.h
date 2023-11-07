@@ -34,11 +34,15 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void Create_Bumper(int x, int y, int radious);
+
 	PhysBody* pbody;
 
 	iPoint position;
 
 	float jumpSpeed = 5.0f;
+
+	bool suelo = true;
 
 private:
 	SDL_Texture* img;
