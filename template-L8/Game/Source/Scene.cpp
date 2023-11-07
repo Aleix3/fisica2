@@ -69,7 +69,6 @@ int SpaceCadet3DPinball[110] = {
 	636, 757
 };
 
-
 Scene::Scene() : Module()
 {
 	name.Create("scene");
@@ -106,7 +105,8 @@ bool Scene::Start()
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
-	_textura_aspid = app->tex->Load("Assets/Textures/aspid2.png");
+	_textura_ball = app->tex->Load("Assets/Textures/Desktop_icon.png");
+
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 
@@ -114,7 +114,7 @@ bool Scene::Start()
 	app->win->GetWindowSize(windowW, windowH);
 
 	//Get the size of the texture
-	app->tex->GetSize(_textura_aspid, texW, texH);
+	app->tex->GetSize(_textura_ball, texW, texH);
 
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
@@ -128,10 +128,15 @@ bool Scene::Start()
 
 	Create_Bumper(210, 95, 17);
 
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
 	_aspidAnimation.loop = true;
-	_aspidAnimation.speed = 0.2f;
+	_aspidAnimation.speed = 0.2f;*/
+
+	for (int i = 0; i < 4; i++)
+		_ballAnimation.PushBack({ 50, 10, 30, 30 });
+	_ballAnimation.loop = true;
+	_ballAnimation.speed = 0.2f;
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -192,8 +197,9 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
-	_aspidAnimation.Update();
-	app->render->DrawTexture(_textura_aspid, position.x, position.y, &_aspidAnimation.GetCurrentFrame());
+	_ballAnimation.Update();
+	//app->render->DrawTexture(_textura_ball, position.x, position.y, NULL, 1.0f, c->data->GetRotation());
+	app->render->DrawTexture(_textura_ball, position.x, position.y, &_ballAnimation.GetCurrentFrame());
 	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	return ret;

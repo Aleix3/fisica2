@@ -57,9 +57,10 @@ private:
 	Player* player;
 
 	SDL_Texture* _textura_aspid = nullptr;
-	Animation _aspidAnimation;
+	Animation _ballAnimation;
 	SDL_Rect _rectAspid;
 
+	SDL_Texture* _textura_ball = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;
 	SDL_Rect _rectMarcadors;
