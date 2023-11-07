@@ -34,7 +34,11 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void OnCollision2(PhysBody* physA, PhysBody* physB);
+
 	PhysBody* pbody;
+
+	PhysBody* c1;
 
 	iPoint position;
 

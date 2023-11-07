@@ -97,7 +97,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
+	c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
@@ -147,7 +147,7 @@ bool Scene::Update(float dt)
 
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
-
+	OnCollision2(pbody, c1);
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT && suelo == true)
 	{
 		_graus = 0;
@@ -174,6 +174,7 @@ bool Scene::Update(float dt)
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
+	
 
 	return true;
 }
@@ -199,4 +200,22 @@ bool Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void Scene::OnCollision2(PhysBody* physA, PhysBody* physB) {
+	switch (physB->ctype)
+	{
+	case ColliderType::PLATFORM:
+		LOG("Collision PLATFORM");
+		suelo = true;
+		break;
+	case ColliderType::ITEM:
+		LOG("Collision ITEM");
+		break;
+	case ColliderType::UNKNOWN:
+		LOG("Collision UNKNOWN");
+		break;
+	default:
+		break;
+	}
 }
