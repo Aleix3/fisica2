@@ -11,7 +11,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-int escenariGeneral[110] = {
+int SpaceCadet3DPinball[110] = {
 	679, 766,
 	605, 203,
 	594, 165,
@@ -260,7 +260,11 @@ bool Scene::Start()
 
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
-	//Create_Bumper(30, 20, 20);
+	Create_Bumper(210, 95, 15);
+	Create_Bumper(333, 205, 17);
+	Create_Bumper(410, 190, 17);
+	Create_Bumper(370, 250, 17);
+
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
