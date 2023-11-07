@@ -42,6 +42,8 @@ public:
 
 	float jumpSpeed = 5.0f;
 
+	bool suelo = true;
+
 private:
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
