@@ -43,7 +43,7 @@ bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	PhysBody* c1 = app->physics->CreateRectangle(320, 411, 256, 64, STATIC);
+	PhysBody* c1 = app->physics->CreateRectangle(620, 731, 256, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
@@ -60,7 +60,7 @@ bool Scene::Start()
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
-	position.x = 325; position.y = 410;
+	position.x = 600; position.y = 730;
 	
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
