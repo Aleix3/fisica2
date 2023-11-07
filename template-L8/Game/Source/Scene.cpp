@@ -46,7 +46,7 @@ bool Scene::Start()
 	PhysBody* c1 = app->physics->CreateRectangle(320, 411, 256, 64, STATIC);
 	c1->ctype = ColliderType::PLATFORM;
 	
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_aspid = app->tex->Load("Assets/Textures/aspid2.png");
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
@@ -73,7 +73,7 @@ bool Scene::Start()
 	_aspidAnimation.loop = true;
 	_aspidAnimation.speed = 0.2f;
 
-	_rectEscenari = { 0, 0, 570, 470 };
+	_rectEscenari = { 0, 0, 1040, 855 };
 
 	return true;
 }
