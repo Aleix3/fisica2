@@ -34,6 +34,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void Create_Bumper(int x, int y, int radious);
+
 	PhysBody* pbody;
 
 	iPoint position;

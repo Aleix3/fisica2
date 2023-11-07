@@ -121,6 +121,7 @@ bool Scene::Start()
 	
 	pbody = app->physics->CreateCircle(position.x, position.y, 15, bodyType::DYNAMIC);
 
+	Create_Bumper(30, 20, 20);
 
 	for (int i = 0; i < 4; i++)
 		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
@@ -198,4 +199,9 @@ bool Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void Scene::Create_Bumper(int x, int y, int radious)
+{
+	app->physics->CreateCircle(x, y, radious, STATIC);
 }
