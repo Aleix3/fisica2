@@ -132,15 +132,8 @@ bool Scene::Start()
 	Create_Bumper(370, 250, 17, 0, 17, true);
 
 
-	/*for (int i = 0; i < 4; i++)
-		_aspidAnimation.PushBack({ 29 * i + 2, 0, 29, 29 });
-	_aspidAnimation.loop = true;
-	_aspidAnimation.speed = 0.2f;*/
-
-	for (int i = 0; i < 4; i++)
 		_ballAnimation.PushBack({ 50, 10, 30, 30 });
-	_ballAnimation.loop = true;
-	_ballAnimation.speed = 0.2f;
+	_ballAnimation.loop = false;
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
