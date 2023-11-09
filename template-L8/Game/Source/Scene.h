@@ -68,6 +68,14 @@ private:
 	SDL_Rect _rectPalaRight;
 	SDL_Rect _rectPalaLeft;
 
+	PhysBody* _pb_palaRight;
+	PhysBody* _pb_palaLeft;
+	float _angleRadiansPalaRight = 0.0f;
+	float _limitAngleRadiansPalaRight = -0.7854f;
+	float _angleRadiansPalaLeft = 0.0f;
+	float _limitAngleRadiansPalaLeft = 0.7854f;
+
+	// Fisiques
 	int _gravetat = 550; //m/s^2
 	float _alturaInicial = 256; // m
 	int _graus = 30;

@@ -238,7 +238,7 @@ bool Scene::Awake(pugi::xml_node config)
 	//Assigns the XML node to a member in player
 	player->config = config.child("player");
 
-	
+
 
 	return ret;
 }
@@ -250,7 +250,7 @@ bool Scene::Start()
 	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
 	/*PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
 	c1->ctype = ColliderType::PLATFORM;*/
-	
+
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
 
@@ -267,10 +267,10 @@ bool Scene::Start()
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 
 	position.x = 650; position.y = 730;
-	
+
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
-	
+
 	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
 	Create_Bumper(210, 95, 0, 0, 15, true);
@@ -279,7 +279,7 @@ bool Scene::Start()
 	Create_Bumper(370, 250, 17, 0, 17, true);
 
 
-		_ballAnimation.PushBack({ 37, 6, 25, 26 });
+	_ballAnimation.PushBack({ 37, 6, 25, 26 });
 	_ballAnimation.loop = false;
 
 	_rectEscenari = { 0, 0, 1040, 855 };
@@ -289,6 +289,10 @@ bool Scene::Start()
 	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, sizeOutLaneLeft, bodyType::STATIC);
 	PhysBody* pb_obstacleSuperiorDelTunel = app->physics->CreateChain(0, 0, obstacleSuperiorDelTunel, sizeObstacleSuperiorDelTunel, bodyType::STATIC);
 	PhysBody* pb_tunnelFoc = app->physics->CreateChain(0, 0, tunnelFoc, sizeTunnelFoc, bodyType::STATIC);
+
+	_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
+	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);
+
 
 	return true;
 }
@@ -307,6 +311,34 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
+	// cambiar angle de rotacio de la pala
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && _angleRadiansPalaRight > _limitAngleRadiansPalaRight)
+	{
+		_angleRadiansPalaRight -= 0.1f;
+		_pb_palaRight->body->SetTransform(_pb_palaRight->body->GetWorldCenter(), _angleRadiansPalaRight);
+
+	}
+	else {
+		if (_angleRadiansPalaRight < 0.0f)
+		{
+			_angleRadiansPalaRight += 0.1f;
+			_pb_palaRight->body->SetTransform(_pb_palaRight->body->GetWorldCenter(), _angleRadiansPalaRight);
+		}
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && _angleRadiansPalaLeft < _limitAngleRadiansPalaLeft)
+	{
+		_angleRadiansPalaLeft += 0.1f;
+		_pb_palaLeft->body->SetTransform(_pb_palaLeft->body->GetWorldCenter(), _angleRadiansPalaLeft);
+	}
+	else {
+		if (_angleRadiansPalaLeft > 0.0f)
+		{
+			_angleRadiansPalaLeft -= 0.1f;
+			_pb_palaLeft->body->SetTransform(_pb_palaLeft->body->GetWorldCenter(), _angleRadiansPalaLeft);
+		}
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 	{
 		_graus = 0;
@@ -315,7 +347,7 @@ bool Scene::Update(float dt)
 
 		_velocitatInicial_Y += 0.2;
 
-		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;		
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
@@ -338,11 +370,11 @@ bool Scene::Update(float dt)
 		pbody = app->physics->CreateCircle(position.x, position.y, 11, bodyType::DYNAMIC);
 		/*pbody->listener = this;*/
 		pbody->ctype = ColliderType::PLAYER;
-		
-	}
-	
 
-	
+	}
+
+
+
 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);

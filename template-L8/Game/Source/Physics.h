@@ -24,9 +24,9 @@ enum bodyType {
 };
 
 enum class ColliderType {
-	PLAYER, 
+	PLAYER,
 	ITEM,
-	PLATFORM, 
+	PLATFORM,
 	UNKNOWN
 	// ..
 };
@@ -35,8 +35,7 @@ enum class ColliderType {
 class PhysBody
 {
 public:
-	PhysBody() : listener(NULL), body(NULL), ctype(ColliderType::UNKNOWN)
-	{}
+	PhysBody() : listener(NULL), body(NULL), ctype(ColliderType::UNKNOWN) {}
 
 	~PhysBody() {}
 
@@ -72,7 +71,7 @@ public:
 	PhysBody* CreateCircle(int x, int y, int radious, bodyType type);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, bodyType type);
 	PhysBody* CreateChain(int x, int y, int* points, int size, bodyType type);
-	
+
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 	void DestroyBody(PhysBody* body);
