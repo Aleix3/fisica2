@@ -68,8 +68,10 @@ private:
 	SDL_Rect _rectPalaRight;
 	SDL_Rect _rectPalaLeft;
 
-	PhysBody* _pb_palaRight;
-	PhysBody* _pb_palaLeft;
+	PhysBody* _palaRight;
+	PhysBody* _palaRightPivot;
+	PhysBody* _palaLeft;
+	PhysBody* _palaLeftPivot;
 	float _angleRadiansPalaRight = 0.0f;
 	float _limitAngleRadiansPalaRight = -0.7854f;
 	float _angleRadiansPalaLeft = 0.0f;

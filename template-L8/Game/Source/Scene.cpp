@@ -290,8 +290,27 @@ bool Scene::Start()
 	PhysBody* pb_obstacleSuperiorDelTunel = app->physics->CreateChain(0, 0, obstacleSuperiorDelTunel, sizeObstacleSuperiorDelTunel, bodyType::STATIC);
 	PhysBody* pb_tunnelFoc = app->physics->CreateChain(0, 0, tunnelFoc, sizeTunnelFoc, bodyType::STATIC);
 
-	_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
-	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);
+	/*_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
+	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);*/
+
+	_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::DYNAMIC);
+	_palaRightPivot = app->physics->CreateCircle(0, 0, 0.5, bodyType::STATIC);
+	_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::DYNAMIC);
+	_palaLeftPivot = app->physics->CreateCircle(0, 0, 0.5, bodyType::STATIC);
+
+	b2RevoluteJointDef palaRightJoin;
+	palaRightJoin.bodyA = _palaRight->body;
+	palaRightJoin.bodyB = _palaRightPivot->body;
+	palaRightJoin.collideConnected = false;
+	palaRightJoin.referenceAngle = 0;
+	palaRightJoin.enableLimit = true;
+	palaRightJoin.lowerAngle = -30;
+	palaRightJoin.upperAngle = 30;
+	palaRightJoin.localAnchorA.Set(0, 0);
+	palaRightJoin.localAnchorB.Set(0, 0);
+	
+
+
 
 
 	return true;
@@ -315,27 +334,26 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && _angleRadiansPalaRight > _limitAngleRadiansPalaRight)
 	{
 		_angleRadiansPalaRight -= 0.1f;
-		_pb_palaRight->body->SetTransform(_pb_palaRight->body->GetWorldCenter(), _angleRadiansPalaRight);
-
+		_palaRight->body->SetTransform(_palaRight->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaRight);
 	}
 	else {
 		if (_angleRadiansPalaRight < 0.0f)
 		{
 			_angleRadiansPalaRight += 0.1f;
-			_pb_palaRight->body->SetTransform(_pb_palaRight->body->GetWorldCenter(), _angleRadiansPalaRight);
+			_palaRight->body->SetTransform(_palaRight->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaRight);
 		}
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && _angleRadiansPalaLeft < _limitAngleRadiansPalaLeft)
 	{
 		_angleRadiansPalaLeft += 0.1f;
-		_pb_palaLeft->body->SetTransform(_pb_palaLeft->body->GetWorldCenter(), _angleRadiansPalaLeft);
+		_palaLeft->body->SetTransform(_palaLeft->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaLeft);
 	}
 	else {
 		if (_angleRadiansPalaLeft > 0.0f)
 		{
 			_angleRadiansPalaLeft -= 0.1f;
-			_pb_palaLeft->body->SetTransform(_pb_palaLeft->body->GetWorldCenter(), _angleRadiansPalaLeft);
+			_palaLeft->body->SetTransform(_palaLeft->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaLeft);
 		}
 	}
 

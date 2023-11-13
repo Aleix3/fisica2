@@ -76,13 +76,14 @@ public:
 	void BeginContact(b2Contact* contact);
 	void DestroyBody(PhysBody* body);
 
+	//temporal
+	b2World* world;
 private:
 
 	// Debug mode
 	bool debug;
 
 	// Box2D World
-	b2World* world;
 
 
 
