@@ -7,27 +7,46 @@
 
 struct SDL_Texture;
 
-class Scene : public Module{
-
+class Scene : public Module
+{
 public:
+
 	Scene();
+
+	// Destructor
 	virtual ~Scene();
+
+	// Called before render is available
 	bool Awake(pugi::xml_node config);
+
+	// Called before the first frame
 	bool Start();
+
+	// Called before all Updates
 	bool PreUpdate();
+
+	// Called each loop iteration
 	bool Update(float dt);
+
+	// Called before all Updates
 	bool PostUpdate();
+
+	// Called before quitting
 	bool CleanUp();
+
 	void OnCollision2(PhysBody* physA, PhysBody* physB);
 
 	void Create_Bumper(int x, int y, int W, int H, int radious, bool circle);
 
 	PhysBody* pbody;
-	PhysBody* c1;
-	iPoint position;
-	float jumpSpeed = 5.0f;
-	bool suelo = true;
 
+	PhysBody* c1;
+
+	iPoint position;
+
+	float jumpSpeed = 5.0f;
+
+	bool suelo = true;
 
 private:
 	SDL_Texture* img;
