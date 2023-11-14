@@ -273,11 +273,22 @@ bool Scene::Start()
 	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 	pbody = app->physics->CreateCircle(400, 400, 10, bodyType::DYNAMIC);
 
+	bumper = app->physics->CreateCircle(210, 95, 17, STATIC);
+
 	Create_Bumper(210, 95, 0, 0, 15, true);
 	Create_Bumper(333, 205, 17, 0, 17, true);
 	Create_Bumper(410, 190, 17, 0, 17, true);
 	Create_Bumper(370, 250, 17, 0, 17, true);
 
+	Create_Bumper(111, 440, 0, 0, 15, true);
+	Create_Bumper(177, 457, 15, 0, 15, true);
+	Create_Bumper(130, 488, 15, 0, 15, true);
+
+	Create_Bumper(388, 125, 5, 20, 15, false); //rectangulars bumpers
+	Create_Bumper(352, 125, 5, 20, 15, false);
+
+	Create_Bumper(125, 387, 5, 20, 15, false);
+	Create_Bumper(158, 397, 5, 20, 15, false);
 
 	_ballAnimation.PushBack({ 37, 6, 25, 26 });
 	_ballAnimation.loop = false;
@@ -396,10 +407,12 @@ bool Scene::Update(float dt)
 		pbody->ctype = ColliderType::PLAYER;
 
 	}
+	/*if (bumper collisiona amb bola)
+		pbody->body->SetLinearVelocity(x);
 
+	*/
 
-
-
+	 
 	// Renders the image in the center of the screen 
 	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
 
