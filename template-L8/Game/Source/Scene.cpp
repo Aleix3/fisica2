@@ -273,8 +273,6 @@ bool Scene::Start()
 	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 	pbody = app->physics->CreateCircle(400, 400, 10, bodyType::DYNAMIC);
 
-	bumper = app->physics->CreateCircle(210, 95, 17, STATIC);
-
 	Create_Bumper(210, 95, 0, 0, 15, true);
 	Create_Bumper(333, 205, 17, 0, 17, true);
 	Create_Bumper(410, 190, 17, 0, 17, true);
