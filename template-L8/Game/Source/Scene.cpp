@@ -1,10 +1,10 @@
+#include "Scene.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "Scene.h"
 #include "Map.h"
 #include "Item.h"
 #include "Physics.h"
@@ -222,8 +222,7 @@ Scene::Scene() : Module()
 }
 
 // Destructor
-Scene::~Scene()
-{}
+Scene::~Scene() {}
 
 // Called before render is available
 bool Scene::Awake(pugi::xml_node config)
@@ -271,7 +270,8 @@ bool Scene::Start()
 
 	// L07 DONE 5: Add physics to the player - initialize physics body
 
-	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+	pbody = app->physics->CreateCircle(400, 400, 10, bodyType::DYNAMIC);
 
 	Create_Bumper(210, 95, 0, 0, 15, true);
 	Create_Bumper(333, 205, 17, 0, 17, true);
@@ -293,22 +293,35 @@ bool Scene::Start()
 	/*_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
 	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);*/
 
-	_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::DYNAMIC);
-	_palaRightPivot = app->physics->CreateCircle(0, 0, 0.5, bodyType::STATIC);
-	_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::DYNAMIC);
-	_palaLeftPivot = app->physics->CreateCircle(0, 0, 0.5, bodyType::STATIC);
+	_palaRight = app->physics->CreateRectangle(300, 770, 90, 20, bodyType::DYNAMIC);
+	_palaRightPivot = app->physics->CreateCircle(295, 770, 0.5, bodyType::STATIC);
+	_palaLeft = app->physics->CreateRectangle(440, 770, 90, 20, bodyType::DYNAMIC);
+	_palaLeftPivot = app->physics->CreateCircle(445, 770, 0.5, bodyType::STATIC);
 
-	b2RevoluteJointDef palaRightJoin;
-	palaRightJoin.bodyA = _palaRight->body;
-	palaRightJoin.bodyB = _palaRightPivot->body;
-	palaRightJoin.collideConnected = false;
-	palaRightJoin.referenceAngle = 0;
-	palaRightJoin.enableLimit = true;
-	palaRightJoin.lowerAngle = -30;
-	palaRightJoin.upperAngle = 30;
-	palaRightJoin.localAnchorA.Set(0, 0);
-	palaRightJoin.localAnchorB.Set(0, 0);
-	
+
+	b2RevoluteJointDef palaRightJoinDef;
+	palaRightJoinDef.bodyA = _palaRightPivot->body;
+	palaRightJoinDef.bodyB = _palaRight->body;
+	palaRightJoinDef.collideConnected = false;
+	palaRightJoinDef.lowerAngle = -45 * DEGTORAD;
+	palaRightJoinDef.upperAngle = 45 * DEGTORAD;
+	palaRightJoinDef.referenceAngle = 0;
+	palaRightJoinDef.enableLimit = true;
+	palaRightJoinDef.localAnchorA.Set(0, 0);
+	palaRightJoinDef.localAnchorB.Set(0, 0);
+	b2RevoluteJoint* revoluteJointRight = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaRightJoinDef);
+
+	b2RevoluteJointDef palaLeftJoinDef;
+	palaLeftJoinDef.bodyA = _palaLeftPivot->body;
+	palaLeftJoinDef.bodyB = _palaLeft->body;
+	palaLeftJoinDef.collideConnected = false;
+	palaLeftJoinDef.lowerAngle = -45 * DEGTORAD;
+	palaLeftJoinDef.upperAngle = 45 * DEGTORAD;
+	palaLeftJoinDef.referenceAngle = 0;
+	palaLeftJoinDef.enableLimit = true;
+	palaLeftJoinDef.localAnchorA.Set(0, 0);
+	palaLeftJoinDef.localAnchorB.Set(0, 0);
+	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
 
 
 
@@ -331,30 +344,23 @@ bool Scene::Update(float dt)
 	float camSpeed = 1;
 
 	// cambiar angle de rotacio de la pala
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && _angleRadiansPalaRight > _limitAngleRadiansPalaRight)
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		_angleRadiansPalaRight -= 0.1f;
-		_palaRight->body->SetTransform(_palaRight->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaRight);
+		_palaRight->body->ApplyTorque(-40.0f, true);
 	}
-	else {
-		if (_angleRadiansPalaRight < 0.0f)
-		{
-			_angleRadiansPalaRight += 0.1f;
-			_palaRight->body->SetTransform(_palaRight->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaRight);
-		}
+	else
+	{
+		_palaRight->body->ApplyTorque(45.0f, true);
 	}
+	
 
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && _angleRadiansPalaLeft < _limitAngleRadiansPalaLeft)
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
-		_angleRadiansPalaLeft += 0.1f;
-		_palaLeft->body->SetTransform(_palaLeft->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaLeft);
+		_palaLeft->body->ApplyTorque(40.0f, true);
 	}
-	else {
-		if (_angleRadiansPalaLeft > 0.0f)
-		{
-			_angleRadiansPalaLeft -= 0.1f;
-			_palaLeft->body->SetTransform(_palaLeft->body->GetWorldPoint({ 0,0 }), _angleRadiansPalaLeft);
-		}
+	else
+	{
+		_palaLeft->body->ApplyTorque(-45.0f, true);
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
