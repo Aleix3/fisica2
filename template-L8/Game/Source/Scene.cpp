@@ -278,6 +278,15 @@ bool Scene::Start()
 	Create_Bumper(410, 190, 17, 0, 17, true);
 	Create_Bumper(370, 250, 17, 0, 17, true);
 
+	Create_Bumper(111, 440, 0, 0, 15, true);
+	Create_Bumper(177, 457, 15, 0, 15, true);
+	Create_Bumper(130, 488, 15, 0, 15, true);
+
+	Create_Bumper(388, 125, 5, 20, 15, false); //rectangulars bumpers
+	Create_Bumper(352, 125, 5, 20, 15, false);
+
+	Create_Bumper(125, 387, 5, 20, 15, false);
+	Create_Bumper(158, 397, 5, 20, 15, false);
 
 	_ballAnimation.PushBack({ 37, 6, 25, 26 });
 	_ballAnimation.loop = false;
