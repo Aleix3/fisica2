@@ -271,7 +271,7 @@ bool Scene::Start()
 	// L07 DONE 5: Add physics to the player - initialize physics body
 
 	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
-	pbody = app->physics->CreateCircle(400, 400, 10, bodyType::DYNAMIC);
+	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
 	Create_Bumper(210, 95, 0, 0, 15, true);
 	Create_Bumper(333, 205, 17, 0, 17, true);
@@ -305,7 +305,7 @@ bool Scene::Start()
 	_palaRight = app->physics->CreateRectangle(300, 770, 90, 20, bodyType::DYNAMIC);
 	_palaRightPivot = app->physics->CreateCircle(295, 770, 0.5, bodyType::STATIC);
 	_palaLeft = app->physics->CreateRectangle(440, 770, 90, 20, bodyType::DYNAMIC);
-	_palaLeftPivot = app->physics->CreateCircle(445, 770, 0.5, bodyType::STATIC);
+	_palaLeftPivot = app->physics->CreateCircle(440, 770, 0.5, bodyType::STATIC);
 
 
 	b2RevoluteJointDef palaRightJoinDef;
