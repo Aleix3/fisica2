@@ -273,20 +273,20 @@ bool Scene::Start()
 	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
-	Create_Bumper(210, 95, 0, 0, 15, true);
-	Create_Bumper(333, 205, 17, 0, 17, true);
-	Create_Bumper(410, 190, 17, 0, 17, true);
-	Create_Bumper(370, 250, 17, 0, 17, true);
+	Create_circularBumper(210, 95, 15);
+	Create_circularBumper(333, 205, 17);
+	Create_circularBumper(410, 190, 17);
+	Create_circularBumper(370, 250, 17);
 
-	Create_Bumper(111, 440, 0, 0, 15, true);
-	Create_Bumper(177, 457, 15, 0, 15, true);
-	Create_Bumper(130, 488, 15, 0, 15, true);
+	Create_circularBumper(111, 440, 15);
+	Create_circularBumper(177, 457, 15);
+	Create_circularBumper(130, 488, 15);
 
-	Create_Bumper(388, 125, 5, 20, 15, false); //rectangulars bumpers
-	Create_Bumper(352, 125, 5, 20, 15, false);
+	Create_rectangularBumper(388, 125, 5, 20); //rectangulars bumpers
+	Create_rectangularBumper(352, 125, 5, 20);
 
-	Create_Bumper(125, 387, 5, 20, 15, false);
-	Create_Bumper(158, 397, 5, 20, 15, false);
+	Create_rectangularBumper(125, 387, 5, 20);
+	Create_rectangularBumper(158, 397, 5, 20);
 
 	_ballAnimation.PushBack({ 37, 6, 25, 26 });
 	_ballAnimation.loop = false;
@@ -441,14 +441,14 @@ bool Scene::CleanUp()
 	return true;
 }
 
-void Scene::Create_Bumper(int x, int y, int W, int H, int radious, bool circle)
+void Scene::Create_circularBumper(int x, int y, int radious)
 {
-	if (circle == true)
-	{
-		app->physics->CreateCircle(x, y, radious, STATIC);
-	}
-	else
-	{
-		app->physics->CreateRectangle(x, y, W, H, STATIC);
-	}
+	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
+	circularBumper->body->GetFixtureList()->SetRestitution(1.5f);
+}
+
+void Scene::Create_rectangularBumper(int x, int y, int w, int h)
+{
+	PhysBody* rectangularBumper = app->physics->CreateRectangle(x, y, w, h, bodyType::STATIC);
+	rectangularBumper->body->GetFixtureList()->SetRestitution(1.5f); 
 }
