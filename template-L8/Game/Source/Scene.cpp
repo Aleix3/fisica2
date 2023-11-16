@@ -302,10 +302,10 @@ bool Scene::Start()
 	/*_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
 	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);*/
 
-	_palaRight = app->physics->CreateRectangle(300, 770, 90, 20, bodyType::DYNAMIC);
-	_palaRightPivot = app->physics->CreateCircle(295, 770, 0.5, bodyType::STATIC);
-	_palaLeft = app->physics->CreateRectangle(440, 770, 90, 20, bodyType::DYNAMIC);
-	_palaLeftPivot = app->physics->CreateCircle(440, 770, 0.5, bodyType::STATIC);
+	_palaRight = app->physics->CreateRectangle(300, 765, 90, 20, bodyType::DYNAMIC);
+	_palaRightPivot = app->physics->CreateCircle(270, 770, 0.5, bodyType::STATIC);
+	_palaLeft = app->physics->CreateRectangle(440, 765, 90, 20, bodyType::DYNAMIC);
+	_palaLeftPivot = app->physics->CreateCircle(470, 770, 0.5, bodyType::STATIC);
 
 
 	b2RevoluteJointDef palaRightJoinDef;
@@ -317,7 +317,7 @@ bool Scene::Start()
 	palaRightJoinDef.referenceAngle = 0;
 	palaRightJoinDef.enableLimit = true;
 	palaRightJoinDef.localAnchorA.Set(0, 0);
-	palaRightJoinDef.localAnchorB.Set(0, 0);
+	palaRightJoinDef.localAnchorB.Set(-0.8, 0);
 	b2RevoluteJoint* revoluteJointRight = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaRightJoinDef);
 
 	b2RevoluteJointDef palaLeftJoinDef;
@@ -329,7 +329,7 @@ bool Scene::Start()
 	palaLeftJoinDef.referenceAngle = 0;
 	palaLeftJoinDef.enableLimit = true;
 	palaLeftJoinDef.localAnchorA.Set(0, 0);
-	palaLeftJoinDef.localAnchorB.Set(0, 0);
+	palaLeftJoinDef.localAnchorB.Set(0.8, 0);
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
 
 
@@ -444,11 +444,11 @@ bool Scene::CleanUp()
 void Scene::Create_circularBumper(int x, int y, int radious)
 {
 	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
-	circularBumper->body->GetFixtureList()->SetRestitution(1.5f);
+	circularBumper->body->GetFixtureList()->SetRestitution(1.1f);
 }
 
 void Scene::Create_rectangularBumper(int x, int y, int w, int h)
 {
 	PhysBody* rectangularBumper = app->physics->CreateRectangle(x, y, w, h, bodyType::STATIC);
-	rectangularBumper->body->GetFixtureList()->SetRestitution(1.5f); 
+	rectangularBumper->body->GetFixtureList()->SetRestitution(1.1f); 
 }
