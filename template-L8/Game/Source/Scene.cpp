@@ -216,6 +216,81 @@ int tunnelFoc[152] = {
 };
 int sizeTunnelFoc = sizeof(tunnelFoc) / sizeof(tunnelFoc[0]);
 
+int tunnelLeftRight[52] = {
+	158, 315,
+	152, 327,
+	150, 333,
+	160, 348,
+	171, 351,
+	181, 358,
+	192, 366,
+	198, 378,
+	192, 497,
+	178, 519,
+	162, 540,
+	163, 567,
+	161, 623,
+	164, 626,
+	168, 629,
+	169, 575,
+	165, 572,
+	163, 555,
+	167, 537,
+	177, 525,
+	187, 509,
+	194, 490,
+	199, 393,
+	197, 371,
+	187, 357,
+	169, 342
+};
+int sizetunnelLeftRight = sizeof(tunnelLeftRight) / sizeof(tunnelLeftRight[0]);
+
+int upperLeftObstacle[20] = {
+	294, 88,
+	320, 106,
+	319, 124,
+	266, 149,
+	260, 146,
+	264, 110,
+	273, 123,
+	275, 136,
+	313, 120,
+	312, 109
+};
+int sizeupperLeftObstacle = sizeof(upperLeftObstacle) / sizeof(upperLeftObstacle[0]);
+
+int middleObstacle[16] = {
+	327, 255,
+	326, 264,
+	388, 283,
+	396, 278,
+	393, 258,
+	384, 264,
+	347, 256,
+	344, 247
+};
+int sizemiddleObstacle = sizeof(middleObstacle) / sizeof(middleObstacle[0]);
+
+int middleDRObstacle[10] = {
+	524, 569,
+	482, 687,
+	490, 696,
+	540, 660,
+	532, 569
+};
+int sizemiddleDRObstacle = sizeof(middleDRObstacle) / sizeof(middleDRObstacle[0]);
+
+int middleLRObstacle[10] = {
+	218, 571,
+	257, 688,
+	249, 694,
+	201, 662,
+	207, 571
+};
+int sizemiddleLRObstacle = sizeof(middleLRObstacle) / sizeof(middleLRObstacle[0]);
+
+
 Scene::Scene() : Module()
 {
 	name.Create("scene");
@@ -298,6 +373,11 @@ bool Scene::Start()
 	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, sizeOutLaneLeft, bodyType::STATIC);
 	PhysBody* pb_obstacleSuperiorDelTunel = app->physics->CreateChain(0, 0, obstacleSuperiorDelTunel, sizeObstacleSuperiorDelTunel, bodyType::STATIC);
 	PhysBody* pb_tunnelFoc = app->physics->CreateChain(0, 0, tunnelFoc, sizeTunnelFoc, bodyType::STATIC);
+	PhysBody* pb_tunnelLeftRight = app->physics->CreateChain(0, 0, tunnelLeftRight, sizetunnelLeftRight, bodyType::STATIC);
+	PhysBody* pb_upperLeftObstacle = app->physics->CreateChain(0, 0, upperLeftObstacle, sizeupperLeftObstacle, bodyType::STATIC);
+	PhysBody* pb_middleObstacle = app->physics->CreateChain(0, 0, middleObstacle, sizemiddleObstacle, bodyType::STATIC);
+	PhysBody* pb_middleDRObstacle = app->physics->CreateChain(0, 0, middleDRObstacle, sizemiddleDRObstacle, bodyType::STATIC);
+	PhysBody* pb_middleLRObstacle = app->physics->CreateChain(0, 0, middleLRObstacle, sizemiddleLRObstacle, bodyType::STATIC);
 
 	/*_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
 	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);*/
