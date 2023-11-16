@@ -18,10 +18,8 @@ public:
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
-	void OnCollision2(PhysBody* physA, PhysBody* physB);
 
 	void Create_circularBumper(int x, int y, int radious);
-
 	void Create_rectangularBumper(int x, int y, int h, int w);
 
 	PhysBody* pbody;
