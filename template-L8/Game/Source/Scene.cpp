@@ -11,8 +11,6 @@
 #include "Defs.h"
 #include "Log.h"
 
-// Pivot -558, -1021
-
 
 int escenariGeneral[128] = {
 	455, 91,
@@ -304,15 +302,9 @@ bool Scene::Awake(pugi::xml_node config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
-
-	// TODO: Change player -> ball with physics
-	//Instantiate the player using the entity manager
-	//Get player paremeters
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
-	//Assigns the XML node to a member in player
+
 	player->config = config.child("player");
-
-
 
 	return ret;
 }
@@ -321,9 +313,6 @@ bool Scene::Awake(pugi::xml_node config)
 bool Scene::Start()
 {
 	_velocitatInicial_Y = 2;
-	// NOTE: We have to avoid the use of paths in the code, we will move it later to a config file
-	/*PhysBody* c1 = app->physics->CreateRectangle(600, 735, 56, 64, bodyType::STATIC);
-	c1->ctype = ColliderType::PLATFORM;*/
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
@@ -353,9 +342,9 @@ bool Scene::Start()
 	Create_circularBumper(410, 190, 17);
 	Create_circularBumper(370, 250, 17);
 
-	Create_circularBumper(111, 440, 15);
-	Create_circularBumper(177, 457, 15);
-	Create_circularBumper(130, 488, 15);
+	Create_circularBumper(111, 440, 13);
+	Create_circularBumper(177, 457, 13);
+	Create_circularBumper(130, 488, 13);
 
 	Create_rectangularBumper(388, 125, 5, 20); //rectangulars bumpers
 	Create_rectangularBumper(352, 125, 5, 20);
@@ -379,13 +368,11 @@ bool Scene::Start()
 	PhysBody* pb_middleDRObstacle = app->physics->CreateChain(0, 0, middleDRObstacle, sizemiddleDRObstacle, bodyType::STATIC);
 	PhysBody* pb_middleLRObstacle = app->physics->CreateChain(0, 0, middleLRObstacle, sizemiddleLRObstacle, bodyType::STATIC);
 
-	/*_pb_palaRight = app->physics->CreateRectangle(320, 770, 100, 20, bodyType::STATIC);
-	_pb_palaLeft = app->physics->CreateRectangle(420, 770, 100, 20, bodyType::STATIC);*/
-
+	//Palas
 	_palaRight = app->physics->CreateRectangle(300, 765, 90, 20, bodyType::DYNAMIC);
-	_palaRightPivot = app->physics->CreateCircle(270, 770, 0.5, bodyType::STATIC);
+	_palaRightPivot = app->physics->CreateCircle(265, 770, 0.5, bodyType::STATIC);
 	_palaLeft = app->physics->CreateRectangle(440, 765, 90, 20, bodyType::DYNAMIC);
-	_palaLeftPivot = app->physics->CreateCircle(470, 770, 0.5, bodyType::STATIC);
+	_palaLeftPivot = app->physics->CreateCircle(475, 770, 0.5, bodyType::STATIC);
 
 
 	b2RevoluteJointDef palaRightJoinDef;
@@ -411,9 +398,6 @@ bool Scene::Start()
 	palaLeftJoinDef.localAnchorA.Set(0, 0);
 	palaLeftJoinDef.localAnchorB.Set(0.8, 0);
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
-
-
-
 
 	return true;
 }
@@ -485,14 +469,6 @@ bool Scene::Update(float dt)
 		pbody->ctype = ColliderType::PLAYER;
 
 	}
-	/*if (bumper collisiona amb bola)
-		pbody->body->SetLinearVelocity(x);
-
-	*/
-
-	 
-	// Renders the image in the center of the screen 
-	//app->render->DrawTexture(img, (int)textPosX, (int)textPosY);
 
 	return true;
 }
@@ -524,11 +500,11 @@ bool Scene::CleanUp()
 void Scene::Create_circularBumper(int x, int y, int radious)
 {
 	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
-	circularBumper->body->GetFixtureList()->SetRestitution(1.1f);
+	circularBumper->body->GetFixtureList()->SetRestitution(1.5f);
 }
 
 void Scene::Create_rectangularBumper(int x, int y, int w, int h)
 {
 	PhysBody* rectangularBumper = app->physics->CreateRectangle(x, y, w, h, bodyType::STATIC);
-	rectangularBumper->body->GetFixtureList()->SetRestitution(1.1f); 
+	rectangularBumper->body->GetFixtureList()->SetRestitution(0.2f); 
 }
