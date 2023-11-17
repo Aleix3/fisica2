@@ -418,6 +418,24 @@ bool Scene::Update(float dt)
 		player->Reset();
 	}
 
+
+
+	
+
+	
+		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+			app->render->camera.y += (int)ceil(camSpeed * dt);
+
+		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			app->render->camera.y -= (int)ceil(camSpeed * dt);
+
+		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			app->render->camera.x += (int)ceil(camSpeed * dt);
+
+		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+			app->render->camera.x -= (int)ceil(camSpeed * dt);
+	
+
 	return true;
 }
 

@@ -26,7 +26,7 @@ public:
 	PhysBody* c1;
 	iPoint position;
 	float jumpSpeed = 5.0f;
-	bool suelo = true;
+	bool suelo = false;
 
 
 private:
