@@ -32,20 +32,14 @@ public:
 private:
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
-	uint texW, texH;
-	uint windowW, windowH;
 
 	Player* player;
 
 	SDL_Texture* _textura_aspid = nullptr;
-	Animation _ballAnimation;
-	SDL_Rect _rectAspid;
 
-	SDL_Texture* _textura_ball = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;
 	SDL_Rect _rectMarcadors;
-	SDL_Rect _rectPilota;
 	SDL_Rect _rectPalaRight;
 	SDL_Rect _rectPalaLeft;
 

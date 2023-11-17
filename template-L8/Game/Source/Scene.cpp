@@ -312,31 +312,10 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_velocitatInicial_Y = 2;
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
-	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
-
-	//Music is commented so that you can add your own music
-	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
-
-	//Get the size of the window
-	app->win->GetWindowSize(windowW, windowH);
-
-	//Get the size of the texture
-	app->tex->GetSize(_textura_ball, texW, texH);
-
-	textPosX = (float)windowW / 2 - (float)texW / 2;
-	textPosY = (float)windowH / 2 - (float)texH / 2;
-
-	position.x = 650; position.y = 730;
-
-
-	// L07 DONE 5: Add physics to the player - initialize physics body
-
-	//pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
-	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+	player->Start();
 
 	Create_circularBumper(210, 95, 15);
 	Create_circularBumper(333, 205, 17);
@@ -352,9 +331,6 @@ bool Scene::Start()
 
 	Create_rectangularBumper(125, 387, 5, 20);
 	Create_rectangularBumper(158, 397, 5, 20);
-
-	_ballAnimation.PushBack({ 37, 6, 25, 26 });
-	_ballAnimation.loop = false;
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -412,7 +388,7 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	b2Vec2 velocity = pbody->body->GetLinearVelocity();
+	player->Update(dt);
 
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
@@ -437,38 +413,9 @@ bool Scene::Update(float dt)
 		_palaLeft->body->ApplyTorque(-45.0f, true);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
-	{
-		_graus = 0;
-		_angle = _graus * M_PI / 180; // Angle en radians
-		_temps = 0;
-
-		_velocitatInicial_Y += 0.2;
-
-		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
-	{
-		velocity.y = -_velocitat_Y;
-		pbody->body->SetLinearVelocity(velocity);
-		_velocitatInicial_Y = 2;
-		suelo = false;
-	}
-	b2Transform pbodyPos = pbody->body->GetTransform();
-
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 10;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 10;
-
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 	{
-		position.x = 650;
-		position.y = 750;
-		app->physics->DestroyBody(pbody);
-		pbody = app->physics->CreateCircle(position.x, position.y, 11, bodyType::DYNAMIC);
-		/*pbody->listener = this;*/
-		pbody->ctype = ColliderType::PLAYER;
-
+		player->Reset();
 	}
 
 	return true;
@@ -481,11 +428,6 @@ bool Scene::PostUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
-
-	_ballAnimation.Update();
-	//app->render->DrawTexture(_textura_ball, position.x, position.y, NULL, 1.0f, c->data->GetRotation());
-	app->render->DrawTexture(_textura_ball, position.x, position.y, &_ballAnimation.GetCurrentFrame());
-	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	return ret;
 }

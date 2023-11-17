@@ -28,54 +28,56 @@ bool Player::Awake() {
 
 bool Player::Start() {
 
-	//texture = app->tex->Load(config.attribute("texturePath").as_string());
-
-	//// L07 DONE 5: Add physics to the player - initialize physics body
-	//app->tex->GetSize(texture, texW, texH);
-	///*pbody = app->physics->CreateCircle(position.x, position.y, texW / 2, bodyType::DYNAMIC);*/
-
-	//// L07 DONE 6: Assign player class (using "this") to the listener of the pbody. This makes the Physics module to call the OnCollision method
-	//pbody->listener = this;
-
-	//// L07 DONE 7: Assign collider type
-	//pbody->ctype = ColliderType::PLAYER;
-
-	////initialize audio effect
-	//pickCoinFxId = app->audio->LoadFx(config.attribute("coinfxpath").as_string());
-
+	_velocitatInicial_Y = 2;
+	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
+	app->tex->GetSize(_textura_ball, texW, texH);
+	textPosX = (float)windowW / 2 - (float)texW / 2;
+	textPosY = (float)windowH / 2 - (float)texH / 2;
+	position.x = 650; position.y = 730;
+	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
 	return true;
 }
 
 bool Player::Update(float dt)
 {
-	// L07 DONE 5: Add physics to the player - updated player position using physics
-
-	//L03: DONE 4: render the player texture and modify the position of the player using WSAD keys and render the texture
-	
-	/*b2Vec2 velocity = b2Vec2(0, -GRAVITY_Y);
-
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
-		velocity.x = -0.2*dt;
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
-		velocity.x = 0.2*dt;
-	}
-		
-	pbody->body->SetLinearVelocity(velocity);
 	b2Transform pbodyPos = pbody->body->GetTransform();
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - texH / 2;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - texH / 2;
 
-	app->render->DrawTexture(texture,position.x,position.y);*/
+	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 10;
+	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 10;
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+	{
+		_graus = 0;
+		_angle = _graus * M_PI / 180; // Angle en radians
+		_temps = 0;
 
+		_velocitatInicial_Y += 0.2;
+
+		_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
+	{
+		velocity.y = -_velocitat_Y;
+		pbody->body->SetLinearVelocity(velocity);
+		_velocitatInicial_Y = 2;
+		suelo = false;
+	}
 	return true;
 }
 
 bool Player::CleanUp()
 {
 	return true;
+}
+
+void Player::Reset()
+{
+	position.x = 650;
+	position.y = 750;
+	app->physics->DestroyBody(pbody);
+	pbody = app->physics->CreateCircle(position.x, position.y, 11, bodyType::DYNAMIC);
+	pbody->ctype = ColliderType::PLAYER;
 }
 
 // L07 DONE 6: Define OnCollision function for the player. 
