@@ -316,6 +316,7 @@ bool Scene::Start()
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
+	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 
 	//Music is commented so that you can add your own music
 	//app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
