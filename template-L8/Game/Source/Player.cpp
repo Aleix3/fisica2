@@ -112,6 +112,10 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision SALTO");
 		app->scene->suelo = true;
 		break;
+	case ColliderType::BUMPER:
+		LOG("Collision BUMPER");
+		puntuacion += 50;
+		break;
 	default:
 		break;
 	}

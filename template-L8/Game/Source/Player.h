@@ -37,6 +37,7 @@ public:
 	SDL_Texture* texture = NULL;
 	pugi::xml_node config;
 
+	int puntuacion = 0;
 
 	SDL_Texture* _textura_ball = nullptr;
 	uint texW, texH;

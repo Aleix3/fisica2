@@ -462,6 +462,8 @@ void Scene::Create_circularBumper(int x, int y, int radious)
 {
 	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
 	circularBumper->body->GetFixtureList()->SetRestitution(1.5f);
+
+	circularBumper->ctype = ColliderType::BUMPER;
 }
 
 void Scene::Create_rectangularBumper(int x, int y, int w, int h)
