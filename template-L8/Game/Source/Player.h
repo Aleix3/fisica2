@@ -46,6 +46,7 @@ public:
 	Animation _ballAnimation;
 	SDL_Rect _rectAspid;
 	bool suelo;
+	bool reset = false;
 
 	// Fisicas bola
 

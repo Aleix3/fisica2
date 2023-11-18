@@ -68,6 +68,8 @@ bool Player::Update(float dt)
 
 			_velocitatInicial_Y += 0.2;
 
+			
+
 			_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 		}
 
@@ -78,6 +80,21 @@ bool Player::Update(float dt)
 			_velocitatInicial_Y = 2;
 			app->scene->suelo = false;
 		}
+	}
+
+	if (reset == false)
+	{
+		position.x = 650;
+		position.y = 750;
+		app->physics->DestroyBody(pbody);
+		pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+
+		pbody->listener = this;
+
+		pbody->ctype = ColliderType::PLAYER;
+
+		reset = true;
+
 	}
 	
 	return true;
@@ -90,14 +107,22 @@ bool Player::CleanUp()
 
 void Player::Reset()
 {
-	position.x = 650;
-	position.y = 750;
-	app->physics->DestroyBody(pbody);
-	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+	
+		position.x = 650;
+		position.y = 750;
+		app->physics->DestroyBody(pbody);
+		pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
 
-	pbody->listener = this;
+		pbody->listener = this;
 
-	pbody->ctype = ColliderType::PLAYER;
+		pbody->ctype = ColliderType::PLAYER;
+
+		
+
+	
+		
+		
+
 }
 
 // L07 DONE 6: Define OnCollision function for the player. 
@@ -120,7 +145,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::DIE:
 		LOG("Collision SALTO");
-		Reset();
+		reset = false;
+		
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
