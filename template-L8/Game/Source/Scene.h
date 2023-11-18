@@ -59,10 +59,10 @@ private:
 	SDL_Surface* numberSurface = nullptr;
 	SDL_Texture* numberTexture = nullptr;
 	SDL_Rect numberRects[10];
-	int widthOfEachNumber = 0;  // Ancho de cada número en la imagen
-	int heightOfEachNumber = 0;  // Altura de cada número en la imagen
-	int xPosition = 0;  // Posición x donde empezar a dibujar la puntuación
-	int yPosition = 0;  // Posición y donde empezar a dibujar la puntuación
+	int widthOfEachNumber = 15;  // Ancho de cada número en la imagen
+	int heightOfEachNumber = 21;  // Altura de cada número en la imagen
+	int xPosition = 200;  // Posición x donde empezar a dibujar la puntuación
+	int yPosition = 300;  // Posición y donde empezar a dibujar la puntuación
 
 	// Fisiques
 	int _gravetat = 550; //m/s^2

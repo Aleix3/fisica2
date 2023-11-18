@@ -135,7 +135,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::ITEM:
 		LOG("Collision ITEM");
-		app->audio->PlayFx(pickCoinFxId);
+		//app->audio->PlayFx(pickCoinFxId);
 		break;
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
