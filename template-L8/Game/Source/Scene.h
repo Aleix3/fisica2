@@ -20,7 +20,7 @@ public:
 	bool CleanUp();
 
 	void Create_circularBumper(int x, int y, int radious);
-	void Create_rectangularBumper(int x, int y, int h, int w);
+	void Create_rectangularBumper(int x, int y, int h, int w, float angle);
 
 	PhysBody* pbody;
 	PhysBody* c1;

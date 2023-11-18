@@ -326,11 +326,13 @@ bool Scene::Start()
 	Create_circularBumper(177, 457, 13);
 	Create_circularBumper(130, 488, 13);
 
-	Create_rectangularBumper(388, 125, 5, 20); //rectangulars bumpers
-	Create_rectangularBumper(352, 125, 5, 20);
+	Create_rectangularBumper(388, 125, 5, 20, 0); //rectangulars bumpers
+	Create_rectangularBumper(352, 125, 5, 20, 0);
 
-	Create_rectangularBumper(125, 387, 5, 20);
-	Create_rectangularBumper(158, 397, 5, 20);
+	Create_rectangularBumper(125, 387, 5, 20, 0);
+	Create_rectangularBumper(158, 397, 5, 20, 0);
+
+	Create_rectangularBumper(388, 125, 20, 80, 30);
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -466,8 +468,13 @@ void Scene::Create_circularBumper(int x, int y, int radious)
 	circularBumper->ctype = ColliderType::BUMPER;
 }
 
-void Scene::Create_rectangularBumper(int x, int y, int w, int h)
+void Scene::Create_rectangularBumper(int x, int y, int w, int h, float angle)
 {
 	PhysBody* rectangularBumper = app->physics->CreateRectangle(x, y, w, h, bodyType::STATIC);
-	rectangularBumper->body->GetFixtureList()->SetRestitution(0.2f); 
+	rectangularBumper->body->GetFixtureList()->SetRestitution(0.2f);
+	int _angle = angle * M_PI / 180;
+	b2Transform transform = rectangularBumper->body->GetTransform();
+	transform.Set(transform.p, angle);
+	rectangularBumper->body->SetTransform(transform.p, transform.q.GetAngle());
 }
+
