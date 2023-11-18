@@ -32,6 +32,10 @@ bool Player::Start() {
 
 	c1->ctype = ColliderType::SALTO;
 
+	PhysBody* c2 = app->physics->CreateRectangle(365, 850, 300, 10, bodyType::STATIC);
+
+	c2->ctype = ColliderType::DIE;
+
 	_velocitatInicial_Y = 2;
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");	
 	app->tex->GetSize(_textura_ball, texW, texH);
@@ -113,6 +117,10 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::SALTO:
 		LOG("Collision SALTO");
 		app->scene->suelo = true;
+		break;
+	case ColliderType::DIE:
+		LOG("Collision SALTO");
+		Reset();
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
