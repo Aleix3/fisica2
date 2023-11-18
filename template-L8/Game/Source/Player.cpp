@@ -8,6 +8,7 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
+#include "Score.h"
 
 Player::Player() : Entity(EntityType::PLAYER)
 {
@@ -124,7 +125,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
-		puntuacion += 50;
+		//app->score->AddPoints(50);
 		break;
 	default:
 		break;

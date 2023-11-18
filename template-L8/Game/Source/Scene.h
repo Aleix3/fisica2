@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Player.h"
+#include "Score.h"
 #include "Animation.h"
 
 struct SDL_Texture;
@@ -30,6 +31,8 @@ public:
 
 
 private:
+	Score* score;
+
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
 
@@ -51,6 +54,15 @@ private:
 	float _limitAngleRadiansPalaRight = -0.7854f;
 	float _angleRadiansPalaLeft = 0.0f;
 	float _limitAngleRadiansPalaLeft = 0.7854f;
+
+	//FOnt
+	SDL_Surface* numberSurface = nullptr;
+	SDL_Texture* numberTexture = nullptr;
+	SDL_Rect numberRects[10];
+	int widthOfEachNumber = 0;  // Ancho de cada número en la imagen
+	int heightOfEachNumber = 0;  // Altura de cada número en la imagen
+	int xPosition = 0;  // Posición x donde empezar a dibujar la puntuación
+	int yPosition = 0;  // Posición y donde empezar a dibujar la puntuación
 
 	// Fisiques
 	int _gravetat = 550; //m/s^2

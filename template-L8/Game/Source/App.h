@@ -19,6 +19,8 @@ class Audio;
 class Scene;
 class EntityManager;
 class Physics;
+class Player;
+class Score;
 
 class App
 {
@@ -81,6 +83,8 @@ public:
 	Scene* scene;
 	EntityManager* entityManager;
 	Physics* physics;
+	Player* player;
+	Score* score;
 
 private:
 

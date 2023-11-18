@@ -10,6 +10,8 @@
 #include "Physics.h"
 #include "Defs.h"
 #include "Log.h"
+#include "Score.h"
+#include "SDL_image/include/SDL_image.h"
 
 
 int escenariGeneral[128] = {
@@ -306,12 +308,24 @@ bool Scene::Awake(pugi::xml_node config)
 
 	player->config = config.child("player");
 
+	score = new Score();
+
 	return ret;
 }
 
 // Called before the first frame
 bool Scene::Start()
 {
+	//numberSurface = IMG_Load("path/to/numbers.png");
+	//numberTexture = SDL_CreateTextureFromSurface(app->render->renderer, numberSurface);
+
+	//for (int i = 0; i < 10; i++) {
+	//	numberRects[i].x = i * widthOfEachNumber;
+	//	numberRects[i].y = 0;
+	//	numberRects[i].w = widthOfEachNumber;
+	//	numberRects[i].h = heightOfEachNumber;
+	//}
+
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
@@ -332,7 +346,7 @@ bool Scene::Start()
 	Create_rectangularBumper(125, 387, 5, 20, 0);
 	Create_rectangularBumper(158, 397, 5, 20, 0);
 
-	Create_rectangularBumper(388, 125, 20, 80, 30);
+	Create_rectangularBumper(388, 125, 20, 80, 90);
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -392,6 +406,9 @@ bool Scene::Update(float dt)
 {
 	player->Update(dt);
 
+
+
+
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
@@ -421,7 +438,21 @@ bool Scene::Update(float dt)
 	}
 
 
+	//std::string scoreText = std::to_string(app->score->GetScore());
+	//for (size_t i = 0; i < scoreText.size(); i++) {
+	//	// Obtiene el dígito en la posición i
+	//	int digit = scoreText[i] - '0';
 
+	//	// Define dónde dibujar el número en la pantalla
+	//	SDL_Rect dst;
+	//	dst.x = xPosition + i * widthOfEachNumber;
+	//	dst.y = yPosition;
+	//	dst.w = widthOfEachNumber;
+	//	dst.h = heightOfEachNumber;
+
+	//	// Dibuja el número
+	//	SDL_RenderCopy(app->render->renderer, numberTexture, &numberRects[digit], &dst);
+	//}
 	
 
 	
@@ -474,7 +505,7 @@ void Scene::Create_rectangularBumper(int x, int y, int w, int h, float angle)
 	rectangularBumper->body->GetFixtureList()->SetRestitution(0.2f);
 	int _angle = angle * M_PI / 180;
 	b2Transform transform = rectangularBumper->body->GetTransform();
-	transform.Set(transform.p, angle);
+	transform.Set(transform.p, _angle);
 	rectangularBumper->body->SetTransform(transform.p, transform.q.GetAngle());
 }
 

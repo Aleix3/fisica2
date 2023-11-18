@@ -1,3 +1,4 @@
+
 #include "Score.h"
 Score::Score() : score(0)
 {

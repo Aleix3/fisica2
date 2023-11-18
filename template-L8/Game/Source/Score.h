@@ -1,7 +1,12 @@
-#pragma once
+#ifndef __SCORE_H__
+#define __SCORE_H__
 
-class Score
-{
+#include "Module.h"
+#include "Player.h"
+#include "Animation.h"
+
+class Score : public Module {
+
 public:
     Score();
     ~Score();
@@ -9,5 +14,8 @@ public:
     void Reset();
     int GetScore() const;
 private:
-    int score;
+    int score = 0;
+
 };
+
+#endif
