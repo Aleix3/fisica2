@@ -90,6 +90,9 @@ void Player::Reset()
 	position.y = 750;
 	app->physics->DestroyBody(pbody);
 	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+
+	pbody->listener = this;
+
 	pbody->ctype = ColliderType::PLAYER;
 }
 
