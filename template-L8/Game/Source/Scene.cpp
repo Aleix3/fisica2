@@ -525,6 +525,7 @@ bool Scene::Update(float dt)
 	player->Update(dt);
 
 	if (app->score->GetLives() <= 0) {
+		app->modules[7]->active = true;
 	}
 
 	//L02 DONE 3: Make the camera movement independent of framerate
