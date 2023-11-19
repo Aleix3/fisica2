@@ -32,7 +32,8 @@ bool PostScene::Awake(pugi::xml_node config)
 
 bool PostScene::Start()
 {
-
+	img = app->tex->Load("Assets/Textures/Game_Over.png");
+	rectImg = { 0, 0, 130, 21 };
 	return true;
 }
 
@@ -74,8 +75,6 @@ bool PostScene::Update(float dt)
 
 bool PostScene::PostUpdate()
 {
-	img = app->tex->Load("Assets/Textures/Game_Over.png");
-	rectImg = { 300, 500, 130, 21 };
 	app->render->DrawTexture(img, 0, 0, &rectImg);
 	return true;
 }
