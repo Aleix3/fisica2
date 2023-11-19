@@ -60,6 +60,7 @@ bool PostScene::Update(float dt)
 
 bool PostScene::PostUpdate()
 {
+	app->hud->PaintSentence("Game over - post scena", { 0,0 });
 	return true;
 }
 

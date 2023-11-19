@@ -63,6 +63,7 @@ bool PreScene::Update(float dt)
 
 bool PreScene::PostUpdate()
 {
+	app->hud->PaintSentence("Inicio juego - pre scena", { 0,0 });
 	return true;
 }
 
