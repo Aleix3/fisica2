@@ -572,6 +572,7 @@ bool Scene::Update(float dt)
 
 	if (app->score->GetLives() <= 0) {
 		app->modules[7]->active = true;
+		app->modules[6]->active = false;
 		app->modules[9]->active = false;
 	}
 
