@@ -2,7 +2,6 @@
 
 #include "App.h"
 #include "Scene.h"
-//#include "../../Application/FileNames.h"
 #include "Textures.h"
 #include "Render.h"
 #include "Input.h"
