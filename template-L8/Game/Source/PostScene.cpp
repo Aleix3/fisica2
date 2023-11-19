@@ -1,4 +1,3 @@
-#include "Scene.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -43,6 +42,17 @@ bool PostScene::PreUpdate()
 
 bool PostScene::Update(float dt)
 {
+	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	{
+		// Passa a l'escena inicial
+		app->escenaActiva = 0;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	{
+		// Passa a l'escena joc
+		app->escenaActiva = 1;
+	}
 	return true;
 }
 

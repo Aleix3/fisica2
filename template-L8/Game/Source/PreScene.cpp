@@ -1,4 +1,3 @@
-#include "Scene.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -16,8 +15,9 @@
 #include "SDL_image/include/SDL_image.h"
 #include "PreScene.h"
 
-PreScene::PreScene()
+PreScene::PreScene() : Module()
 {
+	name.Create("Prescene");
 }
 
 PreScene::~PreScene()
@@ -26,25 +26,44 @@ PreScene::~PreScene()
 
 bool PreScene::Awake(pugi::xml_node config)
 {
-	return false;
+	LOG("Loading PreScene");
+	return true;
 }
 
 bool PreScene::Start()
 {
-	return false;
+	return true;
 }
 
 bool PreScene::PreUpdate()
 {
-	return false;
+	return true;
 }
 
 bool PreScene::Update(float dt)
 {
-	return false;
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	{
+		// Passa a l'escena joc
+		app->escenaActiva = 1;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
+	{
+		// Passa a l'escena game over
+		app->escenaActiva = 2;
+	}
+
+	return true;
 }
 
 bool PreScene::PostUpdate()
 {
-	return false;
+	return true;
+}
+
+bool PreScene::CleanUp()
+{
+	LOG("Freeing prescene");
+	return true;
 }

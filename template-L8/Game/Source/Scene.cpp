@@ -532,6 +532,18 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
+	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	{
+		// Passa a l'escena inicial
+		app->escenaActiva = 0;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
+	{
+		// Passa a l'escena game over
+		app->escenaActiva = 2;
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)
 	{
 		AnimSpring.PushBack({ 610,635,14,42 });
