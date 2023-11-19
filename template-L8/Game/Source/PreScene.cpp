@@ -33,7 +33,9 @@ bool PreScene::Start()
 {
 	app->modules[6]->active = false;
 	app->modules[7]->active = false;
+	
 	img = app->tex->Load("Assets/Textures/Startup Screen.png");
+	rectImg = {0, 0, 320, 222};
 	return true;
 }
 
@@ -63,6 +65,7 @@ bool PreScene::Update(float dt)
 
 bool PreScene::PostUpdate()
 {
+	app->render->DrawTexture(img, 0, 0, &rectImg);
 	app->hud->PaintSentence("Inicio juego - pre scena", { 0,0 });
 	return true;
 }

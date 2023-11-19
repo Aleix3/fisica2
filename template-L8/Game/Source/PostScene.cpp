@@ -31,6 +31,8 @@ bool PostScene::Awake(pugi::xml_node config)
 
 bool PostScene::Start()
 {
+	img = app->tex->Load("Assets/Textures/Game_Over.png");
+	rectImg = { 0, 0, 130, 21 };
 	return true;
 }
 
@@ -59,7 +61,8 @@ bool PostScene::Update(float dt)
 
 bool PostScene::PostUpdate()
 {
-	app->hud->PaintSentence("Game over - post scena", { 0,0 });
+	app->render->DrawTexture(img, 0, 0, &rectImg);
+	//app->hud->PaintSentence("Game over - post scena", { 0,0 });
 	return true;
 }
 

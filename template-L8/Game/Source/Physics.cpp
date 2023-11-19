@@ -34,12 +34,6 @@ Physics::~Physics()
 
 bool Physics::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	_rectEscenari = { 0, 0, 1280, 868 };
-
-
-
-
 	LOG("Creating Physics 2D environment");
 
 	// Create a new World
@@ -229,8 +223,6 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 bool Physics::PostUpdate()
 {
 	bool ret = true;
-
-	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	// Activate or deactivate debug mode
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)

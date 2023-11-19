@@ -14,6 +14,7 @@
 #include "Hud.h"
 #include "SDL_image/include/SDL_image.h"
 
+#pragma region colliders escneari
 
 int escenariGeneral[128] = {
 	455, 91,
@@ -248,16 +249,16 @@ int tunnelLeftRight[52] = {
 int sizetunnelLeftRight = sizeof(tunnelLeftRight) / sizeof(tunnelLeftRight[0]);
 
 int upperLeftObstacle[20] = {
-	294, 88,
+	297, 84,
 	320, 106,
 	319, 124,
 	266, 149,
 	260, 146,
-	264, 110,
-	273, 123,
-	275, 136,
-	313, 120,
-	312, 109
+	259, 105,
+	267, 100,
+	274, 96,
+	282, 91,
+	291, 86
 };
 int sizeupperLeftObstacle = sizeof(upperLeftObstacle) / sizeof(upperLeftObstacle[0]);
 
@@ -290,6 +291,7 @@ int middleLRObstacle[10] = {
 	207, 571
 };
 int sizemiddleLRObstacle = sizeof(middleLRObstacle) / sizeof(middleLRObstacle[0]);
+#pragma endregion
 
 
 Scene::Scene() : Module()
@@ -422,7 +424,9 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");;
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_rectEscenari = { 0, 0, 1040, 855 };
+
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
 	currentAnimBump3 = &AnimBump3;
@@ -490,7 +494,6 @@ bool Scene::Start()
 	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
 
-	_rectEscenari = { 0, 0, 1040, 855 };
 
 	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, sizeEscenariGeneral, bodyType::STATIC);
 	PhysBody* pb_outLaneRight = app->physics->CreateChain(0, 0, outLaneRight, sizeOutLaneRight, bodyType::STATIC);
@@ -651,6 +654,8 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
+	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+
 	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite,185, 65, &_rectBump1);
