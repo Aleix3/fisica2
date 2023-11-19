@@ -296,28 +296,46 @@ Scene::Scene() : Module()
 {
 	name.Create("scene");
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
-	//AnimBump1.PushBack({ 290, 191, 22,  22 });
-	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
-	AnimBump1.loop = true;
+	AnimBump1.PushBack({ 451, 537, 44,  44 });
+	AnimBump1.PushBack({ 404, 537, 44,  44 });
+	AnimBump1.loop = false;
 	AnimBump1.speed = 0.01f;
 
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
-	//AnimBump1.PushBack({ 290, 191, 22,  22 });
-	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
-	AnimBump2.loop = true;
+	AnimBump2.PushBack({ 471, 482, 44,  47 });
+	AnimBump2.PushBack({ 421, 482, 44,  47 });
+	AnimBump2.loop = false;
 	AnimBump2.speed = 0.01f;
 
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
-	//AnimBump1.PushBack({ 290, 191, 22,  22 });
-	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
-	AnimBump3.loop = true;
+	AnimBump3.PushBack({ 55, 480, 45,  37 });
+	AnimBump3.PushBack({ 3, 480, 45,  37 });
+	AnimBump3.loop = false;
 	AnimBump3.speed = 0.01f;
 
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
-	//AnimBump1.PushBack({ 290, 191, 22,  22 });
-	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
-	AnimBump4.loop = true;
+	AnimBump4.PushBack({ 53, 535, 44,  45 });
+	AnimBump4.PushBack({ 3, 535, 44,  45 });
+	AnimBump4.loop = false;
 	AnimBump4.speed = 0.01f;
+
+	AnimBump5.PushBack({ 2, 588, 37,  37 });
+	AnimBump5.PushBack({ 44, 588, 37,  37 });
+	AnimBump5.PushBack({ 2, 588, 37,  37 });
+	AnimBump5.loop = false;
+	AnimBump5.speed = 0.01f;
+
+	AnimBump6.PushBack({ 341, 586, 38,  38 });
+	AnimBump6.PushBack({ 384, 586, 38,  38 });
+	AnimBump6.PushBack({ 341, 586, 38,  38 });
+	AnimBump6.loop = false;
+	AnimBump6.speed = 0.01f;
+
+	AnimBump7.PushBack({ 685, 586, 38,  38 });
+	AnimBump7.PushBack({ 730, 586, 38,  38 });
+	AnimBump7.PushBack({ 685, 586, 38,  38 });
+	AnimBump7.loop = false;
+	AnimBump7.speed = 0.01f;
 }
 
 // Destructor
@@ -346,6 +364,9 @@ bool Scene::Start()
 	currentAnimBump2 = &AnimBump2;
 	currentAnimBump3 = &AnimBump3;
 	currentAnimBump4 = &AnimBump4;
+	currentAnimBump5 = &AnimBump5;
+	currentAnimBump6 = &AnimBump6;
+	currentAnimBump7 = &AnimBump7;
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 	app->hud->Start();
@@ -473,10 +494,14 @@ bool Scene::Update(float dt)
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 			app->render->camera.x -= (int)ceil(camSpeed * dt);
 
-		currentAnimBump1->Update();
-		currentAnimBump2->Update();
-		currentAnimBump3->Update();
-		currentAnimBump4->Update();
+		//currentAnimBump1->Update();
+		//currentAnimBump2->Update();
+		//currentAnimBump3->Update();
+		//currentAnimBump4->Update();
+		//currentAnimBump5->Update();
+		//currentAnimBump6->Update();
+		//currentAnimBump7->Update();
+	
 
 	return true;
 }
@@ -492,6 +517,12 @@ bool Scene::PostUpdate()
 	app->render->DrawTexture(_texturaSprite, 345, 229, &_rectBump3);
 	_rectBump4 = currentAnimBump4->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 309, 175, &_rectBump4);
+	_rectBump5 = currentAnimBump5->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 155, 435, &_rectBump5);
+	_rectBump6 = currentAnimBump6->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 88, 415, &_rectBump6);
+	_rectBump7 = currentAnimBump7->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 105, 465, &_rectBump7);
 	bool ret = true;
 	if (app->score != NULL) {
 		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });

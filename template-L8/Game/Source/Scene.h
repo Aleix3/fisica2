@@ -50,6 +50,15 @@ private:
 	SDL_Rect _rectBump4;
 	Animation* currentAnimBump4 = nullptr;
 	Animation AnimBump4;
+	SDL_Rect _rectBump5;
+	Animation* currentAnimBump5 = nullptr;
+	Animation AnimBump5;
+	SDL_Rect _rectBump6;
+	Animation* currentAnimBump6 = nullptr;
+	Animation AnimBump6;
+	SDL_Rect _rectBump7;
+	Animation* currentAnimBump7 = nullptr;
+	Animation AnimBump7;
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;
