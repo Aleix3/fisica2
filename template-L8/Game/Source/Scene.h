@@ -109,6 +109,7 @@ private:
 	SDL_Rect _rectMarcadors;
 	SDL_Rect _rectPalaRight;
 	SDL_Rect _rectPalaLeft;
+	SDL_Rect _rectPelota;
 
 	PhysBody* _palaRight;
 	PhysBody* _palaRightPivot;
