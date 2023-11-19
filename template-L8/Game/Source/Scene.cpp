@@ -424,6 +424,7 @@ bool Scene::Start()
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
 	sfx_Pala = app->audio->LoadFx("Assets/Audio/sfx/Pala.wav");
+	sfx_Over = app->audio->LoadFx("Assets/Audio/sfx/Game_over.wav");
 
 	app->audio->PlayFx(sfx_Start);
 
@@ -574,7 +575,7 @@ bool Scene::Update(float dt)
 		app->modules[6]->active = false;
 		app->modules[9]->active = false;
 		/*app->modules[6]->active = false;*/
-		
+		app->audio->PlayFx(sfx_Over);
 		gameover = true;
 			
 	}
