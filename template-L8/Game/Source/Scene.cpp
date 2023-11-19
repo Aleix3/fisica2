@@ -402,7 +402,7 @@ bool Scene::Start()
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
-	_rectPelota = {0,0,756,1064};
+	_rectPelota = { 756,1064,8,8};
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -426,6 +426,7 @@ bool Scene::Start()
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
 	sfx_Pala = app->audio->LoadFx("Assets/Audio/sfx/Pala.wav");
+	sfx_Over = app->audio->LoadFx("Assets/Audio/sfx/Game_over.wav");
 
 	app->audio->PlayFx(sfx_Start);
 
@@ -576,7 +577,7 @@ bool Scene::Update(float dt)
 		app->modules[6]->active = false;
 		app->modules[9]->active = false;
 		/*app->modules[6]->active = false;*/
-		
+		app->audio->PlayFx(sfx_Over);
 		gameover = true;
 			
 	}
