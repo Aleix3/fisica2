@@ -18,7 +18,6 @@ void Score::restLives()
 void Score::Reset()
 {
     score = 0;
-   
 }
 int Score::GetScore() const
 {

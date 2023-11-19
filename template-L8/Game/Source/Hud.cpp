@@ -69,6 +69,26 @@ int Hud::LoadVector() {
 	vectorABC.push_back({ '8', 7 });
 	vectorABC.push_back({ '9', 8 });
 	vectorABC.push_back({ '0', 9 });
+	vectorABC.push_back({ 'A', 10 });
+	vectorABC.push_back({ 'B', 11 });
+	vectorABC.push_back({ 'C', 12 });
+	vectorABC.push_back({ 'D', 13 });
+	vectorABC.push_back({ 'E', 14 });
+	vectorABC.push_back({ 'F', 15 });
+	vectorABC.push_back({ 'G', 16 });
+	vectorABC.push_back({ 'H', 17 });
+	vectorABC.push_back({ 'I', 18 });
+	vectorABC.push_back({ 'J', 19 });
+	vectorABC.push_back({ 'L', 20 });
+	vectorABC.push_back({ 'M', 21 });
+	vectorABC.push_back({ 'O', 22 });
+	vectorABC.push_back({ 'P', 23 });
+	vectorABC.push_back({ 'R', 24 });
+	vectorABC.push_back({ 'S', 25 });
+	vectorABC.push_back({ 'T', 26 });
+	vectorABC.push_back({ 'U', 27 });
+	vectorABC.push_back({ 'V', 28 });
+	vectorABC.push_back({ 'W', 29 });
 
 	return vectorABC.size();
 }
