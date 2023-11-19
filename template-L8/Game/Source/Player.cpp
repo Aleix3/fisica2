@@ -178,7 +178,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper2Hit = true;
-			//app->score->CheckCombo1();
+			CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -187,7 +187,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper3Hit = true;
-			//app->score->CheckCombo1();
+			CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -196,7 +196,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper4Hit = true;
-			//app->score->CheckCombo1();
+			CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -205,7 +205,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper5Hit = true;
-			//app->score->CheckCombo2();
+			CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -214,7 +214,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper6Hit = true;
-			//app->score->CheckCombo2();
+			CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -223,7 +223,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper7Hit = true;
-			//app->score->CheckCombo2();
+			CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -233,4 +233,30 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	}
 }
 
+void Player::ResetCombo1() {
+	bumper2Hit = false;
+	bumper3Hit = false;
+	bumper4Hit = false;
+}
+
+void Player::ResetCombo2() {
+	bumper5Hit = false;
+	bumper6Hit = false;
+	bumper7Hit = false;
+}
+
+
+void Player::CheckCombo1() {
+	if (bumper2Hit && bumper3Hit && bumper4Hit) {
+		app->score->AddPoints(1000);
+		ResetCombo1();
+	}
+}
+
+void Player::CheckCombo2() {
+	if (bumper5Hit && bumper6Hit && bumper7Hit) {
+		app->score->AddPoints(1000);
+		ResetCombo2();
+	}
+}
 

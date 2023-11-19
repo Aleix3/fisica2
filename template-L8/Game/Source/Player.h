@@ -31,6 +31,11 @@ public:
 	// L07 DONE 6: Define OnCollision function for the player. 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
+	void CheckCombo1();
+	void CheckCombo2();
+	void ResetCombo1();
+	void ResetCombo2();
+
 public:
 
 	//L02: DONE 2: Declare player parameters
