@@ -103,6 +103,7 @@ private:
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;
+	SDL_Texture* _texball = nullptr;
 	SDL_Texture* _texturaSprite_ = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;

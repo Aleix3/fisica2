@@ -400,9 +400,10 @@ bool Scene::Awake(pugi::xml_node config)
 bool Scene::Start()
 {
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texball = app->tex->Load("Assets/Textures/ball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
-	_rectPelota = { 756,1064,8,8};
+	_rectPelota = {0,0,15,15};
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -720,7 +721,7 @@ bool Scene::PostUpdate()
 	
 
 
-	app->render->DrawTexture(_texturaGeneral, ballRect.x,ballRect.y, &_rectPelota);
+	app->render->DrawTexture(_texball, ballRect.x,ballRect.y, &_rectPelota);
 
 	return ret;
 }
