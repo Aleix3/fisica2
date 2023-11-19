@@ -50,7 +50,7 @@ bool Player::Start() {
 	c5->ctype = ColliderType::DIE;
 	sfx_Bumper = app->audio->LoadFx("Assets/Audio/sfx/Bumper.wav");
 	_velocitatInicial_Y = 2;
-	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");	
+	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
 	app->tex->GetSize(_textura_ball, texW, texH);
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
@@ -60,6 +60,11 @@ bool Player::Start() {
 	pbody->listener = this;
 
 	pbody->ctype = ColliderType::PLAYER;
+
+	
+	
+	
+	
 
 	return true;
 }
@@ -80,8 +85,8 @@ bool Player::Update(float dt)
 			_temps = 0;
 
 			_velocitatInicial_Y += 0.2;
-    
-			
+
+
 
 			_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 		}
@@ -113,7 +118,14 @@ bool Player::Update(float dt)
 		reset = true;
 
 	}
-	
+
+	//SDL_Rect ballRect = { position.x - 8, position.y - 8, 16, 16 };
+
+	//Uint8 r = 255, g = 0, b = 0, a = 255; // Color rojo en formato RGBA
+
+	//Render* render = app->render;
+	//render->DrawRectangle(ballRect, r, g, b, a, true, true);
+
 	return true;
 }
 
@@ -124,15 +136,15 @@ bool Player::CleanUp()
 
 void Player::Reset()
 {
-	
-		position.x = 650;
-		position.y = 750;
-		app->physics->DestroyBody(pbody);
-		pbody = app->physics->CreateCircle(position.x, position.y, 8, bodyType::DYNAMIC);
 
-		pbody->listener = this;
+	position.x = 650;
+	position.y = 750;
+	app->physics->DestroyBody(pbody);
+	pbody = app->physics->CreateCircle(position.x, position.y, 8, bodyType::DYNAMIC);
 
-		pbody->ctype = ColliderType::PLAYER;
+	pbody->listener = this;
+
+	pbody->ctype = ColliderType::PLAYER;
 
 		app->score->lives = 3;
 
@@ -140,7 +152,6 @@ void Player::Reset()
 
 }
 
-// L07 DONE 6: Define OnCollision function for the player. 
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
@@ -161,21 +172,21 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::DIE:
 		LOG("Collision SALTO");
 		reset = false;
-		
+
 		break;
 	case ColliderType::BUMPER1:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper1Hit = true;
 			app->score->AddPoints(50);
-			app->audio->PlayFx(sfx_Bumper);
+			//	app->audio->PlayFx(sfx_Bumper);
 		}
 		break;
 	case ColliderType::BUMPER2:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper2Hit = true;
-			app->score->CheckCombo1();
+			//app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -184,7 +195,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper3Hit = true;
-			app->score->CheckCombo1();
+			//app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -193,7 +204,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper4Hit = true;
-			app->score->CheckCombo1();
+			//app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -202,7 +213,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper5Hit = true;
-			app->score->CheckCombo2();
+			//app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -211,7 +222,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper6Hit = true;
-			app->score->CheckCombo2();
+			//app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -220,7 +231,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			bumper7Hit = true;
-			app->score->CheckCombo2();
+			//app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}

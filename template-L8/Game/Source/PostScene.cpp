@@ -48,14 +48,15 @@ bool PostScene::Update(float dt)
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
 		app->modules[7]->active = false;
+		app->modules[9]->active = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
 	{
 		// Passa a l'escena joc
 		app->modules[6]->active = true;
+		app->modules[9]->active = true;
 		app->modules[7]->active = false;
-
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
@@ -66,8 +67,6 @@ bool PostScene::Update(float dt)
 	
 
 	return true;
-
-
 }
 
 bool PostScene::PostUpdate()

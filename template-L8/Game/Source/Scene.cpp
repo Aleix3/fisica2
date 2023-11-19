@@ -138,83 +138,31 @@ int obstacleSuperiorDelTunel[62] = {
 };
 int sizeObstacleSuperiorDelTunel = sizeof(obstacleSuperiorDelTunel) / sizeof(obstacleSuperiorDelTunel[0]);
 
-int tunnelFoc[152] = {
-	468, 268,
-	479, 247,
-	488, 229,
-	493, 211,
-	493, 198,
-	486, 169,
-	480, 160,
-	468, 149,
-	452, 128,
-	441, 115,
-	426, 115,
-	418, 94,
-	443, 78,
-	452, 77,
-	463, 83,
-	476, 87,
-	488, 94,
-	494, 101,
-	508, 109,
-	516, 117,
-	527, 127,
-	538, 134,
-	544, 152,
-	549, 160,
-	554, 170,
-	561, 183,
-	564, 198,
-	565, 216,
-	559, 249,
-	556, 260,
-	552, 279,
-	544, 293,
-	538, 304,
-	531, 318,
-	524, 334,
-	518, 347,
-	515, 334,
-	523, 323,
-	528, 305,
-	535, 293,
-	540, 279,
-	544, 262,
-	549, 241,
-	549, 231,
-	549, 214,
-	547, 198,
-	540, 183,
-	534, 174,
-	525, 158,
-	518, 148,
-	508, 140,
-	501, 134,
-	494, 128,
-	483, 123,
-	475, 118,
-	464, 111,
-	460, 108,
-	453, 109,
-	455, 119,
-	474, 128,
-	480, 136,
-	491, 147,
-	499, 154,
-	506, 162,
-	513, 170,
-	517, 178,
-	519, 197,
-	520, 213,
-	519, 221,
-	516, 230,
-	510, 241,
-	505, 252,
-	497, 265,
-	487, 279,
-	481, 275,
-	474, 267
+int tunnelFoc[48] = {
+	451, 152,
+	470, 140,
+	492, 155,
+	502, 169,
+	507, 185,
+	513, 205,
+	513, 225,
+	510, 237,
+	506, 248,
+	500, 260,
+	488, 273,
+	477, 286,
+	465, 279,
+	473, 271,
+	480, 262,
+	484, 253,
+	489, 242,
+	496, 224,
+	496, 213,
+	491, 200,
+	485, 186,
+	476, 172,
+	471, 162,
+	462, 154
 };
 int sizeTunnelFoc = sizeof(tunnelFoc) / sizeof(tunnelFoc[0]);
 
@@ -291,53 +239,79 @@ int middleLRObstacle[10] = {
 	207, 571
 };
 int sizemiddleLRObstacle = sizeof(middleLRObstacle) / sizeof(middleLRObstacle[0]);
+
+int tunnelEnd[8] = {
+	423, 105,
+420, 130,
+427, 137,
+445, 120
+};
+int sizetunnelEnd = sizeof(tunnelEnd) / sizeof(tunnelEnd[0]);
+
+int tunnelELeft[24] = {
+	188, 297,
+203, 327,
+219, 338,
+232, 331,
+253, 365,
+258, 384,
+258, 391,
+264, 387,
+250, 349,
+233, 324,
+216, 308,
+201, 301
+};
+int sizetunnelELeft = sizeof(tunnelELeft) / sizeof(tunnelELeft[0]);
 #pragma endregion
 
 
 Scene::Scene() : Module()
 {
 	name.Create("scene");
+
+#pragma region Animaciones
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
 	AnimBump1.PushBack({ 451, 537, 44,  44 });
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
-	AnimBump1.loop = false;
-	AnimBump1.speed = 0.01f;
+	AnimBump1.loop = true;
+	AnimBump1.speed = 0.1f;
 
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
 	AnimBump2.PushBack({ 471, 482, 44,  47 });
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
-	AnimBump2.loop = false;
-	AnimBump2.speed = 0.01f;
+	AnimBump2.loop = true;
+	AnimBump2.speed = 0.1f;
 
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
 	AnimBump3.PushBack({ 55, 480, 45,  37 });
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
-	AnimBump3.loop = false;
-	AnimBump3.speed = 0.01f;
+	AnimBump3.loop = true;
+	AnimBump3.speed = 0.1f;
 
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
 	AnimBump4.PushBack({ 53, 535, 44,  45 });
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
-	AnimBump4.loop = false;
-	AnimBump4.speed = 0.01f;
+	AnimBump4.loop = true;
+	AnimBump4.speed = 0.1f;
 
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
 	AnimBump5.PushBack({ 44, 588, 37,  37 });
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
-	AnimBump5.loop = false;
-	AnimBump5.speed = 0.01f;
+	AnimBump5.loop = true;
+	AnimBump5.speed = 0.1f;
 
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
 	AnimBump6.PushBack({ 384, 586, 38,  38 });
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
-	AnimBump6.loop = false;
-	AnimBump6.speed = 0.01f;
+	AnimBump6.loop = true;
+	AnimBump6.speed = 0.1f;
 
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
 	AnimBump7.PushBack({ 730, 586, 38,  38 });
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
-	AnimBump7.loop = false;
-	AnimBump7.speed = 0.01f;
+	AnimBump7.loop = true;
+	AnimBump7.speed = 0.1f;
 
 	AnimLight1.PushBack({ 650, 241, 6,  6 });
 	AnimLight1.PushBack({ 650, 241, 6,  6 });
@@ -402,6 +376,7 @@ Scene::Scene() : Module()
 	AnimArrow2.PushBack({ 650, 241, 6,  6 });
 	AnimArrow2.loop = true;
 	AnimArrow2.speed = 0.08f;
+#pragma endregion
 }
 
 // Destructor
@@ -424,8 +399,8 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	_rectEscenari = { 0, 0, 1040, 855 };
+	//_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	//_rectEscenari = { 0, 0, 1040, 855 };
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -434,26 +409,32 @@ bool Scene::Start()
 	currentAnimBump5 = &AnimBump5;
 	currentAnimBump6 = &AnimBump6;
 	currentAnimBump7 = &AnimBump7;
+
 	currentAnimLight1= &AnimLight1;
 	currentAnimLight2 = &AnimLight2;
 	currentAnimLight3 = &AnimLight3;
 	currentAnimLight4 = &AnimLight4;
 	currentAnimLight5 = &AnimLight5;
 	currentAnimLight6 = &AnimLight6;
+
 	currentAnimArrow1 = &AnimArrow1;
 	currentAnimArrow2 = &AnimArrow2;
 	currentAnimSpring = &AnimSpring;
+
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
 	sfx_Pala = app->audio->LoadFx("Assets/Audio/sfx/Pala.wav");
+
 	app->audio->PlayFx(sfx_Start);
+
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
+
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
 
 	player->Start();
 
-
+#pragma region Bumpers
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
 	circularBumper->body->GetFixtureList()->SetRestitution(0.5f);
 
@@ -488,13 +469,14 @@ bool Scene::Start()
 	circularBumper7->body->GetFixtureList()->SetRestitution(1.3f);
 
 	circularBumper7->ctype = ColliderType::BUMPER7;
+#pragma endregion	
 
 	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
 
-
+#pragma region Obstacles escenari
 	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, sizeEscenariGeneral, bodyType::STATIC);
 	PhysBody* pb_outLaneRight = app->physics->CreateChain(0, 0, outLaneRight, sizeOutLaneRight, bodyType::STATIC);
 	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, sizeOutLaneLeft, bodyType::STATIC);
@@ -505,7 +487,8 @@ bool Scene::Start()
 	PhysBody* pb_middleObstacle = app->physics->CreateChain(0, 0, middleObstacle, sizemiddleObstacle, bodyType::STATIC);
 	PhysBody* pb_middleDRObstacle = app->physics->CreateChain(0, 0, middleDRObstacle, sizemiddleDRObstacle, bodyType::STATIC);
 	PhysBody* pb_middleLRObstacle = app->physics->CreateChain(0, 0, middleLRObstacle, sizemiddleLRObstacle, bodyType::STATIC);
-
+	PhysBody* pb_tunnelEnd = app->physics->CreateChain(0, 0, tunnelEnd, sizetunnelEnd, bodyType::STATIC);
+	PhysBody* pb_tunnelELeft = app->physics->CreateChain(0, 0, tunnelELeft, sizetunnelELeft, bodyType::STATIC);
 	//Palas
 	_palaRight = app->physics->CreateRectangle(300, 765, 90, 20, bodyType::DYNAMIC);
 	_palaRightPivot = app->physics->CreateCircle(265, 770, 0.5, bodyType::STATIC);
@@ -536,6 +519,9 @@ bool Scene::Start()
 	palaLeftJoinDef.localAnchorA.Set(0, 0);
 	palaLeftJoinDef.localAnchorB.Set(0.8, 0);
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
+#pragma endregion
+
+	
 
 	if (app->score != NULL) {
 		app->score->Reset();
@@ -559,6 +545,8 @@ bool Scene::Update(float dt)
 
 	if (app->score->GetLives() <= 0) {
 		app->modules[7]->active = true;
+		app->modules[6]->active = false;
+		app->modules[9]->active = false;
 	}
 
 	//L02 DONE 3: Make the camera movement independent of framerate
@@ -569,6 +557,7 @@ bool Scene::Update(float dt)
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
 		app->modules[6]->active = false;
+		app->modules[9]->active = false;
 		gameover = false;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
@@ -582,6 +571,8 @@ bool Scene::Update(float dt)
 	{
 		// Passa a l'escena game over
 		app->modules[7]->active = true;
+		app->modules[6]->active = false;
+		app->modules[9]->active = false;
 		/*app->modules[6]->active = false;*/
 		
 		gameover = true;
@@ -645,13 +636,13 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		app->render->camera.x -= (int)ceil(camSpeed * dt);
 
-		//currentAnimBump1->Update();
-		//currentAnimBump2->Update();
-		//currentAnimBump3->Update();
-		//currentAnimBump4->Update();
-		//currentAnimBump5->Update();
-		//currentAnimBump6->Update();
-		//currentAnimBump7->Update();
+		currentAnimBump1->Update();
+		currentAnimBump2->Update();
+		currentAnimBump3->Update();
+		currentAnimBump4->Update();
+		currentAnimBump5->Update();
+		currentAnimBump6->Update();
+		currentAnimBump7->Update();
 		currentAnimLight1->Update();
 		currentAnimLight2->Update();
 		currentAnimLight3->Update();
@@ -667,7 +658,7 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
-	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();

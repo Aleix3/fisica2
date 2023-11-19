@@ -33,9 +33,10 @@ bool PreScene::Start()
 {
 	app->modules[6]->active = false;
 	app->modules[7]->active = false;
+	app->modules[9]->active = false;
 	
-	img = app->tex->Load("Assets/Textures/Startup Screen.png");
-	rectImg = {0, 0, 320, 222};
+	img = app->tex->Load("Assets/Textures/Startup Screen400.png");
+	rectImg = {0, 0, 1280,888};
 	return true;
 }
 
@@ -50,6 +51,7 @@ bool PreScene::Update(float dt)
 	{
 		// Passa a l'escena joc
 		app->modules[6]->active = true;		
+		app->modules[9]->active = true;		
 		app->modules[5]->active = false;		
 	}
 
@@ -58,6 +60,7 @@ bool PreScene::Update(float dt)
 		// Passa a l'escena game over
 		app->modules[7]->active = true;
 		app->modules[5]->active = false;
+		app->modules[9]->active = false;
 	}
 
 	return true;
