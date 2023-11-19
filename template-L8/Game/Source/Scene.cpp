@@ -422,7 +422,8 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");;
+
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
 	currentAnimBump3 = &AnimBump3;
@@ -538,6 +539,8 @@ bool Scene::Start()
 		app->score->Reset();
 	}
 
+	_texturaSprite_ = app->tex->Load("Assets/Textures/Game_Over.png");
+
 	return true;
 }
 
@@ -564,13 +567,23 @@ bool Scene::Update(float dt)
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
 		app->modules[6]->active = false;
+		gameover = false;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	{
+		// Passa a l'escena inicial
+		
+		gameover = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena game over
 		app->modules[7]->active = true;
-		app->modules[6]->active = false;
+		/*app->modules[6]->active = false;*/
+		
+		gameover = true;
+			
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)
@@ -696,6 +709,11 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
+
+	if (app->modules[7]->active == true || gameover == true)
+	{
+		app->render->DrawTexture(_texturaSprite_, 363, 380);
+	}
 
 	return ret;
 }

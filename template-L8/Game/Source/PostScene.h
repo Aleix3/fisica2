@@ -22,7 +22,7 @@ public:
 
 private:
 	Score* score;
-	SDL_Texture* img;
+	SDL_Texture* _texturaSprite;
 	float textPosX, textPosY = 0;
 
 
