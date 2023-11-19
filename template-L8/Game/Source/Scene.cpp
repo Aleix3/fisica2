@@ -581,7 +581,7 @@ bool Scene::Update(float dt)
 			
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_DOWN)== KEY_UP)
 	{
 		AnimSpring.PushBack({ 610,635,14,42 });
 		AnimSpring.PushBack({ 610,625,14,42 });
@@ -594,7 +594,7 @@ bool Scene::Update(float dt)
 		app->audio->PlayFx(sfx_Spring);
 	}
 	// cambiar angle de rotacio de la pala
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		_palaRight->body->ApplyTorque(-40.0f, true);
 	}
@@ -602,12 +602,12 @@ bool Scene::Update(float dt)
 	{
 		_palaRight->body->ApplyTorque(45.0f, true);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
 	{
 		app->audio->PlayFx(sfx_Pala);
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
 		_palaLeft->body->ApplyTorque(40.0f, true);
 	}
@@ -615,7 +615,7 @@ bool Scene::Update(float dt)
 	{
 		_palaLeft->body->ApplyTorque(-45.0f, true);
 	}
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 	{
 		app->audio->PlayFx(sfx_Pala);
 	}
@@ -626,16 +626,16 @@ bool Scene::Update(float dt)
 	}
 
 	
-	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 		app->render->camera.y += (int)ceil(camSpeed * dt);
 
-	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
 		app->render->camera.y -= (int)ceil(camSpeed * dt);
 
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 		app->render->camera.x += (int)ceil(camSpeed * dt);
 
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 		app->render->camera.x -= (int)ceil(camSpeed * dt);
 
 		currentAnimBump1->Update();
