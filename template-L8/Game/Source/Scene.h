@@ -60,6 +60,26 @@ private:
 	Animation* currentAnimBump7 = nullptr;
 	Animation AnimBump7;
 
+	SDL_Rect _rectLight1;
+	Animation* currentAnimLight1 = nullptr;
+	Animation AnimLight1;
+	SDL_Rect _rectLight2;
+	Animation* currentAnimLight2 = nullptr;
+	Animation AnimLight2;
+	SDL_Rect _rectLight3;
+	Animation* currentAnimLight3 = nullptr;
+	Animation AnimLight3;
+	SDL_Rect _rectLight4;
+	Animation* currentAnimLight4 = nullptr;
+	Animation AnimLight4;
+	SDL_Rect _rectLight5;
+	Animation* currentAnimLight5 = nullptr;
+	Animation AnimLight5;
+	SDL_Rect _rectLight6;
+	Animation* currentAnimLight6 = nullptr;
+	Animation AnimLight6;
+
+
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;

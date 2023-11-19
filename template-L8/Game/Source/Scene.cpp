@@ -336,6 +336,61 @@ Scene::Scene() : Module()
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
 	AnimBump7.loop = false;
 	AnimBump7.speed = 0.01f;
+
+	AnimLight1.PushBack({ 650, 241, 6,  6 });
+	AnimLight1.PushBack({ 650, 241, 6,  6 });
+	AnimLight1.PushBack({ 650, 241, 6,  6 });
+	AnimLight1.PushBack({ 650, 241, 6,  6 });
+	AnimLight1.PushBack({ 650, 241, 6,  6 });
+	AnimLight1.PushBack({ 529, 196, 28,  28 });
+	AnimLight1.loop = true;
+	AnimLight1.speed = 0.1f;
+
+	AnimLight2.PushBack({ 650, 241, 6,  6 });
+	AnimLight2.PushBack({ 650, 241, 6,  6 });
+	AnimLight2.PushBack({ 650, 241, 6,  6 });
+	AnimLight2.PushBack({ 650, 241, 6,  6 });
+	AnimLight2.PushBack({ 495, 194, 23,  30 });
+	AnimLight2.PushBack({ 650, 241, 6,  6 });
+	AnimLight2.loop = true;
+	AnimLight2.speed = 0.1f;
+
+	AnimLight3.PushBack({ 650, 241, 6,  6 });
+	AnimLight3.PushBack({ 650, 241, 6,  6 });
+	AnimLight3.PushBack({ 650, 241, 6,  6 });
+	AnimLight3.PushBack({ 457, 196, 28,  28 });
+	AnimLight3.PushBack({ 650, 241, 6,  6 });
+	AnimLight3.PushBack({ 650, 241, 6,  6 });
+	AnimLight3.loop = true;
+	AnimLight3.speed = 0.1f;
+
+	AnimLight4.PushBack({ 650, 241, 6,  6 });
+	AnimLight4.PushBack({ 650, 241, 6,  6 });
+	AnimLight4.PushBack({ 81, 197, 30,  18 });
+	AnimLight4.PushBack({ 650, 241, 6,  6 });
+	AnimLight4.PushBack({ 650, 241, 6,  6 });
+	AnimLight4.PushBack({ 650, 241, 6,  6 });
+	AnimLight4.loop = true;
+	AnimLight4.speed = 0.1f;
+
+	AnimLight5.PushBack({ 650, 241, 6,  6 });
+	AnimLight5.PushBack({ 44, 193, 30,  21 });
+	AnimLight5.PushBack({ 650, 241, 6,  6 });
+	AnimLight5.PushBack({ 650, 241, 6,  6 });
+	AnimLight5.PushBack({ 650, 241, 6,  6 });
+	AnimLight5.PushBack({ 650, 241, 6,  6 });
+	AnimLight5.loop = true;
+	AnimLight5.speed = 0.1f;
+
+	AnimLight6.PushBack({ 4, 190, 31,  24 });
+	AnimLight6.PushBack({ 650, 241, 6,  6 });
+	AnimLight6.PushBack({ 650, 241, 6,  6 });
+	AnimLight6.PushBack({ 650, 241, 6,  6 });
+	AnimLight6.PushBack({ 650, 241, 6,  6 });
+	AnimLight6.PushBack({ 650, 241, 6,  6 });
+	AnimLight6.loop = true;
+	AnimLight6.speed = 0.1f;
+
 }
 
 // Destructor
@@ -367,6 +422,12 @@ bool Scene::Start()
 	currentAnimBump5 = &AnimBump5;
 	currentAnimBump6 = &AnimBump6;
 	currentAnimBump7 = &AnimBump7;
+	currentAnimLight1= &AnimLight1;
+	currentAnimLight2 = &AnimLight2;
+	currentAnimLight3 = &AnimLight3;
+	currentAnimLight4 = &AnimLight4;
+	currentAnimLight5 = &AnimLight5;
+	currentAnimLight6 = &AnimLight6;
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 	app->hud->Start();
@@ -501,6 +562,12 @@ bool Scene::Update(float dt)
 		//currentAnimBump5->Update();
 		//currentAnimBump6->Update();
 		//currentAnimBump7->Update();
+		currentAnimLight1->Update();
+		currentAnimLight2->Update();
+		currentAnimLight3->Update();
+		currentAnimLight4->Update();
+		currentAnimLight5->Update();
+		currentAnimLight6->Update();
 	
 
 	return true;
@@ -523,6 +590,19 @@ bool Scene::PostUpdate()
 	app->render->DrawTexture(_texturaSprite, 88, 415, &_rectBump6);
 	_rectBump7 = currentAnimBump7->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 105, 465, &_rectBump7);
+
+	_rectLight1 = currentAnimLight1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 495, 85, &_rectLight1);
+	_rectLight2 = currentAnimLight2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 548, 130, &_rectLight2);
+	_rectLight3 = currentAnimLight3->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 573, 192, &_rectLight3);
+	_rectLight4 = currentAnimLight4->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 584, 276, &_rectLight4);
+	_rectLight5 = currentAnimLight5->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 598, 372, &_rectLight5);
+	_rectLight6 = currentAnimLight6->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 613, 473, &_rectLight6);
 	bool ret = true;
 	if (app->score != NULL) {
 		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });
