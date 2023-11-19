@@ -69,7 +69,6 @@ bool PreScene::Update(float dt)
 bool PreScene::PostUpdate()
 {
 	app->render->DrawTexture(img, 0, 0, &rectImg);
-	app->hud->PaintSentence("Inicio juego - pre scena", { 0,0 });
 	return true;
 }
 

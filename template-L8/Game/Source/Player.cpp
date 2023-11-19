@@ -45,9 +45,6 @@ bool Player::Start() {
 
 	c2->ctype = ColliderType::DIE;
 
-	PhysBody* c5 = app->physics->CreateRectangle(285, 136, 25, 10, bodyType::STATIC);
-
-	c5->ctype = ColliderType::DIE;
 	sfx_Bumper = app->audio->LoadFx("Assets/Audio/sfx/Bumper.wav");
 	_velocitatInicial_Y = 2;
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");

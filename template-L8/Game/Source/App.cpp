@@ -30,15 +30,15 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	frames = 0;
 
-	win = new Window();
-	input = new Input();
-	render = new Render();
-	tex = new Textures();
-	audio = new Audio();
-	physics = new Physics();
-	prescene = new PreScene();
-	scene = new Scene();
-	postscene = new PostScene();
+	win = new Window();//0
+	input = new Input();//1
+	render = new Render();//2
+	tex = new Textures();//3
+	audio = new Audio();//4
+	physics = new Physics();//5 <------
+	prescene = new PreScene();// 6 <---
+	scene = new Scene();//7 <---
+	postscene = new PostScene();//8 <---
 	entityManager = new EntityManager();
 	hud = new Hud();
 	score = new Score();
