@@ -79,6 +79,13 @@ private:
 	Animation* currentAnimLight6 = nullptr;
 	Animation AnimLight6;
 
+	SDL_Rect _rectArrow1;
+	Animation* currentAnimArrow1 = nullptr;
+	Animation AnimArrow1;
+	SDL_Rect _rectArrow2;
+	Animation* currentAnimArrow2 = nullptr;
+	Animation AnimArrow2;
+
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;

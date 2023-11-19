@@ -391,6 +391,16 @@ Scene::Scene() : Module()
 	AnimLight6.loop = true;
 	AnimLight6.speed = 0.1f;
 
+	AnimArrow1.PushBack({ 426,164,15,17 });
+	AnimArrow1.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1.loop = true;
+	AnimArrow1.speed = 0.08f;
+
+	AnimArrow2.PushBack({ 428,192,20,20 });
+	AnimArrow2.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2.loop = true;
+	AnimArrow2.speed = 0.08f;
+
 }
 
 // Destructor
@@ -428,6 +438,8 @@ bool Scene::Start()
 	currentAnimLight4 = &AnimLight4;
 	currentAnimLight5 = &AnimLight5;
 	currentAnimLight6 = &AnimLight6;
+	currentAnimArrow1 = &AnimArrow1;
+	currentAnimArrow2 = &AnimArrow2;
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 	app->hud->Start();
@@ -568,6 +580,8 @@ bool Scene::Update(float dt)
 		currentAnimLight4->Update();
 		currentAnimLight5->Update();
 		currentAnimLight6->Update();
+		currentAnimArrow1->Update();
+		currentAnimArrow2->Update();
 	
 
 	return true;
@@ -603,6 +617,12 @@ bool Scene::PostUpdate()
 	app->render->DrawTexture(_texturaSprite, 598, 372, &_rectLight5);
 	_rectLight6 = currentAnimLight6->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 613, 473, &_rectLight6);
+
+	_rectArrow1 = currentAnimArrow1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 290, 388, &_rectArrow1);
+	_rectArrow2 = currentAnimArrow2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 477, 314, &_rectArrow2);
+
 	bool ret = true;
 	if (app->score != NULL) {
 		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });
