@@ -436,8 +436,6 @@ bool Scene::Start()
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
 
-	player->Start();
-
 #pragma region Bumpers
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
 	circularBumper->body->GetFixtureList()->SetRestitution(0.5f);
