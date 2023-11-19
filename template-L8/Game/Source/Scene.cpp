@@ -295,6 +295,29 @@ int sizemiddleLRObstacle = sizeof(middleLRObstacle) / sizeof(middleLRObstacle[0]
 Scene::Scene() : Module()
 {
 	name.Create("scene");
+	AnimBump1.PushBack({ 404, 537, 44,  44 });
+	//AnimBump1.PushBack({ 290, 191, 22,  22 });
+	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
+	AnimBump1.loop = true;
+	AnimBump1.speed = 0.01f;
+
+	AnimBump2.PushBack({ 421, 482, 44,  47 });
+	//AnimBump1.PushBack({ 290, 191, 22,  22 });
+	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
+	AnimBump2.loop = true;
+	AnimBump2.speed = 0.01f;
+
+	AnimBump3.PushBack({ 3, 480, 45,  37 });
+	//AnimBump1.PushBack({ 290, 191, 22,  22 });
+	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
+	AnimBump3.loop = true;
+	AnimBump3.speed = 0.01f;
+
+	AnimBump4.PushBack({ 3, 535, 44,  45 });
+	//AnimBump1.PushBack({ 290, 191, 22,  22 });
+	/*AnimBump1.PushBack({ 314, 191, 22, 22 });*/
+	AnimBump4.loop = true;
+	AnimBump4.speed = 0.01f;
 }
 
 // Destructor
@@ -318,9 +341,15 @@ bool Scene::Awake(pugi::xml_node config)
 bool Scene::Start()
 {
 
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");;
+	currentAnimBump1 = &AnimBump1;
+	currentAnimBump2 = &AnimBump2;
+	currentAnimBump3 = &AnimBump3;
+	currentAnimBump4 = &AnimBump4;
+	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 	app->hud->Start();
+
 	player->Start();
 
 	Create_circularBumper(210, 95, 15);
@@ -443,7 +472,11 @@ bool Scene::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 			app->render->camera.x -= (int)ceil(camSpeed * dt);
-	
+
+		currentAnimBump1->Update();
+		currentAnimBump2->Update();
+		currentAnimBump3->Update();
+		currentAnimBump4->Update();
 
 	return true;
 }
@@ -451,6 +484,14 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
+	_rectBump1 = currentAnimBump1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite,185, 65, &_rectBump1);
+	_rectBump2 = currentAnimBump2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 389, 157, &_rectBump2);
+	_rectBump3 = currentAnimBump3->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 345, 229, &_rectBump3);
+	_rectBump4 = currentAnimBump4->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 309, 175, &_rectBump4);
 	bool ret = true;
 	if (app->score != NULL) {
 		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });

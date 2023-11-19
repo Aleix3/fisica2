@@ -19,7 +19,8 @@ public:
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
-
+	/*Scene(bool startEnabled);*/
+	
 	void Create_circularBumper(int x, int y, int radious);
 	void Create_rectangularBumper(int x, int y, int h, int w, float angle);
 
@@ -32,16 +33,26 @@ public:
 
 private:
 	Score* score;
-
-
-
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
 
 	Player* player;
 
-	SDL_Texture* _textura_aspid = nullptr;
+	SDL_Rect _rectBump1;
+	Animation* currentAnimBump1 = nullptr;
+	Animation AnimBump1;
+	SDL_Rect _rectBump2;
+	Animation* currentAnimBump2 = nullptr;
+	Animation AnimBump2;
+	SDL_Rect _rectBump3;
+	Animation* currentAnimBump3 = nullptr;
+	Animation AnimBump3;
+	SDL_Rect _rectBump4;
+	Animation* currentAnimBump4 = nullptr;
+	Animation AnimBump4;
 
+	SDL_Texture* _textura_aspid = nullptr;
+	SDL_Texture* _texturaSprite = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;
 	SDL_Rect _rectMarcadors;
