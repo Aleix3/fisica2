@@ -4,7 +4,9 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
+#include "PreScene.h"
 #include "Scene.h"
+#include "PostScene.h"
 #include "Physics.h"
 #include "Hud.h"
 #include "Score.h"
@@ -39,7 +41,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	audio = new Audio();
 	//L07 DONE 2: Add Physics module
 	physics = new Physics();
+	prescene = new PreScene();
 	scene = new Scene();
+	postscene = new PostScene();
 	entityManager = new EntityManager();
 	hud = new Hud();
 	score = new Score();
@@ -54,7 +58,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	//L07 DONE 2: Add Physics module
 	AddModule(physics);
+	AddModule(prescene);
 	AddModule(scene);
+	AddModule(postscene);
 	AddModule(entityManager);
 	AddModule(hud);
 	AddModule(score);

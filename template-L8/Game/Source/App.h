@@ -16,7 +16,9 @@ class Input;
 class Render;
 class Textures;
 class Audio;
+class PreScene;
 class Scene;
+class PostScene;
 class EntityManager;
 class Physics;
 class Player;
@@ -82,13 +84,17 @@ public:
 	Render* render;
 	Textures* tex;
 	Audio* audio;
+	PreScene* prescene;
 	Scene* scene;
+	PostScene* postscene;
 	EntityManager* entityManager;
 	Physics* physics;
 	Player* player;
 	Score* score;
 	Hud* hud;
 	gameOver* gOver;
+
+	int escenaActiva = 0; // 0 = pre, 1 = escena, 2 = post
 
 private:
 
