@@ -402,7 +402,7 @@ bool Scene::Start()
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
-	_rectPelota = {0,0,756,1064};
+	_rectPelota = { 756,1064,8,8};
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
