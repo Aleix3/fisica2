@@ -24,7 +24,6 @@ class Physics;
 class Player;
 class Score;
 class Hud;
-class gameOver;
 
 class App
 {
@@ -92,7 +91,6 @@ public:
 	Player* player;
 	Score* score;
 	Hud* hud;
-	gameOver* gOver;
 
 	List<Module *> modules;
 private:

@@ -11,7 +11,6 @@
 #include "Hud.h"
 #include "Score.h"
 #include "Player.h"
-#include "gameOver.h"
 
 
 
@@ -43,7 +42,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	entityManager = new EntityManager();
 	hud = new Hud();
 	score = new Score();
-	gOver = new gameOver();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -58,7 +56,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(hud);
 	AddModule(score);
-	AddModule(gOver);
 
 	// Render last to swap buffer
 	AddModule(render);

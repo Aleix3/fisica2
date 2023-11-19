@@ -11,7 +11,6 @@
 #include "Log.h"
 #include "Score.h"
 #include "Hud.h"
-#include "gameOver.h"
 #include "SDL_image/include/SDL_image.h"
 #include "PreScene.h"
 
