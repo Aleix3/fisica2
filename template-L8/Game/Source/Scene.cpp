@@ -400,7 +400,6 @@ Scene::Scene() : Module()
 	AnimArrow2.PushBack({ 650, 241, 6,  6 });
 	AnimArrow2.loop = true;
 	AnimArrow2.speed = 0.08f;
-
 }
 
 // Destructor
@@ -440,6 +439,7 @@ bool Scene::Start()
 	currentAnimLight6 = &AnimLight6;
 	currentAnimArrow1 = &AnimArrow1;
 	currentAnimArrow2 = &AnimArrow2;
+	currentAnimSpring = &AnimSpring;
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
 	app->hud->Start();
@@ -526,6 +526,18 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
+	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)
+	{
+		AnimSpring.PushBack({ 610,635,14,42 });
+		AnimSpring.PushBack({ 610,625,14,42 });
+		AnimSpring.PushBack({ 610,615,14,42 });
+		AnimSpring.PushBack({ 610,605,14,42 });
+		AnimSpring.PushBack({ 610,595,14,42 });
+		AnimSpring.PushBack({ 650, 241, 6,  6 });
+		AnimSpring.loop = false;
+		AnimSpring.speed = 0.1f;
+	}
+
 	// cambiar angle de rotacio de la pala
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
@@ -582,14 +594,14 @@ bool Scene::Update(float dt)
 		currentAnimLight6->Update();
 		currentAnimArrow1->Update();
 		currentAnimArrow2->Update();
-	
-
+		currentAnimSpring->Update();
 	return true;
 }
 
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
+	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite,185, 65, &_rectBump1);
 	_rectBump2 = currentAnimBump2->GetCurrentFrame();
@@ -622,7 +634,9 @@ bool Scene::PostUpdate()
 	app->render->DrawTexture(_texturaSprite, 290, 388, &_rectArrow1);
 	_rectArrow2 = currentAnimArrow2->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 477, 314, &_rectArrow2);
-
+	_rectSpring = currentAnimSpring->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 663, 780, &_rectSpring);
+	//
 	bool ret = true;
 	if (app->score != NULL) {
 		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });

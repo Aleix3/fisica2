@@ -85,7 +85,9 @@ private:
 	SDL_Rect _rectArrow2;
 	Animation* currentAnimArrow2 = nullptr;
 	Animation AnimArrow2;
-
+	SDL_Rect _rectSpring;
+	Animation* currentAnimSpring = nullptr;
+	Animation AnimSpring;
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;
