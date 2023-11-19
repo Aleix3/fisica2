@@ -77,7 +77,7 @@ void Hud::PaintSentence(std::string sentenceToPaint, iPoint positionToPaint) {
 	int size = sentenceToPaint.size();
 	int writedLetters = 0;
 	std::vector<int> posicions;
-	SDL_Rect cutFont = { 0, 0, 150, 29 };
+	SDL_Rect cutFont = { 0, 0, 15, 29 };
 
 	for (int i = 0; i < size; i++)
 	{

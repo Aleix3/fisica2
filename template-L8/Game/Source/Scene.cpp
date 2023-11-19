@@ -320,6 +320,7 @@ bool Scene::Start()
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
+	app->hud->Start();
 	player->Start();
 
 	Create_circularBumper(210, 95, 15);
@@ -452,7 +453,7 @@ bool Scene::PostUpdate()
 {
 	bool ret = true;
 	if (app->score != NULL) {
-		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 100, 200 });
+		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 770, 400 });
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)

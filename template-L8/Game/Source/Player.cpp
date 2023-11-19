@@ -118,12 +118,6 @@ void Player::Reset()
 
 		pbody->ctype = ColliderType::PLAYER;
 
-		
-
-	
-		
-		
-
 }
 
 // L07 DONE 6: Define OnCollision function for the player. 

@@ -6,6 +6,11 @@
 #include "Audio.h"
 #include "Scene.h"
 #include "Physics.h"
+#include "Hud.h"
+#include "Score.h"
+#include "Player.h"
+
+
 
 #include "Defs.h"
 #include "Log.h"
@@ -35,6 +40,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics();
 	scene = new Scene();
 	entityManager = new EntityManager();
+	hud = new Hud();
+	score = new Score();
 
 
 	// Ordered for awake / Start / Update
@@ -47,6 +54,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 	AddModule(scene);
 	AddModule(entityManager);
+	AddModule(hud);
+	AddModule(score);
 
 	// Render last to swap buffer
 	AddModule(render);
