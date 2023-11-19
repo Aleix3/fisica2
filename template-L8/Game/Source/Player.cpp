@@ -33,9 +33,21 @@ bool Player::Start() {
 
 	c1->ctype = ColliderType::SALTO;
 
+	PhysBody* c3 = app->physics->CreateRectangle(618, 775, 25, 10, bodyType::STATIC);
+
+	c3->ctype = ColliderType::SALTO;
+
+	PhysBody* c4 = app->physics->CreateRectangle(73, 772, 25, 10, bodyType::STATIC);
+
+	c4->ctype = ColliderType::SALTO;
+
 	PhysBody* c2 = app->physics->CreateRectangle(365, 850, 300, 10, bodyType::STATIC);
 
 	c2->ctype = ColliderType::DIE;
+
+	PhysBody* c5 = app->physics->CreateRectangle(285, 138, 25, 10, bodyType::STATIC);
+
+	c5->ctype = ColliderType::DIE;
 
 	_velocitatInicial_Y = 2;
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");	
@@ -43,7 +55,7 @@ bool Player::Start() {
 	textPosX = (float)windowW / 2 - (float)texW / 2;
 	textPosY = (float)windowH / 2 - (float)texH / 2;
 	position.x = 650; position.y = 730;
-	pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+	pbody = app->physics->CreateCircle(position.x, position.y, 8, bodyType::DYNAMIC);
 
 	pbody->listener = this;
 
@@ -56,8 +68,8 @@ bool Player::Update(float dt)
 {
 	b2Transform pbodyPos = pbody->body->GetTransform();
 
-	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 10;
-	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 10;
+	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 8;
+	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 8;
 
 	if (app->scene->suelo == true)
 	{
@@ -92,7 +104,7 @@ bool Player::Update(float dt)
 		position.x = 650;
 		position.y = 750;
 		app->physics->DestroyBody(pbody);
-		pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+		pbody = app->physics->CreateCircle(position.x, position.y, 8, bodyType::DYNAMIC);
 
 		pbody->listener = this;
 
@@ -116,7 +128,7 @@ void Player::Reset()
 		position.x = 650;
 		position.y = 750;
 		app->physics->DestroyBody(pbody);
-		pbody = app->physics->CreateCircle(position.x, position.y, 10, bodyType::DYNAMIC);
+		pbody = app->physics->CreateCircle(position.x, position.y, 8, bodyType::DYNAMIC);
 
 		pbody->listener = this;
 
