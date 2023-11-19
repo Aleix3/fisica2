@@ -57,6 +57,12 @@ bool PostScene::Update(float dt)
 		app->modules[7]->active = false;
 
 	}
+
+	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
+	{
+		app->modules[6]->active = true;
+		app->modules[7]->active = false;
+	}
 	
 
 	return true;
