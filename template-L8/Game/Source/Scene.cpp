@@ -300,44 +300,44 @@ Scene::Scene() : Module()
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
 	AnimBump1.PushBack({ 451, 537, 44,  44 });
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
-	AnimBump1.loop = false;
-	AnimBump1.speed = 0.01f;
+	AnimBump1.loop = true;
+	AnimBump1.speed = 0.1f;
 
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
 	AnimBump2.PushBack({ 471, 482, 44,  47 });
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
-	AnimBump2.loop = false;
-	AnimBump2.speed = 0.01f;
+	AnimBump2.loop = true;
+	AnimBump2.speed = 0.1f;
 
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
 	AnimBump3.PushBack({ 55, 480, 45,  37 });
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
-	AnimBump3.loop = false;
-	AnimBump3.speed = 0.01f;
+	AnimBump3.loop = true;
+	AnimBump3.speed = 0.1f;
 
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
 	AnimBump4.PushBack({ 53, 535, 44,  45 });
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
-	AnimBump4.loop = false;
-	AnimBump4.speed = 0.01f;
+	AnimBump4.loop = true;
+	AnimBump4.speed = 0.1f;
 
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
 	AnimBump5.PushBack({ 44, 588, 37,  37 });
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
-	AnimBump5.loop = false;
-	AnimBump5.speed = 0.01f;
+	AnimBump5.loop = true;
+	AnimBump5.speed = 0.1f;
 
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
 	AnimBump6.PushBack({ 384, 586, 38,  38 });
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
-	AnimBump6.loop = false;
-	AnimBump6.speed = 0.01f;
+	AnimBump6.loop = true;
+	AnimBump6.speed = 0.1f;
 
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
 	AnimBump7.PushBack({ 730, 586, 38,  38 });
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
-	AnimBump7.loop = false;
-	AnimBump7.speed = 0.01f;
+	AnimBump7.loop = true;
+	AnimBump7.speed = 0.1f;
 
 	AnimLight1.PushBack({ 650, 241, 6,  6 });
 	AnimLight1.PushBack({ 650, 241, 6,  6 });
@@ -644,13 +644,13 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		app->render->camera.x -= (int)ceil(camSpeed * dt);
 
-		//currentAnimBump1->Update();
-		//currentAnimBump2->Update();
-		//currentAnimBump3->Update();
-		//currentAnimBump4->Update();
-		//currentAnimBump5->Update();
-		//currentAnimBump6->Update();
-		//currentAnimBump7->Update();
+		currentAnimBump1->Update();
+		currentAnimBump2->Update();
+		currentAnimBump3->Update();
+		currentAnimBump4->Update();
+		currentAnimBump5->Update();
+		currentAnimBump6->Update();
+		currentAnimBump7->Update();
 		currentAnimLight1->Update();
 		currentAnimLight2->Update();
 		currentAnimLight3->Update();
