@@ -151,7 +151,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::BUMPER:
 		LOG("Collision BUMPER");
-		//app->score->AddPoints(50);
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+		}
 		break;
 	default:
 		break;

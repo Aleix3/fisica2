@@ -15,7 +15,6 @@ public:
     int GetScore() const;
 private:
     int score = 0;
-
 };
 
 #endif

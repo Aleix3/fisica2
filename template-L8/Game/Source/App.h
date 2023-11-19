@@ -21,6 +21,7 @@ class EntityManager;
 class Physics;
 class Player;
 class Score;
+class Hud;
 
 class App
 {
@@ -85,6 +86,7 @@ public:
 	Physics* physics;
 	Player* player;
 	Score* score;
+	Hud* hud;
 
 private:
 

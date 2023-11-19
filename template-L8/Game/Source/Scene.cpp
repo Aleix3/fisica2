@@ -11,6 +11,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "Score.h"
+#include "Hud.h"
 #include "SDL_image/include/SDL_image.h"
 
 
@@ -316,18 +317,6 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	numberSurface = IMG_Load("Assets/Textures/Font.png");
-	numberTexture = SDL_CreateTextureFromSurface(app->render->renderer, numberSurface);
-	{
-		for (int i = 0; i < 10; i++) {
-			numberRects[i].x = (i % 6) * widthOfEachNumber;
-			numberRects[i].y = (i < 6 ? 0 : 1) * heightOfEachNumber;
-			numberRects[i].w = widthOfEachNumber;
-			numberRects[i].h = heightOfEachNumber;
-
-		}
-
-	}
 
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
@@ -392,6 +381,10 @@ bool Scene::Start()
 	palaLeftJoinDef.localAnchorB.Set(0.8, 0);
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
 
+	if (app->score != NULL) {
+		app->score->Reset();
+	}
+
 	return true;
 }
 
@@ -432,27 +425,11 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 	{
 		player->Reset();
-	}
-
-	if (app->score != NULL) {
-		std::string scoreText = std::to_string(app->score->GetScore());
-
-		for (size_t i = 0; i < scoreText.size(); i++) {
-			// Obtiene el dígito en la posición i
-			int digit = scoreText[i] - '0';
-
-			// Define dónde dibujar el número en la pantalla
-			SDL_Rect dst;
-			dst.x = xPosition + i * widthOfEachNumber;
-			dst.y = yPosition;
-			dst.w = widthOfEachNumber;
-			dst.h = heightOfEachNumber;
-
-			// Dibuja el número
-			SDL_RenderCopy(app->render->renderer, numberTexture, &numberRects[digit], &dst);
+		if (app->score != NULL) {
+			app->score->Reset();
 		}
-
 	}
+
 	
 		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 			app->render->camera.y += (int)ceil(camSpeed * dt);
@@ -474,6 +451,9 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	bool ret = true;
+	if (app->score != NULL) {
+		app->hud->PaintSentence(std::to_string(app->score->GetScore()), { 100, 200 });
+	}
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
@@ -492,7 +472,7 @@ bool Scene::CleanUp()
 void Scene::Create_circularBumper(int x, int y, int radious)
 {
 	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
-	circularBumper->body->GetFixtureList()->SetRestitution(1.5f);
+	circularBumper->body->GetFixtureList()->SetRestitution(1.3f);
 
 	circularBumper->ctype = ColliderType::BUMPER;
 }
@@ -500,10 +480,11 @@ void Scene::Create_circularBumper(int x, int y, int radious)
 void Scene::Create_rectangularBumper(int x, int y, int w, int h, float angle)
 {
 	PhysBody* rectangularBumper = app->physics->CreateRectangle(x, y, w, h, bodyType::STATIC);
-	rectangularBumper->body->GetFixtureList()->SetRestitution(0.2f);
+	rectangularBumper->body->GetFixtureList()->SetRestitution(1.1f);
 	int _angle = angle * M_PI / 180;
 	b2Transform transform = rectangularBumper->body->GetTransform();
 	transform.Set(transform.p, _angle);
 	rectangularBumper->body->SetTransform(transform.p, transform.q.GetAngle());
+	rectangularBumper->ctype = ColliderType::BUMPER;
 }
 

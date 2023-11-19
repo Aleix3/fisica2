@@ -34,6 +34,7 @@ public:
 
 public:
 
+	const std::string FI_HUD_font1 = "Assets/Textures/Font.png";
 	List<SDL_Texture*> textures;
 };
 

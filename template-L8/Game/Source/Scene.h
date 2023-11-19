@@ -33,6 +33,8 @@ public:
 private:
 	Score* score;
 
+
+
 	SDL_Texture* img;
 	float textPosX, textPosY = 0;
 
