@@ -399,8 +399,10 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	//_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
+
+	_rectPelota = {0,0,756,1064};
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -717,7 +719,7 @@ bool Scene::PostUpdate()
 	
 
 
-	app->render->DrawRectangle(ballRect, r, g, b, a, true, true);
+	app->render->DrawTexture(_texturaGeneral, ballRect.x,ballRect.y, &_rectPelota);
 
 	return ret;
 }
