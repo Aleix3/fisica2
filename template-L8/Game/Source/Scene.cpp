@@ -263,6 +263,20 @@ int tunnelELeft[24] = {
 201, 301
 };
 int sizetunnelELeft = sizeof(tunnelELeft) / sizeof(tunnelELeft[0]);
+
+int triangle1[6] = {
+191, 418,
+178, 429,
+191, 440
+};
+int sizetriangle1 = sizeof(triangle1) / sizeof(triangle1[0]);
+
+int triangle2[6] = {
+93, 405,
+	107, 420,
+	92, 425
+};
+int sizetriangle2 = sizeof(triangle2) / sizeof(triangle2[0]);
 #pragma endregion
 
 
@@ -491,6 +505,8 @@ bool Scene::Start()
 	PhysBody* pb_middleLRObstacle = app->physics->CreateChain(0, 0, middleLRObstacle, sizemiddleLRObstacle, bodyType::STATIC);
 	PhysBody* pb_tunnelEnd = app->physics->CreateChain(0, 0, tunnelEnd, sizetunnelEnd, bodyType::STATIC);
 	PhysBody* pb_tunnelELeft = app->physics->CreateChain(0, 0, tunnelELeft, sizetunnelELeft, bodyType::STATIC);
+	PhysBody* pb_triangle1 = app->physics->CreateChain(0, 0, triangle1, sizetriangle1, bodyType::STATIC);
+	PhysBody* pb_triangle2 = app->physics->CreateChain(0, 0, triangle2, sizetriangle2, bodyType::STATIC);
 	//Palas
 	_palaRight = app->physics->CreateRectangle(300, 765, 90, 20, bodyType::DYNAMIC);
 	_palaRightPivot = app->physics->CreateCircle(265, 770, 0.5, bodyType::STATIC);
