@@ -297,6 +297,8 @@ int sizemiddleLRObstacle = sizeof(middleLRObstacle) / sizeof(middleLRObstacle[0]
 Scene::Scene() : Module()
 {
 	name.Create("scene");
+
+#pragma region Animaciones
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
 	AnimBump1.PushBack({ 451, 537, 44,  44 });
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
@@ -402,6 +404,7 @@ Scene::Scene() : Module()
 	AnimArrow2.PushBack({ 650, 241, 6,  6 });
 	AnimArrow2.loop = true;
 	AnimArrow2.speed = 0.08f;
+#pragma endregion
 }
 
 // Destructor
@@ -434,26 +437,32 @@ bool Scene::Start()
 	currentAnimBump5 = &AnimBump5;
 	currentAnimBump6 = &AnimBump6;
 	currentAnimBump7 = &AnimBump7;
+
 	currentAnimLight1= &AnimLight1;
 	currentAnimLight2 = &AnimLight2;
 	currentAnimLight3 = &AnimLight3;
 	currentAnimLight4 = &AnimLight4;
 	currentAnimLight5 = &AnimLight5;
 	currentAnimLight6 = &AnimLight6;
+
 	currentAnimArrow1 = &AnimArrow1;
 	currentAnimArrow2 = &AnimArrow2;
 	currentAnimSpring = &AnimSpring;
+
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
 	sfx_Pala = app->audio->LoadFx("Assets/Audio/sfx/Pala.wav");
+
 	app->audio->PlayFx(sfx_Start);
+
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
+
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
 
 	player->Start();
 
-
+#pragma region Bumpers
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
 	circularBumper->body->GetFixtureList()->SetRestitution(0.5f);
 
@@ -488,13 +497,14 @@ bool Scene::Start()
 	circularBumper7->body->GetFixtureList()->SetRestitution(1.3f);
 
 	circularBumper7->ctype = ColliderType::BUMPER7;
+#pragma endregion	
 
 	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
 
-
+#pragma region Obstacles escenari
 	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, sizeEscenariGeneral, bodyType::STATIC);
 	PhysBody* pb_outLaneRight = app->physics->CreateChain(0, 0, outLaneRight, sizeOutLaneRight, bodyType::STATIC);
 	PhysBody* pb_outLaneLeft = app->physics->CreateChain(0, 0, outLaneLeft, sizeOutLaneLeft, bodyType::STATIC);
@@ -536,6 +546,9 @@ bool Scene::Start()
 	palaLeftJoinDef.localAnchorA.Set(0, 0);
 	palaLeftJoinDef.localAnchorB.Set(0.8, 0);
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
+#pragma endregion
+
+	
 
 	if (app->score != NULL) {
 		app->score->Reset();
@@ -559,6 +572,7 @@ bool Scene::Update(float dt)
 
 	if (app->score->GetLives() <= 0) {
 		app->modules[7]->active = true;
+		app->modules[9]->active = false;
 	}
 
 	//L02 DONE 3: Make the camera movement independent of framerate
@@ -569,6 +583,7 @@ bool Scene::Update(float dt)
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
 		app->modules[6]->active = false;
+		app->modules[9]->active = false;
 		gameover = false;
 	}
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
@@ -582,6 +597,8 @@ bool Scene::Update(float dt)
 	{
 		// Passa a l'escena game over
 		app->modules[7]->active = true;
+		app->modules[6]->active = false;
+		app->modules[9]->active = false;
 		/*app->modules[6]->active = false;*/
 		
 		gameover = true;

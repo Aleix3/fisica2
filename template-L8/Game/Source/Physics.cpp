@@ -67,7 +67,7 @@ bool Physics::PreUpdate()
 			// If so, we call the OnCollision listener function (only of the sensor), passing as inputs our custom PhysBody classes
 			PhysBody* pb1 = (PhysBody*)c->GetFixtureA()->GetBody()->GetUserData();
 			PhysBody* pb2 = (PhysBody*)c->GetFixtureB()->GetBody()->GetUserData();
-			
+
 			if (pb1 && pb2 && pb1->listener)
 				pb1->listener->OnCollision(pb1, pb2);
 		}
@@ -227,14 +227,17 @@ bool Physics::PostUpdate()
 {
 	bool ret = true;
 
-	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+	if (app->modules[9]->active)
+	{
+		app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+	}
 
 	// Activate or deactivate debug mode
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
 		debug = !debug;
-	
+
 	//  Iterate all objects in the world and draw the bodies
-	if (debug)
+	if (debug && app->modules[9]->active)
 	{
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{
@@ -400,7 +403,7 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& no
 		fixture = fixture->GetNext();
 	}
 
-	
+
 
 	return ret;
 }
