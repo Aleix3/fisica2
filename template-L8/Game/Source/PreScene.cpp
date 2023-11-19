@@ -33,6 +33,7 @@ bool PreScene::Start()
 {
 	app->modules[6]->active = false;
 	app->modules[7]->active = false;
+	img = app->tex->Load("Assets/Textures/Startup Screen.png");
 	return true;
 }
 
