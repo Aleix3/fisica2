@@ -13,6 +13,7 @@
 #include "Hud.h"
 #include "SDL_image/include/SDL_image.h"
 #include "PostScene.h"
+#include "Scene.h"
 
 PostScene::PostScene() : Module()
 {
@@ -56,12 +57,15 @@ bool PostScene::Update(float dt)
 		app->modules[6]->active = true;
 		app->modules[9]->active = true;
 		app->modules[7]->active = false;
+		app->scene->gameover = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 	{
 		app->modules[6]->active = true;
+		app->modules[9]->active = true;
 		app->modules[7]->active = false;
+		app->scene->gameover = false;
 	}
 	
 
