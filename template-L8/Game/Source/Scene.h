@@ -29,7 +29,7 @@ public:
 	iPoint position;
 	float jumpSpeed = 5.0f;
 	bool suelo = false;
-
+	bool gameover = false;
 
 private:
 	Score* score;
@@ -95,6 +95,7 @@ private:
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;
+	SDL_Texture* _texturaSprite_ = nullptr;
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;
 	SDL_Rect _rectMarcadors;
@@ -110,6 +111,7 @@ private:
 	float _angleRadiansPalaLeft = 0.0f;
 	float _limitAngleRadiansPalaLeft = 0.7854f;
 
+	
 	//FOnt
 	SDL_Surface* numberSurface = nullptr;
 	SDL_Texture* numberTexture = nullptr;
