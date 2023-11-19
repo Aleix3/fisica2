@@ -24,7 +24,6 @@
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Score.cpp" />
     <ClCompile Include="Source\Hud.cpp" />
-    <ClCompile Include="Source\gameOver.cpp" />
     <ClCompile Include="Source\PostScene.cpp" />
     <ClCompile Include="Source\PreScene.cpp" />
   </ItemGroup>
@@ -75,7 +74,6 @@
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Score.h" />
     <ClInclude Include="Source\Hud.h" />
-    <ClInclude Include="Source\gameOver.h" />
     <ClInclude Include="Source\PostScene.h" />
     <ClInclude Include="Source\PreScene.h" />
   </ItemGroup>

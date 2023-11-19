@@ -12,7 +12,6 @@
 #include "Log.h"
 #include "Score.h"
 #include "Hud.h"
-#include "gameOver.h"
 #include "SDL_image/include/SDL_image.h"
 
 
@@ -525,8 +524,6 @@ bool Scene::Update(float dt)
 	player->Update(dt);
 
 	if (app->score->GetLives() <= 0) {
-		app->audio->CleanUp();
-		app->gOver->DrawGameOver();
 	}
 
 	//L02 DONE 3: Make the camera movement independent of framerate
