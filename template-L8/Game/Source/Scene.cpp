@@ -442,6 +442,7 @@ bool Scene::Start()
 	currentAnimSpring = &AnimSpring;
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
+	sfx_Pala = app->audio->LoadFx("Assets/Audio/sfx/Pala.wav");
 	app->audio->PlayFx(sfx_Start);
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
@@ -558,7 +559,6 @@ bool Scene::Update(float dt)
 		AnimSpring.speed = 0.1f;
 		app->audio->PlayFx(sfx_Spring);
 	}
-
 	// cambiar angle de rotacio de la pala
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
@@ -568,7 +568,10 @@ bool Scene::Update(float dt)
 	{
 		_palaRight->body->ApplyTorque(45.0f, true);
 	}
-	
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	{
+		app->audio->PlayFx(sfx_Pala);
+	}
 
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
@@ -578,7 +581,10 @@ bool Scene::Update(float dt)
 	{
 		_palaLeft->body->ApplyTorque(-45.0f, true);
 	}
-
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		app->audio->PlayFx(sfx_Pala);
+	}
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
 	{
 		player->Reset();
