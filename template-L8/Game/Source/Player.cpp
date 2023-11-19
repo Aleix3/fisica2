@@ -45,7 +45,7 @@ bool Player::Start() {
 
 	c2->ctype = ColliderType::DIE;
 
-	PhysBody* c5 = app->physics->CreateRectangle(285, 138, 25, 10, bodyType::STATIC);
+	PhysBody* c5 = app->physics->CreateRectangle(285, 136, 25, 10, bodyType::STATIC);
 
 	c5->ctype = ColliderType::DIE;
 	sfx_Bumper = app->audio->LoadFx("Assets/Audio/sfx/Bumper.wav");
