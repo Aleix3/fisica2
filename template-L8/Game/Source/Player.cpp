@@ -75,7 +75,7 @@ bool Player::Update(float dt)
 
 	if (app->scene->suelo == true)
 	{
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
 			_graus = 0;
 			_angle = _graus * M_PI / 180; // Angle en radians
@@ -88,7 +88,7 @@ bool Player::Update(float dt)
 			_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
 		}
 
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
+		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
 		{
 			velocity.y = -_velocitat_Y;
 			pbody->body->SetLinearVelocity(velocity);
