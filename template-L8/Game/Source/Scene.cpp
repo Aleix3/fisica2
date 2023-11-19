@@ -652,6 +652,9 @@ bool Scene::Update(float dt)
 		currentAnimArrow1->Update();
 		currentAnimArrow2->Update();
 		currentAnimSpring->Update();
+
+		ballRect = { player->position.x, player->position.y, 16, 16 };
+
 	return true;
 }
 
@@ -710,6 +713,11 @@ bool Scene::PostUpdate()
 	{
 		app->render->DrawTexture(_texturaSprite_, 363, 380);
 	}
+	render = app->render;
+	
+
+
+	app->render->DrawRectangle(ballRect, r, g, b, a, true, true);
 
 	return ret;
 }

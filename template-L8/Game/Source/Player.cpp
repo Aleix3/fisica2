@@ -119,12 +119,7 @@ bool Player::Update(float dt)
 
 	}
 
-	//SDL_Rect ballRect = { position.x - 8, position.y - 8, 16, 16 };
-
-	//Uint8 r = 255, g = 0, b = 0, a = 255; // Color rojo en formato RGBA
-
-	//Render* render = app->render;
-	//render->DrawRectangle(ballRect, r, g, b, a, true, true);
+	
 
 	return true;
 }
@@ -146,7 +141,7 @@ void Player::Reset()
 
 	pbody->ctype = ColliderType::PLAYER;
 
-		app->score->lives = 3;
+	app->score->lives = 3;
 
 
 

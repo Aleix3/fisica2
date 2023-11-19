@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Score.h"
 #include "Animation.h"
+#include "Render.h"
 
 struct SDL_Texture;
 
@@ -30,6 +31,12 @@ public:
 	float jumpSpeed = 5.0f;
 	bool suelo = false;
 	bool gameover = false;
+
+	SDL_Rect ballRect;
+
+	Render* render;
+
+	Uint8 r = 255, g = 0, b = 0, a = 255;
 
 private:
 	Score* score;
