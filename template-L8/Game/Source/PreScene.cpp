@@ -32,6 +32,8 @@ bool PreScene::Awake(pugi::xml_node config)
 
 bool PreScene::Start()
 {
+	app->modules[6]->active = false;
+	app->modules[7]->active = false;
 	return true;
 }
 
@@ -45,13 +47,15 @@ bool PreScene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
 	{
 		// Passa a l'escena joc
-		app->escenaActiva = 1;
+		app->modules[6]->active = true;		
+		app->modules[5]->active = false;		
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena game over
-		app->escenaActiva = 2;
+		app->modules[7]->active = true;
+		app->modules[5]->active = false;
 	}
 
 	return true;

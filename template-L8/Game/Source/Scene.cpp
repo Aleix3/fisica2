@@ -535,13 +535,15 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
 	{
 		// Passa a l'escena inicial
-		app->escenaActiva = 0;
+		app->modules[5]->active = true;
+		app->modules[6]->active = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena game over
-		app->escenaActiva = 2;
+		app->modules[7]->active = true;
+		app->modules[6]->active = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)

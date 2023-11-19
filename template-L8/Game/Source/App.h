@@ -94,16 +94,13 @@ public:
 	Hud* hud;
 	gameOver* gOver;
 
-	int escenaActiva = 0; // 0 = pre, 1 = escena, 2 = post
-
+	List<Module *> modules;
 private:
-
 	int argc;
 	char** args;
 	SString gameTitle;
 	SString organization;
 
-	List<Module *> modules;
 
 	// L04: DONE 2 - Create a variable to load and store the XML file in memory
 	// xml_document to store the config file
