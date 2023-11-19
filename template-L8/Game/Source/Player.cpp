@@ -159,7 +159,49 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		reset = false;
 		
 		break;
-	case ColliderType::BUMPER:
+	case ColliderType::BUMPER1:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER2:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER3:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER4:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER5:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER6:
+		LOG("Collision BUMPER");
+		if (app->score != NULL) {
+			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
+		}
+		break;
+	case ColliderType::BUMPER7:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			app->score->AddPoints(50);

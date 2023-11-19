@@ -29,6 +29,13 @@ enum class ColliderType {
 	PLATFORM,
 	SALTO,
 	BUMPER,
+	BUMPER1,
+	BUMPER2,
+	BUMPER3,
+	BUMPER4,
+	BUMPER5,
+	BUMPER6,
+	BUMPER7,
 	DIE,
 	UNKNOWN
 	// ..

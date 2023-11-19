@@ -449,14 +449,42 @@ bool Scene::Start()
 
 	player->Start();
 
-	Create_circularBumper(210, 95, 15);
-	Create_circularBumper(333, 205, 17);
-	Create_circularBumper(410, 190, 17);
-	Create_circularBumper(370, 250, 17);
 
-	Create_circularBumper(111, 440, 13);
-	Create_circularBumper(177, 457, 13);
-	Create_circularBumper(130, 488, 13);
+	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
+	circularBumper->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper->ctype = ColliderType::BUMPER1;
+
+	PhysBody* circularBumper2 = app->physics->CreateCircle(333, 205, 17, bodyType::STATIC);//BUmper2
+	circularBumper2->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper2->ctype = ColliderType::BUMPER2;
+
+	PhysBody* circularBumper3 = app->physics->CreateCircle(410, 190, 17, bodyType::STATIC);//BUmper3
+	circularBumper3->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper3->ctype = ColliderType::BUMPER3;
+
+	PhysBody* circularBumper4 = app->physics->CreateCircle(370, 250, 17, bodyType::STATIC);//BUmper4
+	circularBumper4->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper4->ctype = ColliderType::BUMPER4;
+
+	PhysBody* circularBumper5 = app->physics->CreateCircle(111, 440, 13, bodyType::STATIC);//BUmper5
+	circularBumper5->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper5->ctype = ColliderType::BUMPER5;
+
+	PhysBody* circularBumper6 = app->physics->CreateCircle(177, 457, 13, bodyType::STATIC);//BUmper6
+	circularBumper6->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper6->ctype = ColliderType::BUMPER6;
+
+	PhysBody* circularBumper7 = app->physics->CreateCircle(130, 488, 13, bodyType::STATIC);//BUmper7
+	circularBumper7->body->GetFixtureList()->SetRestitution(1.3f);
+
+	circularBumper7->ctype = ColliderType::BUMPER7;
+
 	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
 	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
@@ -685,7 +713,7 @@ void Scene::Create_circularBumper(int x, int y, int radious)
 	PhysBody* circularBumper = app->physics->CreateCircle(x, y, radious, bodyType::STATIC);
 	circularBumper->body->GetFixtureList()->SetRestitution(1.3f);
 
-	circularBumper->ctype = ColliderType::BUMPER;
+	circularBumper->ctype = ColliderType::BUMPER1;
 }
 
 void Scene::Create_rectangularBumper(int x, int y, int w, int h, float angle)
