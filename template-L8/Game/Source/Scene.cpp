@@ -571,7 +571,7 @@ bool Scene::Update(float dt)
 	//L02 DONE 3: Make the camera movement independent of framerate
 	float camSpeed = 1;
 
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
 	{
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
@@ -579,14 +579,14 @@ bool Scene::Update(float dt)
 		app->modules[9]->active = false;
 		gameover = false;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena inicial
 		
 		gameover = false;
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_F4) == KEY_UP)
 	{
 		// Passa a l'escena game over
 		app->modules[7]->active = true;

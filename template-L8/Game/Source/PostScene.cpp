@@ -44,7 +44,7 @@ bool PostScene::PreUpdate()
 
 bool PostScene::Update(float dt)
 {
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
 	{
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
@@ -54,7 +54,7 @@ bool PostScene::Update(float dt)
 		app->score->lives = 3;
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena joc
 		app->modules[6]->active = true;
