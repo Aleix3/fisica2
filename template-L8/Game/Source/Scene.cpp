@@ -452,7 +452,7 @@ bool Scene::Start()
 
 
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
-	circularBumper->body->GetFixtureList()->SetRestitution(1.3f);
+	circularBumper->body->GetFixtureList()->SetRestitution(0.5f);
 
 	circularBumper->ctype = ColliderType::BUMPER1;
 
