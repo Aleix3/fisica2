@@ -424,8 +424,8 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	_rectEscenari = { 0, 0, 1040, 855 };
+	//_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	//_rectEscenari = { 0, 0, 1040, 855 };
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -666,7 +666,7 @@ bool Scene::Update(float dt)
 // Called each loop iteration
 bool Scene::PostUpdate()
 {
-	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
 
 	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();

@@ -36,6 +36,9 @@ bool Physics::Start()
 {
 	LOG("Creating Physics 2D environment");
 
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_rectEscenari = { 0, 0, 1280, 868 };
+
 	// Create a new World
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 
@@ -224,8 +227,10 @@ bool Physics::PostUpdate()
 {
 	bool ret = true;
 
+	app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
+
 	// Activate or deactivate debug mode
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
 		debug = !debug;
 	
 	//  Iterate all objects in the world and draw the bodies
