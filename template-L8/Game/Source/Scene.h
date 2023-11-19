@@ -38,6 +38,8 @@ public:
 
 	Uint8 r = 255, g = 0, b = 0, a = 255;
 
+	bool bucle = false;
+
 private:
 	Score* score;
 	SDL_Texture* img;

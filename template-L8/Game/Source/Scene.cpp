@@ -546,10 +546,11 @@ bool Scene::Update(float dt)
 {
 	player->Update(dt);
 
-	if (app->score->GetLives() <= 0) {
+	if (app->score->GetLives() <= 0 && bucle == false) {
 		app->modules[7]->active = true;
 		app->modules[6]->active = false;
 		app->modules[9]->active = false;
+		bucle = true;
 	}
 
 	//L02 DONE 3: Make the camera movement independent of framerate
