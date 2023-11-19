@@ -68,7 +68,7 @@ bool Player::Update(float dt)
 			_temps = 0;
 
 			_velocitatInicial_Y += 0.2;
-
+    
 			
 
 			_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
@@ -85,6 +85,10 @@ bool Player::Update(float dt)
 
 	if (reset == false)
 	{
+		app->score->restLives();
+		if (app->score != NULL) {
+			app->score->Reset();
+		}
 		position.x = 650;
 		position.y = 750;
 		app->physics->DestroyBody(pbody);

@@ -11,10 +11,16 @@ public:
     Score();
     ~Score();
     void AddPoints(int points);
+    void restLives();
     void Reset();
     int GetScore() const;
+    int Score::GetLives() const;
+    
 private:
     int score = 0;
+    int lives = 3;
+
+    
 };
 
 #endif
