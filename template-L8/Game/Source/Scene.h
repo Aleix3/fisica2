@@ -37,7 +37,7 @@ private:
 	float textPosX, textPosY = 0;
 
 	Player* player;
-
+	//Animation
 	SDL_Rect _rectBump1;
 	Animation* currentAnimBump1 = nullptr;
 	Animation AnimBump1;
@@ -88,6 +88,8 @@ private:
 	SDL_Rect _rectSpring;
 	Animation* currentAnimSpring = nullptr;
 	Animation AnimSpring;
+	//sfx
+	unsigned int sfx_Spring = 0;
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;

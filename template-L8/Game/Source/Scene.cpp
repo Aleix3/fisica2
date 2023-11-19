@@ -423,7 +423,6 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-
 	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");;
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -523,6 +522,7 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 	player->Update(dt);
+	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 
 	if (app->score->GetLives() <= 0) {
 		app->audio->CleanUp();
@@ -542,6 +542,7 @@ bool Scene::Update(float dt)
 		AnimSpring.PushBack({ 650, 241, 6,  6 });
 		AnimSpring.loop = false;
 		AnimSpring.speed = 0.1f;
+		app->audio->PlayFx(sfx_Spring);
 	}
 
 	// cambiar angle de rotacio de la pala
@@ -648,9 +649,7 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
-	if (app->score != NULL) {
-		app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1090, 300 });
-	}
+	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
 
 	return ret;
 }
