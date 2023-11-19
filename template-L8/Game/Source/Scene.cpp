@@ -646,6 +646,8 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
+	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
+
 	return ret;
 }
 
