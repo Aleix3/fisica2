@@ -15,6 +15,10 @@ public:
     void Reset();
     int GetScore() const;
     int Score::GetLives() const;
+    void CheckCombo1();
+    void CheckCombo2();
+    void ResetCombo1();
+    void ResetCombo2();
     
 private:
     int score = 0;

@@ -162,6 +162,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER1:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper1Hit = true;
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -169,6 +170,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER2:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper2Hit = true;
+			app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -176,6 +179,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER3:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper3Hit = true;
+			app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -183,6 +188,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER4:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper4Hit = true;
+			app->score->CheckCombo1();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -190,6 +197,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER5:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper5Hit = true;
+			app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -197,6 +206,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER6:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper6Hit = true;
+			app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -204,6 +215,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::BUMPER7:
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
+			bumper7Hit = true;
+			app->score->CheckCombo2();
 			app->score->AddPoints(50);
 			app->audio->PlayFx(sfx_Bumper);
 		}
@@ -212,3 +225,5 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	}
 }
+
+
