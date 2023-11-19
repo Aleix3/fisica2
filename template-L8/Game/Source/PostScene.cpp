@@ -50,6 +50,8 @@ bool PostScene::Update(float dt)
 		app->modules[5]->active = true;
 		app->modules[7]->active = false;
 		app->modules[9]->active = false;
+		app->scene->bucle = false;
+		app->score->lives = 3;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
@@ -59,6 +61,8 @@ bool PostScene::Update(float dt)
 		app->modules[9]->active = true;
 		app->modules[7]->active = false;
 		app->scene->gameover = false;
+		app->scene->bucle = false;
+		app->score->lives = 3;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN)
@@ -67,6 +71,8 @@ bool PostScene::Update(float dt)
 		app->modules[9]->active = true;
 		app->modules[7]->active = false;
 		app->scene->gameover = false;
+		app->scene->bucle = false;
+		app->score->lives = 3;
 	}
 	
 
