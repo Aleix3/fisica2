@@ -48,7 +48,7 @@ bool Player::Start() {
 	PhysBody* c5 = app->physics->CreateRectangle(285, 138, 25, 10, bodyType::STATIC);
 
 	c5->ctype = ColliderType::DIE;
-
+	sfx_Bumper = app->audio->LoadFx("Assets/Audio/sfx/Bumper.wav");
 	_velocitatInicial_Y = 2;
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");	
 	app->tex->GetSize(_textura_ball, texW, texH);
@@ -163,6 +163,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision BUMPER");
 		if (app->score != NULL) {
 			app->score->AddPoints(50);
+			app->audio->PlayFx(sfx_Bumper);
 		}
 		break;
 	default:

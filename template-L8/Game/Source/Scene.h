@@ -90,6 +90,7 @@ private:
 	Animation AnimSpring;
 	//sfx
 	unsigned int sfx_Spring = 0;
+	unsigned int sfx_Start = 0;
 
 	SDL_Texture* _textura_aspid = nullptr;
 	SDL_Texture* _texturaSprite = nullptr;

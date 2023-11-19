@@ -48,7 +48,7 @@ public:
 	SDL_Rect _rectAspid;
 	bool suelo;
 	bool reset = true;
-
+	unsigned int sfx_Bumper = 0;
 	// Fisicas bola
 
 	b2Vec2 velocity;

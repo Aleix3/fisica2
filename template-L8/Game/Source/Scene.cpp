@@ -440,8 +440,11 @@ bool Scene::Start()
 	currentAnimArrow1 = &AnimArrow1;
 	currentAnimArrow2 = &AnimArrow2;
 	currentAnimSpring = &AnimSpring;
+	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
+	sfx_Start = app->audio->LoadFx("Assets/Audio/sfx/Start.wav");
+	app->audio->PlayFx(sfx_Start);
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
-	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 1.0f);
+	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
 
 	player->Start();
@@ -454,12 +457,10 @@ bool Scene::Start()
 	Create_circularBumper(111, 440, 13);
 	Create_circularBumper(177, 457, 13);
 	Create_circularBumper(130, 488, 13);
-
-	Create_rectangularBumper(388, 125, 5, 20, 0); //rectangulars bumpers
-	Create_rectangularBumper(352, 125, 5, 20, 0);
-
-	Create_rectangularBumper(125, 387, 5, 20, 0);
-	Create_rectangularBumper(158, 397, 5, 20, 0);
+	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
+	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
+	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
+	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
 
 	_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -522,7 +523,6 @@ bool Scene::PreUpdate()
 bool Scene::Update(float dt)
 {
 	player->Update(dt);
-	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
 
 	if (app->score->GetLives() <= 0) {
 		app->audio->CleanUp();
