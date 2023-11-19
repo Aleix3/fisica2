@@ -455,7 +455,7 @@ bool Scene::Start()
 
 
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1
-	circularBumper->body->GetFixtureList()->SetRestitution(1.3f);
+	circularBumper->body->GetFixtureList()->SetRestitution(0.5f);
 
 	circularBumper->ctype = ColliderType::BUMPER1;
 
@@ -541,6 +541,8 @@ bool Scene::Start()
 		app->score->Reset();
 	}
 
+	_texturaSprite_ = app->tex->Load("Assets/Textures/Game_Over.png");
+
 	return true;
 }
 
@@ -567,13 +569,23 @@ bool Scene::Update(float dt)
 		// Passa a l'escena inicial
 		app->modules[5]->active = true;
 		app->modules[6]->active = false;
+		gameover = false;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_UP)
+	{
+		// Passa a l'escena inicial
+		
+		gameover = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena game over
 		app->modules[7]->active = true;
-		app->modules[6]->active = false;
+		/*app->modules[6]->active = false;*/
+		
+		gameover = true;
+			
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE)== KEY_UP)
@@ -620,17 +632,17 @@ bool Scene::Update(float dt)
 	}
 
 	
-		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-			app->render->camera.y += (int)ceil(camSpeed * dt);
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		app->render->camera.y += (int)ceil(camSpeed * dt);
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-			app->render->camera.y -= (int)ceil(camSpeed * dt);
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		app->render->camera.y -= (int)ceil(camSpeed * dt);
 
-		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-			app->render->camera.x += (int)ceil(camSpeed * dt);
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		app->render->camera.x += (int)ceil(camSpeed * dt);
 
-		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-			app->render->camera.x -= (int)ceil(camSpeed * dt);
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		app->render->camera.x -= (int)ceil(camSpeed * dt);
 
 		//currentAnimBump1->Update();
 		//currentAnimBump2->Update();
@@ -701,6 +713,11 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
+
+	if (app->modules[7]->active == true || gameover == true)
+	{
+		app->render->DrawTexture(_texturaSprite_, 363, 380);
+	}
 
 	return ret;
 }

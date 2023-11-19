@@ -55,14 +55,21 @@ bool PostScene::Update(float dt)
 		// Passa a l'escena joc
 		app->modules[6]->active = true;
 		app->modules[7]->active = false;
+
 	}
+	
+
 	return true;
+
+
 }
 
 bool PostScene::PostUpdate()
 {
 	app->render->DrawTexture(img, 0, 0, &rectImg);
-	//app->hud->PaintSentence("Game over - post scena", { 0,0 });
+	
+	app->hud->PaintSentence("Game_over_-_post_scena", { 0,0 });
+
 	return true;
 }
 

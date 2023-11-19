@@ -39,6 +39,13 @@ public:
 	pugi::xml_node config;
 
 	int puntuacion = 0;
+	bool bumper1Hit = false;
+	bool bumper2Hit = false;
+	bool bumper3Hit = false;
+	bool bumper4Hit = false;
+	bool bumper5Hit = false;
+	bool bumper6Hit = false;
+	bool bumper7Hit = false;
 
 	SDL_Texture* _textura_ball = nullptr;
 	uint texW, texH;
