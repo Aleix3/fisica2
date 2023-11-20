@@ -151,6 +151,12 @@ private:
 	float _position_X = _velocitat_X * _temps;
 	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
 
+	int posX, posY;
+
+	SDL_Texture* _pala1;
+	SDL_Texture* _pala2;
+	SDL_Rect _rectPala1;
+	SDL_Rect _rectPala2;
 };
 
 #endif // __SCENE_H__

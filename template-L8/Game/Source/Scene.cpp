@@ -417,7 +417,8 @@ bool Scene::Start()
 	_texball = app->tex->Load("Assets/Textures/ball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
-	_rectPelota = {0,0,15,15};
+	_rectPelota = { 0,0,15,15 };
+	
 
 	currentAnimBump1 = &AnimBump1;
 	currentAnimBump2 = &AnimBump2;
@@ -427,7 +428,7 @@ bool Scene::Start()
 	currentAnimBump6 = &AnimBump6;
 	currentAnimBump7 = &AnimBump7;
 
-	currentAnimLight1= &AnimLight1;
+	currentAnimLight1 = &AnimLight1;
 	currentAnimLight2 = &AnimLight2;
 	currentAnimLight3 = &AnimLight3;
 	currentAnimLight4 = &AnimLight4;
@@ -446,6 +447,10 @@ bool Scene::Start()
 	app->audio->PlayFx(sfx_Start);
 
 	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
+	_pala1 = app->tex->Load("Assets/Textures/Pala1.png");
+	_pala2 = app->tex->Load("Assets/Textures/Pala2.png");
+	_rectPala1 = { 0,0,90,20 };
+	_rectPala2 = { 0,0,90,20 };
 
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
@@ -539,7 +544,7 @@ bool Scene::Start()
 	b2RevoluteJoint* revoluteJointLeft = (b2RevoluteJoint*)app->physics->world->CreateJoint(&palaLeftJoinDef);
 #pragma endregion
 
-	
+
 
 	if (app->score != NULL) {
 		app->score->Reset();
@@ -582,7 +587,7 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_UP)
 	{
 		// Passa a l'escena inicial
-		
+
 		gameover = false;
 	}
 
@@ -595,10 +600,10 @@ bool Scene::Update(float dt)
 		/*app->modules[6]->active = false;*/
 		app->audio->PlayFx(sfx_Over);
 		gameover = true;
-			
+
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_DOWN)== KEY_UP)
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
 	{
 		AnimSpring.PushBack({ 610,635,14,42 });
 		AnimSpring.PushBack({ 610,625,14,42 });
@@ -613,7 +618,7 @@ bool Scene::Update(float dt)
 	// cambiar angle de rotacio de la pala
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
-		_palaRight->body->ApplyTorque(-40.0f, true);
+		_palaRight->body->ApplyTorque(-80.0f, true);
 	}
 	else
 	{
@@ -626,7 +631,7 @@ bool Scene::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 	{
-		_palaLeft->body->ApplyTorque(40.0f, true);
+		_palaLeft->body->ApplyTorque(80.0f, true);
 	}
 	else
 	{
@@ -642,7 +647,7 @@ bool Scene::Update(float dt)
 		gameover = false;
 	}
 
-	
+
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 		app->render->camera.y += (int)ceil(camSpeed * dt);
 
@@ -655,24 +660,24 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 		app->render->camera.x -= (int)ceil(camSpeed * dt);
 
-		currentAnimBump1->Update();
-		currentAnimBump2->Update();
-		currentAnimBump3->Update();
-		currentAnimBump4->Update();
-		currentAnimBump5->Update();
-		currentAnimBump6->Update();
-		currentAnimBump7->Update();
-		currentAnimLight1->Update();
-		currentAnimLight2->Update();
-		currentAnimLight3->Update();
-		currentAnimLight4->Update();
-		currentAnimLight5->Update();
-		currentAnimLight6->Update();
-		currentAnimArrow1->Update();
-		currentAnimArrow2->Update();
-		currentAnimSpring->Update();
+	currentAnimBump1->Update();
+	currentAnimBump2->Update();
+	currentAnimBump3->Update();
+	currentAnimBump4->Update();
+	currentAnimBump5->Update();
+	currentAnimBump6->Update();
+	currentAnimBump7->Update();
+	currentAnimLight1->Update();
+	currentAnimLight2->Update();
+	currentAnimLight3->Update();
+	currentAnimLight4->Update();
+	currentAnimLight5->Update();
+	currentAnimLight6->Update();
+	currentAnimArrow1->Update();
+	currentAnimArrow2->Update();
+	currentAnimSpring->Update();
 
-		ballRect = { player->position.x, player->position.y, 16, 16 };
+	ballRect = { player->position.x, player->position.y, 16, 16 };
 
 	return true;
 }
@@ -684,7 +689,7 @@ bool Scene::PostUpdate()
 
 	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();
-	app->render->DrawTexture(_texturaSprite,185, 65, &_rectBump1);
+	app->render->DrawTexture(_texturaSprite, 185, 65, &_rectBump1);
 	_rectBump2 = currentAnimBump2->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 389, 157, &_rectBump2);
 	_rectBump3 = currentAnimBump3->GetCurrentFrame();
@@ -733,10 +738,12 @@ bool Scene::PostUpdate()
 		app->render->DrawTexture(_texturaSprite_, 363, 380);
 	}
 	render = app->render;
-	
 
 
-	app->render->DrawTexture(_texball, ballRect.x,ballRect.y, &_rectPelota);
+	app->render->DrawTexture(_texball, ballRect.x, ballRect.y, &_rectPelota);	
+	app->render->DrawTexture(_texturaGeneral, 300, 765, &_rectPala1, 1, _palaRight->GetRotation());
+	app->render->DrawTexture(_texturaGeneral, 440, 765, &_rectPala2, 1, _palaLeft->GetRotation());
+
 
 	return ret;
 }
