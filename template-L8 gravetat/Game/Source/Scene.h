@@ -22,6 +22,9 @@ public:
 	bool CleanUp();
 	
 private:
+	SDL_Texture* _imgTerra;
+	SDL_Texture* _imgLluna;
+
 	// Fisiques
 	int _gravetat = 550; //m/s^2
 	float _alturaInicial = 256; // m
