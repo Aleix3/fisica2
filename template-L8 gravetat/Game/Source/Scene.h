@@ -20,6 +20,8 @@ public:
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
+
+	/*void calculateGravityForce(const Body& body1, const Body& body2, double& fx, double& fy);*/
 	
 private:
 	SDL_Texture* _imgTerra;
