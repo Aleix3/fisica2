@@ -1,0 +1,24 @@
+<!-- Config file for the game -->
+<config>
+	<app>
+		<title>My video game</title>
+		<maxFrameDuration value="16"/>
+	</app>
+
+	<renderer>
+		<vsync value="false"/>
+	</renderer>
+
+	<window>
+		<resolution width="1280" height="868" scale="1"/>
+		<fullscreen value="false"/>
+		<borderless value="false"/>
+		<resizable value="false"/>
+		<fullscreen_window value="false"/>
+	</window>
+
+	<scene>
+		<player x="150" y="300" texturePath="Assets/Textures/player1.png" coinfxpath="Assets/Audio/Fx/retro-video-game-coin-pickup-38299.ogg"/>
+	</scene>
+
+</config>
