@@ -81,7 +81,7 @@ bool PostScene::Update(float dt)
 
 bool PostScene::PostUpdate()
 {
-	app->render->DrawTexture(img, 700, 400, &rectImg);
+	app->render->DrawTexture(img, 550, 400, &rectImg);
 	return true;
 }
 
