@@ -43,11 +43,6 @@ bool Scene::Start()
 	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);
 	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);	
 
-	if (app->score != NULL) {
-		app->score->Reset();
-	}
-
-	_texturaSprite_ = app->tex->Load("Assets/Textures/Game_Over.png");
 
 	return true;
 }
