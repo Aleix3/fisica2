@@ -28,58 +28,12 @@ public:
 
 	void Reset();
 
-	// L07 DONE 6: Define OnCollision function for the player. 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
-
-	void CheckCombo1();
-	void CheckCombo2();
-	void ResetCombo1();
-	void ResetCombo2();
-
 public:
 
-	//L02: DONE 2: Declare player parameters
-	float speed = 0.2f;
-	SDL_Texture* texture = NULL;
 	pugi::xml_node config;
 
-	int puntuacion = 0;
-	bool bumper1Hit = false;
-	bool bumper2Hit = false;
-	bool bumper3Hit = false;
-	bool bumper4Hit = false;
-	bool bumper5Hit = false;
-	bool bumper6Hit = false;
-	bool bumper7Hit = false;
 
-	SDL_Texture* _textura_ball = nullptr;
-	uint texW, texH;
-	float textPosX, textPosY = 0;
-	uint windowW, windowH;
-	Animation _ballAnimation;
-	SDL_Rect _rectAspid;
-	bool suelo;
-	bool reset = true;
-	unsigned int sfx_Bumper = 0;
-	// Fisicas bola
-
-	b2Vec2 velocity;
-	int _gravetat = 550; //m/s^2
-	float _alturaInicial = 256; // m
-	int _graus = 30;
-	float _alturaInicialDeslpassamentX = 200; // m
-	float _angle = _graus * M_PI / 180; // Angle en radians
-	float _temps = 0;
-
-	int _velocitatInicial = 5; // m/s
-	float _velocitatInicial_X = _velocitatInicial * cos(_angle); // Vo * cos(angle) m/s
-	float _velocitatInicial_Y = _velocitatInicial * sin(_angle); // Vo * sin(angle) m/s
-
-	float _velocitat_X = _velocitatInicial_X;
-	float _velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-
-	float _position_X = _velocitat_X * _temps;
-	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
+	
 
 	//Audio fx
 	int pickCoinFxId;
