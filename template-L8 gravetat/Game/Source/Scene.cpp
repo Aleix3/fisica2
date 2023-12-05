@@ -41,7 +41,7 @@ bool Scene::Start()
 
 
 	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);
-	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);	
+	app->physics->CreateCircle(159, 159, 15, bodyType::DYNAMIC);	
 
 
 	return true;
@@ -56,6 +56,14 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+
+	iPoint mousePos;
+	app->input->GetMousePosition(mousePos.x, mousePos.y);
+
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN) 
+	{
+		app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
+	}
 	
 
 	return true;
@@ -78,3 +86,14 @@ bool Scene::CleanUp()
 
 	return true;
 }
+
+//void Scene::calculateGravityForce(const Body& body1, const Body& body2, double& fx, double& fy)
+//{
+//	double dx = body2.x - body1.x;
+//	double dy = body2.y - body1.y;
+//	double distance = sqrt(dx * dx + dy * dy);
+//
+//	double forceMagnitude = (G * body1.mass * body2.mass) / (distance * distance);
+//	fx = forceMagnitude * (dx / distance);
+//	fy = forceMagnitude * (dy / distance);
+//}
