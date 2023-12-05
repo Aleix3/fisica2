@@ -36,17 +36,12 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
-	_texball = app->tex->Load("Assets/Textures/ball.png");
-	//_rectEscenari = { 0, 0, 1040, 855 };
-
-	_rectPelota = { 0,0,15,15 };
+	_imgTerra = app->tex->Load("Assets/Textures/Terra.png");
+	_imgLluna = app->tex->Load("Assets/Textures/Lluna.png");
 
 
-	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
+	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);
+	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);	
 
 	if (app->score != NULL) {
 		app->score->Reset();
