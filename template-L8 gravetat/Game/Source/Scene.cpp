@@ -40,8 +40,26 @@ bool Scene::Start()
 	_imgLluna = app->tex->Load("Assets/Textures/Lluna.png");
 
 
-	app->physics->CreateCircle(100, 100, 25, bodyType::STATIC);
-	app->physics->CreateCircle(159, 159, 15, bodyType::DYNAMIC);	
+	
+	pbody2 = app->physics->CreateCircle(159, 159, 15, bodyType::DYNAMIC);
+
+	
+
+#pragma region Cos1
+	pbody = app->physics->CreateCircle(100, 100, 25, bodyType::DYNAMIC);
+
+	b2Vec2 forceToApply(200.0f, 0.0f);
+
+	int x, y;
+	pbody->GetPosition(x, y);
+
+	int width = 50;
+	int height = 50;
+
+	b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
+
+	pbody->body->ApplyForce(forceToApply, pointOfApplication, true);
+#pragma endregion
 
 
 	return true;
@@ -56,6 +74,8 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+	
+
 
 	iPoint mousePos;
 	app->input->GetMousePosition(mousePos.x, mousePos.y);

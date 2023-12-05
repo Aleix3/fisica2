@@ -45,6 +45,8 @@ private:
 	float _position_X = _velocitat_X * _temps;
 	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
 
+	PhysBody* pbody;
+	PhysBody* pbody2;
 	
 };
 
