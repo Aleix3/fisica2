@@ -20,119 +20,8 @@ public:
 	bool Update(float dt);
 	bool PostUpdate();
 	bool CleanUp();
-	/*Scene(bool startEnabled);*/
 	
-	void Create_circularBumper(int x, int y, int radious);
-	void Create_rectangularBumper(int x, int y, int h, int w, float angle);
-
-	PhysBody* pbody;
-	PhysBody* c1;
-	iPoint position;
-	float jumpSpeed = 5.0f;
-	bool suelo = false;
-	bool gameover = false;
-
-	SDL_Rect ballRect;
-
-	Render* render;
-
-	Uint8 r = 255, g = 0, b = 0, a = 255;
-
-	bool bucle = false;
-
 private:
-	Score* score;
-	SDL_Texture* img;
-	float textPosX, textPosY = 0;
-
-	Player* player;
-	//Animation
-	SDL_Rect _rectBump1;
-	Animation* currentAnimBump1 = nullptr;
-	Animation AnimBump1;
-	SDL_Rect _rectBump2;
-	Animation* currentAnimBump2 = nullptr;
-	Animation AnimBump2;
-	SDL_Rect _rectBump3;
-	Animation* currentAnimBump3 = nullptr;
-	Animation AnimBump3;
-	SDL_Rect _rectBump4;
-	Animation* currentAnimBump4 = nullptr;
-	Animation AnimBump4;
-	SDL_Rect _rectBump5;
-	Animation* currentAnimBump5 = nullptr;
-	Animation AnimBump5;
-	SDL_Rect _rectBump6;
-	Animation* currentAnimBump6 = nullptr;
-	Animation AnimBump6;
-	SDL_Rect _rectBump7;
-	Animation* currentAnimBump7 = nullptr;
-	Animation AnimBump7;
-
-	SDL_Rect _rectLight1;
-	Animation* currentAnimLight1 = nullptr;
-	Animation AnimLight1;
-	SDL_Rect _rectLight2;
-	Animation* currentAnimLight2 = nullptr;
-	Animation AnimLight2;
-	SDL_Rect _rectLight3;
-	Animation* currentAnimLight3 = nullptr;
-	Animation AnimLight3;
-	SDL_Rect _rectLight4;
-	Animation* currentAnimLight4 = nullptr;
-	Animation AnimLight4;
-	SDL_Rect _rectLight5;
-	Animation* currentAnimLight5 = nullptr;
-	Animation AnimLight5;
-	SDL_Rect _rectLight6;
-	Animation* currentAnimLight6 = nullptr;
-	Animation AnimLight6;
-
-	SDL_Rect _rectArrow1;
-	Animation* currentAnimArrow1 = nullptr;
-	Animation AnimArrow1;
-	SDL_Rect _rectArrow2;
-	Animation* currentAnimArrow2 = nullptr;
-	Animation AnimArrow2;
-	SDL_Rect _rectSpring;
-	Animation* currentAnimSpring = nullptr;
-	Animation AnimSpring;
-	//sfx
-	unsigned int sfx_Spring = 0;
-	unsigned int sfx_Start = 0;
-	unsigned int sfx_Pala = 0;
-	unsigned int sfx_Over = 0;
-
-	SDL_Texture* _textura_aspid = nullptr;
-	SDL_Texture* _texturaSprite = nullptr;
-	SDL_Texture* _texball = nullptr;
-	SDL_Texture* _texturaSprite_ = nullptr;
-	SDL_Texture* _texturaGeneral = nullptr;
-	SDL_Rect _rectEscenari;
-	SDL_Rect _rectMarcadors;
-	SDL_Rect _rectPalaRight;
-	SDL_Rect _rectPalaLeft;
-	SDL_Rect _rectPelota;
-
-	PhysBody* _palaRight;
-	PhysBody* _palaRightPivot;
-	PhysBody* _palaLeft;
-	PhysBody* _palaLeftPivot;
-	float _angleRadiansPalaRight = 0.0f;
-	float _limitAngleRadiansPalaRight = -0.7854f;
-	float _angleRadiansPalaLeft = 0.0f;
-	float _limitAngleRadiansPalaLeft = 0.7854f;
-
-	
-	//FOnt
-	SDL_Surface* numberSurface = nullptr;
-	SDL_Texture* numberTexture = nullptr;
-	SDL_Rect numberRects[10];
-	int widthOfEachNumber = 15;  // Ancho de cada número en la imagen
-	int heightOfEachNumber = 21;  // Altura de cada número en la imagen
-	int xPosition = 200;  // Posición x donde empezar a dibujar la puntuación
-	int yPosition = 300;  // Posición y donde empezar a dibujar la puntuación
-
 	// Fisiques
 	int _gravetat = 550; //m/s^2
 	float _alturaInicial = 256; // m
@@ -151,12 +40,7 @@ private:
 	float _position_X = _velocitat_X * _temps;
 	float _position_Y = _alturaInicial + (_velocitatInicial_Y * _temps) - (0.5 * _gravetat * (_temps * _temps));
 
-	int posX, posY;
-
-	SDL_Texture* _pala1;
-	SDL_Texture* _pala2;
-	SDL_Rect _rectPala1;
-	SDL_Rect _rectPala2;
+	
 };
 
 #endif // __SCENE_H__

@@ -12,7 +12,6 @@
 #include "Log.h"
 #include "Score.h"
 #include "Hud.h"
-#include "SDL_image/include/SDL_image.h"
 
 Scene::Scene() : Module()
 {
