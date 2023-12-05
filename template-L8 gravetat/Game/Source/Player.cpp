@@ -73,29 +73,7 @@ bool Player::Update(float dt)
 	position.x = METERS_TO_PIXELS(pbodyPos.p.x) - 8;
 	position.y = METERS_TO_PIXELS(pbodyPos.p.y) - 8;
 
-	if (app->scene->suelo == true)
-	{
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		{
-			_graus = 0;
-			_angle = _graus * M_PI / 180; // Angle en radians
-			_temps = 0;
-
-			_velocitatInicial_Y += 0.2;
-
-
-
-			_velocitat_Y = _velocitatInicial_Y - _gravetat * _temps;
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
-		{
-			velocity.y = -_velocitat_Y;
-			pbody->body->SetLinearVelocity(velocity);
-			_velocitatInicial_Y = 2;
-			app->scene->suelo = false;
-		}
-	}
+	
 
 	if (reset == false)
 	{
@@ -156,10 +134,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::UNKNOWN:
 		LOG("Collision UNKNOWN");
-		break;
-	case ColliderType::SALTO:
-		LOG("Collision SALTO");
-		app->scene->suelo = true;
 		break;
 	case ColliderType::DIE:
 		LOG("Collision SALTO");

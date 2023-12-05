@@ -46,9 +46,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(physics);
-	AddModule(prescene);
 	AddModule(scene);
-	AddModule(postscene);
 	AddModule(entityManager);
 	AddModule(hud);
 	AddModule(score);
