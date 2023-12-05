@@ -222,6 +222,17 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 	return pbody;
 }
 
+void Physics::applyGravity(PhysBody& actual, PhysBody& other)
+{
+	b2Vec2 toOther = other.body->GetPosition() - actual.body->GetPosition();
+	float32 distanceSquared = toOther.LengthSquared();
+	float32 forceMagnitude = (Gravity * actual.body->GetMass() * other.body->GetMass()) / distanceSquared;
+	toOther.Normalize();
+	b2Vec2 force = forceMagnitude * toOther;
+	actual.body->ApplyForce(force, actual.body->GetWorldCenter(), true);
+}
+
+
 // 
 bool Physics::PostUpdate()
 {

@@ -4,6 +4,7 @@
 
 #include "Box2D/Box2D/Box2D.h"
 
+const float32 Gravity = 1.0f;  // Constante gravitatoria
 #define GRAVITY_X 0.0f
 #define GRAVITY_Y 0.0f
 
@@ -81,6 +82,8 @@ public:
 	PhysBody* CreateCircle(int x, int y, int radious, bodyType type);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, bodyType type);
 	PhysBody* CreateChain(int x, int y, int* points, int size, bodyType type);
+
+	void applyGravity(PhysBody& actual, PhysBody& other);
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
