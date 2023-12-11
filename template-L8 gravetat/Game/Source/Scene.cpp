@@ -95,14 +95,12 @@ bool Scene::Update(float dt)
 		
 
 		b2MassData massData;
-		b2Vec2 vect = { mousePos.x, mousePos.y };
+		b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
 		massData.mass = 5;
 		massData.center = vect;
 		cosTemporal->body->SetMassData(&massData);
 
 		vectorDeCossos.push_back(cosTemporal);
-
-
 	}
 
 	int sizeVector = vectorDeCossos.size();
