@@ -42,7 +42,7 @@ bool Scene::Start()
 #pragma region Cos1
 	cos1 = app->physics->CreateCircle(100, 100, 25, bodyType::DYNAMIC);
 
-	b2Vec2 forceToApply(20000.0f, 0.0f);
+	b2Vec2 forceToApply(15000.0f, 0.0f);
 
 	int x, y;
 	cos1->GetPosition(x, y);
@@ -62,10 +62,10 @@ bool Scene::Start()
 #pragma endregion
 
 #pragma region Cos2
-	cos2 = app->physics->CreateCircle(150, 150, 25, bodyType::DYNAMIC);
+	cos2 = app->physics->CreateCircle(100, 200, 25, bodyType::DYNAMIC);
 	b2MassData massData;
 	b2Vec2 vect = { 150,150 };
-	massData.mass = 10;
+	massData.mass = 50;
 	massData.center = vect;
 	cos2->body->SetMassData(&massData);
 #pragma endregion
@@ -89,8 +89,10 @@ bool Scene::Update(float dt)
 		app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
 	}
 
-	ApplyGravity(cos1, cos2);
-
+	b2Vec2 forcaGravitatoria = ApplyGravity(cos1, cos2);	
+	cos1->body->ApplyForce(forcaGravitatoria, {0,0}, true);
+	b2Vec2 forcaGravitatoria2 = ApplyGravity(cos2, cos1);
+	cos2->body->ApplyForce(forcaGravitatoria2, {0,0}, true);
 
 	return true;
 }

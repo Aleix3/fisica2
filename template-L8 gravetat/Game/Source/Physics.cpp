@@ -416,12 +416,34 @@ void Physics::DestroyBody(PhysBody* body)
 	}
 }
 
-void ApplyGravity(PhysBody* actual, PhysBody* other)
+b2Vec2 ApplyGravity(PhysBody* cos1, PhysBody* cos2)
 {
-	b2Vec2 toOther = other->body->GetPosition() - actual->body->GetPosition();
+	/*b2Vec2 toOther = other->body->GetPosition() - actual->body->GetPosition();
 	float32 distanceSquared = toOther.LengthSquared();
 	float32 forceMagnitude = (Gravity * actual->body->GetMass() * other->body->GetMass()) / distanceSquared;
 	toOther.Normalize();
 	b2Vec2 force = forceMagnitude * toOther;
-	actual->body->ApplyForce(force, actual->body->GetWorldCenter(), true);
+	actual->body->ApplyForce(force, actual->body->GetWorldCenter(), true);*/
+
+
+	// Obtenir les propietats dels cossos
+	float32 massa1 = cos1->body->GetMass();
+	float32 massa2 = cos2->body->GetMass();
+
+	b2Vec2 posicio1 = cos1->body->GetPosition();
+	b2Vec2 posicio2 = cos2->body->GetPosition();
+
+	// Calcular la distància i la direcció entre els dos cossos
+	b2Vec2 delta = posicio2 - posicio1;
+	float32 distanciaSquared = std::max(delta.LengthSquared(), 1e-4f);  // Evitar divisió per zero
+	delta.Normalize();
+	b2Vec2 direccio = delta;
+
+	// Calcular la magnitud de la força gravitatòria
+	float32 magnitudForca = Gravity * (massa1 * massa2) / distanciaSquared;
+
+	// Calcular la força gravitatòria com a vector
+	b2Vec2 forca = magnitudForca * direccio;
+
+	return forca;
 }

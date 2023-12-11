@@ -106,4 +106,4 @@ private:
 	SDL_Rect _rectEscenari;
 };
 
-void ApplyGravity(PhysBody* actual, PhysBody* other);
+b2Vec2 ApplyGravity(PhysBody* cos1, PhysBody* cos2);
