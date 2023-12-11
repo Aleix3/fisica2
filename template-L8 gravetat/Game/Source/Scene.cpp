@@ -13,6 +13,7 @@
 #include "Score.h"
 #include "Hud.h"
 
+
 Scene::Scene() : Module()
 {
 	name.Create("scene");
@@ -71,6 +72,9 @@ bool Scene::Start()
 #pragma endregion
 
 
+	vectorDeUrgotsCelestials.push_back(cos1);
+	vectorDeUrgotsCelestials.push_back(cos2);
+
 	return true;
 }
 
@@ -87,6 +91,19 @@ bool Scene::Update(float dt)
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
 		app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
+		PhysBody* cosTemporal;
+
+		vectorDeUrgotsCelestials.push_back(cosTemporal);
+	}
+
+	int sizeVector = vectorDeUrgotsCelestials.size();
+	for (int i = 0; i < sizeVector; i++)
+	{
+		for (int k = 0; k < sizeVector; k++)
+		{
+			b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeUrgotsCelestials[i], vectorDeUrgotsCelestials[k]);
+			vectorDeUrgotsCelestials[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+		}
 	}
 
 	b2Vec2 forcaGravitatoria = ApplyGravity(cos1, cos2);	

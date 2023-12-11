@@ -6,6 +6,7 @@
 #include "Score.h"
 #include "Animation.h"
 #include "Render.h"
+#include <vector>
 
 struct SDL_Texture;
 
@@ -48,6 +49,7 @@ private:
 	PhysBody* cos1;
 	PhysBody* cos2;
 	
+	std::vector<PhysBody*> vectorDeUrgotsCelestials;
 };
 
 #endif // __SCENE_H__
