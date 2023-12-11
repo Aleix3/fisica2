@@ -41,38 +41,34 @@ bool Scene::Start()
 	_imgLluna = app->tex->Load("Assets/Textures/Lluna.png");
 
 #pragma region Cos1
-	
 
-	b2Vec2 forceToApply(15000.0f, 0.0f);
+	b2Vec2 forceToApply(8000.0f, 0.0f);
 
-	int x, y;
-	
+	int x = 400, y = 400;
+	int width = 25, height = 25;
 
-	int width = 200;
-	int height = 200;
-
-	cos1 = app->physics->CreateCircle(100, 100, width/2, bodyType::DYNAMIC);
+	cos1 = app->physics->CreateCircle(x, y, width / 2, bodyType::DYNAMIC);
 	cos1->GetPosition(x, y);
 	b2MassData massDataCos1;
-	b2Vec2 vectCos1 = { 100,100 };
-	massDataCos1.mass = 100;
+	b2Vec2 vectCos1 = { (float32)x,(float32)y };
+	massDataCos1.mass = 500;
 	massDataCos1.center = vectCos1;
 	cos1->body->SetMassData(&massDataCos1);
 
 	b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
 
-	cos1->body->ApplyForce(forceToApply, pointOfApplication, true);
+
 #pragma endregion
 
 #pragma region Cos2
 	cos2 = app->physics->CreateCircle(100, 200, 25, bodyType::DYNAMIC);
 	b2MassData massData;
 	b2Vec2 vect = { 150,150 };
-	massData.mass = 50;
+	massData.mass = 20;
 	massData.center = vect;
 	cos2->body->SetMassData(&massData);
 #pragma endregion
-
+	cos2->body->ApplyForce(forceToApply, pointOfApplication, true);
 
 	vectorDeCossos.push_back(cos1);
 	vectorDeCossos.push_back(cos2);
@@ -94,7 +90,7 @@ bool Scene::Update(float dt)
 	{
 		PhysBody* cosTemporal;
 		cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
-		
+
 
 		b2MassData massData;
 		b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
@@ -130,10 +126,10 @@ bool Scene::Update(float dt)
 		}
 	}
 
-	b2Vec2 forcaGravitatoria = ApplyGravity(cos1, cos2);	
-	cos1->body->ApplyForce(forcaGravitatoria, {0,0}, true);
+	b2Vec2 forcaGravitatoria = ApplyGravity(cos1, cos2);
+	cos1->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
 	b2Vec2 forcaGravitatoria2 = ApplyGravity(cos2, cos1);
-	cos2->body->ApplyForce(forcaGravitatoria2, {0,0}, true);
+	cos2->body->ApplyForce(forcaGravitatoria2, { 0,0 }, true);
 
 	return true;
 }
