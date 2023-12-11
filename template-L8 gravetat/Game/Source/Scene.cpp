@@ -37,8 +37,7 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_imgTerra = app->tex->Load("Assets/Textures/Terra.png");
-	_imgLluna = app->tex->Load("Assets/Textures/Lluna.png");
+	
 
 #pragma region Cos1
 	int x = 400, y = 400;
@@ -48,7 +47,7 @@ bool Scene::Start()
 	cos1->GetPosition(x, y);
 	b2MassData massDataCos1;
 	b2Vec2 vectCos1 = { (float32)x,(float32)y };
-	massDataCos1.mass = 50;
+	massDataCos1.mass = 120;
 	massDataCos1.center = vectCos1;
 	cos1->body->SetMassData(&massDataCos1);
 
@@ -58,8 +57,8 @@ bool Scene::Start()
 #pragma endregion
 
 #pragma region Cos2
-	b2Vec2 forceToApply(5500.0f, 0.0f);
-	cos2 = app->physics->CreateCircle(300, 300, 25, bodyType::DYNAMIC);
+	b2Vec2 forceToApply(4000.0f, 0.0f);
+	cos2 = app->physics->CreateCircle(300, 250, 25, bodyType::DYNAMIC);
 	b2MassData massData;
 	b2Vec2 vect = { 150,150 };
 	massData.mass = 10;
@@ -110,7 +109,7 @@ bool Scene::Update(float dt)
 
 		b2MassData massData;
 		b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
-		massData.mass = 30;
+		massData.mass = 20;
 		massData.center = vect;
 		cosTemporal->body->SetMassData(&massData);
 
@@ -129,10 +128,7 @@ bool Scene::Update(float dt)
 		}
 	}
 
-	b2Vec2 forcaGravitatoria = ApplyGravity(cos1, cos2);
-	cos1->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
-	b2Vec2 forcaGravitatoria2 = ApplyGravity(cos2, cos1);
-	cos2->body->ApplyForce(forcaGravitatoria2, { 0,0 }, true);
+	
 
 	return true;
 }
