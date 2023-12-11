@@ -123,8 +123,12 @@ bool Scene::Update(float dt)
 	{
 		for (int k = 0; k < sizeVector; k++)
 		{
-			b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
-			vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+			if (vectorDeCossos[i] !=0 || vectorDeCossos[k] != 0)
+			{
+				b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
+				vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+			}
+			
 		}
 	}
 
