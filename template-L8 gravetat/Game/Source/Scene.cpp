@@ -72,8 +72,8 @@ bool Scene::Start()
 #pragma endregion
 
 
-	vectorDeUrgotsCelestials.push_back(cos1);
-	vectorDeUrgotsCelestials.push_back(cos2);
+	vectorDeCossos.push_back(cos1);
+	vectorDeCossos.push_back(cos2);
 
 	return true;
 }
@@ -90,19 +90,28 @@ bool Scene::Update(float dt)
 
 	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
-		app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
 		PhysBody* cosTemporal;
+		cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
+		
 
-		vectorDeUrgotsCelestials.push_back(cosTemporal);
+		b2MassData massData;
+		b2Vec2 vect = { mousePos.x, mousePos.y };
+		massData.mass = 5;
+		massData.center = vect;
+		cosTemporal->body->SetMassData(&massData);
+
+		vectorDeCossos.push_back(cosTemporal);
+
+
 	}
 
-	int sizeVector = vectorDeUrgotsCelestials.size();
+	int sizeVector = vectorDeCossos.size();
 	for (int i = 0; i < sizeVector; i++)
 	{
 		for (int k = 0; k < sizeVector; k++)
 		{
-			b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeUrgotsCelestials[i], vectorDeUrgotsCelestials[k]);
-			vectorDeUrgotsCelestials[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+			b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
+			vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
 		}
 	}
 

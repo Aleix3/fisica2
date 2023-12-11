@@ -49,7 +49,7 @@ private:
 	PhysBody* cos1;
 	PhysBody* cos2;
 	
-	std::vector<PhysBody*> vectorDeUrgotsCelestials;
+	std::vector<PhysBody*> vectorDeCossos;
 };
 
 #endif // __SCENE_H__
