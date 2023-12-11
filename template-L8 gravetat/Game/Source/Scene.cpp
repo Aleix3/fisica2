@@ -41,16 +41,18 @@ bool Scene::Start()
 	_imgLluna = app->tex->Load("Assets/Textures/Lluna.png");
 
 #pragma region Cos1
-	cos1 = app->physics->CreateCircle(100, 100, 25, bodyType::DYNAMIC);
+	
 
 	b2Vec2 forceToApply(15000.0f, 0.0f);
 
 	int x, y;
+	
+
+	int width = 200;
+	int height = 200;
+
+	cos1 = app->physics->CreateCircle(100, 100, width/2, bodyType::DYNAMIC);
 	cos1->GetPosition(x, y);
-
-	int width = 50;
-	int height = 50;
-
 	b2MassData massDataCos1;
 	b2Vec2 vectCos1 = { 100,100 };
 	massDataCos1.mass = 100;
@@ -97,6 +99,21 @@ bool Scene::Update(float dt)
 		b2MassData massData;
 		b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
 		massData.mass = 5;
+		massData.center = vect;
+		cosTemporal->body->SetMassData(&massData);
+
+		vectorDeCossos.push_back(cosTemporal);
+	}
+
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
+	{
+		PhysBody* cosTemporal;
+		cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 50, bodyType::DYNAMIC);
+
+
+		b2MassData massData;
+		b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
+		massData.mass = 50;
 		massData.center = vect;
 		cosTemporal->body->SetMassData(&massData);
 
