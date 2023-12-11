@@ -83,7 +83,7 @@ public:
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, bodyType type);
 	PhysBody* CreateChain(int x, int y, int* points, int size, bodyType type);
 
-	void applyGravity(PhysBody& actual, PhysBody& other);
+
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
@@ -105,3 +105,5 @@ private:
 	SDL_Texture* _texturaGeneral = nullptr;
 	SDL_Rect _rectEscenari;
 };
+
+void ApplyGravity(PhysBody* actual, PhysBody* other);
