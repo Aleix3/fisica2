@@ -60,7 +60,7 @@ bool Player::Start() {
 
 	
 	
-	
+	pbody->body->SetGravityScale(23);
 	
 
 	return true;
