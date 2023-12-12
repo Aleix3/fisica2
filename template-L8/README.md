@@ -6,14 +6,17 @@
 
 ## Key Features
 
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
+ F2 = PreScene.
+ F3 = Scene.
+ F4 = PostScene.
+ F8 = Cap Fps to 30.
+ F10 = View colliders.
  
 ## Controls
 
- - {ControlsScheme}
+ Flecha abajo = impulso bola.
+ Flecha derecha = mover pala derecha.
+ Flecha Izquierda = mover pala Izquierda.
 
 ## Developers
 
