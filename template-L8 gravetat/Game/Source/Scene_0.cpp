@@ -178,6 +178,16 @@ bool Scene_0::CleanUp()
 {
 	LOG("Freeing scene");
 
+	int sizeVector = vectorDeCossos.size();
+	for (int i = 0; i < sizeVector; i++)
+	{
+		if (vectorDeCossos[i] != 0)
+		{
+
+			app->physics->DestroyBody(vectorDeCossos[i]);
+		}
+	}
+
 	return true;
 }
 
