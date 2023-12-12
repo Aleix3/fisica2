@@ -413,7 +413,7 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_texball = app->tex->Load("Assets/Textures/ball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
