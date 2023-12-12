@@ -207,9 +207,9 @@ bool Scene_0::Update(float dt)
 			}
 		}
 
-	
+		
 
-	if (F2 == true)
+	if (F2 == true || f3 == true)
 	{
 		if (app->input->GetKey(SDLK_F1) == KEY_UP)
 		{
@@ -245,6 +245,7 @@ bool Scene_0::Update(float dt)
 
 			vectorDeCossos.push_back(cos1);
 			vectorDeCossos.push_back(cos2);
+			if(F2)
 			F2 = false;
 
 		}
@@ -254,7 +255,7 @@ bool Scene_0::Update(float dt)
 
 	if (app->input->GetKey(SDLK_F3) == KEY_UP)
 	{
-
+		f3 = true;
 		CleanUp();
 	}
 

@@ -49,6 +49,8 @@ private:
 	PhysBody* cos4;
 	
 	std::vector<PhysBody*> vectorDeCossos;
+
+	bool f3 = false;
 };
 
 #endif // __SCENE_H__
