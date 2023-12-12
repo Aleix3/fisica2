@@ -47,7 +47,7 @@ bool Scene::Start()
 	cos1->GetPosition(x, y);
 	b2MassData massDataCos1;
 	b2Vec2 vectCos1 = { (float32)x,(float32)y };
-	massDataCos1.mass = 120;
+	massDataCos1.mass = 150;
 	massDataCos1.center = vectCos1;
 	cos1->body->SetMassData(&massDataCos1);
 
