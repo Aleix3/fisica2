@@ -45,6 +45,8 @@ private:
 
 	PhysBody* cos1;
 	PhysBody* cos2;
+	PhysBody* cos3;
+	PhysBody* cos4;
 	
 	std::vector<PhysBody*> vectorDeCossos;
 };

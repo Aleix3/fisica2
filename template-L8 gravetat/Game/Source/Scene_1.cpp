@@ -190,7 +190,7 @@ bool Scene_1::CleanUp()
 
 	int sizeVector = vectorDeCossos.size();
 
-	if (sizeVector > 0)
+	if (sizeVector == 0)
 	{
 		for (int i = 0; i < sizeVector; i++)
 		{

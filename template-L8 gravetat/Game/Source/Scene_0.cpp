@@ -85,7 +85,7 @@ bool Scene_0::PreUpdate()
 {
 	return true;
 }
-
+bool F2 = false;
 bool Scene_0::Update(float dt)
 {
 	if (app->modules[6]->active)
@@ -97,16 +97,51 @@ bool Scene_0::Update(float dt)
 		printf_s("1_Escena 2: %s ", app->modules[7]->active ? "true" : "false");
 		printf_s("1_Escena 3: %s ", app->modules[8]->active ? "true" : "false");
 		printf_s("\n");
-
-		if (app->input->GetKey(SDLK_F2) == KEY_DOWN)
+	}
+		if (app->input->GetKey(SDLK_F2) == KEY_UP)
 		{
+			F2 = true;
 			printf_s("Neteja escena 1");
 			CleanUp();
 			printf_s("Canvi escena 2");
-			app->modules[6]->active = false;
-			app->modules[7]->active = true;
-			app->modules[8]->active = false;
+
+#pragma region Cos3
+			int x = 400, y = 400;
+			int width = 120, height = 120;
+
+			cos3 = app->physics->CreateCircle(x, y, width / 2, bodyType::DYNAMIC);
+			cos3->GetPosition(x, y);
+			b2MassData massDataCos1;
+			b2Vec2 vectCos1 = { (float32)x,(float32)y };
+			massDataCos1.mass = 150;
+			massDataCos1.center = vectCos1;
+			cos3->body->SetMassData(&massDataCos1);
+
+			b2Vec2 forceToApply(50000.0f, 0.0f);
+			b2Vec2 pointOfApplication2(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
+			cos3->body->ApplyForce(forceToApply, pointOfApplication2, true);
+
+
+#pragma endregion
+
+#pragma region Cos4
+			b2Vec2 forceToApply2(50000.0f, 0.0f);
+			cos4 = app->physics->CreateCircle(400, 100, 30, bodyType::DYNAMIC);
+			b2MassData massData;
+			b2Vec2 vect = { 150,150 };
+			massData.mass = 80;
+			massData.center = vect;
+			cos4->body->SetMassData(&massData);
+			cos4->body->ApplyForce(forceToApply2, pointOfApplication2, true);
+#pragma endregion
+
+			vectorDeCossos.push_back(cos3);
+			vectorDeCossos.push_back(cos4);
+
+
 		}
+	
+		
 		if (app->input->GetKey(SDLK_F3) == KEY_DOWN)
 		{
 			printf_s("Neteja escena 1");
@@ -171,7 +206,12 @@ bool Scene_0::Update(float dt)
 			}
 		}
 
-	}
+	
+
+	/*if (F2 == true)
+	{
+
+	}*/
 
 	return true;
 }
@@ -195,6 +235,10 @@ bool Scene_0::CleanUp()
 
 	if (sizeVector > 0)
 	{
+		for (int i = 0; i < sizeVector; i++)
+		{
+			app->physics->DestroyBody(vectorDeCossos[i]);
+		}
 		vectorDeCossos.clear();
 	}
 	return true;
