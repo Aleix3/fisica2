@@ -180,16 +180,32 @@ void App::PrepareUpdate()
 {
 	frameTime.Start();
 }
-
+bool F8 = false;
 void App::FinishUpdate()
 {
+	
 	// Check if F8 is pressed to change maxFrameDuration
+	
+
 	if (app->input->GetKey(SDL_SCANCODE_F8) == KEY_UP)
 	{
+		F8 = true;
+
+		if (maxFrameDuration == (uint32_t)(1000.0 / 30.0))
+		{
+			maxFrameDuration = (uint32_t)(1000.0 / 60.0);
+		}
+
+		else
+		{
 			// Change maxFrameDuration to achieve 30 fps
 			maxFrameDuration = (uint32_t)(1000.0 / 30.0);
+		}
+			
 		
 	}
+
+	
 
 	double currentDt = frameTime.ReadMs();
 	if (maxFrameDuration > 0 && currentDt < maxFrameDuration) {
