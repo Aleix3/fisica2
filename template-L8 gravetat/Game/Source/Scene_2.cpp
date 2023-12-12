@@ -47,7 +47,7 @@ bool Scene_2::Start()
 		cos1->GetPosition(x, y);
 		b2MassData massDataCos1;
 		b2Vec2 vectCos1 = { (float32)x,(float32)y };
-		massDataCos1.mass = 150;
+		massDataCos1.mass = 130;
 		massDataCos1.center = vectCos1;
 		cos1->body->SetMassData(&massDataCos1);
 
@@ -142,19 +142,66 @@ bool Scene_2::Update(float dt)
 	}
 
 	int sizeVector = vectorDeCossos.size();
-	for (int i = 0; i < sizeVector; i++)
+
+	if (sizeVector != 0)
 	{
-		for (int k = 0; k < sizeVector; k++)
+		iPoint mousePos;
+		app->input->GetMousePosition(mousePos.x, mousePos.y);
+
+		if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 		{
-			if (vectorDeCossos[i] !=0 || vectorDeCossos[k] != 0)
+			PhysBody* cosTemporal;
+			cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
+
+			b2Vec2 forceToApply(2000.0f, 0.0f);
+
+			b2MassData massData;
+			b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
+			massData.mass = 5;
+			massData.center = vect;
+			cosTemporal->body->SetMassData(&massData);
+
+			cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y }, true);
+
+			vectorDeCossos.push_back(cosTemporal);
+		}
+
+		if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
+		{
+			PhysBody* cosTemporal;
+			cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 50, bodyType::DYNAMIC);
+			b2Vec2 forceToApply(0.0f, 8000.0f);
+
+			b2MassData massData;
+			b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
+			massData.mass = 20;
+			massData.center = vect;
+			cosTemporal->body->SetMassData(&massData);
+
+			cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y }, true);
+
+			vectorDeCossos.push_back(cosTemporal);
+		}
+
+
+		for (int i = 0; i < sizeVector; i++)
+		{
+			for (int k = 0; k < sizeVector; k++)
 			{
-				b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
-				vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+				if (vectorDeCossos[i] != 0 || vectorDeCossos[k] != 0)
+				{
+					b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
+					vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
+				}
+
 			}
-			
 		}
 	}
-
+	
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
+		CleanUp();
+	}
 	
 
 	return true;
@@ -173,6 +220,16 @@ bool Scene_2::PostUpdate()
 // Called before quitting
 bool Scene_2::CleanUp()
 {
+	int sizeVector = vectorDeCossos.size();
+	for (int i = 0; i < sizeVector; i++)
+	{
+		if (vectorDeCossos[i] != 0)
+		{
+			
+			app->physics->DestroyBody(vectorDeCossos[i]);
+		}
+	}
+
 	LOG("Freeing scene");
 
 	return true;
