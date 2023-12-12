@@ -760,12 +760,15 @@ bool Scene::PostUpdate()
 	{
 		app->render->DrawTexture(_texturaSprite_, 363, 380);
 	}
-	render = app->render;
-
+	
+	int xxx, yyy;
+	int xxx2, yyy2;
+	_palaRight->GetPosition(xxx, yyy);
+	_palaLeft->GetPosition(xxx2, yyy2);
 
 	app->render->DrawTexture(_texball, ballRect.x, ballRect.y, &_rectPelota);	
-	app->render->DrawTexture(_texturaGeneral, 300, 765, &_rectPala1, 1, _palaRight->GetRotation());
-	app->render->DrawTexture(_texturaGeneral, 440, 765, &_rectPala2, 1, _palaLeft->GetRotation());
+	app->render->DrawTexture(_texturaGeneral, xxx, yyy, &_rectPala1, 1, _palaRight->GetRotation());
+	app->render->DrawTexture(_texturaGeneral, xxx2, yyy2, &_rectPala2, 1, _palaLeft->GetRotation());
 
 
 	return ret;
