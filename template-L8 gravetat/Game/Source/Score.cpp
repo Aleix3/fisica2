@@ -1,5 +1,4 @@
 #include "App.h"
-#include "Scene.h"
 #include "Score.h"
 #include "Player.h"
 Score::Score() : score(0)
