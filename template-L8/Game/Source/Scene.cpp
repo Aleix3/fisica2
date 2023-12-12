@@ -753,7 +753,7 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
-	app->hud->PaintSentence(std::to_string(gravity.y), { 835, 400 });
+	app->hud->PaintSentence(std::to_string(gravity.y), { 920, 385 });
 	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
 
 	if (app->modules[7]->active == true || gameover == true)
