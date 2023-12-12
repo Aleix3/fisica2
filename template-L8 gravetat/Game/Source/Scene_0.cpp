@@ -162,7 +162,7 @@ bool Scene_0::Update(float dt)
 			PhysBody* cosTemporal;
 			cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 15, bodyType::DYNAMIC);
 
-			b2Vec2 forceToApply(2000.0f, 0.0f);
+			b2Vec2 forceToApply(2200.0f, 0.0f);
 
 			b2MassData massData;
 			b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
@@ -178,16 +178,16 @@ bool Scene_0::Update(float dt)
 		if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KEY_DOWN)
 		{
 			PhysBody* cosTemporal;
-			cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 50, bodyType::DYNAMIC);
+			cosTemporal = app->physics->CreateCircle(mousePos.x, mousePos.y, 100, bodyType::DYNAMIC);
 			b2Vec2 forceToApply(0.0f, 8000.0f);
 
 			b2MassData massData;
 			b2Vec2 vect = { (float32)mousePos.x, (float32)mousePos.y };
-			massData.mass = 20;
+			massData.mass = 200;
 			massData.center = vect;
 			cosTemporal->body->SetMassData(&massData);
 
-			cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y }, true);
+			/*cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y }, true);*/
 
 			vectorDeCossos.push_back(cosTemporal);
 		}
@@ -208,10 +208,54 @@ bool Scene_0::Update(float dt)
 
 	
 
-	/*if (F2 == true)
+	if (F2 == true)
+	{
+		if (app->input->GetKey(SDLK_F1) == KEY_UP)
+		{
+			CleanUp();
+
+#pragma region Cos1
+			int x = 400, y = 400;
+			int width = 120, height = 120;
+
+			cos1 = app->physics->CreateCircle(x, y, width / 2, bodyType::DYNAMIC);
+			cos1->GetPosition(x, y);
+			b2MassData massDataCos1;
+			b2Vec2 vectCos1 = { (float32)x,(float32)y };
+			massDataCos1.mass = 150;
+			massDataCos1.center = vectCos1;
+			cos1->body->SetMassData(&massDataCos1);
+
+			b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
+
+
+#pragma endregion
+
+#pragma region Cos2
+			b2Vec2 forceToApply(4000.0f, 0.0f);
+			cos2 = app->physics->CreateCircle(300, 250, 25, bodyType::DYNAMIC);
+			b2MassData massData;
+			b2Vec2 vect = { 150,150 };
+			massData.mass = 10;
+			massData.center = vect;
+			cos2->body->SetMassData(&massData);
+			cos2->body->ApplyForce(forceToApply, pointOfApplication, true);
+#pragma endregion
+
+			vectorDeCossos.push_back(cos1);
+			vectorDeCossos.push_back(cos2);
+			F2 = false;
+
+		}
+			
+		
+	}
+
+	if (app->input->GetKey(SDLK_F3) == KEY_UP)
 	{
 
-	}*/
+		CleanUp();
+	}
 
 	return true;
 }
