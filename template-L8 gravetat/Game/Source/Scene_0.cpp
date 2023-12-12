@@ -54,6 +54,7 @@ bool Scene_0::Start()
 		massDataCos1.mass = 150;
 		massDataCos1.center = vectCos1;
 		cos1->body->SetMassData(&massDataCos1);
+		cos1->body->SetActive(false);
 
 		b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
 
