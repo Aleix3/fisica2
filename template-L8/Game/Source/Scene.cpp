@@ -413,7 +413,7 @@ bool Scene::Awake(pugi::xml_node config)
 // Called before the first frame
 bool Scene::Start()
 {
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_texball = app->tex->Load("Assets/Textures/ball.png");
 	//_rectEscenari = { 0, 0, 1040, 855 };
 
@@ -647,6 +647,28 @@ bool Scene::Update(float dt)
 		gameover = false;
 	}
 
+	if (app->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT)
+	{
+		b2Vec2 gravity = app->physics->world->GetGravity();
+		gravity.y += 1;
+		if (gravity.y <= 0)
+		{
+			gravity.y = 0;
+		}
+		app->physics->world->SetGravity(gravity);
+	}
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT)
+	{
+		b2Vec2 gravity = app->physics->world->GetGravity();
+		gravity.y -= 1;
+		if (gravity.y <= 0)
+		{
+			gravity.y = 0;
+		}
+		app->physics->world->SetGravity(gravity);
+	}
+
+
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 		app->render->camera.y += (int)ceil(camSpeed * dt);
@@ -686,7 +708,7 @@ bool Scene::Update(float dt)
 bool Scene::PostUpdate()
 {
 	//app->render->DrawTexture(_texturaGeneral, 0, 0, &_rectEscenari);
-
+	b2Vec2 gravity = app->physics->world->GetGravity();
 	//Anim
 	_rectBump1 = currentAnimBump1->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 185, 65, &_rectBump1);
@@ -731,6 +753,7 @@ bool Scene::PostUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
+	app->hud->PaintSentence(std::to_string(gravity.y), { 835, 400 });
 	app->hud->PaintSentence(std::to_string(app->score->GetLives()), { 1080, 300 });
 
 	if (app->modules[7]->active == true || gameover == true)

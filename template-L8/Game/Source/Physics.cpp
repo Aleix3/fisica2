@@ -36,7 +36,7 @@ bool Physics::Start()
 {
 	LOG("Creating Physics 2D environment");
 
-	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball.png");
+	_texturaGeneral = app->tex->Load("Assets/Textures/SpaceCadet3DPinball2.png");
 	_rectEscenari = { 0, 0, 1280, 868 };
 
 	// Create a new World

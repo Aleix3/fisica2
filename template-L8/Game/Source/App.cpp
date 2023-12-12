@@ -150,6 +150,10 @@ bool App::Update()
 	if(ret == true)
 		ret = PostUpdate();
 
+	
+	
+	
+
 	FinishUpdate();
 	return ret;
 }
@@ -176,28 +180,52 @@ void App::PrepareUpdate()
 {
 	frameTime.Start();
 }
-
+bool F8 = false;
 void App::FinishUpdate()
 {
-	// This is a good place to call Load / Save functions
+	
+	// Check if F8 is pressed to change maxFrameDuration
+	
+
+	if (app->input->GetKey(SDL_SCANCODE_F8) == KEY_UP)
+	{
+		F8 = true;
+
+		if (maxFrameDuration == (uint32_t)(1000.0 / 30.0))
+		{
+			maxFrameDuration = (uint32_t)(1000.0 / 60.0);
+		}
+
+		else
+		{
+			// Change maxFrameDuration to achieve 30 fps
+			maxFrameDuration = (uint32_t)(1000.0 / 30.0);
+		}
+			
+		
+	}
+
+	
 
 	double currentDt = frameTime.ReadMs();
 	if (maxFrameDuration > 0 && currentDt < maxFrameDuration) {
-		uint32 delay = (uint32) (maxFrameDuration - currentDt);
+		uint32 delay = (uint32)(maxFrameDuration - currentDt);
 
 		PerfTimer delayTimer = PerfTimer();
 		SDL_Delay(delay);
-		//LOG("We waited for %I32u ms and got back in %f ms",delay,delayTimer.ReadMs());
+		// LOG("We waited for %I32u ms and got back in %f ms", delay, delayTimer.ReadMs());
 	}
+
+	// Resto del código...
 
 	// Amount of frames since startup
 	frameCount++;
 
-	// Amount of time since game start (use a low resolution timer)
+	// Amount of time since game start (use a low-resolution timer)
 	secondsSinceStartup = startupTime.ReadSec();
-	
+
 	// Amount of ms took the last update (dt)
-	dt = (float) frameTime.ReadMs();
+	dt = (float)frameTime.ReadMs();
 
 	// Amount of frames during the last second
 	lastSecFrameCount++;
@@ -206,12 +234,13 @@ void App::FinishUpdate()
 	if (lastSecFrameTime.ReadMs() > 1000) {
 		lastSecFrameTime.Start();
 		averageFps = (averageFps + lastSecFrameCount) / 2;
-		framesPerSecond = lastSecFrameCount; 
+		framesPerSecond = lastSecFrameCount;
 		lastSecFrameCount = 0;
 	}
 
+	// Actualizar el título de la ventana con la información actualizada
 	static char title[256];
-	sprintf_s(title, 256, "%s: Av.FPS: %.2f Last sec frames: %i Last dt: %.3f Time since startup: %I32u Frame Count: %I64u ", 
+	sprintf_s(title, 256, "%s: Av.FPS: %.2f Last sec frames: %i Last dt: %.3f Time since startup: %I32u Frame Count: %I64u ",
 		gameTitle.GetString(), averageFps, framesPerSecond, dt, secondsSinceStartup, frameCount);
 
 	app->win->SetTitle(title);
