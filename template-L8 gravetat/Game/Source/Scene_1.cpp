@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "Scene_1.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -14,17 +14,17 @@
 #include "Hud.h"
 
 
-Scene::Scene() : Module()
+Scene_1::Scene_1() : Module()
 {
 	name.Create("scene");
 
 }
 
 // Destructor
-Scene::~Scene() {}
+Scene_1::~Scene_1() {}
 
 // Called before render is available
-bool Scene::Awake(pugi::xml_node config)
+bool Scene_1::Awake(pugi::xml_node config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -35,51 +35,77 @@ bool Scene::Awake(pugi::xml_node config)
 }
 
 // Called before the first frame
-bool Scene::Start()
+bool Scene_1::Start()
 {
-	
-
+	if (app->modules[7]->active)
+	{
 #pragma region Cos1
-	int x = 400, y = 400;
-	int width = 120, height = 120;
+		int x = 400, y = 400;
+		int width = 120, height = 120;
 
-	cos1 = app->physics->CreateCircle(x, y, width / 2, bodyType::DYNAMIC);
-	cos1->GetPosition(x, y);
-	b2MassData massDataCos1;
-	b2Vec2 vectCos1 = { (float32)x,(float32)y };
-	massDataCos1.mass = 150;
-	massDataCos1.center = vectCos1;
-	cos1->body->SetMassData(&massDataCos1);
+		cos1 = app->physics->CreateCircle(x, y, width / 2, bodyType::DYNAMIC);
+		cos1->GetPosition(x, y);
+		b2MassData massDataCos1;
+		b2Vec2 vectCos1 = { (float32)x,(float32)y };
+		massDataCos1.mass = 150;
+		massDataCos1.center = vectCos1;
+		cos1->body->SetMassData(&massDataCos1);
 
-	b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
+		b2Vec2 pointOfApplication(PIXEL_TO_METERS(x + width), PIXEL_TO_METERS(y + height));
 
 
 #pragma endregion
 
 #pragma region Cos2
-	b2Vec2 forceToApply(4000.0f, 0.0f);
-	cos2 = app->physics->CreateCircle(300, 250, 25, bodyType::DYNAMIC);
-	b2MassData massData;
-	b2Vec2 vect = { 150,150 };
-	massData.mass = 10;
-	massData.center = vect;
-	cos2->body->SetMassData(&massData);
-	cos2->body->ApplyForce(forceToApply, pointOfApplication, true);
+		b2Vec2 forceToApply(4000.0f, 0.0f);
+		cos2 = app->physics->CreateCircle(300, 250, 25, bodyType::DYNAMIC);
+		b2MassData massData;
+		b2Vec2 vect = { 150,150 };
+		massData.mass = 10;
+		massData.center = vect;
+		cos2->body->SetMassData(&massData);
+		cos2->body->ApplyForce(forceToApply, pointOfApplication, true);
 #pragma endregion
 
-	vectorDeCossos.push_back(cos1);
-	vectorDeCossos.push_back(cos2);
+		vectorDeCossos.push_back(cos1);
+		vectorDeCossos.push_back(cos2);
+	}
+
 
 	return true;
 }
 
-bool Scene::PreUpdate()
+bool Scene_1::PreUpdate()
 {
 	return true;
 }
 
-bool Scene::Update(float dt)
+bool Scene_1::Update(float dt)
 {
+#pragma region Canvi escenes
+
+	if (app->input->GetMouseButtonDown(SDLK_F1) == KEY_DOWN)
+	{
+		app->modules[6]->active = true;
+		app->modules[7]->active = false;
+		app->modules[8]->active = false;
+
+		CleanUp();
+	}
+	
+	if (app->input->GetMouseButtonDown(SDLK_F3) == KEY_DOWN)
+	{
+		app->modules[6]->active = false;
+		app->modules[7]->active = false;
+		app->modules[8]->active = true;
+
+		CleanUp();
+	}
+
+#pragma endregion
+
+
+
 	iPoint mousePos;
 	app->input->GetMousePosition(mousePos.x, mousePos.y);
 
@@ -96,7 +122,7 @@ bool Scene::Update(float dt)
 		massData.center = vect;
 		cosTemporal->body->SetMassData(&massData);
 
-		cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y}, true);
+		cosTemporal->body->ApplyForce(forceToApply, { (float32)mousePos.x , (float32)mousePos.y }, true);
 
 		vectorDeCossos.push_back(cosTemporal);
 	}
@@ -123,22 +149,22 @@ bool Scene::Update(float dt)
 	{
 		for (int k = 0; k < sizeVector; k++)
 		{
-			if (vectorDeCossos[i] !=0 || vectorDeCossos[k] != 0)
+			if (vectorDeCossos[i] != 0 || vectorDeCossos[k] != 0)
 			{
 				b2Vec2 forcaGravitatoria = ApplyGravity(vectorDeCossos[i], vectorDeCossos[k]);
 				vectorDeCossos[i]->body->ApplyForce(forcaGravitatoria, { 0,0 }, true);
 			}
-			
+
 		}
 	}
 
-	
+
 
 	return true;
 }
 
 // Called each loop iteration
-bool Scene::PostUpdate()
+bool Scene_1::PostUpdate()
 {
 	bool ret = true;
 
@@ -148,7 +174,7 @@ bool Scene::PostUpdate()
 }
 
 // Called before quitting
-bool Scene::CleanUp()
+bool Scene_1::CleanUp()
 {
 	LOG("Freeing scene");
 

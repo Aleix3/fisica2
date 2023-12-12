@@ -1,5 +1,5 @@
-#ifndef __SCENE_H__
-#define __SCENE_H__
+#ifndef __SCENE_0_H__
+#define __SCENE_0_H__
 
 #include "Module.h"
 #include "Player.h"
@@ -10,11 +10,11 @@
 
 struct SDL_Texture;
 
-class Scene : public Module{
+class Scene_0 : public Module{
 
 public:
-	Scene();
-	virtual ~Scene();
+	Scene_0();
+	virtual ~Scene_0();
 	bool Awake(pugi::xml_node config);
 	bool Start();
 	bool PreUpdate();
@@ -25,9 +25,6 @@ public:
 	/*void calculateGravityForce(const Body& body1, const Body& body2, double& fx, double& fy);*/
 	
 private:
-	SDL_Texture* _imgTerra;
-	SDL_Texture* _imgLluna;
-
 	// Fisiques
 	int _gravetat = 550; //m/s^2
 	float _alturaInicial = 256; // m

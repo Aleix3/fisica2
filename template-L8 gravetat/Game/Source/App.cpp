@@ -4,7 +4,9 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
-#include "Scene.h"
+#include "Scene_0.h"
+#include "Scene_1.h"
+#include "Scene_2.h"
 #include "Physics.h"
 #include "Hud.h"
 #include "Score.h"
@@ -34,7 +36,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures();//3
 	audio = new Audio();//4
 	physics = new Physics();//5 <------
-	scene = new Scene();//7 <---
+	scene_0 = new Scene_0();//6 <---
+	scene_1 = new Scene_1();//7 <---
+	scene_2 = new Scene_2();//8 <---
 	entityManager = new EntityManager();
 	hud = new Hud();
 	score = new Score();
@@ -46,7 +50,9 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(physics);
-	AddModule(scene);
+	AddModule(scene_0);
+	AddModule(scene_1);
+	AddModule(scene_2);
 	AddModule(entityManager);
 	AddModule(hud);
 	AddModule(score);
