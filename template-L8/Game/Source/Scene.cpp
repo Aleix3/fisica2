@@ -5,6 +5,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "ModuleAnimation.h"
 #include "Map.h"
 #include "Item.h"
 #include "Physics.h"
@@ -454,6 +455,7 @@ bool Scene::Start()
 
 	app->audio->PlayMusic("Assets/Audio/Pinball_th.mp3", 10.0f);
 	app->hud->Start();
+	app->manimation->Start();
 
 #pragma region Bumpers
 	PhysBody* circularBumper = app->physics->CreateCircle(210, 95, 15, bodyType::STATIC);//BUmper1

@@ -24,6 +24,8 @@ class Physics;
 class Player;
 class Score;
 class Hud;
+class Collider;
+class ModuleAnimation;
 
 class App
 {
@@ -91,6 +93,8 @@ public:
 	Player* player;
 	Score* score;
 	Hud* hud;
+	Collider* collider;
+	ModuleAnimation* manimation;
 
 	List<Module *> modules;
 private:
