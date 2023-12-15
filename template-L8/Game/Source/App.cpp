@@ -9,10 +9,8 @@
 #include "PostScene.h"
 #include "Physics.h"
 #include "Hud.h"
-#include "Collider.h"
 #include "Score.h"
 #include "Player.h"
-#include "ModuleAnimation.h"
 
 
 
@@ -43,8 +41,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	postscene = new PostScene();//8 <---
 	entityManager = new EntityManager();
 	hud = new Hud();
-	collider = new Collider();
-	manimation = new ModuleAnimation();
 	score = new Score();
 
 	// Ordered for awake / Start / Update
@@ -60,8 +56,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(hud);
 	AddModule(score);
-	AddModule(collider);
-	AddModule(manimation);
+
 	// Render last to swap buffer
 	AddModule(render);
 

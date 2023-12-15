@@ -26,8 +26,6 @@
     <ClCompile Include="Source\Hud.cpp" />
     <ClCompile Include="Source\PostScene.cpp" />
     <ClCompile Include="Source\PreScene.cpp" />
-    <ClCompile Include="Source\ModuleAnimation.cpp" />
-    <ClCompile Include="Source\Collider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -78,8 +76,6 @@
     <ClInclude Include="Source\Hud.h" />
     <ClInclude Include="Source\PostScene.h" />
     <ClInclude Include="Source\PreScene.h" />
-    <ClInclude Include="Source\ModuleAnimation.h" />
-    <ClInclude Include="Source\Collider.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
