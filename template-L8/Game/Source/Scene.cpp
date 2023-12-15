@@ -284,43 +284,38 @@ Scene::Scene() : Module()
 {
 	name.Create("scene");
 
-#pragma region Animaciones
+#pragma region 
+	//Animaciones
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
 	AnimBump1.PushBack({ 451, 537, 44,  44 });
 	AnimBump1.PushBack({ 404, 537, 44,  44 });
 	AnimBump1.loop = true;
 	AnimBump1.speed = 0.1f;
-
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
 	AnimBump2.PushBack({ 471, 482, 44,  47 });
 	AnimBump2.PushBack({ 421, 482, 44,  47 });
 	AnimBump2.loop = true;
 	AnimBump2.speed = 0.1f;
-
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
 	AnimBump3.PushBack({ 55, 480, 45,  37 });
 	AnimBump3.PushBack({ 3, 480, 45,  37 });
 	AnimBump3.loop = true;
 	AnimBump3.speed = 0.1f;
-
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
 	AnimBump4.PushBack({ 53, 535, 44,  45 });
 	AnimBump4.PushBack({ 3, 535, 44,  45 });
 	AnimBump4.loop = true;
 	AnimBump4.speed = 0.1f;
-
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
 	AnimBump5.PushBack({ 44, 588, 37,  37 });
 	AnimBump5.PushBack({ 2, 588, 37,  37 });
 	AnimBump5.loop = true;
 	AnimBump5.speed = 0.1f;
-
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
 	AnimBump6.PushBack({ 384, 586, 38,  38 });
 	AnimBump6.PushBack({ 341, 586, 38,  38 });
 	AnimBump6.loop = true;
 	AnimBump6.speed = 0.1f;
-
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
 	AnimBump7.PushBack({ 730, 586, 38,  38 });
 	AnimBump7.PushBack({ 685, 586, 38,  38 });
@@ -335,7 +330,6 @@ Scene::Scene() : Module()
 	AnimLight1.PushBack({ 529, 196, 28,  28 });
 	AnimLight1.loop = true;
 	AnimLight1.speed = 0.1f;
-
 	AnimLight2.PushBack({ 650, 241, 6,  6 });
 	AnimLight2.PushBack({ 650, 241, 6,  6 });
 	AnimLight2.PushBack({ 650, 241, 6,  6 });
@@ -344,7 +338,6 @@ Scene::Scene() : Module()
 	AnimLight2.PushBack({ 650, 241, 6,  6 });
 	AnimLight2.loop = true;
 	AnimLight2.speed = 0.1f;
-
 	AnimLight3.PushBack({ 650, 241, 6,  6 });
 	AnimLight3.PushBack({ 650, 241, 6,  6 });
 	AnimLight3.PushBack({ 650, 241, 6,  6 });
@@ -353,7 +346,6 @@ Scene::Scene() : Module()
 	AnimLight3.PushBack({ 650, 241, 6,  6 });
 	AnimLight3.loop = true;
 	AnimLight3.speed = 0.1f;
-
 	AnimLight4.PushBack({ 650, 241, 6,  6 });
 	AnimLight4.PushBack({ 650, 241, 6,  6 });
 	AnimLight4.PushBack({ 81, 197, 30,  18 });
@@ -362,7 +354,6 @@ Scene::Scene() : Module()
 	AnimLight4.PushBack({ 650, 241, 6,  6 });
 	AnimLight4.loop = true;
 	AnimLight4.speed = 0.1f;
-
 	AnimLight5.PushBack({ 650, 241, 6,  6 });
 	AnimLight5.PushBack({ 44, 193, 30,  21 });
 	AnimLight5.PushBack({ 650, 241, 6,  6 });
@@ -371,7 +362,6 @@ Scene::Scene() : Module()
 	AnimLight5.PushBack({ 650, 241, 6,  6 });
 	AnimLight5.loop = true;
 	AnimLight5.speed = 0.1f;
-
 	AnimLight6.PushBack({ 4, 190, 31,  24 });
 	AnimLight6.PushBack({ 650, 241, 6,  6 });
 	AnimLight6.PushBack({ 650, 241, 6,  6 });
@@ -381,15 +371,52 @@ Scene::Scene() : Module()
 	AnimLight6.loop = true;
 	AnimLight6.speed = 0.1f;
 
+	AnimArrow1.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1.PushBack({ 650, 241, 6,  6 });
 	AnimArrow1.PushBack({ 426,164,15,17 });
 	AnimArrow1.PushBack({ 650, 241, 6,  6 });
 	AnimArrow1.loop = true;
-	AnimArrow1.speed = 0.08f;
+	AnimArrow1.speed = 0.12f;
+	AnimArrow1W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1W.PushBack({ 426,164,15,17 });
+	AnimArrow1W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1W.loop = true;
+	AnimArrow1W.speed = 0.12f;
+	AnimArrow1Q.PushBack({ 426,164,15,17 });
+	AnimArrow1Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1Q.loop = true;
+	AnimArrow1Q.speed = 0.12f;
 
+	AnimArrow2.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2.PushBack({ 650, 241, 6,  6 });
 	AnimArrow2.PushBack({ 428,192,20,20 });
 	AnimArrow2.PushBack({ 650, 241, 6,  6 });
 	AnimArrow2.loop = true;
-	AnimArrow2.speed = 0.08f;
+	AnimArrow2.speed = 0.12f;
+	AnimArrow2W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2W.PushBack({ 428,192,20,20 });
+	AnimArrow2W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2W.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2W.loop = true;
+	AnimArrow2W.speed = 0.12f;
+	AnimArrow2Q.PushBack({ 428,192,20,20 });
+	AnimArrow2Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2Q.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2Q.loop = true;
+	AnimArrow2Q.speed = 0.12f;
+
+	AnimArrow1D.PushBack({ 50,156,22,27 });
+	AnimArrow1D.PushBack({ 650, 241, 6,  6 });
+	AnimArrow1D.loop = true;
+	AnimArrow1D.speed = 0.05f;
+	AnimArrow2D.PushBack({ 78,156,22,27 });
+	AnimArrow2D.PushBack({ 650, 241, 6,  6 });
+	AnimArrow2D.loop = true;
+	AnimArrow2D.speed = 0.05f;
 #pragma endregion
 }
 
@@ -436,7 +463,13 @@ bool Scene::Start()
 	currentAnimLight6 = &AnimLight6;
 
 	currentAnimArrow1 = &AnimArrow1;
+	currentAnimArrow1W = &AnimArrow1W;
+	currentAnimArrow1Q = &AnimArrow1Q;
 	currentAnimArrow2 = &AnimArrow2;
+	currentAnimArrow2W = &AnimArrow2W;
+	currentAnimArrow2Q = &AnimArrow2Q;
+	currentAnimArrow1D = &AnimArrow1D;
+	currentAnimArrow2D = &AnimArrow2D;
 	currentAnimSpring = &AnimSpring;
 
 	sfx_Spring = app->audio->LoadFx("Assets/Audio/sfx/Spring.wav");
@@ -492,10 +525,14 @@ bool Scene::Start()
 	circularBumper7->ctype = ColliderType::BUMPER7;
 #pragma endregion	
 
-	app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
-	app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
+	PhysBody* smallRectU = app->physics->CreateRectangle(388, 125, 5, 20, bodyType::STATIC);
+	smallRectU->ctype = ColliderType::RECTU;
+	PhysBody* smallRectU2=app->physics->CreateRectangle(352, 125, 5, 20, bodyType::STATIC);
+	smallRectU2->ctype = ColliderType::RECTU;
+	PhysBody* smallRectD=app->physics->CreateRectangle(125, 387, 5, 20, bodyType::STATIC);
+	smallRectD->ctype = ColliderType::RECTD;
+	PhysBody* smallRectD2 = app->physics->CreateRectangle(158, 397, 5, 20, bodyType::STATIC);
+	smallRectD2->ctype = ColliderType::RECTD;
 
 #pragma region Obstacles escenari
 	PhysBody* pb_estructuraEscenari = app->physics->CreateChain(0, 0, escenariGeneral, sizeEscenariGeneral, bodyType::STATIC);
@@ -696,7 +733,13 @@ bool Scene::Update(float dt)
 	currentAnimLight5->Update();
 	currentAnimLight6->Update();
 	currentAnimArrow1->Update();
+	currentAnimArrow1W->Update();
+	currentAnimArrow1Q->Update();
 	currentAnimArrow2->Update();
+	currentAnimArrow2W->Update();
+	currentAnimArrow2Q->Update();
+	currentAnimArrow1D->Update();
+	currentAnimArrow2D->Update();
 	currentAnimSpring->Update();
 
 	ballRect = { player->position.x, player->position.y, 16, 16 };
@@ -740,8 +783,20 @@ bool Scene::PostUpdate()
 
 	_rectArrow1 = currentAnimArrow1->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 290, 388, &_rectArrow1);
+	_rectArrow1W = currentAnimArrow1W->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 300, 410, &_rectArrow1W);
+	_rectArrow1Q = currentAnimArrow1Q->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 310, 433, &_rectArrow1Q);
 	_rectArrow2 = currentAnimArrow2->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 477, 314, &_rectArrow2);
+	_rectArrow2W = currentAnimArrow2W->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 457, 339, &_rectArrow2W);
+	_rectArrow2Q = currentAnimArrow2Q->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 439, 365, &_rectArrow2Q);
+	_rectArrow1D = currentAnimArrow1D->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 585, 690, &_rectArrow1D);
+	_rectArrow2D = currentAnimArrow2D->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 91, 650, &_rectArrow2D);
 	_rectSpring = currentAnimSpring->GetCurrentFrame();
 	app->render->DrawTexture(_texturaSprite, 663, 780, &_rectSpring);
 	//

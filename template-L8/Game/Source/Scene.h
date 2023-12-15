@@ -91,9 +91,28 @@ private:
 	SDL_Rect _rectArrow1;
 	Animation* currentAnimArrow1 = nullptr;
 	Animation AnimArrow1;
+	SDL_Rect _rectArrow1W;
+	Animation* currentAnimArrow1W = nullptr;
+	Animation AnimArrow1W;
+	SDL_Rect _rectArrow1Q;
+	Animation* currentAnimArrow1Q = nullptr;
+	Animation AnimArrow1Q;
 	SDL_Rect _rectArrow2;
 	Animation* currentAnimArrow2 = nullptr;
 	Animation AnimArrow2;
+	SDL_Rect _rectArrow2W;
+	Animation* currentAnimArrow2W = nullptr;
+	Animation AnimArrow2W;
+	SDL_Rect _rectArrow2Q;
+	Animation* currentAnimArrow2Q = nullptr;
+	Animation AnimArrow2Q;
+	SDL_Rect _rectArrow1D;
+	Animation* currentAnimArrow1D = nullptr;
+	Animation AnimArrow1D;
+	SDL_Rect _rectArrow2D;
+	Animation* currentAnimArrow2D = nullptr;
+	Animation AnimArrow2D;
+
 	SDL_Rect _rectSpring;
 	Animation* currentAnimSpring = nullptr;
 	Animation AnimSpring;

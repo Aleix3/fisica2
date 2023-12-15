@@ -24,6 +24,8 @@ public:
 
 	bool Update(float dt);
 
+	bool PostUpdate();
+
 	bool CleanUp();
 
 	void Reset();
@@ -86,7 +88,13 @@ public:
 
 	// L07 DONE 5: Add physics to the player - declare a Physics body
 	PhysBody* pbody;
-
+	SDL_Rect _rectCirc1;
+	Animation* currentAnimCirc1 = nullptr;
+	Animation AnimCirc1;
+	SDL_Rect _rectCirc2;
+	Animation* currentAnimCirc2 = nullptr;
+	Animation AnimCirc2;
+	SDL_Texture* _texturaSprite = nullptr;
 	 // Color rojo en formato RGBA
 	
 };

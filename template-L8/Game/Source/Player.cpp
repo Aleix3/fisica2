@@ -9,12 +9,21 @@
 #include "Point.h"
 #include "Physics.h"
 #include "Score.h"
+#include "SDL_image/include/SDL_image.h"
+
 
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
+	AnimCirc1.PushBack({ 608,172,12,10 });
+	AnimCirc1.PushBack({ 650, 241, 6,  6 });
+	AnimCirc1.loop = false;
+	AnimCirc1.speed = 0.05f;
+	AnimCirc2.PushBack({ 254,245,12,10 });
+	AnimCirc2.PushBack({ 650, 241, 6,  6 });
+	AnimCirc2.loop = false;
+	AnimCirc2.speed = 0.05f;
 }
-
 Player::~Player() {
 
 }
@@ -44,7 +53,8 @@ bool Player::Start() {
 	PhysBody* c2 = app->physics->CreateRectangle(365, 850, 300, 10, bodyType::STATIC);
 
 	c2->ctype = ColliderType::DIE;
-
+	currentAnimCirc1 = &AnimCirc1;
+	_texturaSprite = app->tex->Load("Assets/Textures/SpaceSprites200.png");
 	sfx_Bumper = app->audio->LoadFx("Assets/Audio/sfx/Bumper.wav");
 	_velocitatInicial_Y = 2;
 	_textura_ball = app->tex->Load("Assets/Textures/aspid3.png");
@@ -117,10 +127,25 @@ bool Player::Update(float dt)
 	}
 
 	
-
 	return true;
 }
-
+bool Player::PostUpdate()
+{
+	
+	_rectCirc1 = currentAnimCirc1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 364, 96, &_rectCirc1);
+	_rectCirc1 = currentAnimCirc1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 329, 102, &_rectCirc1);
+	_rectCirc1 = currentAnimCirc1->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 399, 102 ,&_rectCirc1);
+	_rectCirc2 = currentAnimCirc2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 112, 367 ,&_rectCirc2);
+	_rectCirc2 = currentAnimCirc2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 143, 374, &_rectCirc2);
+	_rectCirc2 = currentAnimCirc2->GetCurrentFrame();
+	app->render->DrawTexture(_texturaSprite, 175, 382, &_rectCirc2);
+	return true;
+}
 bool Player::CleanUp()
 {
 	return true;
@@ -173,6 +198,11 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->score->AddPoints(50);
 			//	app->audio->PlayFx(sfx_Bumper);
 		}
+		break;
+	case ColliderType::RECTU:
+		LOG("Collision RECTU");
+		currentAnimCirc1->Update();
+		currentAnimCirc2->Update();
 		break;
 	case ColliderType::BUMPER2:
 		LOG("Collision BUMPER");

@@ -37,7 +37,9 @@ enum class ColliderType {
 	BUMPER6,
 	BUMPER7,
 	DIE,
-	UNKNOWN
+	UNKNOWN,
+	RECTU,
+	RECTD
 	// ..
 };
 
