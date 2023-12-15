@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2023 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,7 +20,7 @@
 */
 
 /**
- *  \file SDL_test_compare.h
+ *  \file SDL_test_log.h
  *
  *  Include file for SDL test framework.
  *
@@ -28,17 +28,13 @@
  */
 
 /*
+ *
+ *  Wrapper to log in the TEST category
+ *
+ */
 
- Defines comparison functions (i.e. for surfaces).
-
-*/
-
-#ifndef _SDL_test_compare_h
-#define _SDL_test_compare_h
-
-#include "SDL.h"
-
-#include "SDL_test_images.h"
+#ifndef SDL_test_log_h_
+#define SDL_test_log_h_
 
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */
@@ -47,16 +43,18 @@ extern "C" {
 #endif
 
 /**
- * \brief Compares a surface and with reference image data for equality
+ * \brief Prints given message with a timestamp in the TEST category and INFO priority.
  *
- * \param surface Surface used in comparison
- * \param referenceSurface Test Surface used in comparison
- * \param allowable_error Allowable difference (=sum of squared difference for each RGB component) in blending accuracy.
- *
- * \returns 0 if comparison succeeded, >0 (=number of pixels for which the comparison failed) if comparison failed, -1 if any of the surfaces were NULL, -2 if the surface sizes differ.
+ * \param fmt Message to be logged
  */
-int SDLTest_CompareSurfaces(SDL_Surface *surface, SDL_Surface *referenceSurface, int allowable_error);
+void SDLTest_Log(SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(1);
 
+/**
+ * \brief Prints given message with a timestamp in the TEST category and the ERROR priority.
+ *
+ * \param fmt Message to be logged
+ */
+void SDLTest_LogError(SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(1);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
@@ -64,6 +62,6 @@ int SDLTest_CompareSurfaces(SDL_Surface *surface, SDL_Surface *referenceSurface,
 #endif
 #include "close_code.h"
 
-#endif /* _SDL_test_compare_h */
+#endif /* SDL_test_log_h_ */
 
 /* vi: set ts=4 sw=4 expandtab: */
