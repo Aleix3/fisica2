@@ -41,7 +41,7 @@ update_status ModuleCamera3D::Update(float dt)
 	// Implement a debug camera with keys and mouse
 	// Now we can make this movememnt frame rate independant!
 
-	vec3 newPos(0,0,0);
+	vec3 newPos(0, 0, 0);
 	float speed = 3.0f * dt;
 
 	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
@@ -105,9 +105,32 @@ update_status ModuleCamera3D::Update(float dt)
 	}
 	else
 	{
+		float playerMatrix[16];
+		App->player->vehicle->GetTransform(playerMatrix);
 
+		mat3x3 playerRotation = mat3x3(
+			vec3(playerMatrix[0], playerMatrix[1], playerMatrix[2]),
+			vec3(playerMatrix[4], playerMatrix[5], playerMatrix[6]),
+			vec3(playerMatrix[8], playerMatrix[9], playerMatrix[10])
+		);
+
+		vec3 playerPosition = App->player->vehicle->GetPosition();
+		vec3 offset = vec3(0.0f, 5.0f, -10.0f);
+
+		// Ajusta la posición de la cámara con respecto a la rotación del jugador
+		Position = playerPosition + playerRotation * offset;
+
+		// Dirige la cámara hacia el jugador
+		Reference = playerPosition;
+
+		// Ajusta la orientación de la cámara
+		Z = normalize(Position - Reference);
+		X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
+		Y = cross(Z, X);
+
+		CalculateViewMatrix();
 	}
-	
+
 
 	// Recalculate matrix -------------
 	CalculateViewMatrix();
@@ -116,7 +139,7 @@ update_status ModuleCamera3D::Update(float dt)
 }
 
 // -----------------------------------------------------------------
-void ModuleCamera3D::Look(const vec3 &Position, const vec3 &Reference, bool RotateAroundReference)
+void ModuleCamera3D::Look(const vec3& Position, const vec3& Reference, bool RotateAroundReference)
 {
 	this->Position = Position;
 	this->Reference = Reference;
@@ -125,7 +148,7 @@ void ModuleCamera3D::Look(const vec3 &Position, const vec3 &Reference, bool Rota
 	X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
 	Y = cross(Z, X);
 
-	if(!RotateAroundReference)
+	if (!RotateAroundReference)
 	{
 		this->Reference = this->Position;
 		this->Position += Z * 0.05f;
@@ -135,7 +158,7 @@ void ModuleCamera3D::Look(const vec3 &Position, const vec3 &Reference, bool Rota
 }
 
 // -----------------------------------------------------------------
-void ModuleCamera3D::LookAt( const vec3 &Spot)
+void ModuleCamera3D::LookAt(const vec3& Spot)
 {
 	Reference = Spot;
 
@@ -148,7 +171,7 @@ void ModuleCamera3D::LookAt( const vec3 &Spot)
 
 
 // -----------------------------------------------------------------
-void ModuleCamera3D::Move(const vec3 &Movement)
+void ModuleCamera3D::Move(const vec3& Movement)
 {
 	Position += Movement;
 	Reference += Movement;

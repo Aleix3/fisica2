@@ -59,13 +59,17 @@ void PhysBody3D::SetAsSensor(bool is_sensor)
 	}
 }
 
-//vec3 PhysBody3D::GetPosition()  
-//{
-//	btTransform t = body->getWorldTransform();
-//	btVector3 origin = t.getOrigin();
-//
-//	// Convert btVector3 to glm::vec3
-//	vec3 position(origin.getX(), origin.getY(), origin.getZ());
-//
-//	return position;
-//}
+vec3 PhysBody3D::GetPosition() const
+{
+	if (body == nullptr)
+	{
+		return vec3(0, 0, 0);
+	}
+
+	btTransform t = body->getWorldTransform();
+	btVector3 origin = t.getOrigin();
+
+	vec3 position(origin.getX(), origin.getY(), origin.getZ());
+	return position;
+}
+

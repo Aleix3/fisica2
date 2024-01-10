@@ -2,7 +2,7 @@
 #define __PhysBody3D_H__
 
 #include "p2List.h"
-
+#include "glmath.h"
 
 class btRigidBody;
 class Module;
@@ -19,14 +19,14 @@ public:
 	void GetTransform(float* matrix) const;
 	void SetTransform(const float* matrix) const;
 	void SetPos(float x, float y, float z);
-	// New function to get the position	
-	/*vec3 GetPosition();*/
+	vec3 GetPosition() const;
 	void SetAsSensor(bool is_sensor);
 
 private:
-	btRigidBody* body = nullptr;
+	
 
 public:
+	btRigidBody* body = nullptr;
 	p2List<Module*> collision_listeners;
 	bool is_sensor = false;
 };
