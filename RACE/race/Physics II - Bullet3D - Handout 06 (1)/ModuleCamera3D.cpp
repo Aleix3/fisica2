@@ -115,15 +115,12 @@ update_status ModuleCamera3D::Update(float dt)
 		);
 
 		vec3 playerPosition = App->player->vehicle->GetPosition();
-		vec3 offset = vec3(0.0f, 5.0f, -10.0f);
+		vec3 offset = vec3(0.0f, 5.0f, -10.0f); // Modificar la posicion de la camara
 
-		// Ajusta la posición de la cámara con respecto a la rotación del jugador
 		Position = playerPosition + playerRotation * offset;
 
-		// Dirige la cámara hacia el jugador
 		Reference = playerPosition;
 
-		// Ajusta la orientación de la cámara
 		Z = normalize(Position - Reference);
 		X = normalize(cross(vec3(0.0f, 1.0f, 0.0f), Z));
 		Y = cross(Z, X);
