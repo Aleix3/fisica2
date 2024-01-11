@@ -23,6 +23,7 @@ public:
 	update_status Update(float dt);
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 	bool CleanUp();
+	void ActivateBoost();
 
 public:
 	VehicleInfo car;
@@ -32,4 +33,6 @@ public:
 	float deacceleration = 0;
 	float brake;
 	float friccion;
+
+	bool isBoosting;
 };

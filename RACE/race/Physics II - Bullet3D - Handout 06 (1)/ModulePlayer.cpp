@@ -9,8 +9,8 @@ ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, s
 {
 	turn = acceleration = brake = 0.0f;
 	turn = acceleration = friccion = 0.0f;
-	
-	
+
+	isBoosting = false;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -161,6 +161,26 @@ update_status ModulePlayer::Update(float dt)
 		friccion = FRICCION_COEFICIENT * car.mass;
 	}
 	
+	// Calcular la resistencia del aire (arrastre)
+	//float speed = vehicle->GetKmh();
+	//float dragForce = -FRICCION_COEFICIENT * speed * speed;
+	//vehicle->ApplyEngineForce(dragForce);
+
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		ActivateBoost();
+	}	
+
+	if (isBoosting) {
+
+		btTransform trans;
+		vehicle->vehicle->getRigidBody()->getMotionState()->getWorldTransform(trans); // Obtener la matriz de transformación del vehículo
+
+		btVector3 forwardVector = trans.getBasis().getColumn(2); // Obtener la dirección hacia adelante (asumiendo que es la tercera columna)
+		btVector3 boostForce = forwardVector * 300000; // Calcular la fuerza de boost
+		vehicle->vehicle->getRigidBody()->applyCentralForce(boostForce); // Aplicar la fuerza de boost
+		isBoosting = false;
+	}
 
 	vehicle->ApplyEngineForce(acceleration);
 	vehicle->Turn(turn);
@@ -194,3 +214,6 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	/*if (body2 == App->scene_intro.);*/
 }
 
+void ModulePlayer::ActivateBoost() {
+	isBoosting = true;
+}
